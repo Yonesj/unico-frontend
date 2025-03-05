@@ -1,0 +1,17 @@
+.login-form__username-input {
+  align-items: center;
+  
+  width: 100%;
+  height: 50px;
+  padding: 9px 10px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.06);
+  margin: 0.8rem 0;
+  border-radius: 1px;
+  font-weight: 300;
+  font-size: 14px;
+}
+.user-name_input {
+  
+  border: 1px solid #a7a9ad;
+  border-radius: 8px;
+}
