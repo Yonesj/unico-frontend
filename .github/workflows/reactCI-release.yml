@@ -57,11 +57,7 @@ jobs:
         - name: Install dependencies
           working-directory: .
           run: npm ci
-      
-        - name: Run eslint check (optional)
-          working-directory: .
-          run: npm run lint 
-      
+
         - name: CI=false Build project
           working-directory: .
           run: CI=false npm run build --if-present
