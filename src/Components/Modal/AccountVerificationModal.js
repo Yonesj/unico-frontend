@@ -38,7 +38,7 @@ const AccountVerificationModal = ({ open, onOk, onClose }) => {
                        <button className='w-full h-14 outline-none rounded-lg bg-[#4CC6CB] text-white font-bold text-base' onClick={onOk}>
                             تایید
                        </button>
-                        <p className='text-sm font-normal text-center'>کدی دریافت نکردید؟ <span className='text-[#EFB036]'>ارسال مجدد</span></p>
+                        <p className='text-sm font-normal text-center'>کدی دریافت نکردید؟ <span className='text-[#EFB036] hover:curser-pointerd'>ارسال مجدد</span></p>
                     </div>
             </div>
 
