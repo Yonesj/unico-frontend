@@ -34,10 +34,10 @@ jobs:
           
       - name: Build the Docker image  
         run: |  
-          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/frontangular:${{ steps.tag_version.outputs.new_tag }} .  
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/frontangular:${{ steps.tag_version.outputs.new_tag }}
-          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/frontangular:latest .
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/frontangular:latest
+          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/unico-front:${{ steps.tag_version.outputs.new_tag }} .  
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/unico-front:${{ steps.tag_version.outputs.new_tag }}
+          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/unico-front:latest .
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/unico-front:latest
 
   build:
         runs-on: ubuntu-latest
