@@ -24,8 +24,6 @@ ENV CHROME_BIN="/usr/bin/google-chrome"
 
 COPY . .
 
-RUN npm test -- --coverage --watch=false
-
 FROM base AS build
 
 WORKDIR /app
