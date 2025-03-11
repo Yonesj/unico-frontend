@@ -10,6 +10,8 @@ COPY . .
 
 RUN npm run build
 
+RUN npm test
+
 FROM nginx:latest
 
 COPY nginx.conf /etc/nginx/nginx.conf
