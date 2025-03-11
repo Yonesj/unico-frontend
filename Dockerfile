@@ -12,9 +12,7 @@ RUN npm run build
 
 FROM base AS test
 
-RUN npm test
-
-RUN npm test
+RUN CI=true npm test -- --watchAll=false
 
 FROM nginx:latest
 
