@@ -24,7 +24,7 @@ function App() {
   useEffect(() => {
     const localStorageData = JSON.parse(localStorage.getItem("user"));
     if (localStorageData) {
-      fetch(``, {
+      fetch(`localhost:8000/auth/uesrs/me/`, {
         headers: {
           Authorization: `Bearer ${localStorageData.token}`,
         },
