@@ -7,6 +7,7 @@ import Input from "../../Components/Form/Input";
 import { ReactComponent as UnicoLogo } from "../../Assets/images/unicoLogo.svg";
 import { ReactComponent as SignUpImage } from "../../Assets/images/sign-up.svg";
 import { Modal } from "antd";
+import Swal from 'sweetalert2'
 import {
   requiredValidator,
   minValidator,
@@ -18,6 +19,7 @@ import AuthContext from "../../context/authContext";
 import { LockOutlined, MailOutlined, UserOutlined } from "@ant-design/icons";
 import AccountVerificationModal from "../../Components/Modal/AccountVerificationModal";
 import ForgetpassModal from "../../Components/Modal/ForgetpassModal";
+
 export default function SignUp() {
   const [reCaptchaVerify, setReCaptchaVerify] = useState(false);
 
@@ -26,7 +28,76 @@ export default function SignUp() {
   };
   const navigate = useNavigate();
   const authContext = useContext(AuthContext);
+  const userSignUp = (event) => {
+    event.preventDefault();
 
+    const userData = {
+      username: formState.inputs.username.value,
+      password: formState.inputs.password.value,
+      email: formState.inputs.email.value,
+    };
+
+    if (formState.inputs.username.isValid) {
+      fetch(
+        "http://localhost:8000/auth/users/",
+        {
+          method: "POST",
+          headers: {
+            'Cntent-Type' : "application/json",
+          },
+          body: JSON.stringify(userData),
+        }
+      )
+        .then((res) => {
+          if (!res.ok) {
+            return res.text().then((text) => {
+              throw new Error(text);
+            });
+          } else {
+            return res.json();
+          }
+        })
+        .then((result) => {
+          if(result.token){
+            authContext.login({}, result.token);
+          }
+          if (result.statusCode === 401) {
+            localStorage.setItem("token", "");
+            navigate("/", { replace: true });
+            return;
+          }
+          if (result.status) {
+            Swal.fire({
+              title: "Login successful",
+              icon: "success",
+              buttons: "Login to the user panel",
+            }).then((value) => {
+              navigate("/");
+            });
+            authContext.login({}, result.token);
+          } else {
+            Swal.fire({
+              title: "This user does not exist",
+              icon: "error",
+              buttons: "try again",
+            });
+          }
+        })
+        .catch((err) => {
+          Swal.fire({
+            title: "Error connecting to the server",
+            icon: "error",
+            buttons: "try again",
+          });
+        });
+    } else {
+      Swal.fire({
+        title: "Please enter the correct email",
+        icon: "error",
+        buttons: "try again",
+      });
+    }
+  };
   const [formState, onInputHandler] = useForm(
     {
       username:{
@@ -170,13 +241,13 @@ export default function SignUp() {
               <div className="login-body-footer h-[96px] flex flex-col justify-between">
                 <div className="login-button">
                   <button
-                     onClick={() => {
+                     onClick={(event) => {
                       if (
                         formState.inputs.username.isValid &&
                         formState.inputs.email.isValid &&
                         formState.inputs.password.isValid
                       ) {
-                        setIsModalOpen(true);
+                        userSignUp(event)
                       }
                     }}
                     className={`w-full h-[52px] bg-[#4CC6CB] text-white rounded-lg transition-all duration-300 ${
