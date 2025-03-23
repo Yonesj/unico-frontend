@@ -1,5 +1,5 @@
 const emailTest =(value)=>{
-const emailPattern = /^[A-Za-z0-9]+@[A-Za-z]+\.[a-z]{2,3}$/g
+const emailPattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g
 return emailPattern.test(value)
 }
 
