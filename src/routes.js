@@ -1,3 +1,4 @@
+import { Children } from "react";
 import Password from "./Pages/ChangePassword/Password";
 import Login from "./Pages/Login/Login"
 import SignUp from "./Pages/SignUp/SignUp";
@@ -11,7 +12,5 @@ const routes = [
     {path:"/404" , element:<NotFound />},
     {path:"/reset-password" , element:<Password />},
     {path:"/" , element:<Exams />  ,
-
-
     },
 export default routes;
