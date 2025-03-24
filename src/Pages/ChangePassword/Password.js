@@ -1,10 +1,11 @@
 import React, { useContext, useState } from "react";
 import "./Password.css";
-
+import { useLocation } from "react-router-dom";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useForm } from "../../hooks/useForm";
 import Input from "../../Components/Form/Input";
 import { ReactComponent as PassImage } from "../../Assets/images/PassImage.svg";
+import { useToast } from "../../Components/dls/toast/ToastService";
 import { ReactComponent as PassIcon } from "../../Assets/images/PassIcon.svg";
 import { Modal } from "antd";
 import {
@@ -18,9 +19,15 @@ import AuthContext from "../../context/authContext";
 import { LockOutlined, MailOutlined, UserOutlined } from "@ant-design/icons";
 import AccountVerificationModal from "../../Components/Modal/AccountVerificationModal";
 import ForgetpassModal from "../../Components/Modal/ForgetpassModal";
+const useQuery = () => {
+  return new URLSearchParams(useLocation().search);
+};
 export default function Password() {
   const [reCaptchaVerify, setReCaptchaVerify] = useState(false);
-
+const toast= useToast();
+  const query = useQuery();
+  const token = query.get("token"); 
+  const uid = query.get("uid"); 
   const onChangeHandler = () => {
     setReCaptchaVerify(true);
   };
@@ -40,23 +47,60 @@ export default function Password() {
     },
     false
   );
-
+  console.log(token, uid);
   const [passType, setPassType] = useState("");
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isForgetpassModalOpen, setIsForgetpassModalOpen] = useState(false);
+  const resetPass = (event) => {
+    event.preventDefault();
 
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
-  const handleForgetpassOk = () => {
-    setIsForgetpassModalOpen(false);
-  };
-  const handleForgetpassCancel = () => {
-    setIsForgetpassModalOpen(false);
+    const userData = {
+      uid: uid,
+      token:token,
+      password: formState.inputs.password.value,
+      retyped_password: formState.inputs.repassword.value
+    };
+    fetch("http://localhost:8000/auth/password-reset/confirm/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userData),
+    })
+      .then(async (res) => {
+        const data = await res.json();
+
+        if (res.status=="400") {
+          console.log(Object.values(data)[0]);
+          throw new Error(Object.values(data)[0] || "An error occurred");
+        }
+        if (res.status=="429") {
+         
+          throw new Error("too many requests");
+        }
+        return data;
+      })
+      .then((data) => {
+       
+        toast.open({
+          message: "رمزعبور با موفقیت تغیر کرد",
+          type: "success",
+        });
+        authContext.login({}, data.access , data.refresh );
+      })
+      .catch((err) => {
+        console.log(err.message);
+        if (err.message[0] == "This password is too common.") {
+          toast.open({
+            message: "تعداد درخواست ها بیش از حد مجاز است . کمی بعد مجدد تلاش کتید",
+            type: "warning",
+          });
+        }else if (err.message == "") {
+          toast.open({
+            message: "تعداد درخواست ها بیش از حد مجاز است . کمی بعد مجدد تلاش کتید",
+            type: "warning",
+          });
+        }
+      });
   };
   const myFunction = () => {
     if (passType == "password") {
@@ -80,13 +124,11 @@ export default function Password() {
             </div>
             <div className="login-body w-full flex flex-col  justify-between   h-[412px] ">
               <div className="header-text text-center  flex flex-col justify-between   self-center  font-iransans font-bold text-[26px] leading-7 w-[331px] h-[84px]">
-
                 <div className="header-title  font-bold text-2xl ">
                   فراموشی رمز عبور
                 </div>
                 <div className="header-desc font-normal text-base">
                   رمز عبور جدید خود را وارد کنید
-
                 </div>
               </div>
               <div className="login-body-inputs flex flex-col  gap-4 h-[188px] ">
@@ -95,16 +137,18 @@ export default function Password() {
                     رمز عبور
                   </label>
                   <div
-                    className={`user-name_input flex justify-start px-2 items-center h-[52px]  border brder-1 rounded-[8px] ${formState.inputs.password.isValid
-                      ? "border-green-500"
-                      : "border-[#a7a9ad] "
-                      }`}
+                    className={`user-name_input flex justify-start px-2 items-center h-[52px]  border brder-1 rounded-[8px] ${
+                      formState.inputs.password.isValid
+                        ? "border-green-500"
+                        : "border-[#a7a9ad] "
+                    }`}
                   >
                     <div
-                      className={`input h-[24px]   px-1 ${formState.inputs.password.isValid
-                        ? "text-green-500"
-                        : "text-[#a7a9ad] "
-                        }`}
+                      className={`input h-[24px]   px-1 ${
+                        formState.inputs.password.isValid
+                          ? "text-green-500"
+                          : "text-[#a7a9ad] "
+                      }`}
                     >
                       <LockOutlined />
                     </div>
@@ -124,16 +168,18 @@ export default function Password() {
                     تکرار رمز عبور
                   </label>
                   <div
-                    className={`user-name_input flex justify-start px-2 items-center h-[52px]  border brder-1 rounded-[8px] ${formState.inputs.repassword.isValid
-                      ? "border-green-500"
-                      : "border-[#a7a9ad] "
-                      }`}
+                    className={`user-name_input flex justify-start px-2 items-center h-[52px]  border brder-1 rounded-[8px] ${
+                     (formState.inputs.repassword.value==formState.inputs.password.value)
+                        ? "border-green-500"
+                        : "border-[#a7a9ad] "
+                    }`}
                   >
                     <div
-                      className={`input h-[24px]   px-1 ${formState.inputs.repassword.isValid
-                        ? "text-green-500"
-                        : "text-[#a7a9ad] "
-                        }`}
+                      className={`input h-[24px]   px-1 ${
+                        (formState.inputs.repassword.value==formState.inputs.password.value)
+                          ? "text-green-500"
+                          : "text-[#a7a9ad] "
+                      }`}
                     >
                       <LockOutlined />
                     </div>
@@ -147,22 +193,28 @@ export default function Password() {
                       onInputHandler={onInputHandler}
                     />
                   </div>
-
                 </div>
               </div>
               <div className="login-body-footer h-[52px] flex flex-col ">
                 <div className="login-button">
-                  <button
-                    className={`w-full h-[52px] bg-[#4CC6CB] text-white rounded-lg transition-all duration-300 ${formState.inputs.password.isValid &&
-                      formState.inputs.repassword.isValid
-                      ? ""
-                      : "opacity-50 cursor-not-allowed"
-                      }`}
+                  <button  onClick={(event) => {
+                      if (
+                        formState.inputs.password.isValid &&
+                        (formState.inputs.repassword.value==formState.inputs.password.value)
+                      ) {
+                        resetPass(event);
+                      }
+                    }}
+                    className={`w-full h-[52px] bg-[#4CC6CB] text-white rounded-lg transition-all duration-300 ${
+                      formState.inputs.password.isValid &&
+                      (formState.inputs.repassword.value==formState.inputs.password.value)
+                        ? ""
+                        : "opacity-50 cursor-not-allowed disabled"
+                    }`}
                   >
                     تایید
                   </button>
                 </div>
-
               </div>
             </div>
           </div>
@@ -172,25 +224,14 @@ export default function Password() {
             <div className="pass-image absolute z-20">
               <PassImage />
             </div>
-            <div className=" relative rect-light rounded-t-full z-10  bg-gradient-to-b from-white to-[#FBCF8E] w-[400px] h-[600px]  bottom-0 left-0 ">
-
-            </div>
+            <div className=" relative rect-light rounded-t-full z-10  bg-gradient-to-b from-white to-[#FBCF8E] w-[400px] h-[600px]  bottom-0 left-0 "></div>
           </div>
 
           <div className="ellapse w-[529.1px] h-[529.1px] blur-[400px]  bg-[rgba(76,198,203,0.4)] rotate-[4.74 deg] absolute -right-28 -top-52 rounded-full"></div>
-          <div className="ellapse w-[529.1px] h-[529.1px]  blur-[400px] bg-[rgba(251,183,142,1)] rotate-[4.74 deg] absolute -bottom-24  -left-24 rounded-full"></div>
+          <div className="ellapse w-[529.1px] h-[529.1px]  blur-[400px] bg-[rgba(251,183,142,1)] rotate-[4.74 deg] absolute -bottom-52  -left-24 rounded-full"></div>
         </div>
       </main>
-      <AccountVerificationModal
-        open={isModalOpen}
-        onClose={() => handleCancel()}
-        onOk={() => handleOk()}
-      ></AccountVerificationModal>
-      <ForgetpassModal
-        open={isForgetpassModalOpen}
-        onClose={() => handleForgetpassCancel()}
-        onOk={() => handleForgetpassOk()}
-      ></ForgetpassModal>
+     
     </>
   );
 }

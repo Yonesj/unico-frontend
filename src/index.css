@@ -2,10 +2,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-*
-{
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: IranSans;
-}
+.btoast-container {
+    z-index: 999999999 !important; /* Highest priority */
+  }
+ 
