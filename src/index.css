@@ -2,3 +2,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.btoast-container {
+    z-index: 999999999 !important; /* Highest priority */
+  }
+  

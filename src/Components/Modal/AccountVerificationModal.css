@@ -4,12 +4,17 @@
     border-radius: 16px !important;
     position: absolute;
     top: 0;
+    z-index: 10;
 }
 .ant-modal
 {
     width: 460px;
+    
 }
 .ant-modal-wrap
 {
     backdrop-filter: blur(9.899999618530273px);
 }
+.custom-modal .ant-modal {
+    z-index: 1000 !important;
+  }
