@@ -1,0 +1,54 @@
+/* .addUnitModal .ant-modal-content
+{
+    
+} */
+.addUnitModal
+{
+    width: 500px !important;
+    top: 20px !important;
+}
+.addUnitModal .ant-select-selector
+{
+    border: none !important;
+    box-shadow: none !important;
+
+}
+.addUnitModal .ant-picker
+{
+    width: 100%;
+    justify-content: flex-end;
+
+}
+.addUnitModal .ant-picker:hover
+{
+    border-color: #A7A9AD;
+}
+
+.addUnitModal .ant-picker svg
+{
+    margin-left: 5px;
+}
+.addUnitModal .ant-picker-input
+{
+    width: 35px !important;
+    
+}
+.addUnitModal .ant-picker-input input
+{
+    width: 100%;
+    text-align: center;
+}
+.addUnitModal .examDate .ant-picker-input
+{
+    width: 100% !important;
+    
+}
+.addUnitModal .examDate .ant-picker-input input
+{
+    width: 100% !important;
+}
+.addUnitModal .examDate .ant-picker
+{
+    box-shadow: none !important;
+
+}

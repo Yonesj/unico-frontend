@@ -8,6 +8,7 @@
 .ant-modal
 {
     width: 460px;
+    direction: ltr;
 }
 .ant-modal-wrap
 {
