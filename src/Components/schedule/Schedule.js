@@ -3,7 +3,7 @@ import faLocale from "@fullcalendar/core/locales/fa";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import { DayTimeColsView } from "@fullcalendar/timegrid/internal";
 import Course from "../../Components/schedule/Course";
-import { convertPersianNumberToEnglish } from "../../utils/helpers";
+import { convertEnglishNumberToPersian, convertPersianNumberToEnglish } from "../../utils/helpers";
 import { weekDays } from "../../constants/const";
 import DeleteCourseDialogConfirmation from "../../Components/schedule/DeleteCourseDialogConfirmation";
 import { useState } from "react";
@@ -60,7 +60,7 @@ export default function Schedule({ courses, currentScheduleId, setSchedules }) {
   };
 
   return (
-    <div className="h-[700px]">
+    <div className="h-[700px] overflow-hidden ">
       <DeleteCourseDialogConfirmation
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
@@ -96,11 +96,11 @@ export default function Schedule({ courses, currentScheduleId, setSchedules }) {
             duration: { days: 6 },
             slotLabelContent: ({ date }) => (
               <div className="me-1 ms-2 text-sm font-medium">
-                {convertPersianNumberToEnglish(date.getHours().toString())}
+                {convertEnglishNumberToPersian(date.getHours().toString())}
               </div>
             ),
             dayHeaderContent: ({ date }) => (
-              <div className="pb-2 text-sm font-medium">
+              <div className="pb-2 text-sm  font-iransans text-gray-500">
                 {
                   weekDays[
                     ((date.getDay() % weekDays.length) + weekDays.length) %

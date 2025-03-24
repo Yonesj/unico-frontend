@@ -1,5 +1,4 @@
 import "./App.css";
-import '../src/styles/globals.css'
 import { AnimatePresence, motion } from 'framer-motion'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import { config } from '@fortawesome/fontawesome-svg-core'
