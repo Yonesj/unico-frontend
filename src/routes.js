@@ -11,10 +11,10 @@ const routes = [
     {path:"/sign-up" , element:<SignUp />},
     {path:"*" , element:<NotFound />},
     {path:"/reset-password" , element:<Password />},
-    {path:"/exams" , element:<Exams />  },
-    {path:"/schedules" , element:<ProtectedRoute>
-    <Schedules />
-</ProtectedRoute>  },
+    {path:"/exams" , element:<ProtectedRoute>
+        <Exams/>
+    </ProtectedRoute>},
+    {path:"/schedules" , element:<Schedules/>},
 
 
 ]

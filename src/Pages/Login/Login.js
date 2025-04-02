@@ -52,7 +52,7 @@ export default function Login() {
 
   const userLogin = async (event, setLoading) => {
     event.preventDefault();
-    setLoading(true); // Start loading
+    setLoading(true); 
 
     const userData = {
       email: formState.inputs.email.value,
@@ -91,7 +91,7 @@ export default function Login() {
         });
       }
     } finally {
-      setLoading(false); // Stop loading after API call finishes
+      setLoading(false); 
     }
   };
 

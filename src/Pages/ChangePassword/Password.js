@@ -19,15 +19,16 @@ import AuthContext from "../../context/authContext";
 import { LockOutlined, MailOutlined, UserOutlined } from "@ant-design/icons";
 import AccountVerificationModal from "../../Components/Modal/AccountVerificationModal";
 import ForgetpassModal from "../../Components/Modal/ForgetpassModal";
+import Spinner from "../../Components/spinner";
 const useQuery = () => {
   return new URLSearchParams(useLocation().search);
 };
 export default function Password() {
   const [reCaptchaVerify, setReCaptchaVerify] = useState(false);
-const toast= useToast();
+  const toast = useToast();
   const query = useQuery();
-  const token = query.get("token"); 
-  const uid = query.get("uid"); 
+  const token = query.get("token");
+  const uid = query.get("uid");
   const onChangeHandler = () => {
     setReCaptchaVerify(true);
   };
@@ -49,15 +50,16 @@ const toast= useToast();
   );
   console.log(token, uid);
   const [passType, setPassType] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const resetPass = (event) => {
+  const resetPass = (event, setLoading) => {
     event.preventDefault();
-
+    setLoading(true);
     const userData = {
       uid: uid,
-      token:token,
+      token: token,
       password: formState.inputs.password.value,
-      retyped_password: formState.inputs.repassword.value
+      retyped_password: formState.inputs.repassword.value,
     };
     fetch("http://localhost:8000/auth/password-reset/confirm/", {
       method: "POST",
@@ -69,37 +71,46 @@ const toast= useToast();
       .then(async (res) => {
         const data = await res.json();
 
-        if (res.status=="400") {
+        if (res.status == "400") {
           console.log(Object.values(data)[0]);
           throw new Error(Object.values(data)[0] || "An error occurred");
         }
-        if (res.status=="429") {
-         
+        if (res.status == "429") {
           throw new Error("too many requests");
         }
         return data;
       })
       .then((data) => {
-       
         toast.open({
-          message: "رمزعبور با موفقیت تغیر کرد",
+          message: data.message,
           type: "success",
         });
-        authContext.login({}, data.access , data.refresh );
+        authContext.login({}, data.access, data.refresh);
       })
       .catch((err) => {
         console.log(err.message);
         if (err.message[0] == "This password is too common.") {
           toast.open({
-            message: "تعداد درخواست ها بیش از حد مجاز است . کمی بعد مجدد تلاش کتید",
+            message:
+              "تعداد درخواست ها بیش از حد مجاز است . کمی بعد مجدد تلاش کتید",
             type: "warning",
           });
-        }else if (err.message == "") {
+        } else if (err.message == "") {
           toast.open({
-            message: "تعداد درخواست ها بیش از حد مجاز است . کمی بعد مجدد تلاش کتید",
+            message:
+              "تعداد درخواست ها بیش از حد مجاز است . کمی بعد مجدد تلاش کتید",
             type: "warning",
+          });
+        }else{
+          toast.open({
+            message:
+              err.message,
+            type: "error",
           });
         }
+      }).finally(()=>{
+    setLoading(false);
+
       });
   };
   const myFunction = () => {
@@ -169,14 +180,18 @@ const toast= useToast();
                   </label>
                   <div
                     className={`user-name_input flex justify-start px-2 items-center h-[52px]  border brder-1 rounded-[8px] ${
-                     (formState.inputs.repassword.value==formState.inputs.password.value)
+                      formState.inputs.repassword.value ==
+                        formState.inputs.password.value &&
+                      formState.inputs.repassword.value != ""
                         ? "border-green-500"
                         : "border-[#a7a9ad] "
                     }`}
                   >
                     <div
                       className={`input h-[24px]   px-1 ${
-                        (formState.inputs.repassword.value==formState.inputs.password.value)
+                        formState.inputs.repassword.value ==
+                          formState.inputs.password.value &&
+                        formState.inputs.repassword.value != ""
                           ? "text-green-500"
                           : "text-[#a7a9ad] "
                       }`}
@@ -197,22 +212,32 @@ const toast= useToast();
               </div>
               <div className="login-body-footer h-[52px] flex flex-col ">
                 <div className="login-button">
-                  <button  onClick={(event) => {
+                  <button
+                    onClick={(event) => {
                       if (
                         formState.inputs.password.isValid &&
-                        (formState.inputs.repassword.value==formState.inputs.password.value)
+                        formState.inputs.repassword.value ===
+                          formState.inputs.password.value
                       ) {
-                        resetPass(event);
+                        resetPass(event, setLoading);
                       }
                     }}
+                    disabled={
+                      loading ||
+                      !formState.inputs.password.isValid ||
+                      formState.inputs.repassword.value !==
+                        formState.inputs.password.value
+                    }
                     className={`w-full h-[52px] bg-[#4CC6CB] text-white rounded-lg transition-all duration-300 ${
                       formState.inputs.password.isValid &&
-                      (formState.inputs.repassword.value==formState.inputs.password.value)
+                      formState.inputs.repassword.value ===
+                        formState.inputs.password.value &&
+                      !loading
                         ? ""
-                        : "opacity-50 cursor-not-allowed disabled"
+                        : "opacity-50 cursor-not-allowed"
                     }`}
                   >
-                    تایید
+                    {loading ? <Spinner size="lg" /> : <span>تایید</span>}
                   </button>
                 </div>
               </div>
@@ -231,7 +256,6 @@ const toast= useToast();
           <div className="ellapse w-[529.1px] h-[529.1px]  blur-[400px] bg-[rgba(251,183,142,1)] rotate-[4.74 deg] absolute -bottom-52  -left-24 rounded-full"></div>
         </div>
       </main>
-     
     </>
   );
 }
