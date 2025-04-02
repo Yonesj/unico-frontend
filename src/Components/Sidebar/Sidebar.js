@@ -18,7 +18,7 @@ const SidebarContext = createContext()
 export default function Sidebar({ children }) {
   const [expanded, setExpanded] = useState(false);
   const [pin, setPin] = useState(false);
-  const [activeIndex, setActiveIndex] = useState(0); // Track active item
+  const [activeIndex, setActiveIndex] = useState(0);
 
   return (
     <aside className="h-screen">

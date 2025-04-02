@@ -1,0 +1,7 @@
+<CourseSelector
+//        //  colleges={colleges}
+//        //  currentScheduleId={currentScheduleId}
+//        //  setCoursesOfSchedule={setCourses}
+//        //  setSchedules={setSchedules}
+//        ///>
+//      </div>

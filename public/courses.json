@@ -1,0 +1,450 @@
+[{
+    "course_code": "1222317_04",
+    "course_name": "فارسي عمومي",
+    "theory": "3",
+    "practical": "0",
+    "capacity": "50",
+    "gender": "b",
+    "professor_name": "كريمي آسيه",
+    "classes": [
+    {"day": "sun", "time": {"start": "10:00", "end": "12:00"}},
+    {"day": "tue", "time": {"start": "14:00", "end": "15:00"}}
+    ],
+    "exam": {
+        "date": "1404.03.26",
+        "time": {"start": "08:00", "end": "10:00"}
+    },
+    "class_location": "ادبيات و علوم انساني _ 11 - طبقه اول - ادبيات",
+    "prerequisites": [
+        "معادل",
+        "1212318 زبان فارسي معادل",
+        "1612211 فارسي عمومي معادل",
+        "1616059 فارسي عمومي"
+    ],
+    "notes": ""
+},
+{
+    "course_code": "1212317_04",
+    "course_name": "فارسي عمومي",
+    "theory": "3",
+    "practical": "0",
+    "capacity": "50",
+    "gender": "b",
+    "professor_name": "كريمي آسيه",
+    "classes": [
+    {"day": "sun", "time": {"start": "10:00", "end": "12:00"}},
+    {"day": "tue", "time": {"start": "14:00", "end": "15:00"}}
+    ],
+    "exam": {
+        "date": "1404.03.26",
+        "time": {"start": "08:00", "end": "10:00"}
+    },
+    "class_location": "ادبيات و علوم انساني _ 11 - طبقه اول - ادبيات",
+    "prerequisites": [
+        "معادل",
+        "1212318 زبان فارسي معادل",
+        "1612211 فارسي عمومي معادل",
+        "1616059 فارسي عمومي"
+    ],
+    "notes": ""
+},
+{
+    "course_code": "1212317_04",
+    "course_name": "فارسي عمومي",
+    "theory": "3",
+    "practical": "0",
+    "capacity": "50",
+    "gender": "b",
+    "professor_name": "كريمي آسيه",
+    "classes": [
+    {"day": "sun", "time": {"start": "10:00", "end": "12:00"}},
+    {"day": "tue", "time": {"start": "14:00", "end": "15:00"}}
+    ],
+    "exam": {
+        "date": "1404.03.26",
+        "time": {"start": "08:00", "end": "10:00"}
+    },
+    "class_location": "ادبيات و علوم انساني _ 11 - طبقه اول - ادبيات",
+    "prerequisites": [
+        "معادل",
+        "1212318 زبان فارسي معادل",
+        "1612211 فارسي عمومي معادل",
+        "1616059 فارسي عمومي"
+    ],
+    "notes": ""
+},
+{
+    "course_code": "1212317_04",
+    "course_name": "فارسي عمومي",
+    "theory": "3",
+    "practical": "0",
+    "capacity": "50",
+    "gender": "b",
+    "professor_name": "كريمي آسيه",
+    "classes": [
+    {"day": "sun", "time": {"start": "10:00", "end": "12:00"}},
+    {"day": "tue", "time": {"start": "14:00", "end": "15:00"}}
+    ],
+    "exam": {
+        "date": "1404.03.26",
+        "time": {"start": "08:00", "end": "10:00"}
+    },
+    "class_location": "ادبيات و علوم انساني _ 11 - طبقه اول - ادبيات",
+    "prerequisites": [
+        "معادل",
+        "1212318 زبان فارسي معادل",
+        "1612211 فارسي عمومي معادل",
+        "1616059 فارسي عمومي"
+    ],
+    "notes": ""
+},
+{
+    "course_code": "1212317_04",
+    "course_name": "فارسي عمومي",
+    "theory": "3",
+    "practical": "0",
+    "capacity": "50",
+    "gender": "b",
+    "professor_name": "كريمي آسيه",
+    "classes": [
+    {"day": "sun", "time": {"start": "10:00", "end": "12:00"}},
+    {"day": "tue", "time": {"start": "14:00", "end": "15:00"}}
+    ],
+    "exam": {
+        "date": "1404.03.26",
+        "time": {"start": "08:00", "end": "10:00"}
+    },
+    "class_location": "ادبيات و علوم انساني _ 11 - طبقه اول - ادبيات",
+    "prerequisites": [
+        "معادل",
+        "1212318 زبان فارسي معادل",
+        "1612211 فارسي عمومي معادل",
+        "1616059 فارسي عمومي"
+    ],
+    "notes": ""
+},
+{
+    "course_code": "1212317_04",
+    "course_name": "فارسي عمومي",
+    "theory": "3",
+    "practical": "0",
+    "capacity": "50",
+    "gender": "b",
+    "professor_name": "كريمي آسيه",
+    "classes": [
+    {"day": "sun", "time": {"start": "10:00", "end": "12:00"}},
+    {"day": "tue", "time": {"start": "14:00", "end": "15:00"}}
+    ],
+    "exam": {
+        "date": "1404.03.26",
+        "time": {"start": "08:00", "end": "10:00"}
+    },
+    "class_location": "ادبيات و علوم انساني _ 11 - طبقه اول - ادبيات",
+    "prerequisites": [
+        "معادل",
+        "1212318 زبان فارسي معادل",
+        "1612211 فارسي عمومي معادل",
+        "1616059 فارسي عمومي"
+    ],
+    "notes": ""
+},
+{
+    "course_code": "1212317_04",
+    "course_name": "فارسي عمومي",
+    "theory": "3",
+    "practical": "0",
+    "capacity": "50",
+    "gender": "b",
+    "professor_name": "كريمي آسيه",
+    "classes": [
+    {"day": "sun", "time": {"start": "10:00", "end": "12:00"}},
+    {"day": "tue", "time": {"start": "14:00", "end": "15:00"}}
+    ],
+    "exam": {
+        "date": "1404.03.26",
+        "time": {"start": "08:00", "end": "10:00"}
+    },
+    "class_location": "ادبيات و علوم انساني _ 11 - طبقه اول - ادبيات",
+    "prerequisites": [
+        "معادل",
+        "1212318 زبان فارسي معادل",
+        "1612211 فارسي عمومي معادل",
+        "1616059 فارسي عمومي"
+    ],
+    "notes": ""
+},
+{
+    "course_code": "1212317_04",
+    "course_name": "فارسي عمومي",
+    "theory": "3",
+    "practical": "0",
+    "capacity": "50",
+    "gender": "b",
+    "professor_name": "كريمي آسيه",
+    "classes": [
+    {"day": "sun", "time": {"start": "10:00", "end": "12:00"}},
+    {"day": "tue", "time": {"start": "14:00", "end": "15:00"}}
+    ],
+    "exam": {
+        "date": "1404.03.26",
+        "time": {"start": "08:00", "end": "10:00"}
+    },
+    "class_location": "ادبيات و علوم انساني _ 11 - طبقه اول - ادبيات",
+    "prerequisites": [
+        "معادل",
+        "1212318 زبان فارسي معادل",
+        "1612211 فارسي عمومي معادل",
+        "1616059 فارسي عمومي"
+    ],
+    "notes": ""
+},
+{
+    "course_code": "1212317_04",
+    "course_name": "فارسي عمومي",
+    "theory": "3",
+    "practical": "0",
+    "capacity": "50",
+    "gender": "b",
+    "professor_name": "كريمي آسيه",
+    "classes": [
+    {"day": "sun", "time": {"start": "10:00", "end": "12:00"}},
+    {"day": "tue", "time": {"start": "14:00", "end": "15:00"}}
+    ],
+    "exam": {
+        "date": "1404.03.26",
+        "time": {"start": "08:00", "end": "10:00"}
+    },
+    "class_location": "ادبيات و علوم انساني _ 11 - طبقه اول - ادبيات",
+    "prerequisites": [
+        "معادل",
+        "1212318 زبان فارسي معادل",
+        "1612211 فارسي عمومي معادل",
+        "1616059 فارسي عمومي"
+    ],
+    "notes": ""
+},
+{
+    "course_code": "1212317_04",
+    "course_name": "فارسي عمومي",
+    "theory": "3",
+    "practical": "0",
+    "capacity": "50",
+    "gender": "b",
+    "professor_name": "كريمي آسيه",
+    "classes": [
+    {"day": "sun", "time": {"start": "10:00", "end": "12:00"}},
+    {"day": "tue", "time": {"start": "14:00", "end": "15:00"}}
+    ],
+    "exam": {
+        "date": "1404.03.26",
+        "time": {"start": "08:00", "end": "10:00"}
+    },
+    "class_location": "ادبيات و علوم انساني _ 11 - طبقه اول - ادبيات",
+    "prerequisites": [
+        "معادل",
+        "1212318 زبان فارسي معادل",
+        "1612211 فارسي عمومي معادل",
+        "1616059 فارسي عمومي"
+    ],
+    "notes": ""
+},
+{
+    "course_code": "1212317_04",
+    "course_name": "فارسي عمومي",
+    "theory": "3",
+    "practical": "0",
+    "capacity": "50",
+    "gender": "b",
+    "professor_name": "كريمي آسيه",
+    "classes": [
+    {"day": "sun", "time": {"start": "10:00", "end": "12:00"}},
+    {"day": "tue", "time": {"start": "14:00", "end": "15:00"}}
+    ],
+    "exam": {
+        "date": "1404.03.26",
+        "time": {"start": "08:00", "end": "10:00"}
+    },
+    "class_location": "ادبيات و علوم انساني _ 11 - طبقه اول - ادبيات",
+    "prerequisites": [
+        "معادل",
+        "1212318 زبان فارسي معادل",
+        "1612211 فارسي عمومي معادل",
+        "1616059 فارسي عمومي"
+    ],
+    "notes": ""
+},
+{
+    "course_code": "1212317_04",
+    "course_name": "فارسي عمومي",
+    "theory": "3",
+    "practical": "0",
+    "capacity": "50",
+    "gender": "b",
+    "professor_name": "كريمي آسيه",
+    "classes": [
+    {"day": "sun", "time": {"start": "10:00", "end": "12:00"}},
+    {"day": "tue", "time": {"start": "14:00", "end": "15:00"}}
+    ],
+    "exam": {
+        "date": "1404.03.26",
+        "time": {"start": "08:00", "end": "10:00"}
+    },
+    "class_location": "ادبيات و علوم انساني _ 11 - طبقه اول - ادبيات",
+    "prerequisites": [
+        "معادل",
+        "1212318 زبان فارسي معادل",
+        "1612211 فارسي عمومي معادل",
+        "1616059 فارسي عمومي"
+    ],
+    "notes": ""
+},
+{
+    "course_code": "1212317_04",
+    "course_name": "فارسي عمومي",
+    "theory": "3",
+    "practical": "0",
+    "capacity": "50",
+    "gender": "b",
+    "professor_name": "كريمي آسيه",
+    "classes": [
+    {"day": "sun", "time": {"start": "10:00", "end": "12:00"}},
+    {"day": "tue", "time": {"start": "14:00", "end": "15:00"}}
+    ],
+    "exam": {
+        "date": "1404.03.26",
+        "time": {"start": "08:00", "end": "10:00"}
+    },
+    "class_location": "ادبيات و علوم انساني _ 11 - طبقه اول - ادبيات",
+    "prerequisites": [
+        "معادل",
+        "1212318 زبان فارسي معادل",
+        "1612211 فارسي عمومي معادل",
+        "1616059 فارسي عمومي"
+    ],
+    "notes": ""
+},
+{
+    "course_code": "1212317_04",
+    "course_name": "فارسي عمومي",
+    "theory": "3",
+    "practical": "0",
+    "capacity": "50",
+    "gender": "b",
+    "professor_name": "كريمي آسيه",
+    "classes": [
+    {"day": "sun", "time": {"start": "10:00", "end": "12:00"}},
+    {"day": "tue", "time": {"start": "14:00", "end": "15:00"}}
+    ],
+    "exam": {
+        "date": "1404.03.26",
+        "time": {"start": "08:00", "end": "10:00"}
+    },
+    "class_location": "ادبيات و علوم انساني _ 11 - طبقه اول - ادبيات",
+    "prerequisites": [
+        "معادل",
+        "1212318 زبان فارسي معادل",
+        "1612211 فارسي عمومي معادل",
+        "1616059 فارسي عمومي"
+    ],
+    "notes": ""
+},
+{
+    "course_code": "1212317_04",
+    "course_name": "فارسي عمومي",
+    "theory": "3",
+    "practical": "0",
+    "capacity": "50",
+    "gender": "b",
+    "professor_name": "كريمي آسيه",
+    "classes": [
+    {"day": "sun", "time": {"start": "10:00", "end": "12:00"}},
+    {"day": "tue", "time": {"start": "14:00", "end": "15:00"}}
+    ],
+    "exam": {
+        "date": "1404.03.26",
+        "time": {"start": "08:00", "end": "10:00"}
+    },
+    "class_location": "ادبيات و علوم انساني _ 11 - طبقه اول - ادبيات",
+    "prerequisites": [
+        "معادل",
+        "1212318 زبان فارسي معادل",
+        "1612211 فارسي عمومي معادل",
+        "1616059 فارسي عمومي"
+    ],
+    "notes": ""
+},
+{
+    "course_code": "1212317_04",
+    "course_name": "فارسي عمومي",
+    "theory": "3",
+    "practical": "0",
+    "capacity": "50",
+    "gender": "b",
+    "professor_name": "كريمي آسيه",
+    "classes": [
+    {"day": "sun", "time": {"start": "10:00", "end": "12:00"}},
+    {"day": "tue", "time": {"start": "14:00", "end": "15:00"}}
+    ],
+    "exam": {
+        "date": "1404.03.26",
+        "time": {"start": "08:00", "end": "10:00"}
+    },
+    "class_location": "ادبيات و علوم انساني _ 11 - طبقه اول - ادبيات",
+    "prerequisites": [
+        "معادل",
+        "1212318 زبان فارسي معادل",
+        "1612211 فارسي عمومي معادل",
+        "1616059 فارسي عمومي"
+    ],
+    "notes": ""
+},
+{
+    "course_code": "1212317_04",
+    "course_name": "فارسي عمومي",
+    "theory": "3",
+    "practical": "0",
+    "capacity": "50",
+    "gender": "b",
+    "professor_name": "كريمي آسيه",
+    "classes": [
+    {"day": "sun", "time": {"start": "10:00", "end": "12:00"}},
+    {"day": "tue", "time": {"start": "14:00", "end": "15:00"}}
+    ],
+    "exam": {
+        "date": "1404.03.26",
+        "time": {"start": "08:00", "end": "10:00"}
+    },
+    "class_location": "ادبيات و علوم انساني _ 11 - طبقه اول - ادبيات",
+    "prerequisites": [
+        "معادل",
+        "1212318 زبان فارسي معادل",
+        "1612211 فارسي عمومي معادل",
+        "1616059 فارسي عمومي"
+    ],
+    "notes": ""
+},
+{
+    "course_code": "1212317_04",
+    "course_name": "فارسي عمومي",
+    "theory": "3",
+    "practical": "0",
+    "capacity": "50",
+    "gender": "b",
+    "professor_name": "كريمي آسيه",
+    "classes": [
+    {"day": "sun", "time": {"start": "10:00", "end": "12:00"}},
+    {"day": "tue", "time": {"start": "14:00", "end": "15:00"}}
+    ],
+    "exam": {
+        "date": "1404.03.26",
+        "time": {"start": "08:00", "end": "10:00"}
+    },
+    "class_location": "ادبيات و علوم انساني _ 11 - طبقه اول - ادبيات",
+    "prerequisites": [
+        "معادل",
+        "1212318 زبان فارسي معادل",
+        "1612211 فارسي عمومي معادل",
+        "1616059 فارسي عمومي"
+    ],
+    "notes": ""
+}]
