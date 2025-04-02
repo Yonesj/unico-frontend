@@ -16,7 +16,7 @@ import { Link } from "react-router-dom";
 const SidebarContext = createContext()
 
 export default function Sidebar({ children }) {
-  const [expanded, setExpanded] = useState(true);
+  const [expanded, setExpanded] = useState(false);
   const [pin, setPin] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
 

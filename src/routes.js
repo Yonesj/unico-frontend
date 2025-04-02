@@ -1,3 +1,4 @@
+import { Children } from "react";
 import Password from "./Pages/ChangePassword/Password";
 import Login from "./Pages/Login/Login"
 import SignUp from "./Pages/SignUp/SignUp";
@@ -11,6 +12,7 @@ const routes = [
     {path:"/sign-up" , element:<SignUp />},
     {path:"*" , element:<NotFound />},
     {path:"/reset-password" , element:<Password />},
+
     {path:"/exams" , element:<ProtectedRoute>
         <Exams/>
     </ProtectedRoute>},
@@ -18,4 +20,8 @@ const routes = [
 
 
 ]
+
+
+    },
+
 export default routes;

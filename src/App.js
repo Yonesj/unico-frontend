@@ -7,6 +7,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { useRoutes } from "react-router-dom";
 import routes from "./routes";
 import AuthContext from "./context/authContext";
+import Sidebar from "./Components/Sidebar/Sidebar";
 function App() {
   const router = useRoutes(routes);
 
