@@ -2,7 +2,7 @@ import classNames from "classnames";
 import BBtn from "../../Components/dls/BBtn";
 import { faFilter, faPlus } from "@fortawesome/free-solid-svg-icons";
 
-const Course = ({ course, className, ...props }) => {
+const Course = ({ course,isOverlapping ,  className, ...props }) => {
   const mode = course.mode || "default";
   
   if (!["default", "search", "hover", "filter"].includes(mode)) {
@@ -12,23 +12,21 @@ const Course = ({ course, className, ...props }) => {
   const isSearch = ["search", "filter"].includes(mode);
 
   const wrapperClasses = classNames(
-    "flex h-full w-full flex-col items-center justify-center cursor-pointer ripple",
+    isOverlapping ?  "border-[#C12B2D] border-2" :"",     "course flex h-full w-full flex-col items-center justify-center cursor-pointer ripple",
     "gap-1 rounded-lg py-2",
     {
       "text-grey-50 bg-primary-lighter": isSearch,
-      "text-primary-darker bg-grey-300": mode === "hover",
-      "text-primary-darker bg-tertiary-dark": mode === "default",
+      "border-[#7A7E83] border-[2px]  rounded-[6px] bg-[#F0F3F5]": mode === "hover",
+      " border-[#EFB036] border-[2px]  rounded-[6px] bg-[#FDF7EB]": mode === "default",
     },
     className
   );
 
   return (
     <div className={wrapperClasses} {...props}>
-      <span>
-        {course.course_code}-{course.group}
-      </span>
-      <span className="text-center font-bold">{course.course_name}</span>
-      <span>{course.presented_by}</span>
+
+      <span className="text-center  font-iransans  text-xs font-semibold  text-gray-800">{course.course_name} - {course.course_code.slice(-2)}</span>
+      <span className="text-center  font-iransans  text-xs font-normal text-gray-800">{course.professor_name }</span>
 
       {mode === "search" && (
         <BBtn className="h-[2.1875rem]" preIcon={faPlus} iconSize="sm">

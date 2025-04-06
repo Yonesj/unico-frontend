@@ -62,7 +62,7 @@ const AccountVerificationModal = ({ open, onOk, onClose, email, password }) => {
       const data = await response.json();
       if (!response.ok) throw new Error(data.message || "کد وارد شده نامعتبر است");
 
-      toast.open({ message: "حساب کاربری با موفقیت فعال شد", type: "success" });
+      open({ message: "حساب کاربری با موفقیت فعال شد", type: "success" });
       await userLogin();
       onOk();
     } catch (error) {

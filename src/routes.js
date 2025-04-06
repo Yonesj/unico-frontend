@@ -13,15 +13,13 @@ const routes = [
     {path:"*" , element:<NotFound />},
     {path:"/reset-password" , element:<Password />},
 
-    {path:"/exams" , element:<ProtectedRoute>
+    {path:"/exams" , element:
         <Exams/>
-    </ProtectedRoute>},
+},
     {path:"/schedules" , element:<Schedules/>},
 
 
 ]
 
-
-    },
 
 export default routes;

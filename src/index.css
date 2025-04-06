@@ -1,11 +1,13 @@
+
+@tailwind base;
 @import "./fonts.css";
 @import "./styles/full-calendar.css";
 @import "./styles/ripple.css";
 @import url("./fonts.css");;
-@tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
 .btoast-container {
     z-index: 999999999 !important; /* Highest priority */
   }
-
