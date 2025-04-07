@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { validate } from '../../utils/validations'
+import {ReactComponent as SearchIcon} from "../../Assets/images/search-md.svg"
+
 import { cn, convertPersianNumberToEnglish } from '../../utils/helpers'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
@@ -64,8 +66,8 @@ const BInput = ({
   }
 
   const wrapperClasses = cn(
-    ' px-3 flex items-center gap-x-2 rounded-lg',
-    'focus-within:ring-secondary focus-within:ring-[1px] transition-all duration-200',
+    ' px-3 flex items-center text-black gap-x-2 rounded-[8px]',
+    ' focus-within:ring-[1px] transition-all duration-200',
     'h-[46px] sm:h-[57px]',
     {
       '!ring-error': error,
@@ -75,9 +77,9 @@ const BInput = ({
   )
 
   const inputClasses = [
-    'grow !bg-transparent !text-transparent outline-none',
+    'grow !bg-transparent  font-iransans outline-none',
     'text-sm sm:text-base',
-    'text-zinc-400 placeholder:text-grey-300 placeholder:text-right',
+    'text-black placeholder:text-[#A7A9AD] placeholder:text-[14px] placeholder:font-thin placeholder:font-iransans placeholder:text-right',
     'w-full h-[46px] sm:h-[57px]',
     inputClass,
   ].join(' ')
@@ -93,11 +95,11 @@ const BInput = ({
     autoComplete: autocomplete,
     onInput: handleValidation,
     onChange: onChangeWrapper,
-    ...(isTextarea ? {} : { type: type }), // Only add type prop for input, not for textarea
+    ...(isTextarea ? {} : { type: type }), 
   }
 
   return (
-    <div className='flex flex-col gap-y-1' {...props}>
+    <div className='flex flex-col gap-y-1  p-[18px]' {...props}>
       {(label || labelSlot || labelAsideSlot) && (
         <div className='flex items-center justify-between'>
           <label
@@ -125,11 +127,7 @@ const BInput = ({
       <div className={wrapperClasses}>
         {icon && (
           <div className='flex items-center justify-center'>
-            <FontAwesomeIcon
-              icon={faSearch}
-              size='xl'
-              className={disabled ? 'text-grey-700' : 'text-zinc-500'}
-            />
+            <SearchIcon/>
           </div>
         )}
 

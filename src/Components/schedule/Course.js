@@ -12,8 +12,9 @@ const Course = ({ course,isOverlapping ,  className, ...props }) => {
   const isSearch = ["search", "filter"].includes(mode);
 
   const wrapperClasses = classNames(
-    isOverlapping ?  "border-[#C12B2D] border-2" :"",     "course flex h-full w-full flex-col items-center justify-center cursor-pointer ripple",
+   "course flex h-full w-full flex-col items-center justify-center cursor-pointer ripple",
     "gap-1 rounded-lg py-2",
+    isOverlapping ?  "border-[#C12B2D] border-2  rounded-[6px] bg-[#FDF7EB]" :
     {
       "text-grey-50 bg-primary-lighter": isSearch,
       "border-[#7A7E83] border-[2px]  rounded-[6px] bg-[#F0F3F5]": mode === "hover",

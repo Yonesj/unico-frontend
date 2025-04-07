@@ -21,7 +21,7 @@ export default function Sidebar({ children }) {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <aside className="h-screen">
+    <aside className="h-[830px]">
       <nav className={`h-full flex flex-col  bg-white border-r  ${expanded ? "w-[272px]" : "w-20"} px-4   font-iransans rounded-2xl  transition-all duration-300 overflow-hidden`}
         style={{ boxShadow: "0 16px 44px rgba(0, 0, 0, 0.07)" }}
         onMouseEnter={() => setExpanded(true)}

@@ -14,6 +14,7 @@ import { CopyOutlined, DeleteOutlined, ShareAltOutlined } from "@ant-design/icon
 
 export default function Schedule({
   currentScheduleId,
+  setCurrentScheduleId,
   setSchedules,
   schedules,
   setCoursesOfSchedule,
@@ -103,6 +104,51 @@ export default function Schedule({
   }
   setContextMenuPosition(position); 
 };
+
+
+const deleteSchedule = () => {
+  if (!currentScheduleId) return;
+
+  if (schedules.length === 1) {
+    timerToast.open({
+      message: "حداقل باید یک برنامه باقی بماند.",
+      type: "info",
+      duration: 3000,
+    });
+    return;
+  }
+
+  const deletedSchedule = schedules.find((s) => s.id === currentScheduleId);
+  if (!deletedSchedule) return;
+
+  setSchedules((prev) => {
+    const updated = prev.filter((s) => s.id !== currentScheduleId);
+    localStorage.setItem("schedules", JSON.stringify(updated));
+
+    if (currentScheduleId === deletedSchedule.id && updated.length > 0) {
+      setCurrentScheduleId(updated[0].id);
+    } else if (updated.length === 0) {
+      setCurrentScheduleId(null);
+    }
+
+    return updated;
+  });
+
+  timerToast.open({
+    message: `برنامه "${deletedSchedule.name}" حذف شد.`,
+    type: "warning",
+    duration: 5000,
+    onUndo: () => {
+      setSchedules((prev) => {
+        const updated = [...prev, deletedSchedule];
+        localStorage.setItem("schedules", JSON.stringify(updated));
+        return updated;
+      });
+      setCurrentScheduleId(deletedSchedule.id);
+    },
+  });
+};
+
 
 
   const convertCoursesToEvents = (courses) => {
@@ -216,7 +262,7 @@ export default function Schedule({
   };
 
   return (
-    <div className="h-[700px] relative">
+    <div className="h-[700px]  relative  ">
       <FullCalendar
         ref={calendarRef}
 
@@ -321,7 +367,7 @@ export default function Schedule({
   />
 )}
 <div dir="ltr" className="absolute left-0 bottom-[2px] flex justify-between w-[138px] h-[38px] z-50  ">
-<div><DeleteOutlined className="text-xl p-[9px]  bg-[#E03B3A] text-[#FFFFFF] rounded-lg  " /></div>
+<div><DeleteOutlined  onClick={deleteSchedule} className="text-xl p-[9px]  bg-[#E03B3A] text-[#FFFFFF] rounded-lg  " /></div>
 <div><CopyOutlined  className="text-xl p-[9px]  bg-[#EDF1F3] text-[#64696F] rounded-lg  "/></div>
 <div><ShareAltOutlined  className="text-xl  p-[9px] bg-[#EDF1F3] text-[#64696F] rounded-lg  "/></div>
 

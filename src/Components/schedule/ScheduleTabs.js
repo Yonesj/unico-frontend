@@ -55,7 +55,7 @@ export default function ScheduleTabs({
     setTimeout(() => {
       const newSchedule = {
         id: Math.floor(Math.random() * 1000),
-        name: `برنامه ${convertEnglishNumberToPersian(schedules.length + 1)}`,
+       
         courses: [],
       };
   
@@ -118,7 +118,7 @@ export default function ScheduleTabs({
           تعداد واحد انتخاب شده <span className="mr-2 font-semibold">{totalUnits}</span>
         </div>
         <div className="border-r pr-4 border-gray-300 text-gray-600">
-          <LayoutOutlined width={20} height={20} />
+        {showAddButton && ( <LayoutOutlined width={20} height={20} />)}
         </div>
       </div>
     </div>

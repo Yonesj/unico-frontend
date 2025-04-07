@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Schedule from "../Components/schedule/Schedule";
 import ScheduleTabs from "../Components/schedule/ScheduleTabs";
 import CourseSelector from "../Components/schedule/CourseSelector";
+import Sidebar from "../Components/Sidebar/Sidebar"
 import api from "../services/api";
 import { setToken } from "../services/axios";
 import { getSession } from "../services/authService";
@@ -27,7 +28,6 @@ const SchedulesPage = () => {
           schedulesData = [
             {
               id: 1,
-              name: `برنامه ${convertEnglishNumberToPersian(1)}`,
               courses: [], 
             },
           ];
@@ -58,8 +58,13 @@ const SchedulesPage = () => {
 
   return (
     <div className="flex h-full min-h-[55rem] w-full justify-center p-6 bg-[#F1F5F7] text-black font-iransans">
-      <div className="flex max-w-[98.875rem] grow gap-4">
-        <div className="flex grow flex-col justify-between rounded-xl bg-white p-4 backdrop-blur">
+      
+      <div className="flex w-[94.875rem] grow gap-4 relative ">
+        <div className="absolute   right-0   z-[9999]">
+        <Sidebar/>
+
+        </div>      
+          <div className="flex grow flex-col justify-between  ms-24   rounded-xl bg-white p-4 backdrop-blur">
           <ScheduleTabs
             currentScheduleId={currentScheduleId}
             schedules={schedules.map((s) => ({
@@ -71,6 +76,7 @@ const SchedulesPage = () => {
 
           <Schedule
             courses={courses}
+            setCurrentScheduleId={setCurrentScheduleId}
             currentScheduleId={currentScheduleId}
             setSchedules={setSchedules}
             schedules={schedules}

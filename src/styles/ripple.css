@@ -14,7 +14,7 @@
   left: 0;
   pointer-events: none;
   background-image: radial-gradient(circle, #fff 10%, transparent 10.01%);
-  background-color: red !important ;
+  background-color: #E5F7F8 !important ;
   background-repeat: no-repeat;
   background-position: 50%;
   transform: scale(10, 10);

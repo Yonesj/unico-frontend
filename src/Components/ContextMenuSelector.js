@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { useState, useMemo } from "react";
 import { convertEnglishNumberToPersian } from "../utils/helpers";
 import { CloseOutlined } from "@ant-design/icons";
+import {ReactComponent as SearchIcon} from "../Assets/images/search-md.svg"
 export default function ContextMenuSelector({
   position,
   options,
@@ -43,7 +44,7 @@ export default function ContextMenuSelector({
     <div
       ref={menuRef}
       className="absolute  rounded-xl font-iransans bg-white border border-gray-300shadow-[5px_20px_32px_0px_rgba(31,41,55,0.08)] shadow-[5px_2px_16px_0px_rgba(31,41,55,0.08)]  z-50 p-2 w-[279px] h-[396px]"
-      style={{ top: position.y, left: position.x + 50 }}
+      style={{ top: position.y -50, left: position.x + 50 }}
     >
       <div className=" absolute top-0 right-0 py-1 px-2 text-gray-500 cursor-pointer">
         <CloseOutlined className="text-xs" onClick={onClose} />
@@ -51,7 +52,7 @@ export default function ContextMenuSelector({
       <div className=" py-5  px-[1px]">
         <div className="mx-auto  w-[95%] rounded-lg flex  overflow-hidden  border  border-gray-300 text-sm my-1">
          <div className=" border overflow-hidden p-[6px] ">
-dsa 
+<SearchIcon/> 
          </div>
           <input
             type="text"

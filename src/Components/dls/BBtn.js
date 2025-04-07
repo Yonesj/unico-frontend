@@ -33,7 +33,7 @@ const BBtn = ({
   }
 
   props.className = cn(
-    'flex justify-center items-center gap-x-2 ripple',
+    'flex justify-center items-center gap-x-2 ',
     'text-sm font-medium outline-none transition-all duration-200',
     color.includes('-text')
       ? 'hover:underline underline-offset-8'
