@@ -1,0 +1,71 @@
+.ant-table-content 
+{
+    font-family: IranSansFa;
+}
+.ant-table-cell
+{
+    font-weight: 500 !important;
+    font-size: 14px;
+    
+}
+.text-ltr
+{
+    direction: ltr;
+}
+.ant-table-row
+{
+    height: 22px !important;
+}
+th::before
+{
+    width: 0 !important;
+}
+.schedulesUl .active
+{
+    color: #008E95;
+    background-color: #E5F7F8;
+    border-radius: 8px;
+}
+
+  /* Scrollbar track */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+  }
+/* .ant-table-tbody
+{
+    height: 450px;
+} */
+th
+{
+    border-radius: 0 !important;
+}
+.ant-pagination
+{
+    justify-content: flex-start !important;
+}
+.ant-pagination li
+{
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    font-family: IranSansFa !important;
+    border: 1px solid #BDBFC1 !important;
+}
+.ant-pagination li a
+{
+    font-size: 16px;
+}
+.ant-pagination-item-active 
+{
+    
+    background-color: #E5F7F8 !important;
+    border-color: #008E95 !important;
+}
+.ant-pagination-item-active a
+{
+    color: #008E95 !important;
+}
+.ant-pagination-disabled
+{
+    background-color: #E9EAEA !important;
+}

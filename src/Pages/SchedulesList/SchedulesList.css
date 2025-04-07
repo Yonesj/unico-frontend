@@ -1,0 +1,37 @@
+.ant-table-content 
+{
+    font-family: IranSansFa;
+}
+.ant-table-cell
+{
+    font-weight: 500 !important;
+    font-size: 14px;
+    
+}
+.text-ltr
+{
+    direction: ltr;
+}
+.ant-table-row
+{
+    height: 22px !important;
+}
+th::before
+{
+    width: 0 !important;
+}
+.schedulesUl .active
+{
+    color: #008E95;
+    background-color: #E5F7F8;
+    border-radius: 8px;
+}
+
+  /* Scrollbar track */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+  }
+/* .ant-table-tbody
+{
+    height: 450px;
+} */

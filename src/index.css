@@ -5,4 +5,9 @@
 .btoast-container {
     z-index: 999999999 !important; /* Highest priority */
   }
- 
+.ant-modal-close
+{
+  position: absolute;
+  right: 12px;
+
+} 

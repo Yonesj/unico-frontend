@@ -9,7 +9,7 @@ const AccountVerificationModal = ({ open, onOk, onClose, email, password }) => {
   const toast = useToast();
   const authContext = useContext(AuthContext);
 
-  const isValidCode = /^[A-Za-z0-9]{6}$/.test(code); 
+  const isValidCode = /^[A-Za-z0-9]{8}$/.test(code); 
 
   const userLogin = (event) => {
     event.preventDefault();
@@ -169,7 +169,6 @@ const AccountVerificationModal = ({ open, onOk, onClose, email, password }) => {
             <button
               className="w-full h-14 outline-none rounded-lg bg-[#4CC6CB] text-white font-bold text-base disabled:bg-gray-400"
               onClick={handleVerifyAccount}
-              disabled={!isValidCode} // Disable button if code is invalid
             >
               تایید
             </button>

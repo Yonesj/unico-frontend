@@ -47,7 +47,7 @@ const ExamsPage = () => {
   }, [currentScheduleId, schedules]);
 
   return (
-    <div className='absolute flex h-full w-full justify-center p-6 text-black'>
+    <div className='flex h-full w-full justify-center p-6 text-black'>
       <div className='flex max-w-[98.875rem] grow flex-col justify-between gap-4 rounded-xl bg-primary/50 p-4 backdrop-blur'>
         <h1 className='text-2xl font-bold'>برنامه امتحانات</h1>
         <ScheduleTabs

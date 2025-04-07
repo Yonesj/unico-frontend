@@ -60,7 +60,7 @@ export default function Schedule({ courses, currentScheduleId, setSchedules }) {
   };
 
   return (
-    <div className="h-[700px]">
+    <div className="">
       <DeleteCourseDialogConfirmation
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}

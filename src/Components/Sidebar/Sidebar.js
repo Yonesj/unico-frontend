@@ -21,8 +21,8 @@ export default function Sidebar({ children }) {
   const [activeIndex, setActiveIndex] = useState(0); // Track active item
 
   return (
-    <aside className="h-screen">
-      <nav className={`h-full flex flex-col  bg-white border-r  ${expanded ? "w-[272px]" : "w-20"} px-4   font-iransans rounded-2xl  transition-all duration-300 overflow-hidden`}
+    <aside className="h-screen w-20">
+      <nav className={`h-full flex flex-col absolute z-10  bg-white border-r  ${expanded ? "w-[272px]" : "w-20 "} px-4   font-iransans rounded-r-2xl  transition-all duration-300 overflow-hidden`}
         style={{ boxShadow: "0 16px 44px rgba(0, 0, 0, 0.07)" }}
         onMouseEnter={() => setExpanded(true)}
         onMouseLeave={() => pin ? null : setExpanded(false)}
@@ -63,7 +63,7 @@ export default function Sidebar({ children }) {
                   </clipPath>
                 </defs>
               </svg>
-            } text={"نظر سنجی اساتید"} link={""} index={1} />
+            } text={"نظر سنجی اساتید"} link={"/poll"} index={1} />
             <SidebarItem icon={<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
               <path d="M18.3332 6.66672V10.0001M8.5415 4.58338H5.6665C4.26637 4.58338 3.56631 4.58338 3.03153 4.85587C2.56112 5.09555 2.17867 5.478 1.93899 5.94841C1.6665 6.48319 1.6665 7.18325 1.6665 8.58338L1.6665 9.58338C1.66651 10.36 1.66651 10.7482 1.79337 11.0545C1.96253 11.4629 2.28699 11.7874 2.69536 11.9565C3.00165 12.0834 3.38994 12.0834 4.16651 12.0834V15.625C4.16651 15.8185 4.16651 15.9153 4.17453 15.9967C4.25247 16.788 4.87852 17.4141 5.66981 17.492C5.75129 17.5 5.84803 17.5 6.04151 17.5C6.23498 17.5 6.33172 17.5 6.4132 17.492C7.2045 17.4141 7.83054 16.788 7.90848 15.9967C7.91651 15.9153 7.91651 15.8185 7.91651 15.625V12.0834H8.54151C10.0135 12.0834 11.8142 12.8725 13.2034 13.6298C14.0139 14.0715 14.4191 14.2924 14.6845 14.2599C14.9306 14.2298 15.1167 14.1193 15.2609 13.9176C15.4165 13.7002 15.4165 13.2651 15.4165 12.3948V4.27195C15.4165 3.40171 15.4165 2.96659 15.2609 2.74912C15.1167 2.54747 14.9306 2.43697 14.6845 2.40682C14.4191 2.37432 14.0139 2.59521 13.2034 3.03701C11.8142 3.79431 10.0135 4.58338 8.5415 4.58338Z" stroke="#7A7E83" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>} text={"سیستم اطلاع رسانی"} link={""} index={2} />
