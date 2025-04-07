@@ -13,6 +13,7 @@
 .btoast-container {
     z-index: 999999999 !important; /* Highest priority */
   }
+
   .table-wrapper {
     width: 100%;
     overflow-x: auto;
@@ -39,3 +40,11 @@
   .section-wrapper {
     height: 50px; /* یا هر اندازه‌ای که بخواهید */
   }
+
+.ant-modal-close
+{
+  position: absolute;
+  right: 12px;
+
+} 
+

@@ -12,7 +12,7 @@ import {TimerToastProvider} from "./Components/dls/toast/TimerToastContext";
 function App() {
   const router = useRoutes(routes);
 
-  const [isLoggedIn, setIsLoggedIn] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [accessToken, setAccessToken] = useState(false);
   const [refreshToken, setRefreshToken] = useState(false);
   const [userInfos, setUserInfos] = useState(null);
@@ -96,7 +96,7 @@ function App() {
         <TimerToastProvider>
 
         <ToastProvider>
-          <div className='min-h-screen'>
+          <div className='min-h-screen font-iransans'>
             <AnimatePresence initial={false} mode='wait'>
               <motion.div
                 key={router.asPath}
@@ -106,7 +106,10 @@ function App() {
                 transition={{ duration: 0.2 }}
                 className='flex h-full min-h-[calc(100vh-3.75rem)] flex-col justify-center'
               >
-                {router}
+                <div className="flex">
+                {isLoggedIn ? <Sidebar/> : null}
+                <div className="w-full h-screen overflow-auto">{router}</div>
+                </div>
               </motion.div>
             </AnimatePresence>
           </div>

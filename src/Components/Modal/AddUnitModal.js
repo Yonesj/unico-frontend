@@ -7,33 +7,35 @@ import dayjs, { Dayjs } from 'dayjs';
 import { Select } from "antd";
 import { DatePicker } from "antd";
 const format = 'HH:mm';
-const AddUnitModal = (onOk, onClose, open) => {
+const AddUnitModal = ({onOk, onClose, open}) => {
     const [unitName, setUnitName] = useState("");
+    const [unitCode, setUnitCode] = useState("");
+    const [unitMaster, setUnitMaster] = useState("");
     const startTime = dayjs('11:00', 'HH:mm');
     const endTime = dayjs('12:00', 'HH:mm');
     ;
-
+    
+    
 
     return (
         <Modal
             className='font-iransans addUnitModal'
-            open={false} onOk={onOk} onCancel={onClose}
+            open={open} onOk={onOk} onCancel={onClose}
             footer={
-
                 [
                 ]}
 
         >
             <div action="" dir="rtl" className="flex flex-col gap-5 h-full text-right mt-7 ">
                 <div className="flex flex-col ">
-                    <label for="name">
+                    <label for="unitName">
                         عنوان درس
                     </label>
                     <input
                         className="border border-solid border-[#A7A9AD] py-2 px-5 rounded-lg mt-2 placeholder:text-[#A7A9AD]"
                         type="text"
-                        name="name"
-                        id="name"
+                        name="unitName"
+                        id="unitName"
                         value={unitName}
                         onChange={(e) =>
                             setUnitName(e.target.value)
@@ -44,17 +46,17 @@ const AddUnitModal = (onOk, onClose, open) => {
                 </div>
                 <div className="flex gap-6">
                     <div className="flex flex-col flex-1 ">
-                        <label for="name">
+                        <label for="unitMaster">
                             نام استاد
                         </label>
                         <input
                             className="border border-solid border-[#A7A9AD] py-2 px-5 rounded-lg mt-2 placeholder:text-[#A7A9AD]"
                             type="text"
-                            name="name"
-                            id="name"
-                            value={unitName}
+                            name="unitMaster"
+                            id="unitMaster"
+                            value={unitMaster}
                             onChange={(e) =>
-                                setUnitName(e.target.value)
+                                setUnitMaster(e.target.value)
                             }
                             placeholder="امینی هرندی"
                             required
@@ -69,9 +71,9 @@ const AddUnitModal = (onOk, onClose, open) => {
                             type="text"
                             name="name"
                             id="name"
-                            value={unitName}
+                            value={unitCode}
                             onChange={(e) =>
-                                setUnitName(e.target.value)
+                                setUnitCode(e.target.value)
                             }
                             placeholder="401351 - 05"
                             required
@@ -90,7 +92,7 @@ const AddUnitModal = (onOk, onClose, open) => {
 
                         <div className="flex w-1/2 items-center border border-solid border-[#A7A9AD] rounded-lg rounded-l-none outline-none text-base px-3">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                <path d="M14 6.66683H2M10.6667 1.3335V4.00016M5.33333 1.3335V4.00016M5.2 14.6668H10.8C11.9201 14.6668 12.4802 14.6668 12.908 14.4488C13.2843 14.2571 13.5903 13.9511 13.782 13.5748C14 13.147 14 12.5869 14 11.4668V5.86683C14 4.74672 14 4.18667 13.782 3.75885C13.5903 3.38252 13.2843 3.07656 12.908 2.88482C12.4802 2.66683 11.9201 2.66683 10.8 2.66683H5.2C4.0799 2.66683 3.51984 2.66683 3.09202 2.88482C2.71569 3.07656 2.40973 3.38252 2.21799 3.75885C2 4.18667 2 4.74672 2 5.86683V11.4668C2 12.5869 2 13.147 2.21799 13.5748C2.40973 13.9511 2.71569 14.2571 3.09202 14.4488C3.51984 14.6668 4.0799 14.6668 5.2 14.6668Z" stroke="#919498" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M14 6.66683H2M10.6667 1.3335V4.00016M5.33333 1.3335V4.00016M5.2 14.6668H10.8C11.9201 14.6668 12.4802 14.6668 12.908 14.4488C13.2843 14.2571 13.5903 13.9511 13.782 13.5748C14 13.147 14 12.5869 14 11.4668V5.86683C14 4.74672 14 4.18667 13.782 3.75885C13.5903 3.38252 13.2843 3.07656 12.908 2.88482C12.4802 2.66683 11.9201 2.66683 10.8 2.66683H5.2C4.0799 2.66683 3.51984 2.66683 3.09202 2.88482C2.71569 3.07656 2.40973 3.38252 2.21799 3.75885C2 4.18667 2 4.74672 2 5.86683V11.4668C2 12.5869 2 13.147 2.21799 13.5748C2.40973 13.9511 2.71569 14.2571 3.09202 14.4488C3.51984 14.6668 4.0799 14.6668 5.2 14.6668Z" stroke="#919498" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
 
                             <Select className="w-full " defaultValue={"شنبه"} suffixIcon={""} >
@@ -113,7 +115,7 @@ const AddUnitModal = (onOk, onClose, open) => {
 
                         <div className="flex w-1/2 items-center border border-solid border-[#A7A9AD] rounded-lg rounded-l-none outline-none text-base px-3">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                <path d="M14 6.66683H2M10.6667 1.3335V4.00016M5.33333 1.3335V4.00016M5.2 14.6668H10.8C11.9201 14.6668 12.4802 14.6668 12.908 14.4488C13.2843 14.2571 13.5903 13.9511 13.782 13.5748C14 13.147 14 12.5869 14 11.4668V5.86683C14 4.74672 14 4.18667 13.782 3.75885C13.5903 3.38252 13.2843 3.07656 12.908 2.88482C12.4802 2.66683 11.9201 2.66683 10.8 2.66683H5.2C4.0799 2.66683 3.51984 2.66683 3.09202 2.88482C2.71569 3.07656 2.40973 3.38252 2.21799 3.75885C2 4.18667 2 4.74672 2 5.86683V11.4668C2 12.5869 2 13.147 2.21799 13.5748C2.40973 13.9511 2.71569 14.2571 3.09202 14.4488C3.51984 14.6668 4.0799 14.6668 5.2 14.6668Z" stroke="#919498" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M14 6.66683H2M10.6667 1.3335V4.00016M5.33333 1.3335V4.00016M5.2 14.6668H10.8C11.9201 14.6668 12.4802 14.6668 12.908 14.4488C13.2843 14.2571 13.5903 13.9511 13.782 13.5748C14 13.147 14 12.5869 14 11.4668V5.86683C14 4.74672 14 4.18667 13.782 3.75885C13.5903 3.38252 13.2843 3.07656 12.908 2.88482C12.4802 2.66683 11.9201 2.66683 10.8 2.66683H5.2C4.0799 2.66683 3.51984 2.66683 3.09202 2.88482C2.71569 3.07656 2.40973 3.38252 2.21799 3.75885C2 4.18667 2 4.74672 2 5.86683V11.4668C2 12.5869 2 13.147 2.21799 13.5748C2.40973 13.9511 2.71569 14.2571 3.09202 14.4488C3.51984 14.6668 4.0799 14.6668 5.2 14.6668Z" stroke="#919498" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
 
                             <Select className="w-full" defaultValue={"شنبه"} suffixIcon={""} >
@@ -136,7 +138,7 @@ const AddUnitModal = (onOk, onClose, open) => {
 
                         <div className="flex w-1/2 items-center border border-solid border-[#A7A9AD] rounded-lg rounded-l-none outline-none text-base px-3">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                <path d="M14 6.66683H2M10.6667 1.3335V4.00016M5.33333 1.3335V4.00016M5.2 14.6668H10.8C11.9201 14.6668 12.4802 14.6668 12.908 14.4488C13.2843 14.2571 13.5903 13.9511 13.782 13.5748C14 13.147 14 12.5869 14 11.4668V5.86683C14 4.74672 14 4.18667 13.782 3.75885C13.5903 3.38252 13.2843 3.07656 12.908 2.88482C12.4802 2.66683 11.9201 2.66683 10.8 2.66683H5.2C4.0799 2.66683 3.51984 2.66683 3.09202 2.88482C2.71569 3.07656 2.40973 3.38252 2.21799 3.75885C2 4.18667 2 4.74672 2 5.86683V11.4668C2 12.5869 2 13.147 2.21799 13.5748C2.40973 13.9511 2.71569 14.2571 3.09202 14.4488C3.51984 14.6668 4.0799 14.6668 5.2 14.6668Z" stroke="#919498" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M14 6.66683H2M10.6667 1.3335V4.00016M5.33333 1.3335V4.00016M5.2 14.6668H10.8C11.9201 14.6668 12.4802 14.6668 12.908 14.4488C13.2843 14.2571 13.5903 13.9511 13.782 13.5748C14 13.147 14 12.5869 14 11.4668V5.86683C14 4.74672 14 4.18667 13.782 3.75885C13.5903 3.38252 13.2843 3.07656 12.908 2.88482C12.4802 2.66683 11.9201 2.66683 10.8 2.66683H5.2C4.0799 2.66683 3.51984 2.66683 3.09202 2.88482C2.71569 3.07656 2.40973 3.38252 2.21799 3.75885C2 4.18667 2 4.74672 2 5.86683V11.4668C2 12.5869 2 13.147 2.21799 13.5748C2.40973 13.9511 2.71569 14.2571 3.09202 14.4488C3.51984 14.6668 4.0799 14.6668 5.2 14.6668Z" stroke="#919498" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
 
                             <Select className="w-full " defaultValue={"شنبه"} suffixIcon={""} >
@@ -158,7 +160,7 @@ const AddUnitModal = (onOk, onClose, open) => {
                     <div className="">
                         <button className="flex cursor-pointer items-center justify-center m-auto bg-transparent border-dashed p-1.5 rounded-lg border-[#D9D9D9]" type="button">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-  <path d="M9.99984 4.1665V15.8332M4.1665 9.99984H15.8332" stroke="#929292" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M9.99984 4.1665V15.8332M4.1665 9.99984H15.8332" stroke="#929292" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
 </svg>
                         </button>
                     </div>

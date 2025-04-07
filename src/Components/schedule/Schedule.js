@@ -262,7 +262,9 @@ const deleteSchedule = () => {
   };
 
   return (
+
     <div className="h-[700px]  relative  ">
+
       <FullCalendar
         ref={calendarRef}
 

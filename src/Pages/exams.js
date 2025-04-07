@@ -52,8 +52,10 @@ const ExamsPage = () => {
 
 
   return (
+
     <div className='absolute flex bg-[#F1F5F7]  w-full justify-center p-6 text-black'>
       <div className='flex  max-w-[83.875rem] grow flex-col justify-between gap-4 space-y-5 rounded-xl bg-[#ffffff] p-4 backdrop-blur'>
+
         <ScheduleTabs
           showAddButton={false}
           currentScheduleId={currentScheduleId}
