@@ -11,17 +11,18 @@ import SchedulesList from "./Pages/SchedulesList/SchedulesList";
 import Courses from "./Pages/Courses/Courses";
 import Poll from "./Pages/Poll/Poll";
 import MasterCard from "./Components/MasterCard/MasterCard";
+import ProtectedRoute from "./Components/ProtectedRoute";
+
 const routes = [
     { path: "/login", element: <Login /> },
     { path: "/sign-up", element: <SignUp /> },
     { path: "/404", element: <NotFound /> },
     { path: "/reset-password", element: <Password /> },
-    { path: "/", element: <Exams />, },
     {
         path: "/unit/*", element: <Unit />, children: [
             { path: "courses", element: <Courses /> },
-            { path: "schedule", element: <h1>برنامه هفتگی</h1> },
-            { path: "exams", element: <h1>برنامه امتحانی</h1> },
+            { path: "schedule", element: <Schedules/> },
+            { path: "exams", element: <Exams /> },
             {
                 path: "schedules/*", element: <SchedulesList />, children: [
                     { path: ":number", element: <SchedulesList /> },
@@ -65,5 +66,6 @@ const routes = [
         ]
     },
 ]
+
 
 export default routes;

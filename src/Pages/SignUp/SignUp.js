@@ -22,20 +22,24 @@ import ForgetpassModal from "../../Components/Modal/ForgetpassModal";
 import { useToast } from "../../Components/dls/toast/ToastService";
 import Swipper from "../../Components/Swipper";
 import MySwiper from "../../Components/Swipper";
+import Spinner from "../../Components/spinner";
 
 export default function SignUp() {
   const [reCaptchaVerify, setReCaptchaVerify] = useState(false);
   const [email, setEmail] = useState("email");
+  const [loading, setLoading] = useState(false);
   const [password, setPassword] = useState("password");
   const onChangeHandler = () => {
     setReCaptchaVerify(true);
   };
+  
 
   const toast = useToast();
   const navigate = useNavigate();
   const authContext = useContext(AuthContext);
-  
-  const userSignUp = (event) => {
+
+  const userSignUp = (event  , setLoading) => {
+    setLoading(true);
     event.preventDefault();
 
     const userData = {
@@ -44,71 +48,71 @@ export default function SignUp() {
       email: formState.inputs.email.value,
     };
 
+    setEmail(formState.inputs.email.value);
+    setPassword(formState.inputs.password.value);
+    fetch("http://localhost:8000/auth/users/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userData),
+    })
+      .then(async (res) => {
+        const data = await res.json(); 
 
-      setEmail(formState.inputs.email.value);
-      setPassword(formState.inputs.password.value);
-      fetch("http://localhost:8000/auth/users/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(userData),
+        if (!res.ok) {
+          console.log(Object.values(data));
+          throw new Error(Object.values(data)[0] || "An error occurred");
+        }
+        return Object.values(data)[0];
       })
-        .then(async (res) => {
-          const data = await res.json(); // Parse JSON response
-
-          if (!res.ok) {
-            console.log(Object.values(data));
-            throw new Error(Object.values(data)[0] || "An error occurred");
-          }
-          return Object.values(data)[0];
-        })
-        .then((data) => {
-          console.log(data);
-          toast.open({
-            message: "کاربر با موفقیت ثبت نام شد",
-            type: "success",
-          });
-          setIsModalOpen(true);
-        })
-        .catch((err) => {
-          console.error(err);
-
-          if (err.message == "The password is too similar to the username.") {
-            toast.open({
-              message: "! نام کاربری و رمزعبور بسیار شبیه هستند",
-              type: "error",
-            });
-          } else if (err.message == "This password is too common.") {
-            toast.open({
-              message: "رمزعبور بسیار ساده است",
-              type: "error",
-            });
-          } else if (
-            err.message == "A user with that username already exists."
-          ) {
-            toast.open({
-              message: "کاربری با این نام کاربری قبلا ثبت نام کرده",
-              type: "error",
-            });
-          } else if (err.message == "user with this email already exists.") {
-            toast.open({
-              message: "کاربری با این ایمیل قبلا ثبت نام کرده است",
-              type: "error",
-            });
-          } else if (err.message == "This password is too common.") {
-            toast.open({
-              message: "رمز عبور بسیار ساده است ",
-              type: "error",
-            });
-          } else {
-            toast.open({
-              message: err.message,
-              type: "error",
-            });
-          }
+      .then((data) => {
+        console.log(data);
+        toast.open({
+          message: "کاربر با موفقیت ثبت نام شد",
+          type: "success",
         });
-    }
+        setIsModalOpen(true);
+      })
+      .catch((err) => {
+        console.error(err);
+
+        if (err.message == "The password is too similar to the username.") {
+          toast.open({
+            message: "! نام کاربری و رمزعبور بسیار شبیه هستند",
+            type: "error",
+          });
+        } else if (err.message == "This password is too common.") {
+          toast.open({
+            message: "رمزعبور بسیار ساده است",
+            type: "error",
+          });
+        } else if (err.message == "A user with that username already exists.") {
+          toast.open({
+            message: "کاربری با این نام کاربری قبلا ثبت نام کرده",
+            type: "error",
+          });
+        } else if (err.message == "user with this email already exists.") {
+          toast.open({
+            message: "کاربری با این ایمیل قبلا ثبت نام کرده است",
+            type: "error",
+          });
+        } else if (err.message == "This password is too common.") {
+          toast.open({
+            message: "رمز عبور بسیار ساده است ",
+            type: "error",
+          });
+        } else {
+          toast.open({
+            message: err.message,
+            type: "error",
+          });
+        }
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
   const [formState, onInputHandler] = useForm(
     {
       username: {
@@ -279,18 +283,25 @@ export default function SignUp() {
                         formState.inputs.email.isValid &&
                         formState.inputs.password.isValid
                       ) {
-                        userSignUp(event);
+                        userSignUp(event, setLoading);
                       }
                     }}
+                    disabled={
+                      loading ||
+                      !formState.inputs.username.isValid ||
+                      !formState.inputs.email.isValid ||
+                      !formState.inputs.password.isValid
+                    }
                     className={`w-full h-[52px] bg-[#4CC6CB] text-white rounded-lg transition-all duration-300 ${
                       formState.inputs.username.isValid &&
                       formState.inputs.email.isValid &&
-                      formState.inputs.password.isValid
+                      formState.inputs.password.isValid &&
+                      !loading
                         ? ""
                         : "opacity-50 cursor-not-allowed"
                     }`}
                   >
-                    ساخت اکانت
+                    {loading ? <Spinner size="lg" /> : <span>ساخت اکانت</span>}
                   </button>
                 </div>
                 <div className="login-footer-desc text-gray-600 font-light text-sm leading-4 text-center  ">

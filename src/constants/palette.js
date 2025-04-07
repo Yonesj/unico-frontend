@@ -7,6 +7,10 @@ const colors = {
   'primary-light': '#10497F',
   'primary-dark': '#051D33',
   'primary-darker': '#01101E',
+  faplus: '#EDF1F3',
+  'faplus-light': '#64748B',
+
+
   secondary: '#03CEA4',
   'secondary-light': '#4AFCD7',
   'secondary-dark': '#02A180',

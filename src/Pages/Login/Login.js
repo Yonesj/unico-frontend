@@ -13,14 +13,18 @@ import {
   maxValidator,
   emailValidator,
 } from "../../validators/rules";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { useEffect } from "react";
 import AuthContext from "../../context/authContext";
 import { LockOutlined, MailOutlined, UserOutlined } from "@ant-design/icons";
 import AccountVerificationModal from "../../Components/Modal/AccountVerificationModal";
 import ForgetpassModal from "../../Components/Modal/ForgetpassModal";
 import MySwiper from "../../Components/Swipper";
+import BBtn from "../../Components/dls/BBtn";
+import Spinner from "../../Components/spinner";
 export default function Login() {
   const [reCaptchaVerify, setReCaptchaVerify] = useState(false);
+  const [loading, setLoading] = useState(false);
   const toast = useToast();
   const onChangeHandler = () => {
     setReCaptchaVerify(true);
@@ -46,51 +50,56 @@ export default function Login() {
     false
   );
 
-  const userLogin = (event) => {
+  const userLogin = async (event, setLoading) => {
     event.preventDefault();
+    setLoading(true); 
 
     const userData = {
       email: formState.inputs.email.value,
       password: formState.inputs.password.value,
     };
-    fetch("http://localhost:8000/auth/jwt/create/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(userData),
-    })
-      .then(async (res) => {
-        const data = await res.json();
 
-        if (!res.ok) {
-          console.log(Object.values(data));
-          throw new Error(Object.values(data)[0] || "An error occurred");
-        }
-        return data;
-      })
-      .then((data) => {
-       
-        toast.open({
-          message: "ورود کاربر",
-          type: "success",
-        });
-        authContext.login({}, data.access , data.refresh );
-      })
-      .catch((err) => {
-        if (err.message == "No active account found with the given credentials") {
-          toast.open({
-            message: "اکانت فعالی با این ایمیل و رمزعبور وجود ندارد",
-            type: "error",
-          });
-        }
+    try {
+      const res = await fetch("http://localhost:8000/auth/jwt/create/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
       });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        console.log(Object.values(data));
+        throw new Error(Object.values(data)[0] || "An error occurred");
+      }
+
+      toast.open({
+        message: "ورود کاربر",
+        type: "success",
+      });
+
+      authContext.login({}, data.access, data.refresh);
+    } catch (err) {
+      if (
+        err.message === "No active account found with the given credentials"
+      ) {
+        toast.open({
+          message: "اکانت فعالی با این ایمیل و رمزعبور وجود ندارد",
+          type: "error",
+        });
+      }
+    } finally {
+      setLoading(false); 
+    }
   };
 
   const [passType, setPassType] = useState("");
 
   const [isForgetpassModalOpen, setIsForgetpassModalOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleOk = () => {
     setIsModalOpen(false);
@@ -211,23 +220,25 @@ export default function Login() {
               <div className="login-body-footer h-[96px] flex flex-col justify-between">
                 <div className="login-button">
                   <button
-                    onClick={(event) => {
-                      if (
-
-                        formState.inputs.email.isValid &&
-                        formState.inputs.password.isValid
-                      ) {
-                        userLogin(event);
-                      }
-                    }}
+                    onClick={(event) => userLogin(event, setLoading)}
+                    disabled={
+                      loading ||
+                      !formState.inputs.email.isValid ||
+                      !formState.inputs.password.isValid
+                    }
                     className={`w-full h-[52px] bg-[#4CC6CB] text-white rounded-lg transition-all duration-300 ${
                       formState.inputs.email.isValid &&
-                      formState.inputs.password.isValid
+                      formState.inputs.password.isValid &&
+                      !loading
                         ? ""
                         : "opacity-50 cursor-not-allowed"
                     }`}
                   >
-                    ورود
+                    {loading ? (
+                   <Spinner size="lg" />
+                    ) : (
+                      <span>ورود</span>
+                    )}
                   </button>
                 </div>
                 <div className="login-footer-desc text-gray-600 font-light text-sm leading-4 text-center  ">

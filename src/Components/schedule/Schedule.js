@@ -3,60 +3,52 @@ import faLocale from "@fullcalendar/core/locales/fa";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import { DayTimeColsView } from "@fullcalendar/timegrid/internal";
 import Course from "../../Components/schedule/Course";
-import { convertPersianNumberToEnglish } from "../../utils/helpers";
+import { convertEnglishNumberToPersian } from "../../utils/helpers";
 import { weekDays } from "../../constants/const";
 import DeleteCourseDialogConfirmation from "../../Components/schedule/DeleteCourseDialogConfirmation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useToast } from "../../Components/dls/toast/ToastService";
 
-// Placeholder API function (replace with actual API call)
-const deleteCourseFromSchedule = async (scheduleId, courseId) => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve({ success: true });
-    }, 500);
-  });
-};
-
-export default function Schedule({ courses, currentScheduleId, setSchedules }) {
+export default function Schedule({ currentScheduleId, setSchedules }) {
   const toast = useToast();
   const [isOpen, setIsOpen] = useState(false);
   const [courseIdToBeDeleted, setCourseIdToBeDeleted] = useState(null);
+  const [courses, setCourses] = useState([]);
+
+  useEffect(() => {
+    const storedSchedules = JSON.parse(localStorage.getItem("schedules")) || [];
+    const currentSchedule = storedSchedules.find((s) => s.id === currentScheduleId);
+    setCourses(currentSchedule ? currentSchedule.courses : []);
+  }, [currentScheduleId]);
 
   const handleEventClick = (clickInfo) => {
     setCourseIdToBeDeleted(Number(clickInfo.event.id));
     setIsOpen(true);
   };
 
-  const removeCourse = async () => {
-    try {
-      await deleteCourseFromSchedule(currentScheduleId, courseIdToBeDeleted);
-
-      setSchedules((prev) =>
-        prev.map((schedule) =>
-          schedule.id === currentScheduleId
-            ? {
-                ...schedule,
-                courses: schedule.courses.filter(
-                  (course) => course.id !== courseIdToBeDeleted
-                ),
-              }
-            : schedule
-        )
-      );
-
-      toast.open({
-        message: "درس با موفقیت حذف شد.",
-        type: "success",
+  const removeCourse = () => {
+    setSchedules((prev) => {
+      const updatedSchedules = prev.map((schedule) => {
+        if (schedule.id === currentScheduleId) {
+          const updatedCourses = schedule.courses.filter(
+            (course) => course.id !== courseIdToBeDeleted
+          );
+          return { ...schedule, courses: updatedCourses };
+        }
+        return schedule;
       });
-    } catch (error) {
-      toast.open({
-        message: "خطایی رخ داده است.",
-        type: "error",
-      });
-    } finally {
-      setIsOpen(false);
-    }
+
+      localStorage.setItem("schedules", JSON.stringify(updatedSchedules));
+
+      return updatedSchedules;
+    });
+
+    toast.open({
+      message: "درس با موفقیت حذف شد.",
+      type: "success",
+    });
+
+    setIsOpen(false);
   };
 
   return (
@@ -72,7 +64,6 @@ export default function Schedule({ courses, currentScheduleId, setSchedules }) {
         headerToolbar={false}
         editable={false}
         selectable={false}
-        selectMirror={false}
         expandRows
         dayMaxEvents
         eventOverlap={false}
@@ -96,7 +87,7 @@ export default function Schedule({ courses, currentScheduleId, setSchedules }) {
             duration: { days: 6 },
             slotLabelContent: ({ date }) => (
               <div className="me-1 ms-2 text-sm font-medium">
-                {convertPersianNumberToEnglish(date.getHours().toString())}
+                {convertEnglishNumberToPersian(date.getHours().toString())}:۰۰
               </div>
             ),
             dayHeaderContent: ({ date }) => (
@@ -115,7 +106,7 @@ export default function Schedule({ courses, currentScheduleId, setSchedules }) {
                   id: event.event.id,
                   ...event.event.extendedProps,
                 }}
-              />
+              ></Course>
             ),
           },
         }}

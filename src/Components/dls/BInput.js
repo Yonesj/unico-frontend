@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { validate } from '../../utils/validations'
 import { cn, convertPersianNumberToEnglish } from '../../utils/helpers'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 const BInput = ({
   label,
@@ -63,7 +64,7 @@ const BInput = ({
   }
 
   const wrapperClasses = cn(
-    'bg-primary px-3 flex items-center gap-x-2 rounded',
+    ' px-3 flex items-center gap-x-2 rounded-lg',
     'focus-within:ring-secondary focus-within:ring-[1px] transition-all duration-200',
     'h-[46px] sm:h-[57px]',
     {
@@ -76,7 +77,7 @@ const BInput = ({
   const inputClasses = [
     'grow !bg-transparent !text-transparent outline-none',
     'text-sm sm:text-base',
-    'text-grey-50 placeholder:text-grey-300 placeholder:text-right',
+    'text-zinc-400 placeholder:text-grey-300 placeholder:text-right',
     'w-full h-[46px] sm:h-[57px]',
     inputClass,
   ].join(' ')
@@ -102,7 +103,7 @@ const BInput = ({
           <label
             htmlFor={`input-${id}`}
             className={`text-xs font-medium sm:text-sm ${
-              disabled ? 'text-grey-700' : 'text-grey-50'
+              disabled ? 'text-zinc-400' : 'text-zinc-400'
             }`}
           >
             {label && (
@@ -125,8 +126,9 @@ const BInput = ({
         {icon && (
           <div className='flex items-center justify-center'>
             <FontAwesomeIcon
-              icon={icon}
-              className={disabled ? 'text-grey-700' : 'text-grey-50'}
+              icon={faSearch}
+              size='xl'
+              className={disabled ? 'text-grey-700' : 'text-zinc-500'}
             />
           </div>
         )}
