@@ -3,7 +3,7 @@
   --fc-page-bg-color: #000;
   --fc-neutral-bg-color: rgba(208, 208, 208, 0.3);
   --fc-neutral-text-color: #fff;
-  --fc-border-color: #10497F;
+  --fc-border-color: #efefef;
 
   --fc-event-bg-color: transparent;
   --fc-event-border-color: transparent;
@@ -68,4 +68,15 @@
 
 .fc .fc-scrollgrid-section-body table, .fc .fc-scrollgrid-section-footer table {
   border-bottom-style: solid;
+}
+
+.fc-scrollgrid{
+
+color: red;
+}
+
+.overlap-warning {
+  background-color: red;
+  border-radius: 14px;
+  border: 2px solid red !important;
 }

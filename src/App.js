@@ -8,6 +8,7 @@ import { useRoutes } from "react-router-dom";
 import routes from "./routes";
 import AuthContext from "./context/authContext";
 import Sidebar from "./Components/Sidebar/Sidebar";
+import {TimerToastProvider} from "./Components/dls/toast/TimerToastContext";
 function App() {
   const router = useRoutes(routes);
 
@@ -92,6 +93,8 @@ function App() {
         logout,
       }}
     >
+        <TimerToastProvider>
+
         <ToastProvider>
           <div className='min-h-screen font-iransans'>
             <AnimatePresence initial={false} mode='wait'>
@@ -111,6 +114,8 @@ function App() {
             </AnimatePresence>
           </div>
         </ToastProvider>
+        </TimerToastProvider>
+
     </AuthContext.Provider>
   );
 }

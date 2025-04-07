@@ -1,450 +1,5635 @@
-[{
-    "course_code": "1222317_04",
-    "course_name": "فارسي عمومي",
-    "theory": "3",
-    "practical": "0",
-    "capacity": "50",
-    "gender": "b",
-    "professor_name": "كريمي آسيه",
-    "classes": [
-    {"day": "sun", "time": {"start": "10:00", "end": "12:00"}},
-    {"day": "tue", "time": {"start": "14:00", "end": "15:00"}}
-    ],
-    "exam": {
-        "date": "1404.03.26",
-        "time": {"start": "08:00", "end": "10:00"}
-    },
-    "class_location": "ادبيات و علوم انساني _ 11 - طبقه اول - ادبيات",
-    "prerequisites": [
-        "معادل",
-        "1212318 زبان فارسي معادل",
-        "1612211 فارسي عمومي معادل",
-        "1616059 فارسي عمومي"
-    ],
-    "notes": ""
-},
-{
-    "course_code": "1212317_04",
-    "course_name": "فارسي عمومي",
-    "theory": "3",
-    "practical": "0",
-    "capacity": "50",
-    "gender": "b",
-    "professor_name": "كريمي آسيه",
-    "classes": [
-    {"day": "sun", "time": {"start": "10:00", "end": "12:00"}},
-    {"day": "tue", "time": {"start": "14:00", "end": "15:00"}}
-    ],
-    "exam": {
-        "date": "1404.03.26",
-        "time": {"start": "08:00", "end": "10:00"}
-    },
-    "class_location": "ادبيات و علوم انساني _ 11 - طبقه اول - ادبيات",
-    "prerequisites": [
-        "معادل",
-        "1212318 زبان فارسي معادل",
-        "1612211 فارسي عمومي معادل",
-        "1616059 فارسي عمومي"
-    ],
-    "notes": ""
-},
-{
-    "course_code": "1212317_04",
-    "course_name": "فارسي عمومي",
-    "theory": "3",
-    "practical": "0",
-    "capacity": "50",
-    "gender": "b",
-    "professor_name": "كريمي آسيه",
-    "classes": [
-    {"day": "sun", "time": {"start": "10:00", "end": "12:00"}},
-    {"day": "tue", "time": {"start": "14:00", "end": "15:00"}}
-    ],
-    "exam": {
-        "date": "1404.03.26",
-        "time": {"start": "08:00", "end": "10:00"}
-    },
-    "class_location": "ادبيات و علوم انساني _ 11 - طبقه اول - ادبيات",
-    "prerequisites": [
-        "معادل",
-        "1212318 زبان فارسي معادل",
-        "1612211 فارسي عمومي معادل",
-        "1616059 فارسي عمومي"
-    ],
-    "notes": ""
-},
-{
-    "course_code": "1212317_04",
-    "course_name": "فارسي عمومي",
-    "theory": "3",
-    "practical": "0",
-    "capacity": "50",
-    "gender": "b",
-    "professor_name": "كريمي آسيه",
-    "classes": [
-    {"day": "sun", "time": {"start": "10:00", "end": "12:00"}},
-    {"day": "tue", "time": {"start": "14:00", "end": "15:00"}}
-    ],
-    "exam": {
-        "date": "1404.03.26",
-        "time": {"start": "08:00", "end": "10:00"}
-    },
-    "class_location": "ادبيات و علوم انساني _ 11 - طبقه اول - ادبيات",
-    "prerequisites": [
-        "معادل",
-        "1212318 زبان فارسي معادل",
-        "1612211 فارسي عمومي معادل",
-        "1616059 فارسي عمومي"
-    ],
-    "notes": ""
-},
-{
-    "course_code": "1212317_04",
-    "course_name": "فارسي عمومي",
-    "theory": "3",
-    "practical": "0",
-    "capacity": "50",
-    "gender": "b",
-    "professor_name": "كريمي آسيه",
-    "classes": [
-    {"day": "sun", "time": {"start": "10:00", "end": "12:00"}},
-    {"day": "tue", "time": {"start": "14:00", "end": "15:00"}}
-    ],
-    "exam": {
-        "date": "1404.03.26",
-        "time": {"start": "08:00", "end": "10:00"}
-    },
-    "class_location": "ادبيات و علوم انساني _ 11 - طبقه اول - ادبيات",
-    "prerequisites": [
-        "معادل",
-        "1212318 زبان فارسي معادل",
-        "1612211 فارسي عمومي معادل",
-        "1616059 فارسي عمومي"
-    ],
-    "notes": ""
-},
-{
-    "course_code": "1212317_04",
-    "course_name": "فارسي عمومي",
-    "theory": "3",
-    "practical": "0",
-    "capacity": "50",
-    "gender": "b",
-    "professor_name": "كريمي آسيه",
-    "classes": [
-    {"day": "sun", "time": {"start": "10:00", "end": "12:00"}},
-    {"day": "tue", "time": {"start": "14:00", "end": "15:00"}}
-    ],
-    "exam": {
-        "date": "1404.03.26",
-        "time": {"start": "08:00", "end": "10:00"}
-    },
-    "class_location": "ادبيات و علوم انساني _ 11 - طبقه اول - ادبيات",
-    "prerequisites": [
-        "معادل",
-        "1212318 زبان فارسي معادل",
-        "1612211 فارسي عمومي معادل",
-        "1616059 فارسي عمومي"
-    ],
-    "notes": ""
-},
-{
-    "course_code": "1212317_04",
-    "course_name": "فارسي عمومي",
-    "theory": "3",
-    "practical": "0",
-    "capacity": "50",
-    "gender": "b",
-    "professor_name": "كريمي آسيه",
-    "classes": [
-    {"day": "sun", "time": {"start": "10:00", "end": "12:00"}},
-    {"day": "tue", "time": {"start": "14:00", "end": "15:00"}}
-    ],
-    "exam": {
-        "date": "1404.03.26",
-        "time": {"start": "08:00", "end": "10:00"}
-    },
-    "class_location": "ادبيات و علوم انساني _ 11 - طبقه اول - ادبيات",
-    "prerequisites": [
-        "معادل",
-        "1212318 زبان فارسي معادل",
-        "1612211 فارسي عمومي معادل",
-        "1616059 فارسي عمومي"
-    ],
-    "notes": ""
-},
-{
-    "course_code": "1212317_04",
-    "course_name": "فارسي عمومي",
-    "theory": "3",
-    "practical": "0",
-    "capacity": "50",
-    "gender": "b",
-    "professor_name": "كريمي آسيه",
-    "classes": [
-    {"day": "sun", "time": {"start": "10:00", "end": "12:00"}},
-    {"day": "tue", "time": {"start": "14:00", "end": "15:00"}}
-    ],
-    "exam": {
-        "date": "1404.03.26",
-        "time": {"start": "08:00", "end": "10:00"}
-    },
-    "class_location": "ادبيات و علوم انساني _ 11 - طبقه اول - ادبيات",
-    "prerequisites": [
-        "معادل",
-        "1212318 زبان فارسي معادل",
-        "1612211 فارسي عمومي معادل",
-        "1616059 فارسي عمومي"
-    ],
-    "notes": ""
-},
-{
-    "course_code": "1212317_04",
-    "course_name": "فارسي عمومي",
-    "theory": "3",
-    "practical": "0",
-    "capacity": "50",
-    "gender": "b",
-    "professor_name": "كريمي آسيه",
-    "classes": [
-    {"day": "sun", "time": {"start": "10:00", "end": "12:00"}},
-    {"day": "tue", "time": {"start": "14:00", "end": "15:00"}}
-    ],
-    "exam": {
-        "date": "1404.03.26",
-        "time": {"start": "08:00", "end": "10:00"}
-    },
-    "class_location": "ادبيات و علوم انساني _ 11 - طبقه اول - ادبيات",
-    "prerequisites": [
-        "معادل",
-        "1212318 زبان فارسي معادل",
-        "1612211 فارسي عمومي معادل",
-        "1616059 فارسي عمومي"
-    ],
-    "notes": ""
-},
-{
-    "course_code": "1212317_04",
-    "course_name": "فارسي عمومي",
-    "theory": "3",
-    "practical": "0",
-    "capacity": "50",
-    "gender": "b",
-    "professor_name": "كريمي آسيه",
-    "classes": [
-    {"day": "sun", "time": {"start": "10:00", "end": "12:00"}},
-    {"day": "tue", "time": {"start": "14:00", "end": "15:00"}}
-    ],
-    "exam": {
-        "date": "1404.03.26",
-        "time": {"start": "08:00", "end": "10:00"}
-    },
-    "class_location": "ادبيات و علوم انساني _ 11 - طبقه اول - ادبيات",
-    "prerequisites": [
-        "معادل",
-        "1212318 زبان فارسي معادل",
-        "1612211 فارسي عمومي معادل",
-        "1616059 فارسي عمومي"
-    ],
-    "notes": ""
-},
-{
-    "course_code": "1212317_04",
-    "course_name": "فارسي عمومي",
-    "theory": "3",
-    "practical": "0",
-    "capacity": "50",
-    "gender": "b",
-    "professor_name": "كريمي آسيه",
-    "classes": [
-    {"day": "sun", "time": {"start": "10:00", "end": "12:00"}},
-    {"day": "tue", "time": {"start": "14:00", "end": "15:00"}}
-    ],
-    "exam": {
-        "date": "1404.03.26",
-        "time": {"start": "08:00", "end": "10:00"}
-    },
-    "class_location": "ادبيات و علوم انساني _ 11 - طبقه اول - ادبيات",
-    "prerequisites": [
-        "معادل",
-        "1212318 زبان فارسي معادل",
-        "1612211 فارسي عمومي معادل",
-        "1616059 فارسي عمومي"
-    ],
-    "notes": ""
-},
-{
-    "course_code": "1212317_04",
-    "course_name": "فارسي عمومي",
-    "theory": "3",
-    "practical": "0",
-    "capacity": "50",
-    "gender": "b",
-    "professor_name": "كريمي آسيه",
-    "classes": [
-    {"day": "sun", "time": {"start": "10:00", "end": "12:00"}},
-    {"day": "tue", "time": {"start": "14:00", "end": "15:00"}}
-    ],
-    "exam": {
-        "date": "1404.03.26",
-        "time": {"start": "08:00", "end": "10:00"}
-    },
-    "class_location": "ادبيات و علوم انساني _ 11 - طبقه اول - ادبيات",
-    "prerequisites": [
-        "معادل",
-        "1212318 زبان فارسي معادل",
-        "1612211 فارسي عمومي معادل",
-        "1616059 فارسي عمومي"
-    ],
-    "notes": ""
-},
-{
-    "course_code": "1212317_04",
-    "course_name": "فارسي عمومي",
-    "theory": "3",
-    "practical": "0",
-    "capacity": "50",
-    "gender": "b",
-    "professor_name": "كريمي آسيه",
-    "classes": [
-    {"day": "sun", "time": {"start": "10:00", "end": "12:00"}},
-    {"day": "tue", "time": {"start": "14:00", "end": "15:00"}}
-    ],
-    "exam": {
-        "date": "1404.03.26",
-        "time": {"start": "08:00", "end": "10:00"}
-    },
-    "class_location": "ادبيات و علوم انساني _ 11 - طبقه اول - ادبيات",
-    "prerequisites": [
-        "معادل",
-        "1212318 زبان فارسي معادل",
-        "1612211 فارسي عمومي معادل",
-        "1616059 فارسي عمومي"
-    ],
-    "notes": ""
-},
-{
-    "course_code": "1212317_04",
-    "course_name": "فارسي عمومي",
-    "theory": "3",
-    "practical": "0",
-    "capacity": "50",
-    "gender": "b",
-    "professor_name": "كريمي آسيه",
-    "classes": [
-    {"day": "sun", "time": {"start": "10:00", "end": "12:00"}},
-    {"day": "tue", "time": {"start": "14:00", "end": "15:00"}}
-    ],
-    "exam": {
-        "date": "1404.03.26",
-        "time": {"start": "08:00", "end": "10:00"}
-    },
-    "class_location": "ادبيات و علوم انساني _ 11 - طبقه اول - ادبيات",
-    "prerequisites": [
-        "معادل",
-        "1212318 زبان فارسي معادل",
-        "1612211 فارسي عمومي معادل",
-        "1616059 فارسي عمومي"
-    ],
-    "notes": ""
-},
-{
-    "course_code": "1212317_04",
-    "course_name": "فارسي عمومي",
-    "theory": "3",
-    "practical": "0",
-    "capacity": "50",
-    "gender": "b",
-    "professor_name": "كريمي آسيه",
-    "classes": [
-    {"day": "sun", "time": {"start": "10:00", "end": "12:00"}},
-    {"day": "tue", "time": {"start": "14:00", "end": "15:00"}}
-    ],
-    "exam": {
-        "date": "1404.03.26",
-        "time": {"start": "08:00", "end": "10:00"}
-    },
-    "class_location": "ادبيات و علوم انساني _ 11 - طبقه اول - ادبيات",
-    "prerequisites": [
-        "معادل",
-        "1212318 زبان فارسي معادل",
-        "1612211 فارسي عمومي معادل",
-        "1616059 فارسي عمومي"
-    ],
-    "notes": ""
-},
-{
-    "course_code": "1212317_04",
-    "course_name": "فارسي عمومي",
-    "theory": "3",
-    "practical": "0",
-    "capacity": "50",
-    "gender": "b",
-    "professor_name": "كريمي آسيه",
-    "classes": [
-    {"day": "sun", "time": {"start": "10:00", "end": "12:00"}},
-    {"day": "tue", "time": {"start": "14:00", "end": "15:00"}}
-    ],
-    "exam": {
-        "date": "1404.03.26",
-        "time": {"start": "08:00", "end": "10:00"}
-    },
-    "class_location": "ادبيات و علوم انساني _ 11 - طبقه اول - ادبيات",
-    "prerequisites": [
-        "معادل",
-        "1212318 زبان فارسي معادل",
-        "1612211 فارسي عمومي معادل",
-        "1616059 فارسي عمومي"
-    ],
-    "notes": ""
-},
-{
-    "course_code": "1212317_04",
-    "course_name": "فارسي عمومي",
-    "theory": "3",
-    "practical": "0",
-    "capacity": "50",
-    "gender": "b",
-    "professor_name": "كريمي آسيه",
-    "classes": [
-    {"day": "sun", "time": {"start": "10:00", "end": "12:00"}},
-    {"day": "tue", "time": {"start": "14:00", "end": "15:00"}}
-    ],
-    "exam": {
-        "date": "1404.03.26",
-        "time": {"start": "08:00", "end": "10:00"}
-    },
-    "class_location": "ادبيات و علوم انساني _ 11 - طبقه اول - ادبيات",
-    "prerequisites": [
-        "معادل",
-        "1212318 زبان فارسي معادل",
-        "1612211 فارسي عمومي معادل",
-        "1616059 فارسي عمومي"
-    ],
-    "notes": ""
-},
-{
-    "course_code": "1212317_04",
-    "course_name": "فارسي عمومي",
-    "theory": "3",
-    "practical": "0",
-    "capacity": "50",
-    "gender": "b",
-    "professor_name": "كريمي آسيه",
-    "classes": [
-    {"day": "sun", "time": {"start": "10:00", "end": "12:00"}},
-    {"day": "tue", "time": {"start": "14:00", "end": "15:00"}}
-    ],
-    "exam": {
-        "date": "1404.03.26",
-        "time": {"start": "08:00", "end": "10:00"}
-    },
-    "class_location": "ادبيات و علوم انساني _ 11 - طبقه اول - ادبيات",
-    "prerequisites": [
-        "معادل",
-        "1212318 زبان فارسي معادل",
-        "1612211 فارسي عمومي معادل",
-        "1616059 فارسي عمومي"
-    ],
-    "notes": ""
-}]
+[
+      {
+        "id": 131275301,
+        "course_code": "1312753_01",
+        "course_name": "ورزش1 خواهران",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 25,
+        "gender": "F",
+        "professor_name": "مستاجران نفيسه",
+        "class_location": "تربيت بدني و علوم ورزشي _ ژيمناستيك",
+        "prerequisites": "پيش نياز: 1312844 تربيت بدني خواهران\nپيش نياز: 1312556 تربيت بدني 1 خواهران\nپيش نياز: 1312846 تربيت بدني ويژه خواهران\nمعادل: 6012069 ورزش1\nمعادل: 6212232 ورزش 1",
+        "notes": "ايروبيك",
+        "classes": [
+          {
+            "day": "mon",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131275302,
+        "course_code": "1312753_02",
+        "course_name": "ورزش1 خواهران",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 25,
+        "gender": "F",
+        "professor_name": "مستاجران نفيسه",
+        "class_location": "تربيت بدني و علوم ورزشي _ شهيد نيلفروش زاده",
+        "prerequisites": "پيش نياز: 1312844 تربيت بدني خواهران\nپيش نياز: 1312556 تربيت بدني 1 خواهران\nپيش نياز: 1312846 تربيت بدني ويژه خواهران\nمعادل: 6012069 ورزش1\nمعادل: 6212232 ورزش 1",
+        "notes": "ايروبيك",
+        "classes": [
+          {
+            "day": "wed",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131275303,
+        "course_code": "1312753_03",
+        "course_name": "ورزش1 خواهران",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 26,
+        "gender": "F",
+        "professor_name": "هوسپيان ولگا",
+        "class_location": "تربيت بدني و علوم ورزشي _ سالن حجاب",
+        "prerequisites": "پيش نياز: 1312844 تربيت بدني خواهران\nپيش نياز: 1312556 تربيت بدني 1 خواهران\nپيش نياز: 1312846 تربيت بدني ويژه خواهران\nمعادل: 6012069 ورزش1\nمعادل: 6212232 ورزش 1",
+        "notes": "تنيس روي ميز",
+        "classes": [
+          {
+            "day": "sun",
+            "start": 10,
+            "end": 12,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131275304,
+        "course_code": "1312753_04",
+        "course_name": "ورزش1 خواهران",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 26,
+        "gender": "F",
+        "professor_name": "هوسپيان ولگا",
+        "class_location": "تربيت بدني و علوم ورزشي _ سالن حجاب",
+        "prerequisites": "پيش نياز: 1312844 تربيت بدني خواهران\nپيش نياز: 1312556 تربيت بدني 1 خواهران\nپيش نياز: 1312846 تربيت بدني ويژه خواهران\nمعادل: 6012069 ورزش1\nمعادل: 6212232 ورزش 1",
+        "notes": "تنيس روي ميز",
+        "classes": [
+          {
+            "day": "tue",
+            "start": 10,
+            "end": 12,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131275305,
+        "course_code": "1312753_05",
+        "course_name": "ورزش1 خواهران",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 23,
+        "gender": "F",
+        "professor_name": "قاسمي پور سحر",
+        "class_location": "تربيت بدني و علوم ورزشي _ سالن حجاب 4",
+        "prerequisites": "پيش نياز: 1312844 تربيت بدني خواهران\nپيش نياز: 1312556 تربيت بدني 1 خواهران\nپيش نياز: 1312846 تربيت بدني ويژه خواهران\nمعادل: 6012069 ورزش1\nمعادل: 6212232 ورزش 1",
+        "notes": "فوتسال",
+        "classes": [
+          {
+            "day": "sun",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131275306,
+        "course_code": "1312753_06",
+        "course_name": "ورزش1 خواهران",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 26,
+        "gender": "F",
+        "professor_name": "عاشقي زهرا",
+        "class_location": "تربيت بدني و علوم ورزشي _ بدنسازي",
+        "prerequisites": "پيش نياز: 1312844 تربيت بدني خواهران\nپيش نياز: 1312556 تربيت بدني 1 خواهران\nپيش نياز: 1312846 تربيت بدني ويژه خواهران\nمعادل: 6012069 ورزش1\nمعادل: 6212232 ورزش 1",
+        "notes": "بدنسازي",
+        "classes": [
+          {
+            "day": "sat",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131275307,
+        "course_code": "1312753_07",
+        "course_name": "ورزش1 خواهران",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 24,
+        "gender": "F",
+        "professor_name": "علي زاده ارداجي صفورا",
+        "class_location": "تربيت بدني و علوم ورزشي _ سالن حجاب",
+        "prerequisites": "پيش نياز: 1312844 تربيت بدني خواهران\nپيش نياز: 1312556 تربيت بدني 1 خواهران\nپيش نياز: 1312846 تربيت بدني ويژه خواهران\nمعادل: 6012069 ورزش1\nمعادل: 6212232 ورزش 1",
+        "notes": "تنيس روي ميز",
+        "classes": [
+          {
+            "day": "mon",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131275308,
+        "course_code": "1312753_08",
+        "course_name": "ورزش1 خواهران",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 24,
+        "gender": "F",
+        "professor_name": "علي زاده ارداجي صفورا",
+        "class_location": "تربيت بدني و علوم ورزشي _ سالن حجاب",
+        "prerequisites": "پيش نياز: 1312844 تربيت بدني خواهران\nپيش نياز: 1312556 تربيت بدني 1 خواهران\nپيش نياز: 1312846 تربيت بدني ويژه خواهران\nمعادل: 6012069 ورزش1\nمعادل: 6212232 ورزش 1",
+        "notes": "تنيس روي ميز",
+        "classes": [
+          {
+            "day": "mon",
+            "start": 10,
+            "end": 12,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131275309,
+        "course_code": "1312753_09",
+        "course_name": "ورزش1 خواهران",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 23,
+        "gender": "F",
+        "professor_name": "شهبازورزنه فاطمه",
+        "class_location": "تربيت بدني و علوم ورزشي _ سالن حجاب 4",
+        "prerequisites": "پيش نياز: 1312844 تربيت بدني خواهران\nپيش نياز: 1312556 تربيت بدني 1 خواهران\nپيش نياز: 1312846 تربيت بدني ويژه خواهران\nمعادل: 6012069 ورزش1\nمعادل: 6212232 ورزش 1",
+        "notes": "فوتسال",
+        "classes": [
+          {
+            "day": "sun",
+            "start": 10,
+            "end": 12,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131275310,
+        "course_code": "1312753_10",
+        "course_name": "ورزش1 خواهران",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 23,
+        "gender": "F",
+        "professor_name": "شهبازورزنه فاطمه",
+        "class_location": "تربيت بدني و علوم ورزشي _ سالن حجاب 4",
+        "prerequisites": "پيش نياز: 1312844 تربيت بدني خواهران\nپيش نياز: 1312556 تربيت بدني 1 خواهران\nپيش نياز: 1312846 تربيت بدني ويژه خواهران\nمعادل: 6012069 ورزش1\nمعادل: 6212232 ورزش 1",
+        "notes": "فوتسال",
+        "classes": [
+          {
+            "day": "tue",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131275311,
+        "course_code": "1312753_11",
+        "course_name": "ورزش1 خواهران",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 26,
+        "gender": "F",
+        "professor_name": "تازشي حميده",
+        "class_location": "تربيت بدني و علوم ورزشي _ كشتي",
+        "prerequisites": "پيش نياز: 1312844 تربيت بدني خواهران\nپيش نياز: 1312556 تربيت بدني 1 خواهران\nپيش نياز: 1312846 تربيت بدني ويژه خواهران\nمعادل: 6012069 ورزش1\nمعادل: 6212232 ورزش 1",
+        "notes": "تكواندو",
+        "classes": [
+          {
+            "day": "sun",
+            "start": 10,
+            "end": 12,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131275312,
+        "course_code": "1312753_12",
+        "course_name": "ورزش1 خواهران",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 23,
+        "gender": "F",
+        "professor_name": "وليخاني مريم",
+        "class_location": "تربيت بدني و علوم ورزشي _ سالن حجاب 2",
+        "prerequisites": "پيش نياز: 1312844 تربيت بدني خواهران\nپيش نياز: 1312556 تربيت بدني 1 خواهران\nپيش نياز: 1312846 تربيت بدني ويژه خواهران\nمعادل: 6012069 ورزش1\nمعادل: 6212232 ورزش 1",
+        "notes": "واليبال",
+        "classes": [
+          {
+            "day": "mon",
+            "start": 14,
+            "end": 16,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131275313,
+        "course_code": "1312753_13",
+        "course_name": "ورزش1 خواهران",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 24,
+        "gender": "F",
+        "professor_name": "تيموري جروكاني مرجان",
+        "class_location": "تربيت بدني و علوم ورزشي _ بدنسازي",
+        "prerequisites": "پيش نياز: 1312844 تربيت بدني خواهران\nپيش نياز: 1312556 تربيت بدني 1 خواهران\nپيش نياز: 1312846 تربيت بدني ويژه خواهران\nمعادل: 6012069 ورزش1\nمعادل: 6212232 ورزش 1",
+        "notes": "بدنسازي",
+        "classes": [
+          {
+            "day": "sat",
+            "start": 10,
+            "end": 12,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131275314,
+        "course_code": "1312753_14",
+        "course_name": "ورزش1 خواهران",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 24,
+        "gender": "F",
+        "professor_name": "شريعتي منصوره",
+        "class_location": "تربيت بدني و علوم ورزشي _ سالن حجاب",
+        "prerequisites": "پيش نياز: 1312844 تربيت بدني خواهران\nپيش نياز: 1312556 تربيت بدني 1 خواهران\nپيش نياز: 1312846 تربيت بدني ويژه خواهران\nمعادل: 6012069 ورزش1\nمعادل: 6212232 ورزش 1",
+        "notes": "تنيس روي ميز",
+        "classes": [
+          {
+            "day": "sat",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131275315,
+        "course_code": "1312753_15",
+        "course_name": "ورزش1 خواهران",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 22,
+        "gender": "F",
+        "professor_name": "شريعتي منصوره",
+        "class_location": "تربيت بدني و علوم ورزشي _ سالن حجاب",
+        "prerequisites": "پيش نياز: 1312844 تربيت بدني خواهران\nپيش نياز: 1312556 تربيت بدني 1 خواهران\nپيش نياز: 1312846 تربيت بدني ويژه خواهران\nمعادل: 6012069 ورزش1\nمعادل: 6212232 ورزش 1",
+        "notes": "تنيس روي ميز",
+        "classes": [
+          {
+            "day": "sat",
+            "start": 10,
+            "end": 12,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131275316,
+        "course_code": "1312753_16",
+        "course_name": "ورزش1 خواهران",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 23,
+        "gender": "F",
+        "professor_name": "هدايتي شيوا",
+        "class_location": "تربيت بدني و علوم ورزشي _ سالن حجاب 2",
+        "prerequisites": "پيش نياز: 1312844 تربيت بدني خواهران\nپيش نياز: 1312556 تربيت بدني 1 خواهران\nپيش نياز: 1312846 تربيت بدني ويژه خواهران\nمعادل: 6012069 ورزش1\nمعادل: 6212232 ورزش 1",
+        "notes": "واليبال",
+        "classes": [
+          {
+            "day": "wed",
+            "start": 14,
+            "end": 16,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131275317,
+        "course_code": "1312753_17",
+        "course_name": "ورزش1 خواهران",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 25,
+        "gender": "F",
+        "professor_name": "حاجي صباغ نازيلا",
+        "class_location": "تربيت بدني و علوم ورزشي _ ژيمناستيك",
+        "prerequisites": "پيش نياز: 1312844 تربيت بدني خواهران\nپيش نياز: 1312556 تربيت بدني 1 خواهران\nپيش نياز: 1312846 تربيت بدني ويژه خواهران\nمعادل: 6012069 ورزش1\nمعادل: 6212232 ورزش 1",
+        "notes": "پيلاتس",
+        "classes": [
+          {
+            "day": "mon",
+            "start": 10,
+            "end": 12,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131275318,
+        "course_code": "1312753_18",
+        "course_name": "ورزش1 خواهران",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 22,
+        "gender": "F",
+        "professor_name": "ميرزانيا محدثه",
+        "class_location": "تربيت بدني و علوم ورزشي _ سالن حجاب 3",
+        "prerequisites": "پيش نياز: 1312844 تربيت بدني خواهران\nپيش نياز: 1312556 تربيت بدني 1 خواهران\nپيش نياز: 1312846 تربيت بدني ويژه خواهران\nمعادل: 6012069 ورزش1\nمعادل: 6212232 ورزش 1",
+        "notes": "بسگتبال",
+        "classes": [
+          {
+            "day": "sun",
+            "start": 14,
+            "end": 16,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131275319,
+        "course_code": "1312753_19",
+        "course_name": "ورزش1 خواهران",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 25,
+        "gender": "F",
+        "professor_name": "ملايي فاطمه",
+        "class_location": "تربيت بدني و علوم ورزشي _ ژيمناستيك",
+        "prerequisites": "پيش نياز: 1312844 تربيت بدني خواهران\nپيش نياز: 1312556 تربيت بدني 1 خواهران\nپيش نياز: 1312846 تربيت بدني ويژه خواهران\nمعادل: 6012069 ورزش1\nمعادل: 6212232 ورزش 1",
+        "notes": "ايروبيك",
+        "classes": [
+          {
+            "day": "sat",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131275320,
+        "course_code": "1312753_20",
+        "course_name": "ورزش1 خواهران",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 25,
+        "gender": "F",
+        "professor_name": "ملايي فاطمه",
+        "class_location": "تربيت بدني و علوم ورزشي _ ژيمناستيك",
+        "prerequisites": "پيش نياز: 1312844 تربيت بدني خواهران\nپيش نياز: 1312556 تربيت بدني 1 خواهران\nپيش نياز: 1312846 تربيت بدني ويژه خواهران\nمعادل: 6012069 ورزش1\nمعادل: 6212232 ورزش 1",
+        "notes": "ايروبيك",
+        "classes": [
+          {
+            "day": "tue",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131275321,
+        "course_code": "1312753_21",
+        "course_name": "ورزش1 خواهران",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 25,
+        "gender": "F",
+        "professor_name": "حاجي صباغ نازيلا",
+        "class_location": "تربيت بدني و علوم ورزشي _ ژيمناستيك",
+        "prerequisites": "پيش نياز: 1312844 تربيت بدني خواهران\nپيش نياز: 1312556 تربيت بدني 1 خواهران\nپيش نياز: 1312846 تربيت بدني ويژه خواهران\nمعادل: 6012069 ورزش1\nمعادل: 6212232 ورزش 1",
+        "notes": "پيلاتس",
+        "classes": [
+          {
+            "day": "mon",
+            "start": 14,
+            "end": 16,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131275322,
+        "course_code": "1312753_22",
+        "course_name": "ورزش1 خواهران",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 23,
+        "gender": "F",
+        "professor_name": "هوسپيان ولگا",
+        "class_location": "تربيت بدني و علوم ورزشي _ سالن حجاب 5",
+        "prerequisites": "پيش نياز: 1312844 تربيت بدني خواهران\nپيش نياز: 1312556 تربيت بدني 1 خواهران\nپيش نياز: 1312846 تربيت بدني ويژه خواهران\nمعادل: 6012069 ورزش1\nمعادل: 6212232 ورزش 1",
+        "notes": "تنيس روي ميز",
+        "classes": [
+          {
+            "day": "wed",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131275323,
+        "course_code": "1312753_23",
+        "course_name": "ورزش1 خواهران",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 26,
+        "gender": "F",
+        "professor_name": "عظيمي رضوان",
+        "class_location": "تربيت بدني و علوم ورزشي _ ژيمناستيك",
+        "prerequisites": "پيش نياز: 1312844 تربيت بدني خواهران\nپيش نياز: 1312556 تربيت بدني 1 خواهران\nپيش نياز: 1312846 تربيت بدني ويژه خواهران\nمعادل: 6012069 ورزش1\nمعادل: 6212232 ورزش 1",
+        "notes": "ايروبيك",
+        "classes": [
+          {
+            "day": "tue",
+            "start": 10,
+            "end": 12,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131275324,
+        "course_code": "1312753_24",
+        "course_name": "ورزش1 خواهران",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 26,
+        "gender": "F",
+        "professor_name": "عظيمي رضوان",
+        "class_location": "تربيت بدني و علوم ورزشي _ ژيمناستيك",
+        "prerequisites": "پيش نياز: 1312844 تربيت بدني خواهران\nپيش نياز: 1312556 تربيت بدني 1 خواهران\nپيش نياز: 1312846 تربيت بدني ويژه خواهران\nمعادل: 6012069 ورزش1\nمعادل: 6212232 ورزش 1",
+        "notes": "ايروبيك",
+        "classes": [
+          {
+            "day": "tue",
+            "start": 14,
+            "end": 16,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131275325,
+        "course_code": "1312753_25",
+        "course_name": "ورزش1 خواهران",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 28,
+        "gender": "F",
+        "professor_name": "مولوي نيا شيوا",
+        "class_location": "تربيت بدني و علوم ورزشي _ ژيمناستيك",
+        "prerequisites": "پيش نياز: 1312844 تربيت بدني خواهران\nپيش نياز: 1312556 تربيت بدني 1 خواهران\nپيش نياز: 1312846 تربيت بدني ويژه خواهران\nمعادل: 6012069 ورزش1\nمعادل: 6212232 ورزش 1",
+        "notes": "يوگا",
+        "classes": [
+          {
+            "day": "sat",
+            "start": 10,
+            "end": 12,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131275326,
+        "course_code": "1312753_26",
+        "course_name": "ورزش1 خواهران",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 27,
+        "gender": "F",
+        "professor_name": "مولوي نيا شيوا",
+        "class_location": "تربيت بدني و علوم ورزشي _ ژيمناستيك",
+        "prerequisites": "پيش نياز: 1312844 تربيت بدني خواهران\nپيش نياز: 1312556 تربيت بدني 1 خواهران\nپيش نياز: 1312846 تربيت بدني ويژه خواهران\nمعادل: 6012069 ورزش1\nمعادل: 6212232 ورزش 1",
+        "notes": "يوگا",
+        "classes": [
+          {
+            "day": "sat",
+            "start": 14,
+            "end": 16,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131275327,
+        "course_code": "1312753_27",
+        "course_name": "ورزش1 خواهران",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 21,
+        "gender": "F",
+        "professor_name": "وليخاني مريم",
+        "class_location": "تربيت بدني و علوم ورزشي _ سالن حجاب 2",
+        "prerequisites": "پيش نياز: 1312844 تربيت بدني خواهران\nپيش نياز: 1312556 تربيت بدني 1 خواهران\nپيش نياز: 1312846 تربيت بدني ويژه خواهران\nمعادل: 6012069 ورزش1\nمعادل: 6212232 ورزش 1",
+        "notes": "واليبال",
+        "classes": [
+          {
+            "day": "tue",
+            "start": 14,
+            "end": 16,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131277501,
+        "course_code": "1312775_01",
+        "course_name": "ورزش 1 برادران",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 22,
+        "gender": "M",
+        "professor_name": "حق شناس محسن",
+        "class_location": "تربيت بدني و علوم ورزشي _ شهيد بهراميان",
+        "prerequisites": "پيش نياز: 1312845 تربيت بدني برادران\nپيش نياز: 1312557 تربيت بدني 1 برادران\nپيش نياز: 1312847 تربيت بدني ويژه برادران",
+        "notes": "واليبال",
+        "classes": [
+          {
+            "day": "mon",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131277502,
+        "course_code": "1312775_02",
+        "course_name": "ورزش 1 برادران",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 23,
+        "gender": "M",
+        "professor_name": "حق شناس محسن",
+        "class_location": "تربيت بدني و علوم ورزشي _ شهيد بهراميان",
+        "prerequisites": "پيش نياز: 1312845 تربيت بدني برادران\nپيش نياز: 1312557 تربيت بدني 1 برادران\nپيش نياز: 1312847 تربيت بدني ويژه برادران",
+        "notes": "واليبال",
+        "classes": [
+          {
+            "day": "mon",
+            "start": 10,
+            "end": 12,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131277503,
+        "course_code": "1312775_03",
+        "course_name": "ورزش 1 برادران",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 24,
+        "gender": "M",
+        "professor_name": "مدرسي سيدمحمدرضا",
+        "class_location": "تربيت بدني و علوم ورزشي _ زمين چمن شماره 1",
+        "prerequisites": "پيش نياز: 1312845 تربيت بدني برادران\nپيش نياز: 1312557 تربيت بدني 1 برادران\nپيش نياز: 1312847 تربيت بدني ويژه برادران",
+        "notes": "فوتبال",
+        "classes": [
+          {
+            "day": "sat",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131277504,
+        "course_code": "1312775_04",
+        "course_name": "ورزش 1 برادران",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 24,
+        "gender": "M",
+        "professor_name": "مدرسي سيدمحمدرضا",
+        "class_location": "تربيت بدني و علوم ورزشي _ زمين چمن شماره 1",
+        "prerequisites": "پيش نياز: 1312845 تربيت بدني برادران\nپيش نياز: 1312557 تربيت بدني 1 برادران\nپيش نياز: 1312847 تربيت بدني ويژه برادران",
+        "notes": "فوتبال",
+        "classes": [
+          {
+            "day": "mon",
+            "start": 10,
+            "end": 12,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131277505,
+        "course_code": "1312775_05",
+        "course_name": "ورزش 1 برادران",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 25,
+        "gender": "M",
+        "professor_name": "سلطاني آقائي كوپائي مهدي",
+        "class_location": "تربيت بدني و علوم ورزشي _ بهراميان 3",
+        "prerequisites": "پيش نياز: 1312845 تربيت بدني برادران\nپيش نياز: 1312557 تربيت بدني 1 برادران\nپيش نياز: 1312847 تربيت بدني ويژه برادران",
+        "notes": "تنيس روي ميز",
+        "classes": [
+          {
+            "day": "mon",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131277506,
+        "course_code": "1312775_06",
+        "course_name": "ورزش 1 برادران",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 26,
+        "gender": "M",
+        "professor_name": "سلطاني آقائي كوپائي مهدي",
+        "class_location": "تربيت بدني و علوم ورزشي _ بهراميان 3",
+        "prerequisites": "پيش نياز: 1312845 تربيت بدني برادران\nپيش نياز: 1312557 تربيت بدني 1 برادران\nپيش نياز: 1312847 تربيت بدني ويژه برادران",
+        "notes": "تنيس روي ميز",
+        "classes": [
+          {
+            "day": "mon",
+            "start": 10,
+            "end": 12,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131277507,
+        "course_code": "1312775_07",
+        "course_name": "ورزش 1 برادران",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 21,
+        "gender": "M",
+        "professor_name": "وحداني محسن",
+        "class_location": "تربيت بدني و علوم ورزشي _ بهراميان 2",
+        "prerequisites": "پيش نياز: 1312845 تربيت بدني برادران\nپيش نياز: 1312557 تربيت بدني 1 برادران\nپيش نياز: 1312847 تربيت بدني ويژه برادران",
+        "notes": "فوتسال",
+        "classes": [
+          {
+            "day": "mon",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131277508,
+        "course_code": "1312775_08",
+        "course_name": "ورزش 1 برادران",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 25,
+        "gender": "M",
+        "professor_name": "لباف اميرحسين",
+        "class_location": "تربيت بدني و علوم ورزشي _ زمين چمن شماره 1",
+        "prerequisites": "پيش نياز: 1312845 تربيت بدني برادران\nپيش نياز: 1312557 تربيت بدني 1 برادران\nپيش نياز: 1312847 تربيت بدني ويژه برادران",
+        "notes": "فوتبال",
+        "classes": [
+          {
+            "day": "wed",
+            "start": 14,
+            "end": 16,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131277509,
+        "course_code": "1312775_09",
+        "course_name": "ورزش 1 برادران",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 26,
+        "gender": "M",
+        "professor_name": "صفري حامد",
+        "class_location": "تربيت بدني و علوم ورزشي _ زمين چمن شماره 1",
+        "prerequisites": "پيش نياز: 1312845 تربيت بدني برادران\nپيش نياز: 1312557 تربيت بدني 1 برادران\nپيش نياز: 1312847 تربيت بدني ويژه برادران",
+        "notes": "فوتبال",
+        "classes": [
+          {
+            "day": "sun",
+            "start": 10,
+            "end": 12,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131277510,
+        "course_code": "1312775_10",
+        "course_name": "ورزش 1 برادران",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 24,
+        "gender": "M",
+        "professor_name": "صفري حامد",
+        "class_location": "تربيت بدني و علوم ورزشي _ زمين چمن شماره 1",
+        "prerequisites": "پيش نياز: 1312845 تربيت بدني برادران\nپيش نياز: 1312557 تربيت بدني 1 برادران\nپيش نياز: 1312847 تربيت بدني ويژه برادران",
+        "notes": "فوتبال",
+        "classes": [
+          {
+            "day": "sun",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131277511,
+        "course_code": "1312775_11",
+        "course_name": "ورزش 1 برادران",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 26,
+        "gender": "M",
+        "professor_name": "صالحي محمد",
+        "class_location": "تربيت بدني و علوم ورزشي _ بدنسازي",
+        "prerequisites": "پيش نياز: 1312845 تربيت بدني برادران\nپيش نياز: 1312557 تربيت بدني 1 برادران\nپيش نياز: 1312847 تربيت بدني ويژه برادران",
+        "notes": "بدنسازي",
+        "classes": [
+          {
+            "day": "mon",
+            "start": 14,
+            "end": 16,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131277512,
+        "course_code": "1312775_12",
+        "course_name": "ورزش 1 برادران",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 26,
+        "gender": "M",
+        "professor_name": "برومندپيروز امير",
+        "class_location": "تربيت بدني و علوم ورزشي _ زمين چمن شماره 1",
+        "prerequisites": "پيش نياز: 1312845 تربيت بدني برادران\nپيش نياز: 1312557 تربيت بدني 1 برادران\nپيش نياز: 1312847 تربيت بدني ويژه برادران",
+        "notes": "فوتبال",
+        "classes": [
+          {
+            "day": "wed",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131277513,
+        "course_code": "1312775_13",
+        "course_name": "ورزش 1 برادران",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 24,
+        "gender": "M",
+        "professor_name": "برومندپيروز امير",
+        "class_location": "تربيت بدني و علوم ورزشي _ زمين چمن شماره 1",
+        "prerequisites": "پيش نياز: 1312845 تربيت بدني برادران\nپيش نياز: 1312557 تربيت بدني 1 برادران\nپيش نياز: 1312847 تربيت بدني ويژه برادران",
+        "notes": "فوتبال",
+        "classes": [
+          {
+            "day": "wed",
+            "start": 10,
+            "end": 12,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131277514,
+        "course_code": "1312775_14",
+        "course_name": "ورزش 1 برادران",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 22,
+        "gender": "M",
+        "professor_name": "آصفي احمدعلي",
+        "class_location": "تربيت بدني و علوم ورزشي _ زمين چمن شماره 1",
+        "prerequisites": "پيش نياز: 1312845 تربيت بدني برادران\nپيش نياز: 1312557 تربيت بدني 1 برادران\nپيش نياز: 1312847 تربيت بدني ويژه برادران",
+        "notes": "فوتبال",
+        "classes": [
+          {
+            "day": "mon",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131277515,
+        "course_code": "1312775_15",
+        "course_name": "ورزش 1 برادران",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 24,
+        "gender": "M",
+        "professor_name": "رضائي ابوالفضل",
+        "class_location": "تربيت بدني و علوم ورزشي _ زمين چمن شماره 1",
+        "prerequisites": "پيش نياز: 1312845 تربيت بدني برادران\nپيش نياز: 1312557 تربيت بدني 1 برادران\nپيش نياز: 1312847 تربيت بدني ويژه برادران",
+        "notes": "فوتبال",
+        "classes": [
+          {
+            "day": "tue",
+            "start": 10,
+            "end": 12,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131284401,
+        "course_code": "1312844_01",
+        "course_name": "تربيت بدني خواهران",
+        "theory": "1",
+        "practical": "0.5",
+        "capacity": 26,
+        "gender": "F",
+        "professor_name": "عاشقي زهرا",
+        "class_location": "تربيت بدني و علوم ورزشي _ سالن حجاب 5",
+        "prerequisites": "معادل: 1312556 تربيت بدني 1 خواهران",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sat",
+            "start": 10,
+            "end": 11,
+            "is_problem_solving": false
+          },
+          {
+            "day": "sat",
+            "start": 11,
+            "end": 12,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131284402,
+        "course_code": "1312844_02",
+        "course_name": "تربيت بدني خواهران",
+        "theory": "1",
+        "practical": "0.5",
+        "capacity": 27,
+        "gender": "F",
+        "professor_name": "قاسمي پور سحر",
+        "class_location": "تربيت بدني و علوم ورزشي _ سالن حجاب 2",
+        "prerequisites": "معادل: 1312556 تربيت بدني 1 خواهران",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sun",
+            "start": 11,
+            "end": 12,
+            "is_problem_solving": false
+          },
+          {
+            "day": "sun",
+            "start": 10,
+            "end": 11,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131284403,
+        "course_code": "1312844_03",
+        "course_name": "تربيت بدني خواهران",
+        "theory": "1",
+        "practical": "0.5",
+        "capacity": 25,
+        "gender": "F",
+        "professor_name": "عسگراني محبوبه",
+        "class_location": "تربيت بدني و علوم ورزشي _ سالن حجاب 3",
+        "prerequisites": "معادل: 1312556 تربيت بدني 1 خواهران",
+        "notes": "",
+        "classes": [
+          {
+            "day": "tue",
+            "start": 9,
+            "end": 10,
+            "is_problem_solving": false
+          },
+          {
+            "day": "tue",
+            "start": 8,
+            "end": 9,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131284404,
+        "course_code": "1312844_04",
+        "course_name": "تربيت بدني خواهران",
+        "theory": "1",
+        "practical": "0.5",
+        "capacity": 27,
+        "gender": "F",
+        "professor_name": "عسگراني محبوبه",
+        "class_location": "تربيت بدني و علوم ورزشي _ سالن حجاب 3",
+        "prerequisites": "معادل: 1312556 تربيت بدني 1 خواهران",
+        "notes": "",
+        "classes": [
+          {
+            "day": "tue",
+            "start": 11,
+            "end": 12,
+            "is_problem_solving": false
+          },
+          {
+            "day": "tue",
+            "start": 10,
+            "end": 11,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131284406,
+        "course_code": "1312844_06",
+        "course_name": "تربيت بدني خواهران",
+        "theory": "1",
+        "practical": "0.5",
+        "capacity": 25,
+        "gender": "F",
+        "professor_name": "حدادي زهره",
+        "class_location": "تربيت بدني و علوم ورزشي _ سالن حجاب 3",
+        "prerequisites": "معادل: 1312556 تربيت بدني 1 خواهران",
+        "notes": "",
+        "classes": [
+          {
+            "day": "tue",
+            "start": 15,
+            "end": 16,
+            "is_problem_solving": false
+          },
+          {
+            "day": "tue",
+            "start": 14,
+            "end": 15,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131284407,
+        "course_code": "1312844_07",
+        "course_name": "تربيت بدني خواهران",
+        "theory": "1",
+        "practical": "0.5",
+        "capacity": 26,
+        "gender": "F",
+        "professor_name": "امين هنگامه",
+        "class_location": "تربيت بدني و علوم ورزشي _ سالن حجاب 2",
+        "prerequisites": "معادل: 1312556 تربيت بدني 1 خواهران",
+        "notes": "",
+        "classes": [
+          {
+            "day": "wed",
+            "start": 9,
+            "end": 10,
+            "is_problem_solving": false
+          },
+          {
+            "day": "wed",
+            "start": 8,
+            "end": 9,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131284408,
+        "course_code": "1312844_08",
+        "course_name": "تربيت بدني خواهران",
+        "theory": "1",
+        "practical": "0.5",
+        "capacity": 25,
+        "gender": "F",
+        "professor_name": "هدايتي شيوا",
+        "class_location": "تربيت بدني و علوم ورزشي _ سالن حجاب 2",
+        "prerequisites": "معادل: 1312556 تربيت بدني 1 خواهران",
+        "notes": "",
+        "classes": [
+          {
+            "day": "wed",
+            "start": 11,
+            "end": 12,
+            "is_problem_solving": false
+          },
+          {
+            "day": "wed",
+            "start": 10,
+            "end": 11,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131284409,
+        "course_code": "1312844_09",
+        "course_name": "تربيت بدني خواهران",
+        "theory": "1",
+        "practical": "0.5",
+        "capacity": 26,
+        "gender": "F",
+        "professor_name": "بهرامي باصيري مرضيه",
+        "class_location": "تربيت بدني و علوم ورزشي _ سالن حجاب",
+        "prerequisites": "معادل: 1312556 تربيت بدني 1 خواهران",
+        "notes": "",
+        "classes": [
+          {
+            "day": "mon",
+            "start": 15,
+            "end": 16,
+            "is_problem_solving": false
+          },
+          {
+            "day": "mon",
+            "start": 14,
+            "end": 15,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131284410,
+        "course_code": "1312844_10",
+        "course_name": "تربيت بدني خواهران",
+        "theory": "1",
+        "practical": "0.5",
+        "capacity": 26,
+        "gender": "F",
+        "professor_name": "بهرامي باصيري مرضيه",
+        "class_location": "تربيت بدني و علوم ورزشي _ سالن حجاب",
+        "prerequisites": "معادل: 1312556 تربيت بدني 1 خواهران",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sat",
+            "start": 15,
+            "end": 16,
+            "is_problem_solving": false
+          },
+          {
+            "day": "sat",
+            "start": 14,
+            "end": 15,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131284411,
+        "course_code": "1312844_11",
+        "course_name": "تربيت بدني خواهران",
+        "theory": "1",
+        "practical": "0.5",
+        "capacity": 26,
+        "gender": "F",
+        "professor_name": "خلجي زهرا",
+        "class_location": "تربيت بدني و علوم ورزشي _ سالن حجاب 3",
+        "prerequisites": "معادل: 1312556 تربيت بدني 1 خواهران",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sat",
+            "start": 9,
+            "end": 10,
+            "is_problem_solving": false
+          },
+          {
+            "day": "sat",
+            "start": 8,
+            "end": 9,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131284412,
+        "course_code": "1312844_12",
+        "course_name": "تربيت بدني خواهران",
+        "theory": "1",
+        "practical": "0.5",
+        "capacity": 25,
+        "gender": "F",
+        "professor_name": "خلجي زهرا",
+        "class_location": "تربيت بدني و علوم ورزشي _ سالن حجاب 3",
+        "prerequisites": "معادل: 1312556 تربيت بدني 1 خواهران",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sat",
+            "start": 11,
+            "end": 12,
+            "is_problem_solving": false
+          },
+          {
+            "day": "sat",
+            "start": 10,
+            "end": 11,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131284413,
+        "course_code": "1312844_13",
+        "course_name": "تربيت بدني خواهران",
+        "theory": "1",
+        "practical": "0.5",
+        "capacity": 25,
+        "gender": "F",
+        "professor_name": "رحمتي فاطمه",
+        "class_location": "تربيت بدني و علوم ورزشي _ سالن حجاب",
+        "prerequisites": "معادل: 1312556 تربيت بدني 1 خواهران",
+        "notes": "",
+        "classes": [
+          {
+            "day": "wed",
+            "start": 11,
+            "end": 12,
+            "is_problem_solving": false
+          },
+          {
+            "day": "wed",
+            "start": 10,
+            "end": 11,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131284414,
+        "course_code": "1312844_14",
+        "course_name": "تربيت بدني خواهران",
+        "theory": "1",
+        "practical": "0.5",
+        "capacity": 26,
+        "gender": "F",
+        "professor_name": "تازشي حميده",
+        "class_location": "تربيت بدني و علوم ورزشي _ سالن حجاب",
+        "prerequisites": "معادل: 1312556 تربيت بدني 1 خواهران",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sun",
+            "start": 9,
+            "end": 10,
+            "is_problem_solving": false
+          },
+          {
+            "day": "sun",
+            "start": 8,
+            "end": 9,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131284415,
+        "course_code": "1312844_15",
+        "course_name": "تربيت بدني خواهران",
+        "theory": "1",
+        "practical": "0.5",
+        "capacity": 25,
+        "gender": "F",
+        "professor_name": "اميني راضيه",
+        "class_location": "تربيت بدني و علوم ورزشي _ سالن حجاب",
+        "prerequisites": "معادل: 1312556 تربيت بدني 1 خواهران",
+        "notes": "",
+        "classes": [
+          {
+            "day": "wed",
+            "start": 9,
+            "end": 10,
+            "is_problem_solving": false
+          },
+          {
+            "day": "wed",
+            "start": 8,
+            "end": 9,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131284416,
+        "course_code": "1312844_16",
+        "course_name": "تربيت بدني خواهران",
+        "theory": "1",
+        "practical": "0.5",
+        "capacity": 26,
+        "gender": "F",
+        "professor_name": "امين هنگامه",
+        "class_location": "تربيت بدني و علوم ورزشي _ شهيد نيلفروش زاده",
+        "prerequisites": "معادل: 1312556 تربيت بدني 1 خواهران",
+        "notes": "",
+        "classes": [
+          {
+            "day": "wed",
+            "start": 11,
+            "end": 12,
+            "is_problem_solving": false
+          },
+          {
+            "day": "wed",
+            "start": 10,
+            "end": 11,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131284417,
+        "course_code": "1312844_17",
+        "course_name": "تربيت بدني خواهران",
+        "theory": "1",
+        "practical": "0.5",
+        "capacity": 26,
+        "gender": "F",
+        "professor_name": "تيموري جروكاني مرجان",
+        "class_location": "تربيت بدني و علوم ورزشي _ سالن حجاب 5",
+        "prerequisites": "معادل: 1312556 تربيت بدني 1 خواهران",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sat",
+            "start": 9,
+            "end": 10,
+            "is_problem_solving": false
+          },
+          {
+            "day": "sat",
+            "start": 8,
+            "end": 9,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131284418,
+        "course_code": "1312844_18",
+        "course_name": "تربيت بدني خواهران",
+        "theory": "1",
+        "practical": "0.5",
+        "capacity": 25,
+        "gender": "F",
+        "professor_name": "مختاري ملك ابادي زهرا",
+        "class_location": "تربيت بدني و علوم ورزشي _ كشتي",
+        "prerequisites": "معادل: 1312556 تربيت بدني 1 خواهران",
+        "notes": "",
+        "classes": [
+          {
+            "day": "tue",
+            "start": 9,
+            "end": 10,
+            "is_problem_solving": false
+          },
+          {
+            "day": "tue",
+            "start": 8,
+            "end": 9,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131284419,
+        "course_code": "1312844_19",
+        "course_name": "تربيت بدني خواهران",
+        "theory": "1",
+        "practical": "0.5",
+        "capacity": 27,
+        "gender": "F",
+        "professor_name": "مهدي نژاد غزاله",
+        "class_location": "تربيت بدني و علوم ورزشي _ كشتي",
+        "prerequisites": "معادل: 1312556 تربيت بدني 1 خواهران",
+        "notes": "",
+        "classes": [
+          {
+            "day": "tue",
+            "start": 11,
+            "end": 12,
+            "is_problem_solving": false
+          },
+          {
+            "day": "tue",
+            "start": 10,
+            "end": 11,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131284423,
+        "course_code": "1312844_23",
+        "course_name": "تربيت بدني خواهران",
+        "theory": "1",
+        "practical": "0.5",
+        "capacity": 25,
+        "gender": "F",
+        "professor_name": "فتحي مهشيد",
+        "class_location": "تربيت بدني و علوم ورزشي _ سالن حجاب",
+        "prerequisites": "معادل: 1312556 تربيت بدني 1 خواهران",
+        "notes": "",
+        "classes": [
+          {
+            "day": "tue",
+            "start": 9,
+            "end": 10,
+            "is_problem_solving": false
+          },
+          {
+            "day": "tue",
+            "start": 8,
+            "end": 9,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131284424,
+        "course_code": "1312844_24",
+        "course_name": "تربيت بدني خواهران",
+        "theory": "1",
+        "practical": "0.5",
+        "capacity": 25,
+        "gender": "F",
+        "professor_name": "محققيان آذر",
+        "class_location": "تربيت بدني و علوم ورزشي _ سالن حجاب 3",
+        "prerequisites": "معادل: 1312556 تربيت بدني 1 خواهران",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sat",
+            "start": 15,
+            "end": 16,
+            "is_problem_solving": false
+          },
+          {
+            "day": "sat",
+            "start": 14,
+            "end": 15,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131284425,
+        "course_code": "1312844_25",
+        "course_name": "تربيت بدني خواهران",
+        "theory": "1",
+        "practical": "0.5",
+        "capacity": 25,
+        "gender": "F",
+        "professor_name": "علي نقي پور زكيه",
+        "class_location": "تربيت بدني و علوم ورزشي _ سالن حجاب 2",
+        "prerequisites": "معادل: 1312556 تربيت بدني 1 خواهران",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sun",
+            "start": 15,
+            "end": 16,
+            "is_problem_solving": false
+          },
+          {
+            "day": "sun",
+            "start": 14,
+            "end": 15,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131284426,
+        "course_code": "1312844_26",
+        "course_name": "تربيت بدني خواهران",
+        "theory": "1",
+        "practical": "0.5",
+        "capacity": 25,
+        "gender": "F",
+        "professor_name": "اسماعيلي مهسا",
+        "class_location": "تربيت بدني و علوم ورزشي _ سالن حجاب 2",
+        "prerequisites": "معادل: 1312556 تربيت بدني 1 خواهران",
+        "notes": "",
+        "classes": [
+          {
+            "day": "tue",
+            "start": 9,
+            "end": 10,
+            "is_problem_solving": false
+          },
+          {
+            "day": "tue",
+            "start": 8,
+            "end": 9,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 131284427,
+        "course_code": "1312844_27",
+        "course_name": "تربيت بدني خواهران",
+        "theory": "1",
+        "practical": "0.5",
+        "capacity": 26,
+        "gender": "F",
+        "professor_name": "اسماعيلي مهسا",
+        "class_location": "تربيت بدني و علوم ورزشي _ سالن حجاب 4",
+        "prerequisites": "معادل: 1312556 تربيت بدني 1 خواهران",
+        "notes": "",
+        "classes": [
+          {
+            "day": "tue",
+            "start": 11,
+            "end": 12,
+            "is_problem_solving": false
+          },
+          {
+            "day": "tue",
+            "start": 10,
+            "end": 11,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 201216701,
+        "course_code": "2012167_01",
+        "course_name": "سيستمهاي كنترل خطي",
+        "theory": "3",
+        "practical": "0",
+        "capacity": 40,
+        "gender": "B",
+        "professor_name": "بلارك عليرضا\nمطهري فر محمد",
+        "class_location": "فني و مهندسي _ كلاس 10- طبقه اول -مجتمع كلاسها\nفني و مهندسي _ كلاس 50- طبقه همكف - ساختمان صناعت",
+        "prerequisites": "هم نياز: 2012169 ماشينهاي الكتريكي 1\nمعادل: 2014143 سيستمهاي كنترل خطي\nمعادل: 2014143 سيستمهاي كنترل خطي\nمعادل: 3620051 سيستم هاي كنترل خطي",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sun",
+            "start": 16,
+            "end": 17,
+            "is_problem_solving": false
+          },
+          {
+            "day": "mon",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          },
+          {
+            "day": "sun",
+            "start": 17,
+            "end": 18,
+            "is_problem_solving": true
+          }
+        ],
+        "exam": {
+          "date": "1404/04/04",
+          "start": 11,
+          "end": 14
+        }
+      },
+      {
+        "id": 282202201,
+        "course_code": "2822022_01",
+        "course_name": "حقوق اجتماعي و سياسي در اسلام",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 51,
+        "gender": "M",
+        "professor_name": "بهرامي حمزه علي",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 101 طبقه همكف",
+        "prerequisites": "",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sat",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 8,
+          "end": 10
+        }
+      },
+      {
+        "id": 282202202,
+        "course_code": "2822022_02",
+        "course_name": "حقوق اجتماعي و سياسي در اسلام",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 55,
+        "gender": "F",
+        "professor_name": "بهرامي حمزه علي",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 101 طبقه همكف",
+        "prerequisites": "",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sat",
+            "start": 10,
+            "end": 12,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 8,
+          "end": 10
+        }
+      },
+      {
+        "id": 282202203,
+        "course_code": "2822022_03",
+        "course_name": "حقوق اجتماعي و سياسي در اسلام",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 50,
+        "gender": "M",
+        "professor_name": "بهرامي حمزه علي",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 201 طبقه اول",
+        "prerequisites": "",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sun",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 8,
+          "end": 10
+        }
+      },
+      {
+        "id": 282202301,
+        "course_code": "2822023_01",
+        "course_name": "عرفان عملي در اسلام",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 50,
+        "gender": "F",
+        "professor_name": "شيراوند محسن",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 204 طبقه اول",
+        "prerequisites": "",
+        "notes": "",
+        "classes": [
+          {
+            "day": "mon",
+            "start": 16,
+            "end": 18,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 8,
+          "end": 10
+        }
+      },
+      {
+        "id": 282203301,
+        "course_code": "2822033_01",
+        "course_name": "فلسفه اخلاق - با تكيه بر مباحث تربيتي",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 55,
+        "gender": "M",
+        "professor_name": "شيراوند محسن",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 101 طبقه همكف",
+        "prerequisites": "",
+        "notes": "",
+        "classes": [
+          {
+            "day": "tue",
+            "start": 14,
+            "end": 16,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 8,
+          "end": 10
+        }
+      },
+      {
+        "id": 282203303,
+        "course_code": "2822033_03",
+        "course_name": "فلسفه اخلاق - با تكيه بر مباحث تربيتي",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 40,
+        "gender": "F",
+        "professor_name": "سپاهي مجتبي",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 205 طبقه اول",
+        "prerequisites": "",
+        "notes": "",
+        "classes": [
+          {
+            "day": "tue",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 8,
+          "end": 10
+        }
+      },
+      {
+        "id": 282203305,
+        "course_code": "2822033_05",
+        "course_name": "فلسفه اخلاق - با تكيه بر مباحث تربيتي",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 56,
+        "gender": "M",
+        "professor_name": "هاشم زاده اصفهاني سيدعلي اصغر",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 105 طبقه همكف",
+        "prerequisites": "",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sat",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 8,
+          "end": 10
+        }
+      },
+      {
+        "id": 282203306,
+        "course_code": "2822033_06",
+        "course_name": "فلسفه اخلاق - با تكيه بر مباحث تربيتي",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 35,
+        "gender": "F",
+        "professor_name": "هاشم زاده اصفهاني سيدعلي اصغر",
+        "class_location": "ادبيات و علوم انساني _ 12- طبقه اول - ادبيات",
+        "prerequisites": "",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sat",
+            "start": 10,
+            "end": 12,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 8,
+          "end": 10
+        }
+      },
+      {
+        "id": 282206501,
+        "course_code": "2822065_01",
+        "course_name": "تفسير موضوعي نهج البلاغه",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 53,
+        "gender": "M",
+        "professor_name": "حسنوند صحبت ا...",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 105 طبقه همكف",
+        "prerequisites": "",
+        "notes": "",
+        "classes": [
+          {
+            "day": "tue",
+            "start": 14,
+            "end": 16,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/23",
+          "start": 8,
+          "end": 10
+        }
+      },
+      {
+        "id": 282206601,
+        "course_code": "2822066_01",
+        "course_name": "تاريخ تحليلي صدر اسلام",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 45,
+        "gender": "F",
+        "professor_name": "سعيديان جزي مريم",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 103 طبقه همكف",
+        "prerequisites": "معادل: 1616031 تاريخ اسلام",
+        "notes": "",
+        "classes": [
+          {
+            "day": "tue",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/23",
+          "start": 8,
+          "end": 10
+        }
+      },
+      {
+        "id": 282206602,
+        "course_code": "2822066_02",
+        "course_name": "تاريخ تحليلي صدر اسلام",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 49,
+        "gender": "F",
+        "professor_name": "سعيديان جزي مريم",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 101 طبقه همكف",
+        "prerequisites": "معادل: 1616031 تاريخ اسلام",
+        "notes": "",
+        "classes": [
+          {
+            "day": "mon",
+            "start": 14,
+            "end": 16,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/23",
+          "start": 8,
+          "end": 10
+        }
+      },
+      {
+        "id": 282206603,
+        "course_code": "2822066_03",
+        "course_name": "تاريخ تحليلي صدر اسلام",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 25,
+        "gender": "B",
+        "professor_name": "زينلي بهمن",
+        "class_location": "روانشناسي و علوم تربيتي _ A123",
+        "prerequisites": "معادل: 1616031 تاريخ اسلام",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sun",
+            "start": 14,
+            "end": 16,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/23",
+          "start": 8,
+          "end": 10
+        }
+      },
+      {
+        "id": 282206701,
+        "course_code": "2822067_01",
+        "course_name": "آشنايي با قانون اساسي",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 51,
+        "gender": "F",
+        "professor_name": "نصراصفهاني علي",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 101 طبقه همكف",
+        "prerequisites": "",
+        "notes": "",
+        "classes": [
+          {
+            "day": "mon",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 10,
+          "end": 12
+        }
+      },
+      {
+        "id": 282206702,
+        "course_code": "2822067_02",
+        "course_name": "آشنايي با قانون اساسي",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 50,
+        "gender": "M",
+        "professor_name": "نصراصفهاني علي",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 101 طبقه همكف",
+        "prerequisites": "",
+        "notes": "",
+        "classes": [
+          {
+            "day": "mon",
+            "start": 10,
+            "end": 12,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 10,
+          "end": 12
+        }
+      },
+      {
+        "id": 282206704,
+        "course_code": "2822067_04",
+        "course_name": "آشنايي با قانون اساسي",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 51,
+        "gender": "M",
+        "professor_name": "شاه سنايي گنيراني محمد",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 204 طبقه اول",
+        "prerequisites": "",
+        "notes": "",
+        "classes": [
+          {
+            "day": "wed",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 10,
+          "end": 12
+        }
+      },
+      {
+        "id": 282206705,
+        "course_code": "2822067_05",
+        "course_name": "آشنايي با قانون اساسي",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 50,
+        "gender": "F",
+        "professor_name": "شاه سنايي گنيراني محمد",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 204 طبقه اول",
+        "prerequisites": "",
+        "notes": "",
+        "classes": [
+          {
+            "day": "wed",
+            "start": 10,
+            "end": 12,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 10,
+          "end": 12
+        }
+      },
+      {
+        "id": 282206801,
+        "course_code": "2822068_01",
+        "course_name": "تاريخ امامت",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 40,
+        "gender": "F",
+        "professor_name": "سعيديان جزي مريم",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 203 طبقه اول",
+        "prerequisites": "معادل: 2822083 تاريخ اسلام\nمعادل: 6212224 تاريخ امامت",
+        "notes": "",
+        "classes": [
+          {
+            "day": "mon",
+            "start": 10,
+            "end": 12,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/23",
+          "start": 8,
+          "end": 10
+        }
+      },
+      {
+        "id": 282207001,
+        "course_code": "2822070_01",
+        "course_name": "آيين زندگي ( اخلاق كاربردي)",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 40,
+        "gender": "M",
+        "professor_name": "محمودي سيداحمد",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 205 طبقه اول",
+        "prerequisites": "معادل: 6014060 آيين زندگي",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sat",
+            "start": 10,
+            "end": 12,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 8,
+          "end": 10
+        }
+      },
+      {
+        "id": 282207002,
+        "course_code": "2822070_02",
+        "course_name": "آيين زندگي ( اخلاق كاربردي)",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 55,
+        "gender": "F",
+        "professor_name": "هاشم زاده اصفهاني سيدعلي اصغر",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 201 طبقه اول",
+        "prerequisites": "معادل: 6014060 آيين زندگي",
+        "notes": "",
+        "classes": [
+          {
+            "day": "mon",
+            "start": 10,
+            "end": 12,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 8,
+          "end": 10
+        }
+      },
+      {
+        "id": 282207003,
+        "course_code": "2822070_03",
+        "course_name": "آيين زندگي ( اخلاق كاربردي)",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 44,
+        "gender": "F",
+        "professor_name": "مهدوي سيدسعيد",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 202 طبقه اول",
+        "prerequisites": "معادل: 6014060 آيين زندگي",
+        "notes": "",
+        "classes": [
+          {
+            "day": "mon",
+            "start": 14,
+            "end": 16,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 8,
+          "end": 10
+        }
+      },
+      {
+        "id": 282207004,
+        "course_code": "2822070_04",
+        "course_name": "آيين زندگي ( اخلاق كاربردي)",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 45,
+        "gender": "M",
+        "professor_name": "مهدوي سيدسعيد",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 202 طبقه اول",
+        "prerequisites": "معادل: 6014060 آيين زندگي",
+        "notes": "",
+        "classes": [
+          {
+            "day": "mon",
+            "start": 16,
+            "end": 18,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 8,
+          "end": 10
+        }
+      },
+      {
+        "id": 282207005,
+        "course_code": "2822070_05",
+        "course_name": "آيين زندگي ( اخلاق كاربردي)",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 43,
+        "gender": "M",
+        "professor_name": "مهدوي سيدسعيد",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 202 طبقه اول",
+        "prerequisites": "معادل: 6014060 آيين زندگي",
+        "notes": "",
+        "classes": [
+          {
+            "day": "tue",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 8,
+          "end": 10
+        }
+      },
+      {
+        "id": 282207006,
+        "course_code": "2822070_06",
+        "course_name": "آيين زندگي ( اخلاق كاربردي)",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 45,
+        "gender": "F",
+        "professor_name": "مهدوي سيدسعيد",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 202 طبقه اول",
+        "prerequisites": "معادل: 6014060 آيين زندگي",
+        "notes": "",
+        "classes": [
+          {
+            "day": "tue",
+            "start": 10,
+            "end": 12,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 8,
+          "end": 10
+        }
+      },
+      {
+        "id": 282207007,
+        "course_code": "2822070_07",
+        "course_name": "آيين زندگي ( اخلاق كاربردي)",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 55,
+        "gender": "M",
+        "professor_name": "هاشم زاده اصفهاني سيدعلي اصغر",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 201 طبقه اول",
+        "prerequisites": "معادل: 6014060 آيين زندگي",
+        "notes": "",
+        "classes": [
+          {
+            "day": "tue",
+            "start": 10,
+            "end": 12,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 8,
+          "end": 10
+        }
+      },
+      {
+        "id": 282207008,
+        "course_code": "2822070_08",
+        "course_name": "آيين زندگي ( اخلاق كاربردي)",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 45,
+        "gender": "M",
+        "professor_name": "رستميان محمدعلي",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 202 طبقه اول",
+        "prerequisites": "معادل: 6014060 آيين زندگي",
+        "notes": "",
+        "classes": [
+          {
+            "day": "wed",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 8,
+          "end": 10
+        }
+      },
+      {
+        "id": 282207009,
+        "course_code": "2822070_09",
+        "course_name": "آيين زندگي ( اخلاق كاربردي)",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 43,
+        "gender": "F",
+        "professor_name": "رستميان محمدعلي",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 202 طبقه اول",
+        "prerequisites": "معادل: 6014060 آيين زندگي",
+        "notes": "",
+        "classes": [
+          {
+            "day": "mon",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 8,
+          "end": 10
+        }
+      },
+      {
+        "id": 282207012,
+        "course_code": "2822070_12",
+        "course_name": "آيين زندگي ( اخلاق كاربردي)",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 53,
+        "gender": "F",
+        "professor_name": "دوايي زهرا",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 201 طبقه اول",
+        "prerequisites": "معادل: 6014060 آيين زندگي",
+        "notes": "",
+        "classes": [
+          {
+            "day": "wed",
+            "start": 10,
+            "end": 12,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 8,
+          "end": 10
+        }
+      },
+      {
+        "id": 282207013,
+        "course_code": "2822070_13",
+        "course_name": "آيين زندگي ( اخلاق كاربردي)",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 51,
+        "gender": "F",
+        "professor_name": "احمديان احمدآبادي اكرم",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 204 طبقه اول",
+        "prerequisites": "معادل: 6014060 آيين زندگي",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sat",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 8,
+          "end": 10
+        }
+      },
+      {
+        "id": 282207014,
+        "course_code": "2822070_14",
+        "course_name": "آيين زندگي ( اخلاق كاربردي)",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 51,
+        "gender": "F",
+        "professor_name": "احمديان احمدآبادي اكرم",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 204 طبقه اول",
+        "prerequisites": "معادل: 6014060 آيين زندگي",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sat",
+            "start": 10,
+            "end": 12,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 8,
+          "end": 10
+        }
+      },
+      {
+        "id": 282207015,
+        "course_code": "2822070_15",
+        "course_name": "آيين زندگي ( اخلاق كاربردي)",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 50,
+        "gender": "F",
+        "professor_name": "محمودي سيداحمد",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 201 طبقه اول",
+        "prerequisites": "معادل: 6014060 آيين زندگي",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sun",
+            "start": 14,
+            "end": 16,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 8,
+          "end": 10
+        }
+      },
+      {
+        "id": 282207017,
+        "course_code": "2822070_17",
+        "course_name": "آيين زندگي ( اخلاق كاربردي)",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 42,
+        "gender": "F",
+        "professor_name": "دوايي زهرا",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 202 طبقه اول",
+        "prerequisites": "معادل: 6014060 آيين زندگي",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sun",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 8,
+          "end": 10
+        }
+      },
+      {
+        "id": 282207101,
+        "course_code": "2822071_01",
+        "course_name": "انسان در اسلام",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 40,
+        "gender": "M",
+        "professor_name": "عزيزي حسين",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 205 طبقه اول",
+        "prerequisites": "معادل: 6212219 انسان در اسلام\nمعادل: 6014049 انسان در اسلام",
+        "notes": "",
+        "classes": [
+          {
+            "day": "wed",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 10,
+          "end": 12
+        }
+      },
+      {
+        "id": 282207102,
+        "course_code": "2822071_02",
+        "course_name": "انسان در اسلام",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 50,
+        "gender": "M",
+        "professor_name": "رباني مصطفي",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 204 طبقه اول",
+        "prerequisites": "معادل: 6212219 انسان در اسلام\nمعادل: 6014049 انسان در اسلام",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sat",
+            "start": 16,
+            "end": 18,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 10,
+          "end": 12
+        }
+      },
+      {
+        "id": 282207103,
+        "course_code": "2822071_03",
+        "course_name": "انسان در اسلام",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 44,
+        "gender": "M",
+        "professor_name": "محمودي سيداحمد",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 105 طبقه همكف",
+        "prerequisites": "معادل: 6212219 انسان در اسلام\nمعادل: 6014049 انسان در اسلام",
+        "notes": "",
+        "classes": [
+          {
+            "day": "tue",
+            "start": 10,
+            "end": 12,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 10,
+          "end": 12
+        }
+      },
+      {
+        "id": 282207104,
+        "course_code": "2822071_04",
+        "course_name": "انسان در اسلام",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 30,
+        "gender": "F",
+        "professor_name": "عزيزي حسين",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 102 طبقه همكف",
+        "prerequisites": "معادل: 6212219 انسان در اسلام\nمعادل: 6014049 انسان در اسلام",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sun",
+            "start": 14,
+            "end": 16,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 10,
+          "end": 12
+        }
+      },
+      {
+        "id": 282207105,
+        "course_code": "2822071_05",
+        "course_name": "انسان در اسلام",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 53,
+        "gender": "M",
+        "professor_name": "شيراوند محسن",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 101 طبقه همكف",
+        "prerequisites": "معادل: 6212219 انسان در اسلام\nمعادل: 6014049 انسان در اسلام",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sun",
+            "start": 14,
+            "end": 16,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 10,
+          "end": 12
+        }
+      },
+      {
+        "id": 282207106,
+        "course_code": "2822071_06",
+        "course_name": "انسان در اسلام",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 30,
+        "gender": "F",
+        "professor_name": "عزيزي حسين",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 102 طبقه همكف",
+        "prerequisites": "معادل: 6212219 انسان در اسلام\nمعادل: 6014049 انسان در اسلام",
+        "notes": "",
+        "classes": [
+          {
+            "day": "mon",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 10,
+          "end": 12
+        }
+      },
+      {
+        "id": 282207107,
+        "course_code": "2822071_07",
+        "course_name": "انسان در اسلام",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 50,
+        "gender": "M",
+        "professor_name": "محمودي سيداحمد",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 201 طبقه اول",
+        "prerequisites": "معادل: 6212219 انسان در اسلام\nمعادل: 6014049 انسان در اسلام",
+        "notes": "",
+        "classes": [
+          {
+            "day": "mon",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 10,
+          "end": 12
+        }
+      },
+      {
+        "id": 282207108,
+        "course_code": "2822071_08",
+        "course_name": "انسان در اسلام",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 55,
+        "gender": "F",
+        "professor_name": "مشكات عبدالرسول",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 106 طبقه همكف",
+        "prerequisites": "معادل: 6212219 انسان در اسلام\nمعادل: 6014049 انسان در اسلام",
+        "notes": "",
+        "classes": [
+          {
+            "day": "mon",
+            "start": 10,
+            "end": 12,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 10,
+          "end": 12
+        }
+      },
+      {
+        "id": 282207109,
+        "course_code": "2822071_09",
+        "course_name": "انسان در اسلام",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 54,
+        "gender": "F",
+        "professor_name": "شيراوند محسن",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 204 طبقه اول",
+        "prerequisites": "معادل: 6212219 انسان در اسلام\nمعادل: 6014049 انسان در اسلام",
+        "notes": "",
+        "classes": [
+          {
+            "day": "mon",
+            "start": 14,
+            "end": 16,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 10,
+          "end": 12
+        }
+      },
+      {
+        "id": 282207110,
+        "course_code": "2822071_10",
+        "course_name": "انسان در اسلام",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 45,
+        "gender": "F",
+        "professor_name": "سپاهي مجتبي",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 103 طبقه همكف",
+        "prerequisites": "معادل: 6212219 انسان در اسلام\nمعادل: 6014049 انسان در اسلام",
+        "notes": "",
+        "classes": [
+          {
+            "day": "tue",
+            "start": 10,
+            "end": 12,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 10,
+          "end": 12
+        }
+      },
+      {
+        "id": 282207111,
+        "course_code": "2822071_11",
+        "course_name": "انسان در اسلام",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 45,
+        "gender": "F",
+        "professor_name": "سپاهي مجتبي",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 103 طبقه همكف",
+        "prerequisites": "معادل: 6212219 انسان در اسلام\nمعادل: 6014049 انسان در اسلام",
+        "notes": "",
+        "classes": [
+          {
+            "day": "wed",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 10,
+          "end": 12
+        }
+      },
+      {
+        "id": 282207112,
+        "course_code": "2822071_12",
+        "course_name": "انسان در اسلام",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 40,
+        "gender": "F",
+        "professor_name": "سپاهي مجتبي",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 205 طبقه اول",
+        "prerequisites": "معادل: 6212219 انسان در اسلام\nمعادل: 6014049 انسان در اسلام",
+        "notes": "",
+        "classes": [
+          {
+            "day": "wed",
+            "start": 10,
+            "end": 12,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 10,
+          "end": 12
+        }
+      },
+      {
+        "id": 282207113,
+        "course_code": "2822071_13",
+        "course_name": "انسان در اسلام",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 54,
+        "gender": "F",
+        "professor_name": "مطهري نسب مسعود",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 106 طبقه همكف",
+        "prerequisites": "معادل: 6212219 انسان در اسلام\nمعادل: 6014049 انسان در اسلام",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sun",
+            "start": 16,
+            "end": 18,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 10,
+          "end": 12
+        }
+      },
+      {
+        "id": 282207401,
+        "course_code": "2822074_01",
+        "course_name": "انقلاب اسلامي ايران",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 50,
+        "gender": "F",
+        "professor_name": "مشكات عبدالرسول",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 201 طبقه اول",
+        "prerequisites": "معادل: 1612216 انقلاب اسلامي ايران\nمعادل: 1612216 انقلاب اسلامي ايران\nمعادل: 6014055 انقلاب اسلامي",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sat",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 10,
+          "end": 12
+        }
+      },
+      {
+        "id": 282207402,
+        "course_code": "2822074_02",
+        "course_name": "انقلاب اسلامي ايران",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 52,
+        "gender": "M",
+        "professor_name": "مشكات عبدالرسول",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 201 طبقه اول",
+        "prerequisites": "معادل: 1612216 انقلاب اسلامي ايران\nمعادل: 1612216 انقلاب اسلامي ايران\nمعادل: 6014055 انقلاب اسلامي",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sat",
+            "start": 10,
+            "end": 12,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 10,
+          "end": 12
+        }
+      },
+      {
+        "id": 282207403,
+        "course_code": "2822074_03",
+        "course_name": "انقلاب اسلامي ايران",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 50,
+        "gender": "F",
+        "professor_name": "عزيزخاني احمد",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 105 طبقه همكف",
+        "prerequisites": "معادل: 1612216 انقلاب اسلامي ايران\nمعادل: 1612216 انقلاب اسلامي ايران\nمعادل: 6014055 انقلاب اسلامي",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sat",
+            "start": 10,
+            "end": 12,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 10,
+          "end": 12
+        }
+      },
+      {
+        "id": 282207404,
+        "course_code": "2822074_04",
+        "course_name": "انقلاب اسلامي ايران",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 53,
+        "gender": "F",
+        "professor_name": "عزيزخاني احمد",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 201 طبقه اول",
+        "prerequisites": "معادل: 1612216 انقلاب اسلامي ايران\nمعادل: 1612216 انقلاب اسلامي ايران\nمعادل: 6014055 انقلاب اسلامي",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sat",
+            "start": 14,
+            "end": 16,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 10,
+          "end": 12
+        }
+      },
+      {
+        "id": 282207405,
+        "course_code": "2822074_05",
+        "course_name": "انقلاب اسلامي ايران",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 45,
+        "gender": "F",
+        "professor_name": "رفيعي غلام عباس",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 103 طبقه همكف",
+        "prerequisites": "معادل: 1612216 انقلاب اسلامي ايران\nمعادل: 1612216 انقلاب اسلامي ايران\nمعادل: 6014055 انقلاب اسلامي",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sat",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 10,
+          "end": 12
+        }
+      },
+      {
+        "id": 282207406,
+        "course_code": "2822074_06",
+        "course_name": "انقلاب اسلامي ايران",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 45,
+        "gender": "F",
+        "professor_name": "رفيعي غلام عباس",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 103 طبقه همكف",
+        "prerequisites": "معادل: 1612216 انقلاب اسلامي ايران\nمعادل: 1612216 انقلاب اسلامي ايران\nمعادل: 6014055 انقلاب اسلامي",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sat",
+            "start": 16,
+            "end": 18,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 10,
+          "end": 12
+        }
+      },
+      {
+        "id": 282207407,
+        "course_code": "2822074_07",
+        "course_name": "انقلاب اسلامي ايران",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 45,
+        "gender": "M",
+        "professor_name": "عزيزخاني احمد",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 203 طبقه اول",
+        "prerequisites": "معادل: 1612216 انقلاب اسلامي ايران\nمعادل: 1612216 انقلاب اسلامي ايران\nمعادل: 6014055 انقلاب اسلامي",
+        "notes": "",
+        "classes": [
+          {
+            "day": "mon",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 10,
+          "end": 12
+        }
+      },
+      {
+        "id": 282207408,
+        "course_code": "2822074_08",
+        "course_name": "انقلاب اسلامي ايران",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 51,
+        "gender": "F",
+        "professor_name": "مشكات عبدالرسول",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 106 طبقه همكف",
+        "prerequisites": "معادل: 1612216 انقلاب اسلامي ايران\nمعادل: 1612216 انقلاب اسلامي ايران\nمعادل: 6014055 انقلاب اسلامي",
+        "notes": "",
+        "classes": [
+          {
+            "day": "mon",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 10,
+          "end": 12
+        }
+      },
+      {
+        "id": 282207409,
+        "course_code": "2822074_09",
+        "course_name": "انقلاب اسلامي ايران",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 40,
+        "gender": "F",
+        "professor_name": "حمصيان اتفاق احمدرضا",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 205 طبقه اول",
+        "prerequisites": "معادل: 1612216 انقلاب اسلامي ايران\nمعادل: 1612216 انقلاب اسلامي ايران\nمعادل: 6014055 انقلاب اسلامي",
+        "notes": "",
+        "classes": [
+          {
+            "day": "mon",
+            "start": 14,
+            "end": 16,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 10,
+          "end": 12
+        }
+      },
+      {
+        "id": 282207410,
+        "course_code": "2822074_10",
+        "course_name": "انقلاب اسلامي ايران",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 40,
+        "gender": "M",
+        "professor_name": "حمصيان اتفاق احمدرضا",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 205 طبقه اول",
+        "prerequisites": "معادل: 1612216 انقلاب اسلامي ايران\nمعادل: 1612216 انقلاب اسلامي ايران\nمعادل: 6014055 انقلاب اسلامي",
+        "notes": "",
+        "classes": [
+          {
+            "day": "mon",
+            "start": 16,
+            "end": 18,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 10,
+          "end": 12
+        }
+      },
+      {
+        "id": 282207411,
+        "course_code": "2822074_11",
+        "course_name": "انقلاب اسلامي ايران",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 50,
+        "gender": "F",
+        "professor_name": "مشكات عبدالرسول",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 106 طبقه همكف",
+        "prerequisites": "معادل: 1612216 انقلاب اسلامي ايران\nمعادل: 1612216 انقلاب اسلامي ايران\nمعادل: 6014055 انقلاب اسلامي",
+        "notes": "",
+        "classes": [
+          {
+            "day": "tue",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 10,
+          "end": 12
+        }
+      },
+      {
+        "id": 282207412,
+        "course_code": "2822074_12",
+        "course_name": "انقلاب اسلامي ايران",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 50,
+        "gender": "M",
+        "professor_name": "عزيزخاني احمد",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 101 طبقه همكف",
+        "prerequisites": "معادل: 1612216 انقلاب اسلامي ايران\nمعادل: 1612216 انقلاب اسلامي ايران\nمعادل: 6014055 انقلاب اسلامي",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sun",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 10,
+          "end": 12
+        }
+      },
+      {
+        "id": 282207413,
+        "course_code": "2822074_13",
+        "course_name": "انقلاب اسلامي ايران",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 51,
+        "gender": "M",
+        "professor_name": "زينلي بهمن",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 101 طبقه همكف",
+        "prerequisites": "معادل: 1612216 انقلاب اسلامي ايران\nمعادل: 1612216 انقلاب اسلامي ايران\nمعادل: 6014055 انقلاب اسلامي",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sat",
+            "start": 16,
+            "end": 18,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 10,
+          "end": 12
+        }
+      },
+      {
+        "id": 282207414,
+        "course_code": "2822074_14",
+        "course_name": "انقلاب اسلامي ايران",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 50,
+        "gender": "F",
+        "professor_name": "زينلي بهمن",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 201 طبقه اول",
+        "prerequisites": "معادل: 1612216 انقلاب اسلامي ايران\nمعادل: 1612216 انقلاب اسلامي ايران\nمعادل: 6014055 انقلاب اسلامي",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sun",
+            "start": 16,
+            "end": 18,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 10,
+          "end": 12
+        }
+      },
+      {
+        "id": 282207415,
+        "course_code": "2822074_15",
+        "course_name": "انقلاب اسلامي ايران",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 43,
+        "gender": "M",
+        "professor_name": "مطهري نسب مسعود",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 103 طبقه همكف",
+        "prerequisites": "معادل: 1612216 انقلاب اسلامي ايران\nمعادل: 1612216 انقلاب اسلامي ايران\nمعادل: 6014055 انقلاب اسلامي",
+        "notes": "",
+        "classes": [
+          {
+            "day": "mon",
+            "start": 14,
+            "end": 16,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 10,
+          "end": 12
+        }
+      },
+      {
+        "id": 282207416,
+        "course_code": "2822074_16",
+        "course_name": "انقلاب اسلامي ايران",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 50,
+        "gender": "F",
+        "professor_name": "رفيعي غلام عباس",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 204 طبقه اول",
+        "prerequisites": "معادل: 1612216 انقلاب اسلامي ايران\nمعادل: 1612216 انقلاب اسلامي ايران\nمعادل: 6014055 انقلاب اسلامي",
+        "notes": "",
+        "classes": [
+          {
+            "day": "tue",
+            "start": 14,
+            "end": 16,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 10,
+          "end": 12
+        }
+      },
+      {
+        "id": 282207417,
+        "course_code": "2822074_17",
+        "course_name": "انقلاب اسلامي ايران",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 50,
+        "gender": "F",
+        "professor_name": "رفيعي غلام عباس",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 204 طبقه اول",
+        "prerequisites": "معادل: 1612216 انقلاب اسلامي ايران\nمعادل: 1612216 انقلاب اسلامي ايران\nمعادل: 6014055 انقلاب اسلامي",
+        "notes": "",
+        "classes": [
+          {
+            "day": "tue",
+            "start": 16,
+            "end": 18,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 10,
+          "end": 12
+        }
+      },
+      {
+        "id": 282207418,
+        "course_code": "2822074_18",
+        "course_name": "انقلاب اسلامي ايران",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 41,
+        "gender": "F",
+        "professor_name": "مشكات عبدالرسول",
+        "class_location": "ادبيات و علوم انساني _ ساختمان ادبيات كلاس 46( طيقه همكف)",
+        "prerequisites": "معادل: 1612216 انقلاب اسلامي ايران\nمعادل: 1612216 انقلاب اسلامي ايران\nمعادل: 6014055 انقلاب اسلامي",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sun",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 10,
+          "end": 12
+        }
+      },
+      {
+        "id": 282207501,
+        "course_code": "2822075_01",
+        "course_name": "انديشه اسلامي 2",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 40,
+        "gender": "F",
+        "professor_name": "نبيان پروين",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 205 طبقه اول",
+        "prerequisites": "معادل: 1612205 انديشه اسلامي 2\nمعادل: 2822079 معارف اسلامي 2-\nمعادل: 6014048 انديشه اسلامي 2",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sun",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 8,
+          "end": 10
+        }
+      },
+      {
+        "id": 282207502,
+        "course_code": "2822075_02",
+        "course_name": "انديشه اسلامي 2",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 52,
+        "gender": "F",
+        "professor_name": "نبيان پروين",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 106 طبقه همكف",
+        "prerequisites": "معادل: 1612205 انديشه اسلامي 2\nمعادل: 2822079 معارف اسلامي 2-\nمعادل: 6014048 انديشه اسلامي 2",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sun",
+            "start": 10,
+            "end": 12,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 8,
+          "end": 10
+        }
+      },
+      {
+        "id": 282207503,
+        "course_code": "2822075_03",
+        "course_name": "انديشه اسلامي 2",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 45,
+        "gender": "M",
+        "professor_name": "ميردامادي سيدمحمدحسين",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 203 طبقه اول",
+        "prerequisites": "معادل: 1612205 انديشه اسلامي 2\nمعادل: 2822079 معارف اسلامي 2-\nمعادل: 6014048 انديشه اسلامي 2",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sun",
+            "start": 14,
+            "end": 16,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 8,
+          "end": 10
+        }
+      },
+      {
+        "id": 282207504,
+        "course_code": "2822075_04",
+        "course_name": "انديشه اسلامي 2",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 45,
+        "gender": "F",
+        "professor_name": "رستميان محمدعلي",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 103 طبقه همكف",
+        "prerequisites": "معادل: 1612205 انديشه اسلامي 2\nمعادل: 2822079 معارف اسلامي 2-\nمعادل: 6014048 انديشه اسلامي 2",
+        "notes": "",
+        "classes": [
+          {
+            "day": "mon",
+            "start": 10,
+            "end": 12,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 8,
+          "end": 10
+        }
+      },
+      {
+        "id": 282207505,
+        "course_code": "2822075_05",
+        "course_name": "انديشه اسلامي 2",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 55,
+        "gender": "F",
+        "professor_name": "ميردامادي سيدمحمدحسين",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 201 طبقه اول",
+        "prerequisites": "معادل: 1612205 انديشه اسلامي 2\nمعادل: 2822079 معارف اسلامي 2-\nمعادل: 6014048 انديشه اسلامي 2",
+        "notes": "",
+        "classes": [
+          {
+            "day": "tue",
+            "start": 14,
+            "end": 16,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 8,
+          "end": 10
+        }
+      },
+      {
+        "id": 282207506,
+        "course_code": "2822075_06",
+        "course_name": "انديشه اسلامي 2",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 52,
+        "gender": "M",
+        "professor_name": "ذريه محمدجواد",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 101 طبقه همكف",
+        "prerequisites": "معادل: 1612205 انديشه اسلامي 2\nمعادل: 2822079 معارف اسلامي 2-\nمعادل: 6014048 انديشه اسلامي 2",
+        "notes": "",
+        "classes": [
+          {
+            "day": "mon",
+            "start": 16,
+            "end": 18,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 8,
+          "end": 10
+        }
+      },
+      {
+        "id": 282207507,
+        "course_code": "2822075_07",
+        "course_name": "انديشه اسلامي 2",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 45,
+        "gender": "F",
+        "professor_name": "رستميان محمدعلي",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 203 طبقه اول",
+        "prerequisites": "معادل: 1612205 انديشه اسلامي 2\nمعادل: 2822079 معارف اسلامي 2-\nمعادل: 6014048 انديشه اسلامي 2",
+        "notes": "",
+        "classes": [
+          {
+            "day": "tue",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/22",
+          "start": 8,
+          "end": 10
+        }
+      },
+      {
+        "id": 282207701,
+        "course_code": "2822077_01",
+        "course_name": "تفسير موضوعي قرآن",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 51,
+        "gender": "F",
+        "professor_name": "حاجي احمدي محمود",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 106 طبقه همكف",
+        "prerequisites": "معادل: 1612189 تفسير موضوعي قرآن\nمعادل: 6014058 تفسير موضوعي قرآن\nمعادل: 6212233 تفسير موضوعي قرآن",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sat",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/23",
+          "start": 8,
+          "end": 10
+        }
+      },
+      {
+        "id": 282207702,
+        "course_code": "2822077_02",
+        "course_name": "تفسير موضوعي قرآن",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 50,
+        "gender": "M",
+        "professor_name": "حاجي احمدي محمود",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 106 طبقه همكف",
+        "prerequisites": "معادل: 1612189 تفسير موضوعي قرآن\nمعادل: 6014058 تفسير موضوعي قرآن\nمعادل: 6212233 تفسير موضوعي قرآن",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sat",
+            "start": 10,
+            "end": 12,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/23",
+          "start": 8,
+          "end": 10
+        }
+      },
+      {
+        "id": 282207703,
+        "course_code": "2822077_03",
+        "course_name": "تفسير موضوعي قرآن",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 54,
+        "gender": "F",
+        "professor_name": "ملكوتي خواه اسماعيل",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 105 طبقه همكف",
+        "prerequisites": "معادل: 1612189 تفسير موضوعي قرآن\nمعادل: 6014058 تفسير موضوعي قرآن\nمعادل: 6212233 تفسير موضوعي قرآن",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sat",
+            "start": 14,
+            "end": 16,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/23",
+          "start": 8,
+          "end": 10
+        }
+      },
+      {
+        "id": 282207704,
+        "course_code": "2822077_04",
+        "course_name": "تفسير موضوعي قرآن",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 55,
+        "gender": "M",
+        "professor_name": "غفارزاده آزادلو علي",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 106 طبقه همكف",
+        "prerequisites": "معادل: 1612189 تفسير موضوعي قرآن\nمعادل: 6014058 تفسير موضوعي قرآن\nمعادل: 6212233 تفسير موضوعي قرآن",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sat",
+            "start": 16,
+            "end": 18,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/23",
+          "start": 8,
+          "end": 10
+        }
+      },
+      {
+        "id": 282207705,
+        "course_code": "2822077_05",
+        "course_name": "تفسير موضوعي قرآن",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 50,
+        "gender": "F",
+        "professor_name": "طاووسي احمدرضا",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 204 طبقه اول",
+        "prerequisites": "معادل: 1612189 تفسير موضوعي قرآن\nمعادل: 6014058 تفسير موضوعي قرآن\nمعادل: 6212233 تفسير موضوعي قرآن",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sun",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/23",
+          "start": 8,
+          "end": 10
+        }
+      },
+      {
+        "id": 282207706,
+        "course_code": "2822077_06",
+        "course_name": "تفسير موضوعي قرآن",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 55,
+        "gender": "M",
+        "professor_name": "علي محمدي علي",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 105 طبقه همكف",
+        "prerequisites": "معادل: 1612189 تفسير موضوعي قرآن\nمعادل: 6014058 تفسير موضوعي قرآن\nمعادل: 6212233 تفسير موضوعي قرآن",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sun",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/23",
+          "start": 8,
+          "end": 10
+        }
+      },
+      {
+        "id": 282207707,
+        "course_code": "2822077_07",
+        "course_name": "تفسير موضوعي قرآن",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 55,
+        "gender": "F",
+        "professor_name": "علي محمدي علي",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 105 طبقه همكف",
+        "prerequisites": "معادل: 1612189 تفسير موضوعي قرآن\nمعادل: 6014058 تفسير موضوعي قرآن\nمعادل: 6212233 تفسير موضوعي قرآن",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sun",
+            "start": 10,
+            "end": 12,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/23",
+          "start": 8,
+          "end": 10
+        }
+      },
+      {
+        "id": 282207708,
+        "course_code": "2822077_08",
+        "course_name": "تفسير موضوعي قرآن",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 53,
+        "gender": "M",
+        "professor_name": "طاووسي احمدرضا",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 204 طبقه اول",
+        "prerequisites": "معادل: 1612189 تفسير موضوعي قرآن\nمعادل: 6014058 تفسير موضوعي قرآن\nمعادل: 6212233 تفسير موضوعي قرآن",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sun",
+            "start": 10,
+            "end": 12,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/23",
+          "start": 8,
+          "end": 10
+        }
+      },
+      {
+        "id": 282207709,
+        "course_code": "2822077_09",
+        "course_name": "تفسير موضوعي قرآن",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 51,
+        "gender": "F",
+        "professor_name": "ملكوتي خواه اسماعيل",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 204 طبقه اول",
+        "prerequisites": "معادل: 1612189 تفسير موضوعي قرآن\nمعادل: 6014058 تفسير موضوعي قرآن\nمعادل: 6212233 تفسير موضوعي قرآن",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sun",
+            "start": 14,
+            "end": 16,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/23",
+          "start": 8,
+          "end": 10
+        }
+      },
+      {
+        "id": 282207710,
+        "course_code": "2822077_10",
+        "course_name": "تفسير موضوعي قرآن",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 45,
+        "gender": "F",
+        "professor_name": "پرچم اعظم",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 202 طبقه اول",
+        "prerequisites": "معادل: 1612189 تفسير موضوعي قرآن\nمعادل: 6014058 تفسير موضوعي قرآن\nمعادل: 6212233 تفسير موضوعي قرآن",
+        "notes": "",
+        "classes": [
+          {
+            "day": "mon",
+            "start": 10,
+            "end": 12,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/23",
+          "start": 8,
+          "end": 10
+        }
+      },
+      {
+        "id": 282207711,
+        "course_code": "2822077_11",
+        "course_name": "تفسير موضوعي قرآن",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 55,
+        "gender": "F",
+        "professor_name": "غفارزاده آزادلو علي",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 106 طبقه همكف",
+        "prerequisites": "معادل: 1612189 تفسير موضوعي قرآن\nمعادل: 6014058 تفسير موضوعي قرآن\nمعادل: 6212233 تفسير موضوعي قرآن",
+        "notes": "",
+        "classes": [
+          {
+            "day": "mon",
+            "start": 14,
+            "end": 16,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/23",
+          "start": 8,
+          "end": 10
+        }
+      },
+      {
+        "id": 282207712,
+        "course_code": "2822077_12",
+        "course_name": "تفسير موضوعي قرآن",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 55,
+        "gender": "M",
+        "professor_name": "حاجي احمدي محمود",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 106 طبقه همكف",
+        "prerequisites": "معادل: 1612189 تفسير موضوعي قرآن\nمعادل: 6014058 تفسير موضوعي قرآن\nمعادل: 6212233 تفسير موضوعي قرآن",
+        "notes": "",
+        "classes": [
+          {
+            "day": "tue",
+            "start": 10,
+            "end": 12,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/23",
+          "start": 8,
+          "end": 10
+        }
+      },
+      {
+        "id": 282207713,
+        "course_code": "2822077_13",
+        "course_name": "تفسير موضوعي قرآن",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 52,
+        "gender": "M",
+        "professor_name": "توكلي ورزنه محسن",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 106 طبقه همكف",
+        "prerequisites": "معادل: 1612189 تفسير موضوعي قرآن\nمعادل: 6014058 تفسير موضوعي قرآن\nمعادل: 6212233 تفسير موضوعي قرآن",
+        "notes": "",
+        "classes": [
+          {
+            "day": "mon",
+            "start": 16,
+            "end": 18,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/23",
+          "start": 8,
+          "end": 10
+        }
+      },
+      {
+        "id": 282207714,
+        "course_code": "2822077_14",
+        "course_name": "تفسير موضوعي قرآن",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 52,
+        "gender": "F",
+        "professor_name": "احمدنژاد امير",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 204 طبقه اول",
+        "prerequisites": "معادل: 1612189 تفسير موضوعي قرآن\nمعادل: 6014058 تفسير موضوعي قرآن\nمعادل: 6212233 تفسير موضوعي قرآن",
+        "notes": "",
+        "classes": [
+          {
+            "day": "tue",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/23",
+          "start": 8,
+          "end": 10
+        }
+      },
+      {
+        "id": 282207715,
+        "course_code": "2822077_15",
+        "course_name": "تفسير موضوعي قرآن",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 45,
+        "gender": "F",
+        "professor_name": "جان نثاري سعيده",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 203 طبقه اول",
+        "prerequisites": "معادل: 1612189 تفسير موضوعي قرآن\nمعادل: 6014058 تفسير موضوعي قرآن\nمعادل: 6212233 تفسير موضوعي قرآن",
+        "notes": "",
+        "classes": [
+          {
+            "day": "tue",
+            "start": 10,
+            "end": 12,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/23",
+          "start": 8,
+          "end": 10
+        }
+      },
+      {
+        "id": 282207716,
+        "course_code": "2822077_16",
+        "course_name": "تفسير موضوعي قرآن",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 52,
+        "gender": "F",
+        "professor_name": "شريفي محمد",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 106 طبقه همكف",
+        "prerequisites": "معادل: 1612189 تفسير موضوعي قرآن\nمعادل: 6014058 تفسير موضوعي قرآن\nمعادل: 6212233 تفسير موضوعي قرآن",
+        "notes": "",
+        "classes": [
+          {
+            "day": "tue",
+            "start": 14,
+            "end": 16,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/23",
+          "start": 8,
+          "end": 10
+        }
+      },
+      {
+        "id": 282207717,
+        "course_code": "2822077_17",
+        "course_name": "تفسير موضوعي قرآن",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 40,
+        "gender": "F",
+        "professor_name": "جان نثاري سعيده",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 103 طبقه همكف",
+        "prerequisites": "معادل: 1612189 تفسير موضوعي قرآن\nمعادل: 6014058 تفسير موضوعي قرآن\nمعادل: 6212233 تفسير موضوعي قرآن",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sat",
+            "start": 10,
+            "end": 12,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/23",
+          "start": 8,
+          "end": 10
+        }
+      },
+      {
+        "id": 282207720,
+        "course_code": "2822077_20",
+        "course_name": "تفسير موضوعي قرآن",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 50,
+        "gender": "M",
+        "professor_name": "احمدنژاد امير",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 106 طبقه همكف",
+        "prerequisites": "معادل: 1612189 تفسير موضوعي قرآن\nمعادل: 6014058 تفسير موضوعي قرآن\nمعادل: 6212233 تفسير موضوعي قرآن",
+        "notes": "",
+        "classes": [
+          {
+            "day": "wed",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/23",
+          "start": 8,
+          "end": 10
+        }
+      },
+      {
+        "id": 282207721,
+        "course_code": "2822077_21",
+        "course_name": "تفسير موضوعي قرآن",
+        "theory": "2",
+        "practical": "0",
+        "capacity": 45,
+        "gender": "M",
+        "professor_name": "توكلي ورزنه محسن\nملكوتي خواه اسماعيل",
+        "class_location": "ساختمان جديد دانشكده الهيات و معارف اهل البيت _ ساختمان جديد دانشكده الهيات و معارف اهل البيت كلاس 202 طبقه اول",
+        "prerequisites": "معادل: 1612189 تفسير موضوعي قرآن\nمعادل: 6014058 تفسير موضوعي قرآن\nمعادل: 6212233 تفسير موضوعي قرآن",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sat",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/23",
+          "start": 8,
+          "end": 10
+        }
+      },
+      {
+        "id": 362001801,
+        "course_code": "3620018_01",
+        "course_name": "ريزپردازنده و زبان اسمبلي",
+        "theory": "3",
+        "practical": "0",
+        "capacity": 51,
+        "gender": "B",
+        "professor_name": "ماهوش محمدي حسين",
+        "class_location": "فني و مهندسي _ كلاس 14- طبقه دوم - مجتمع كلاسها",
+        "prerequisites": "پيش نياز: 3620013 معماري كامپيوتر\nمعادل: 3614034 ريزپردازنده 1",
+        "notes": "",
+        "classes": [
+          {
+            "day": "tue",
+            "start": 13,
+            "end": 14,
+            "is_problem_solving": false
+          },
+          {
+            "day": "wed",
+            "start": 14,
+            "end": 16,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/04/01",
+          "start": 14,
+          "end": 17
+        }
+      },
+      {
+        "id": 362002102,
+        "course_code": "3620021_02",
+        "course_name": "اصول طراحي كامپايلر",
+        "theory": "3",
+        "practical": "0",
+        "capacity": 40,
+        "gender": "B",
+        "professor_name": "شفيعي آرش",
+        "class_location": "علوم اداري و اقتصاد _ ساختمان قديم اقتصاد- همكف - شماره 1\nفني و مهندسي _ كلاس 14- طبقه دوم - مجتمع كلاسها",
+        "prerequisites": "پيش نياز: 3620319 ساختمان داده\nمعادل: 3620021 اصول طراحي كامپايلر\nمعادل: 3620021 اصول طراحي كامپايلر\nمعادل: 3620021 اصول طراحي كامپايلر\nمعادل: 3620021 اصول طراحي كامپايلر\nمعادل: 4016288 طراحي كامپايلر",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sat",
+            "start": 10,
+            "end": 12,
+            "is_problem_solving": false
+          },
+          {
+            "day": "mon",
+            "start": 13,
+            "end": 14,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/04/03",
+          "start": 8,
+          "end": 11
+        }
+      },
+      {
+        "id": 362002201,
+        "course_code": "3620022_01",
+        "course_name": "آزمايشگاه سيستم هاي عامل",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 16,
+        "gender": "B",
+        "professor_name": "بهلولي علي\nكياني رسول",
+        "class_location": "فني و مهندسي _ آزمايشگاه سيستم عامل و پايگاه داده - طبقه اول ساختمان خيرين",
+        "prerequisites": "پيش نياز: 3620014 سيستم هاي عامل\nهم نياز: معادل: 2016378 آزمايشگاه سيستم عامل\nمعادل: 3618027 آزمايشگاه سيستم عامل",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sun",
+            "start": 16,
+            "end": 18,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/30",
+          "start": 18,
+          "end": 19
+        }
+      },
+      {
+        "id": 362002202,
+        "course_code": "3620022_02",
+        "course_name": "آزمايشگاه سيستم هاي عامل",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 16,
+        "gender": "B",
+        "professor_name": "بهلولي علي\nكياني رسول",
+        "class_location": "فني و مهندسي _ آزمايشگاه سيستم عامل و پايگاه داده - طبقه اول ساختمان خيرين",
+        "prerequisites": "پيش نياز: 3620014 سيستم هاي عامل\nهم نياز: معادل: 2016378 آزمايشگاه سيستم عامل\nمعادل: 3618027 آزمايشگاه سيستم عامل",
+        "notes": "",
+        "classes": [
+          {
+            "day": "wed",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/31",
+          "start": 18,
+          "end": 19
+        }
+      },
+      {
+        "id": 362002203,
+        "course_code": "3620022_03",
+        "course_name": "آزمايشگاه سيستم هاي عامل",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 16,
+        "gender": "B",
+        "professor_name": "برزگري ناييني بنيامين\nبهلولي علي",
+        "class_location": "فني و مهندسي _ آزمايشگاه سيستم عامل و پايگاه داده - طبقه اول ساختمان خيرين",
+        "prerequisites": "پيش نياز: 3620014 سيستم هاي عامل\nهم نياز: معادل: 2016378 آزمايشگاه سيستم عامل\nمعادل: 3618027 آزمايشگاه سيستم عامل",
+        "notes": "",
+        "classes": [
+          {
+            "day": "wed",
+            "start": 14,
+            "end": 16,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/30",
+          "start": 18,
+          "end": 19
+        }
+      },
+      {
+        "id": 362002204,
+        "course_code": "3620022_04",
+        "course_name": "آزمايشگاه سيستم هاي عامل",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 16,
+        "gender": "B",
+        "professor_name": "برزگري ناييني بنيامين\nبهلولي علي\nخيرمند حميدرضا",
+        "class_location": "فني و مهندسي _ آزمايشگاه سيستم عامل و پايگاه داده - طبقه اول ساختمان خيرين",
+        "prerequisites": "پيش نياز: 3620014 سيستم هاي عامل\nهم نياز: معادل: 2016378 آزمايشگاه سيستم عامل\nمعادل: 3618027 آزمايشگاه سيستم عامل",
+        "notes": "",
+        "classes": [
+          {
+            "day": "wed",
+            "start": 10,
+            "end": 12,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/30",
+          "start": 18,
+          "end": 19
+        }
+      },
+      {
+        "id": 362002205,
+        "course_code": "3620022_05",
+        "course_name": "آزمايشگاه سيستم هاي عامل",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 16,
+        "gender": "B",
+        "professor_name": "بيكي زهره\nخيرمند حميدرضا",
+        "class_location": "فني و مهندسي _ آزمايشگاه سيستم عامل و پايگاه داده - طبقه اول ساختمان خيرين",
+        "prerequisites": "پيش نياز: 3620014 سيستم هاي عامل\nهم نياز: معادل: 2016378 آزمايشگاه سيستم عامل\nمعادل: 3618027 آزمايشگاه سيستم عامل",
+        "notes": "",
+        "classes": [
+          {
+            "day": "wed",
+            "start": 16,
+            "end": 18,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/30",
+          "start": 18,
+          "end": 19
+        }
+      },
+      {
+        "id": 362002206,
+        "course_code": "3620022_06",
+        "course_name": "آزمايشگاه سيستم هاي عامل",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 16,
+        "gender": "B",
+        "professor_name": "بيكي زهره",
+        "class_location": "فني و مهندسي _ آزمايشگاه سيستم عامل و پايگاه داده - طبقه اول ساختمان خيرين",
+        "prerequisites": "پيش نياز: 3620014 سيستم هاي عامل\nهم نياز: معادل: 2016378 آزمايشگاه سيستم عامل\nمعادل: 3618027 آزمايشگاه سيستم عامل",
+        "notes": "",
+        "classes": [
+          {
+            "day": "mon",
+            "start": 16,
+            "end": 18,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/30",
+          "start": 18,
+          "end": 19
+        }
+      },
+      {
+        "id": 362002207,
+        "course_code": "3620022_07",
+        "course_name": "آزمايشگاه سيستم هاي عامل",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 16,
+        "gender": "B",
+        "professor_name": "بهلولي علي\nخيرمند حميدرضا\nعرب بافراني مائده",
+        "class_location": "فني و مهندسي _ آزمايشگاه سيستم عامل و پايگاه داده - طبقه اول ساختمان خيرين",
+        "prerequisites": "پيش نياز: 3620014 سيستم هاي عامل\nهم نياز: معادل: 2016378 آزمايشگاه سيستم عامل\nمعادل: 3618027 آزمايشگاه سيستم عامل",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sun",
+            "start": 10,
+            "end": 12,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 362002501,
+        "course_code": "3620025_01",
+        "course_name": "آزمايشگاه شبكه هاي كامپيوتري",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 16,
+        "gender": "B",
+        "professor_name": "سادات مدني سيده مرضيه\nمهديخاني نهرخلجي مرضيه",
+        "class_location": "فني و مهندسي _ آزمايشگاه شبكه هاي كامپيوتري- طبقه اول ساختمان خيرين",
+        "prerequisites": "پيش نياز: 3620019 شبكه هاي كامپيوتري\nهم نياز: 3620019 شبكه هاي كامپيوتري\nمعادل: 3618026 آزمايشگاه شبكه",
+        "notes": "",
+        "classes": [
+          {
+            "day": "mon",
+            "start": 14,
+            "end": 16,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/04/06",
+          "start": 17,
+          "end": 18
+        }
+      },
+      {
+        "id": 362005001,
+        "course_code": "3620050_01",
+        "course_name": "انتقال داده ها",
+        "theory": "3",
+        "practical": "0",
+        "capacity": 40,
+        "gender": "B",
+        "professor_name": "شاه قلي قهفرخي بهروز",
+        "class_location": "فني و مهندسي _ كلاس 3- طبقه اول - مجتمع كلاسها\nفني و مهندسي _ كلاس4 - طبقه اول - مجتمع كلاسها",
+        "prerequisites": "پيش نياز: 3620019 شبكه هاي كامپيوتري",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sun",
+            "start": 10,
+            "end": 12,
+            "is_problem_solving": false
+          },
+          {
+            "day": "mon",
+            "start": 13,
+            "end": 14,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/26",
+          "start": 11,
+          "end": 14
+        }
+      },
+      {
+        "id": 362005401,
+        "course_code": "3620054_01",
+        "course_name": "كارآموزي",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 50,
+        "gender": "B",
+        "professor_name": "اساتيد گروه آموزشي",
+        "class_location": "",
+        "prerequisites": "پيش نياز: 3620012 روش پژوهش و ارائه",
+        "notes": "",
+        "classes": [],
+        "exam": null
+      },
+      {
+        "id": 362005901,
+        "course_code": "3620059_01",
+        "course_name": "مهندسي نرم افزار",
+        "theory": "3",
+        "practical": "0",
+        "capacity": 40,
+        "gender": "B",
+        "professor_name": "فاطمي خوراسگاني افسانه",
+        "class_location": "فني و مهندسي _ كلاس 14- طبقه دوم - مجتمع كلاسها\nفني و مهندسي _ كلاس4 - طبقه اول - مجتمع كلاسها",
+        "prerequisites": "پيش نياز: 3620056 تحليل و طراحي سيستم ها\nمعادل: 3618045 مهندسي نرم افزار1",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sat",
+            "start": 14,
+            "end": 15,
+            "is_problem_solving": false
+          },
+          {
+            "day": "sun",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/04/07",
+          "start": 14,
+          "end": 17
+        }
+      },
+      {
+        "id": 362005902,
+        "course_code": "3620059_02",
+        "course_name": "مهندسي نرم افزار",
+        "theory": "3",
+        "practical": "0",
+        "capacity": 48,
+        "gender": "B",
+        "professor_name": "شعرباف محمدرضا",
+        "class_location": "علوم اداري و اقتصاد _ ساختمان قديم اقتصاد- همكف - شماره 1\nفني و مهندسي _ كلاس 15- طبقه دوم - مجتمع كلاسها",
+        "prerequisites": "پيش نياز: 3620056 تحليل و طراحي سيستم ها\nمعادل: 3618045 مهندسي نرم افزار1",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sat",
+            "start": 14,
+            "end": 15,
+            "is_problem_solving": false
+          },
+          {
+            "day": "sun",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/04/07",
+          "start": 14,
+          "end": 17
+        }
+      },
+      {
+        "id": 362007601,
+        "course_code": "3620076_01",
+        "course_name": "تجارت الكترونيكي",
+        "theory": "3",
+        "practical": "0",
+        "capacity": 50,
+        "gender": "B",
+        "professor_name": "نوربهبهاني سيدفخرالدين",
+        "class_location": "فني و مهندسي _ كلاس 14- طبقه دوم - مجتمع كلاسها",
+        "prerequisites": "پيش نياز: 3620309 برنامه نويسي پيشرفته\nپيش نياز: 3620007 برنامه سازي پيشرفته\nمعادل: 3620076 تجارت الكترونيكي\nمعادل: 3620076 تجارت الكترونيكي\nمعادل: 3620076 تجارت الكترونيكي\nمعادل: 3620076 تجارت الكترونيكي",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sat",
+            "start": 15,
+            "end": 16,
+            "is_problem_solving": false
+          },
+          {
+            "day": "mon",
+            "start": 10,
+            "end": 12,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/04/03",
+          "start": 11,
+          "end": 14
+        }
+      },
+      {
+        "id": 362008401,
+        "course_code": "3620084_01",
+        "course_name": "مباني شبكه هاي بي سيم",
+        "theory": "3",
+        "practical": "0",
+        "capacity": 50,
+        "gender": "B",
+        "professor_name": "باطني محمدحسين",
+        "class_location": "فني و مهندسي _ كلاس 3- طبقه اول - مجتمع كلاسها",
+        "prerequisites": "پيش نياز: 3620019 شبكه هاي كامپيوتري",
+        "notes": "",
+        "classes": [
+          {
+            "day": "mon",
+            "start": 14,
+            "end": 16,
+            "is_problem_solving": false
+          },
+          {
+            "day": "wed",
+            "start": 10,
+            "end": 11,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/04/07",
+          "start": 8,
+          "end": 11
+        }
+      },
+      {
+        "id": 362008501,
+        "course_code": "3620085_01",
+        "course_name": "مباني هوش محاسباتي",
+        "theory": "3",
+        "practical": "0",
+        "capacity": 40,
+        "gender": "B",
+        "professor_name": "كارشناس نجف آبادي حسين",
+        "class_location": "فني و مهندسي _ كلاس 13- طبقه دوم - مجتمع كلاسها\nفني و مهندسي _ كلاس 14- طبقه دوم - مجتمع كلاسها",
+        "prerequisites": "پيش نياز: 3620015 طراحي الگوريتم ها\nهم نياز: 3620336 مباني و كاربردهاي هوش مصنوعي",
+        "notes": "",
+        "classes": [
+          {
+            "day": "tue",
+            "start": 10,
+            "end": 12,
+            "is_problem_solving": false
+          },
+          {
+            "day": "wed",
+            "start": 10,
+            "end": 11,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/25",
+          "start": 11,
+          "end": 14
+        }
+      },
+      {
+        "id": 362008502,
+        "course_code": "3620085_02",
+        "course_name": "مباني هوش محاسباتي",
+        "theory": "3",
+        "practical": "0",
+        "capacity": 40,
+        "gender": "B",
+        "professor_name": "هاتفي الهام",
+        "class_location": "علوم اداري و اقتصاد _ ساختمان قديم اقتصاد- همكف - شماره 1\nفني و مهندسي _ كلاس 14- طبقه دوم - مجتمع كلاسها",
+        "prerequisites": "پيش نياز: 3620015 طراحي الگوريتم ها\nهم نياز: 3620336 مباني و كاربردهاي هوش مصنوعي",
+        "notes": "",
+        "classes": [
+          {
+            "day": "tue",
+            "start": 10,
+            "end": 12,
+            "is_problem_solving": false
+          },
+          {
+            "day": "wed",
+            "start": 10,
+            "end": 11,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/25",
+          "start": 11,
+          "end": 14
+        }
+      },
+      {
+        "id": 362008701,
+        "course_code": "3620087_01",
+        "course_name": "مباني پردازش زبان و گفتار",
+        "theory": "3",
+        "practical": "0",
+        "capacity": 40,
+        "gender": "B",
+        "professor_name": "برادران كاشاني حميدرضا",
+        "class_location": "فني و مهندسي _ كلاس 13- طبقه دوم - مجتمع كلاسها\nفني و مهندسي _ كلاس 14- طبقه دوم - مجتمع كلاسها",
+        "prerequisites": "پيش نياز: 3620339 مباني يادگيري ماشين",
+        "notes": "",
+        "classes": [
+          {
+            "day": "tue",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          },
+          {
+            "day": "wed",
+            "start": 15,
+            "end": 16,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/04/02",
+          "start": 14,
+          "end": 17
+        }
+      },
+      {
+        "id": 362010101,
+        "course_code": "3620101_01",
+        "course_name": "گرافيك كامپيوتري",
+        "theory": "3",
+        "practical": "0",
+        "capacity": 40,
+        "gender": "B",
+        "professor_name": "ماهوش محمدي حسين",
+        "class_location": "فني و مهندسي _ كلاس 14- طبقه دوم - مجتمع كلاسها\nفني و مهندسي _ كلاس 3- طبقه اول - مجتمع كلاسها",
+        "prerequisites": "پيش نياز: 3620309 برنامه نويسي پيشرفته\nپيش نياز: 3620007 برنامه سازي پيشرفته\nمعادل: 3614020 گرافيك كامپيوتري 1\nمعادل: 3612113 گرافيك كامپيوتري 1\nمعادل: 4016281 گرافيك كامپيوتري1",
+        "notes": "",
+        "classes": [
+          {
+            "day": "mon",
+            "start": 16,
+            "end": 18,
+            "is_problem_solving": false
+          },
+          {
+            "day": "wed",
+            "start": 13,
+            "end": 14,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/27",
+          "start": 8,
+          "end": 11
+        }
+      },
+      {
+        "id": 362010401,
+        "course_code": "3620104_01",
+        "course_name": "مباني داده كاوي",
+        "theory": "3",
+        "practical": "0",
+        "capacity": 50,
+        "gender": "B",
+        "professor_name": "اژه اي منصوره",
+        "class_location": "فني و مهندسي _ كلاس 14- طبقه دوم - مجتمع كلاسها",
+        "prerequisites": "پيش نياز: 3620008 ساختمان هاي داده\nمعادل: 6016086 داده كاوي",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sun",
+            "start": 13,
+            "end": 14,
+            "is_problem_solving": false
+          },
+          {
+            "day": "tue",
+            "start": 14,
+            "end": 16,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/04/04",
+          "start": 11,
+          "end": 14
+        }
+      },
+      {
+        "id": 362010402,
+        "course_code": "3620104_02",
+        "course_name": "مباني داده كاوي",
+        "theory": "3",
+        "practical": "0",
+        "capacity": 50,
+        "gender": "B",
+        "professor_name": "كياني ابري محمد",
+        "class_location": "علوم اداري و اقتصاد _ ساختمان قديم اقتصاد- همكف - شماره 1\nفني و مهندسي _ كلاس 13- طبقه دوم - مجتمع كلاسها",
+        "prerequisites": "پيش نياز: 3620008 ساختمان هاي داده\nمعادل: 6016086 داده كاوي",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sun",
+            "start": 13,
+            "end": 14,
+            "is_problem_solving": false
+          },
+          {
+            "day": "tue",
+            "start": 14,
+            "end": 16,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/04/04",
+          "start": 11,
+          "end": 14
+        }
+      },
+      {
+        "id": 362031403,
+        "course_code": "3620314_03",
+        "course_name": "آزمايشگاه مدارهاي الكتريكي و الكترونيكي",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 14,
+        "gender": "B",
+        "professor_name": "خيرمند حميدرضا",
+        "class_location": "فني و مهندسي _ آزمايشگاه مدارهاي الكترونيكي و الكترونيك ديجيتال-طبقه اول ساختمان خيرين",
+        "prerequisites": "پيش نياز: 3620313 مدارهاي الكتريكي و الكترونيكي\nمعادل: 6016058 آزمايشگاه مدارهاي الكتريكي و الكترونيكي",
+        "notes": "",
+        "classes": [
+          {
+            "day": "wed",
+            "start": 14,
+            "end": 16,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/30",
+          "start": 17,
+          "end": 17
+        }
+      },
+      {
+        "id": 362031405,
+        "course_code": "3620314_05",
+        "course_name": "آزمايشگاه مدارهاي الكتريكي و الكترونيكي",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 14,
+        "gender": "B",
+        "professor_name": "خيرمند حميدرضا",
+        "class_location": "فني و مهندسي _ آزمايشگاه مدارهاي الكترونيكي و الكترونيك ديجيتال-طبقه اول ساختمان خيرين",
+        "prerequisites": "پيش نياز: 3620313 مدارهاي الكتريكي و الكترونيكي\nمعادل: 6016058 آزمايشگاه مدارهاي الكتريكي و الكترونيكي",
+        "notes": "",
+        "classes": [
+          {
+            "day": "tue",
+            "start": 16,
+            "end": 18,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/30",
+          "start": 17,
+          "end": 17
+        }
+      },
+      {
+        "id": 362031406,
+        "course_code": "3620314_06",
+        "course_name": "آزمايشگاه مدارهاي الكتريكي و الكترونيكي",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 14,
+        "gender": "B",
+        "professor_name": "خيرمند حميدرضا",
+        "class_location": "فني و مهندسي _ آزمايشگاه مدارهاي الكترونيكي و الكترونيك ديجيتال-طبقه اول ساختمان خيرين",
+        "prerequisites": "پيش نياز: 3620313 مدارهاي الكتريكي و الكترونيكي\nمعادل: 6016058 آزمايشگاه مدارهاي الكتريكي و الكترونيكي",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sun",
+            "start": 14,
+            "end": 16,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/30",
+          "start": 17,
+          "end": 17
+        }
+      },
+      {
+        "id": 362031407,
+        "course_code": "3620314_07",
+        "course_name": "آزمايشگاه مدارهاي الكتريكي و الكترونيكي",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 14,
+        "gender": "B",
+        "professor_name": "خيرمند حميدرضا",
+        "class_location": "فني و مهندسي _ آزمايشگاه مدارهاي الكترونيكي و الكترونيك ديجيتال-طبقه اول ساختمان خيرين",
+        "prerequisites": "پيش نياز: 3620313 مدارهاي الكتريكي و الكترونيكي\nمعادل: 6016058 آزمايشگاه مدارهاي الكتريكي و الكترونيكي",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sat",
+            "start": 16,
+            "end": 18,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/30",
+          "start": 17,
+          "end": 17
+        }
+      },
+      {
+        "id": 362031408,
+        "course_code": "3620314_08",
+        "course_name": "آزمايشگاه مدارهاي الكتريكي و الكترونيكي",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 14,
+        "gender": "B",
+        "professor_name": "رشادي نژاد محمدرضا",
+        "class_location": "فني و مهندسي _ آزمايشگاه مدارهاي الكترونيكي و الكترونيك ديجيتال-طبقه اول ساختمان خيرين",
+        "prerequisites": "پيش نياز: 3620313 مدارهاي الكتريكي و الكترونيكي\nمعادل: 6016058 آزمايشگاه مدارهاي الكتريكي و الكترونيكي",
+        "notes": "",
+        "classes": [
+          {
+            "day": "tue",
+            "start": 14,
+            "end": 16,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/30",
+          "start": 17,
+          "end": 17
+        }
+      },
+      {
+        "id": 362031801,
+        "course_code": "3620318_01",
+        "course_name": "پروژه پاياني",
+        "theory": "3",
+        "practical": "3",
+        "capacity": 70,
+        "gender": "B",
+        "professor_name": "اساتيد گروه آموزشي",
+        "class_location": "",
+        "prerequisites": "",
+        "notes": "",
+        "classes": [],
+        "exam": null
+      },
+      {
+        "id": 362032001,
+        "course_code": "3620320_01",
+        "course_name": "آزمايشگاه ريزپردازنده و زبان اسمبلي",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 14,
+        "gender": "B",
+        "professor_name": "كلباسي مهدي\nمرادي علي",
+        "class_location": "فني و مهندسي _ آزمايشگاه ريزپردازنده-طبقه اول ساختمان خيرين",
+        "prerequisites": "پيش نياز: 3620018 ريزپردازنده و زبان اسمبلي\nمعادل: 3620024 آزمايشگاه ريزپردازنده",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sat",
+            "start": 16,
+            "end": 18,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/04/05",
+          "start": 8,
+          "end": 19
+        }
+      },
+      {
+        "id": 362032002,
+        "course_code": "3620320_02",
+        "course_name": "آزمايشگاه ريزپردازنده و زبان اسمبلي",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 15,
+        "gender": "B",
+        "professor_name": "كلباسي مهدي",
+        "class_location": "فني و مهندسي _ آزمايشگاه ريزپردازنده-طبقه اول ساختمان خيرين",
+        "prerequisites": "پيش نياز: 3620018 ريزپردازنده و زبان اسمبلي\nمعادل: 3620024 آزمايشگاه ريزپردازنده",
+        "notes": "",
+        "classes": [
+          {
+            "day": "wed",
+            "start": 14,
+            "end": 16,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/04/05",
+          "start": 18,
+          "end": 19
+        }
+      },
+      {
+        "id": 362032003,
+        "course_code": "3620320_03",
+        "course_name": "آزمايشگاه ريزپردازنده و زبان اسمبلي",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 14,
+        "gender": "B",
+        "professor_name": "خيرمند حميدرضا\nكلباسي مهدي",
+        "class_location": "فني و مهندسي _ آزمايشگاه ريزپردازنده-طبقه اول ساختمان خيرين",
+        "prerequisites": "پيش نياز: 3620018 ريزپردازنده و زبان اسمبلي\nمعادل: 3620024 آزمايشگاه ريزپردازنده",
+        "notes": "",
+        "classes": [
+          {
+            "day": "wed",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/04/05",
+          "start": 18,
+          "end": 19
+        }
+      },
+      {
+        "id": 362032005,
+        "course_code": "3620320_05",
+        "course_name": "آزمايشگاه ريزپردازنده و زبان اسمبلي",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 14,
+        "gender": "B",
+        "professor_name": "خيرمند حميدرضا\nكلباسي مهدي",
+        "class_location": "فني و مهندسي _ آزمايشگاه ريزپردازنده-طبقه اول ساختمان خيرين",
+        "prerequisites": "پيش نياز: 3620018 ريزپردازنده و زبان اسمبلي\nمعادل: 3620024 آزمايشگاه ريزپردازنده",
+        "notes": "",
+        "classes": [
+          {
+            "day": "tue",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/04/05",
+          "start": 18,
+          "end": 19
+        }
+      },
+      {
+        "id": 362032006,
+        "course_code": "3620320_06",
+        "course_name": "آزمايشگاه ريزپردازنده و زبان اسمبلي",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 14,
+        "gender": "B",
+        "professor_name": "اساتيد گروه آموزشي\nخيرمند حميدرضا\nكلباسي مهدي",
+        "class_location": "فني و مهندسي _ آزمايشگاه ريزپردازنده-طبقه اول ساختمان خيرين",
+        "prerequisites": "پيش نياز: 3620018 ريزپردازنده و زبان اسمبلي\nمعادل: 3620024 آزمايشگاه ريزپردازنده",
+        "notes": "",
+        "classes": [
+          {
+            "day": "tue",
+            "start": 14,
+            "end": 16,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/04/05",
+          "start": 18,
+          "end": 19
+        }
+      },
+      {
+        "id": 362032601,
+        "course_code": "3620326_01",
+        "course_name": "برنامه نويسي وب",
+        "theory": "3",
+        "practical": "0",
+        "capacity": 50,
+        "gender": "B",
+        "professor_name": "عيسايي ميترا",
+        "class_location": "فني و مهندسي _ كلاس 15- طبقه دوم - مجتمع كلاسها\nفني و مهندسي _ كلاس 3- طبقه اول - مجتمع كلاسها",
+        "prerequisites": "پيش نياز: 3620019 شبكه هاي كامپيوتري",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sat",
+            "start": 10,
+            "end": 12,
+            "is_problem_solving": false
+          },
+          {
+            "day": "sun",
+            "start": 16,
+            "end": 17,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/28",
+          "start": 11,
+          "end": 14
+        }
+      },
+      {
+        "id": 362032602,
+        "course_code": "3620326_02",
+        "course_name": "برنامه نويسي وب",
+        "theory": "3",
+        "practical": "0",
+        "capacity": 50,
+        "gender": "B",
+        "professor_name": "مهدوي احسان",
+        "class_location": "فني و مهندسي _ كلاس 13- طبقه دوم - مجتمع كلاسها\nفني و مهندسي _ كلاس 14- طبقه دوم - مجتمع كلاسها",
+        "prerequisites": "پيش نياز: 3620019 شبكه هاي كامپيوتري",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sun",
+            "start": 16,
+            "end": 17,
+            "is_problem_solving": false
+          },
+          {
+            "day": "mon",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/28",
+          "start": 11,
+          "end": 14
+        }
+      },
+      {
+        "id": 362032701,
+        "course_code": "3620327_01",
+        "course_name": "برنامه نويسي دستگاه هاي سيار",
+        "theory": "3",
+        "practical": "0",
+        "capacity": 42,
+        "gender": "B",
+        "professor_name": "شيرمحمدي نويد",
+        "class_location": "فني و مهندسي _ كلاس 15- طبقه دوم - مجتمع كلاسها\nفني و مهندسي _ كلاس 3- طبقه اول - مجتمع كلاسها",
+        "prerequisites": "پيش نياز: 3620309 برنامه نويسي پيشرفته\nپيش نياز: 3620007 برنامه سازي پيشرفته\nهم نياز",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sat",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          },
+          {
+            "day": "sun",
+            "start": 15,
+            "end": 16,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/04/01",
+          "start": 8,
+          "end": 11
+        }
+      },
+      {
+        "id": 362032702,
+        "course_code": "3620327_02",
+        "course_name": "برنامه نويسي دستگاه هاي سيار",
+        "theory": "3",
+        "practical": "0",
+        "capacity": 40,
+        "gender": "B",
+        "professor_name": "شيرمحمدي نويد",
+        "class_location": "فني و مهندسي _ تالاردانشجو - طبقه همكف - ساختمان انصاري\nفني و مهندسي _ كلاس 15- طبقه دوم - مجتمع كلاسها",
+        "prerequisites": "پيش نياز: 3620309 برنامه نويسي پيشرفته\nپيش نياز: 3620007 برنامه سازي پيشرفته\nهم نياز",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sat",
+            "start": 15,
+            "end": 16,
+            "is_problem_solving": false
+          },
+          {
+            "day": "sun",
+            "start": 16,
+            "end": 18,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/04/01",
+          "start": 8,
+          "end": 11
+        }
+      },
+      {
+        "id": 362033601,
+        "course_code": "3620336_01",
+        "course_name": "مباني و كاربردهاي هوش مصنوعي",
+        "theory": "3",
+        "practical": "0",
+        "capacity": 50,
+        "gender": "B",
+        "professor_name": "حسيني مرضيه السادات",
+        "class_location": "فني و مهندسي _ كلاس 13- طبقه دوم - مجتمع كلاسها\nفني و مهندسي _ كلاس 14- طبقه دوم - مجتمع كلاسها",
+        "prerequisites": "پيش نياز: 3620319 ساختمان داده\nپيش نياز: 3620008 ساختمان هاي داده\nمعادل: 3620020 هوش مصنوعي و سيستم هاي خبره",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sun",
+            "start": 14,
+            "end": 16,
+            "is_problem_solving": false
+          },
+          {
+            "day": "wed",
+            "start": 8,
+            "end": 9,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/04/07",
+          "start": 11,
+          "end": 14
+        }
+      },
+      {
+        "id": 362033701,
+        "course_code": "3620337_01",
+        "course_name": "اصول علم ربات",
+        "theory": "3",
+        "practical": "0",
+        "capacity": 26,
+        "gender": "B",
+        "professor_name": "جمشيدي كمال",
+        "class_location": "فني و مهندسي _ ساختمان انصاري-طبقه همكف - اتاق شماره 35\nفني و مهندسي _ كلاس 13- طبقه دوم - مجتمع كلاسها",
+        "prerequisites": "پيش نياز: 3620316 جبر خطي كاربردي\nمعادل: 3620088 اصول رباتيكز",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sat",
+            "start": 10,
+            "end": 12,
+            "is_problem_solving": false
+          },
+          {
+            "day": "mon",
+            "start": 13,
+            "end": 14,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/27",
+          "start": 8,
+          "end": 11
+        }
+      },
+      {
+        "id": 362033901,
+        "course_code": "3620339_01",
+        "course_name": "مباني يادگيري ماشين",
+        "theory": "3",
+        "practical": "0",
+        "capacity": 40,
+        "gender": "B",
+        "professor_name": "كردي قصرالدشتي الهام",
+        "class_location": "فني و مهندسي _ كلاس 13- طبقه دوم - مجتمع كلاسها\nفني و مهندسي _ كلاس 14- طبقه دوم - مجتمع كلاسها",
+        "prerequisites": "پيش نياز: 3620309 برنامه نويسي پيشرفته, 3620316 جبر خطي كاربردي, 4012355 آمار و احتمال مهندسي\nپيش نياز: 3620007 برنامه سازي پيشرفته, 3620316 جبر خطي كاربردي, 4012355 آمار و احتمال مهندسي",
+        "notes": "",
+        "classes": [
+          {
+            "day": "tue",
+            "start": 16,
+            "end": 18,
+            "is_problem_solving": false
+          },
+          {
+            "day": "wed",
+            "start": 9,
+            "end": 10,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/04/02",
+          "start": 11,
+          "end": 14
+        }
+      },
+      {
+        "id": 362033902,
+        "course_code": "3620339_02",
+        "course_name": "مباني يادگيري ماشين",
+        "theory": "3",
+        "practical": "0",
+        "capacity": 40,
+        "gender": "B",
+        "professor_name": "كردي قصرالدشتي الهام",
+        "class_location": "فني و مهندسي _ كلاس 13- طبقه دوم - مجتمع كلاسها\nفني و مهندسي _ كلاس 3- طبقه اول - مجتمع كلاسها",
+        "prerequisites": "پيش نياز: 3620309 برنامه نويسي پيشرفته, 3620316 جبر خطي كاربردي, 4012355 آمار و احتمال مهندسي\nپيش نياز: 3620007 برنامه سازي پيشرفته, 3620316 جبر خطي كاربردي, 4012355 آمار و احتمال مهندسي",
+        "notes": "",
+        "classes": [
+          {
+            "day": "mon",
+            "start": 14,
+            "end": 16,
+            "is_problem_solving": false
+          },
+          {
+            "day": "wed",
+            "start": 11,
+            "end": 12,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/04/02",
+          "start": 11,
+          "end": 14
+        }
+      },
+      {
+        "id": 362034201,
+        "course_code": "3620342_01",
+        "course_name": "رمزنگاري و امنيت شبكه",
+        "theory": "3",
+        "practical": "0",
+        "capacity": 40,
+        "gender": "B",
+        "professor_name": "عاشوري تلوكي مائده",
+        "class_location": "فني و مهندسي _ كلاس 13- طبقه دوم - مجتمع كلاسها\nفني و مهندسي _ كلاس 14- طبقه دوم - مجتمع كلاسها",
+        "prerequisites": "پيش نياز: 3620019 شبكه هاي كامپيوتري\nمعادل: 3620063 مباني رايانش امن",
+        "notes": "",
+        "classes": [
+          {
+            "day": "mon",
+            "start": 14,
+            "end": 16,
+            "is_problem_solving": false
+          },
+          {
+            "day": "wed",
+            "start": 11,
+            "end": 12,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/31",
+          "start": 11,
+          "end": 14
+        }
+      },
+      {
+        "id": 362034301,
+        "course_code": "3620343_01",
+        "course_name": "مباني اينترنت اشيا",
+        "theory": "3",
+        "practical": "0",
+        "capacity": 50,
+        "gender": "B",
+        "professor_name": "باطني محمدحسين",
+        "class_location": "فني و مهندسي _ كلاس 14- طبقه دوم - مجتمع كلاسها\nفني و مهندسي _ كلاس 3- طبقه اول - مجتمع كلاسها",
+        "prerequisites": "پيش نياز: 3620018 ريزپردازنده و زبان اسمبلي, 3620019 شبكه هاي كامپيوتري",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sat",
+            "start": 16,
+            "end": 18,
+            "is_problem_solving": false
+          },
+          {
+            "day": "sun",
+            "start": 17,
+            "end": 18,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/31",
+          "start": 8,
+          "end": 11
+        }
+      },
+      {
+        "id": 362034901,
+        "course_code": "3620349_01",
+        "course_name": "مقدمه اي بر علم داده",
+        "theory": "3",
+        "practical": "0",
+        "capacity": 45,
+        "gender": "B",
+        "professor_name": "رضاپور محمدمهدي",
+        "class_location": "فني و مهندسي _ كلاس 14- طبقه دوم - مجتمع كلاسها\nفني و مهندسي _ كلاس 3- طبقه اول - مجتمع كلاسها",
+        "prerequisites": "پيش نياز: 4012355 آمار و احتمال مهندسي",
+        "notes": "",
+        "classes": [
+          {
+            "day": "tue",
+            "start": 13,
+            "end": 14,
+            "is_problem_solving": false
+          },
+          {
+            "day": "wed",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/26",
+          "start": 8,
+          "end": 11
+        }
+      },
+      {
+        "id": 362035701,
+        "course_code": "3620357_01",
+        "course_name": "كاربرد هوش مصنوعي در امنيت سايبري",
+        "theory": "3",
+        "practical": "0",
+        "capacity": 51,
+        "gender": "B",
+        "professor_name": "مهدوي احسان",
+        "class_location": "علوم اداري و اقتصاد _ ساختمان قديم اقتصاد- همكف - شماره 1\nفني و مهندسي _ كلاس 3- طبقه اول - مجتمع كلاسها",
+        "prerequisites": "پيش نياز: 3620015 طراحي الگوريتم ها",
+        "notes": "",
+        "classes": [
+          {
+            "day": "mon",
+            "start": 16,
+            "end": 18,
+            "is_problem_solving": false
+          },
+          {
+            "day": "wed",
+            "start": 13,
+            "end": 14,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/03/27",
+          "start": 11,
+          "end": 14
+        }
+      },
+      {
+        "id": 362035801,
+        "course_code": "3620358_01",
+        "course_name": "كاربيني",
+        "theory": "1",
+        "practical": "0.5",
+        "capacity": 120,
+        "gender": "B",
+        "professor_name": "مهدوي مجتبي",
+        "class_location": "پرديس ميرداماد _ ساختمان پرديس-طبقه اول-سالن اجتماعات",
+        "prerequisites": "",
+        "notes": "",
+        "classes": [
+          {
+            "day": "tue",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": {
+          "date": "1404/04/05",
+          "start": 14,
+          "end": 16
+        }
+      },
+      {
+        "id": 421255901,
+        "course_code": "4212559_01",
+        "course_name": "آزمايشگاه فيزيك پايه 2",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 14,
+        "gender": "B",
+        "professor_name": "شكرانه مجيد\nملاباشي ليلا",
+        "class_location": "ساختمان فيزيك _ آزمايشگاه فيزيك 2",
+        "prerequisites": "معادل: 4212282 آزمايشگاه فيزيك پايه2 ف ك ن پ-\nمعادل: 4212571 آزمايشگاه فيزيك الكتريسته و مغناطيس",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sat",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 421255902,
+        "course_code": "4212559_02",
+        "course_name": "آزمايشگاه فيزيك پايه 2",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 14,
+        "gender": "B",
+        "professor_name": "شكرانه مجيد\nنوربخش حبيبب آبادي زهرا",
+        "class_location": "ساختمان فيزيك _ آزمايشگاه فيزيك 2",
+        "prerequisites": "معادل: 4212282 آزمايشگاه فيزيك پايه2 ف ك ن پ-\nمعادل: 4212571 آزمايشگاه فيزيك الكتريسته و مغناطيس",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sat",
+            "start": 10,
+            "end": 12,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 421255903,
+        "course_code": "4212559_03",
+        "course_name": "آزمايشگاه فيزيك پايه 2",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 14,
+        "gender": "B",
+        "professor_name": "شكرانه مجيد\nعموشاهي خوزاني مجيد",
+        "class_location": "ساختمان فيزيك _ آزمايشگاه فيزيك 2",
+        "prerequisites": "معادل: 4212282 آزمايشگاه فيزيك پايه2 ف ك ن پ-\nمعادل: 4212571 آزمايشگاه فيزيك الكتريسته و مغناطيس",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sat",
+            "start": 14,
+            "end": 16,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 421255904,
+        "course_code": "4212559_04",
+        "course_name": "آزمايشگاه فيزيك پايه 2",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 14,
+        "gender": "B",
+        "professor_name": "خورسندي عليرضا\nشكرانه مجيد",
+        "class_location": "ساختمان فيزيك _ آزمايشگاه فيزيك 2",
+        "prerequisites": "معادل: 4212282 آزمايشگاه فيزيك پايه2 ف ك ن پ-\nمعادل: 4212571 آزمايشگاه فيزيك الكتريسته و مغناطيس",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sun",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 421255905,
+        "course_code": "4212559_05",
+        "course_name": "آزمايشگاه فيزيك پايه 2",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 14,
+        "gender": "B",
+        "professor_name": "خورسندي عليرضا\nشكرانه مجيد",
+        "class_location": "ساختمان فيزيك _ آزمايشگاه فيزيك 2",
+        "prerequisites": "معادل: 4212282 آزمايشگاه فيزيك پايه2 ف ك ن پ-\nمعادل: 4212571 آزمايشگاه فيزيك الكتريسته و مغناطيس",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sun",
+            "start": 10,
+            "end": 12,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 421255906,
+        "course_code": "4212559_06",
+        "course_name": "آزمايشگاه فيزيك پايه 2",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 14,
+        "gender": "B",
+        "professor_name": "شكرانه مجيد\nواعظ امين ا",
+        "class_location": "ساختمان فيزيك _ آزمايشگاه فيزيك 2",
+        "prerequisites": "معادل: 4212282 آزمايشگاه فيزيك پايه2 ف ك ن پ-\nمعادل: 4212571 آزمايشگاه فيزيك الكتريسته و مغناطيس",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sat",
+            "start": 16,
+            "end": 18,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 421255907,
+        "course_code": "4212559_07",
+        "course_name": "آزمايشگاه فيزيك پايه 2",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 14,
+        "gender": "B",
+        "professor_name": "شكرانه مجيد\nملك محمد محمد",
+        "class_location": "ساختمان فيزيك _ آزمايشگاه فيزيك 2",
+        "prerequisites": "معادل: 4212282 آزمايشگاه فيزيك پايه2 ف ك ن پ-\nمعادل: 4212571 آزمايشگاه فيزيك الكتريسته و مغناطيس",
+        "notes": "",
+        "classes": [
+          {
+            "day": "tue",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 421255908,
+        "course_code": "4212559_08",
+        "course_name": "آزمايشگاه فيزيك پايه 2",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 14,
+        "gender": "B",
+        "professor_name": "شكرانه مجيد\nنوري زاده سميراسادات",
+        "class_location": "ساختمان فيزيك _ آزمايشگاه فيزيك 2",
+        "prerequisites": "معادل: 4212282 آزمايشگاه فيزيك پايه2 ف ك ن پ-\nمعادل: 4212571 آزمايشگاه فيزيك الكتريسته و مغناطيس",
+        "notes": "",
+        "classes": [
+          {
+            "day": "tue",
+            "start": 10,
+            "end": 12,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 421255909,
+        "course_code": "4212559_09",
+        "course_name": "آزمايشگاه فيزيك پايه 2",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 14,
+        "gender": "B",
+        "professor_name": "آدمي دهكردي صفا\nشكرانه مجيد",
+        "class_location": "ساختمان فيزيك _ آزمايشگاه فيزيك 2",
+        "prerequisites": "معادل: 4212282 آزمايشگاه فيزيك پايه2 ف ك ن پ-\nمعادل: 4212571 آزمايشگاه فيزيك الكتريسته و مغناطيس",
+        "notes": "",
+        "classes": [
+          {
+            "day": "tue",
+            "start": 14,
+            "end": 16,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 421255910,
+        "course_code": "4212559_10",
+        "course_name": "آزمايشگاه فيزيك پايه 2",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 14,
+        "gender": "B",
+        "professor_name": "شكرانه مجيد\nگندم زاده اذر",
+        "class_location": "ساختمان فيزيك _ آزمايشگاه فيزيك 2",
+        "prerequisites": "معادل: 4212282 آزمايشگاه فيزيك پايه2 ف ك ن پ-\nمعادل: 4212571 آزمايشگاه فيزيك الكتريسته و مغناطيس",
+        "notes": "",
+        "classes": [
+          {
+            "day": "wed",
+            "start": 8,
+            "end": 10,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 421255911,
+        "course_code": "4212559_11",
+        "course_name": "آزمايشگاه فيزيك پايه 2",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 14,
+        "gender": "B",
+        "professor_name": "شكرانه مجيد\nگندم زاده اذر",
+        "class_location": "ساختمان فيزيك _ آزمايشگاه فيزيك 2",
+        "prerequisites": "معادل: 4212282 آزمايشگاه فيزيك پايه2 ف ك ن پ-\nمعادل: 4212571 آزمايشگاه فيزيك الكتريسته و مغناطيس",
+        "notes": "",
+        "classes": [
+          {
+            "day": "wed",
+            "start": 10,
+            "end": 12,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 421255912,
+        "course_code": "4212559_12",
+        "course_name": "آزمايشگاه فيزيك پايه 2",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 14,
+        "gender": "M",
+        "professor_name": "شكرانه مجيد",
+        "class_location": "ساختمان فيزيك _ آزمايشگاه فيزيك 2",
+        "prerequisites": "معادل: 4212282 آزمايشگاه فيزيك پايه2 ف ك ن پ-\nمعادل: 4212571 آزمايشگاه فيزيك الكتريسته و مغناطيس",
+        "notes": "",
+        "classes": [
+          {
+            "day": "wed",
+            "start": 14,
+            "end": 16,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 421255913,
+        "course_code": "4212559_13",
+        "course_name": "آزمايشگاه فيزيك پايه 2",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 14,
+        "gender": "B",
+        "professor_name": "راشدي غلامرضا\nشكرانه مجيد",
+        "class_location": "ساختمان فيزيك _ آزمايشگاه فيزيك 2",
+        "prerequisites": "معادل: 4212282 آزمايشگاه فيزيك پايه2 ف ك ن پ-\nمعادل: 4212571 آزمايشگاه فيزيك الكتريسته و مغناطيس",
+        "notes": "",
+        "classes": [
+          {
+            "day": "mon",
+            "start": 14,
+            "end": 16,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 421255914,
+        "course_code": "4212559_14",
+        "course_name": "آزمايشگاه فيزيك پايه 2",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 14,
+        "gender": "B",
+        "professor_name": "حسين زاده مرضيه\nشكرانه مجيد",
+        "class_location": "ساختمان فيزيك _ آزمايشگاه فيزيك 2",
+        "prerequisites": "معادل: 4212282 آزمايشگاه فيزيك پايه2 ف ك ن پ-\nمعادل: 4212571 آزمايشگاه فيزيك الكتريسته و مغناطيس",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sun",
+            "start": 16,
+            "end": 18,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 421255915,
+        "course_code": "4212559_15",
+        "course_name": "آزمايشگاه فيزيك پايه 2",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 14,
+        "gender": "B",
+        "professor_name": "شكرانه مجيد\nقنبري عديوي ابراهيم",
+        "class_location": "ساختمان فيزيك _ آزمايشگاه فيزيك 2",
+        "prerequisites": "معادل: 4212282 آزمايشگاه فيزيك پايه2 ف ك ن پ-\nمعادل: 4212571 آزمايشگاه فيزيك الكتريسته و مغناطيس",
+        "notes": "",
+        "classes": [
+          {
+            "day": "mon",
+            "start": 16,
+            "end": 18,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 421255916,
+        "course_code": "4212559_16",
+        "course_name": "آزمايشگاه فيزيك پايه 2",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 14,
+        "gender": "B",
+        "professor_name": "آدمي دهكردي صفا\nشكرانه مجيد",
+        "class_location": "ساختمان فيزيك _ آزمايشگاه فيزيك 2",
+        "prerequisites": "معادل: 4212282 آزمايشگاه فيزيك پايه2 ف ك ن پ-\nمعادل: 4212571 آزمايشگاه فيزيك الكتريسته و مغناطيس",
+        "notes": "",
+        "classes": [
+          {
+            "day": "tue",
+            "start": 16,
+            "end": 18,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 421255917,
+        "course_code": "4212559_17",
+        "course_name": "آزمايشگاه فيزيك پايه 2",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 14,
+        "gender": "B",
+        "professor_name": "شكرانه مجيد",
+        "class_location": "ساختمان فيزيك _ آزمايشگاه فيزيك 2",
+        "prerequisites": "معادل: 4212282 آزمايشگاه فيزيك پايه2 ف ك ن پ-\nمعادل: 4212571 آزمايشگاه فيزيك الكتريسته و مغناطيس",
+        "notes": "",
+        "classes": [
+          {
+            "day": "wed",
+            "start": 16,
+            "end": 18,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 421255918,
+        "course_code": "4212559_18",
+        "course_name": "آزمايشگاه فيزيك پايه 2",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 14,
+        "gender": "B",
+        "professor_name": "آدمي دهكردي صفا\nشكرانه مجيد",
+        "class_location": "ساختمان فيزيك _ آزمايشگاه فيزيك 2",
+        "prerequisites": "معادل: 4212282 آزمايشگاه فيزيك پايه2 ف ك ن پ-\nمعادل: 4212571 آزمايشگاه فيزيك الكتريسته و مغناطيس",
+        "notes": "",
+        "classes": [
+          {
+            "day": "mon",
+            "start": 10,
+            "end": 12,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      },
+      {
+        "id": 421255919,
+        "course_code": "4212559_19",
+        "course_name": "آزمايشگاه فيزيك پايه 2",
+        "theory": "1",
+        "practical": "1",
+        "capacity": 14,
+        "gender": "B",
+        "professor_name": "حسين زاده مرضيه\nشكرانه مجيد",
+        "class_location": "ساختمان فيزيك _ آزمايشگاه فيزيك 2",
+        "prerequisites": "معادل: 4212282 آزمايشگاه فيزيك پايه2 ف ك ن پ-\nمعادل: 4212571 آزمايشگاه فيزيك الكتريسته و مغناطيس",
+        "notes": "",
+        "classes": [
+          {
+            "day": "sun",
+            "start": 14,
+            "end": 16,
+            "is_problem_solving": false
+          }
+        ],
+        "exam": null
+      }
+    ]
+  

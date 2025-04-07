@@ -13,6 +13,7 @@ import Poll from "./Pages/Poll/Poll";
 import MasterCard from "./Components/MasterCard/MasterCard";
 import ProtectedRoute from "./Components/ProtectedRoute";
 
+
 const routes = [
     { path: "/login", element: <Login /> },
     { path: "/sign-up", element: <SignUp /> },
@@ -61,11 +62,13 @@ const routes = [
                     <MasterCard />
                     <MasterCard />
 
+
                 </div>
             },
         ]
     },
 ]
+
 
 
 export default routes;

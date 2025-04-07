@@ -2,14 +2,16 @@ import React, { useEffect, useState } from "react";
 import Schedule from "../Components/schedule/Schedule";
 import ScheduleTabs from "../Components/schedule/ScheduleTabs";
 import CourseSelector from "../Components/schedule/CourseSelector";
+import Sidebar from "../Components/Sidebar/Sidebar"
 import api from "../services/api";
 import { setToken } from "../services/axios";
 import { getSession } from "../services/authService";
 import { courseMapper } from "../utils/mappers";
+import { convertEnglishNumberToPersian } from "../utils/helpers";
+import ToastContext, { useToast } from "../Components/dls/toast/ToastService";
 
 const SchedulesPage = () => {
   const [schedules, setSchedules] = useState([]);
-  const [colleges, setColleges] = useState([]);
   const [currentScheduleId, setCurrentScheduleId] = useState(1);
   const [courses, setCourses] = useState([]);
 
@@ -26,8 +28,7 @@ const SchedulesPage = () => {
           schedulesData = [
             {
               id: 1,
-              name: "برنامه درسی پیش‌فرض",
-              courses: coursesData, 
+              courses: [], 
             },
           ];
 
@@ -52,13 +53,18 @@ const SchedulesPage = () => {
     setCourses(
       schedules.find((s) => s.id === currentScheduleId)?.courses || []
     );
-  }, [currentScheduleId, schedules]);
+  }, [currentScheduleId, schedules ]);
 
 
   return (
-    <div className="flex h-full min-h-[55rem] w-full justify-center p-6 text-black font-iransans">
-      <div className="flex max-w-[98.875rem] grow gap-4">
-        <div className="flex grow flex-col justify-between rounded-xl bg-[#FFFFF] p-4 backdrop-blur">
+    <div className="flex h-full min-h-[55rem] w-full justify-center p-6 bg-[#F1F5F7] text-black font-iransans">
+      
+      <div className="flex w-[94.875rem] grow gap-4 relative ">
+        <div className="absolute   right-0   z-[9999]">
+        <Sidebar/>
+
+        </div>      
+          <div className="flex grow flex-col justify-between  ms-24   rounded-xl bg-white p-4 backdrop-blur">
           <ScheduleTabs
             currentScheduleId={currentScheduleId}
             schedules={schedules.map((s) => ({
@@ -70,15 +76,20 @@ const SchedulesPage = () => {
 
           <Schedule
             courses={courses}
+            setCurrentScheduleId={setCurrentScheduleId}
             currentScheduleId={currentScheduleId}
             setSchedules={setSchedules}
+            schedules={schedules}
           />
         </div>
         <CourseSelector
-  currentScheduleId={currentScheduleId}
-  setCoursesOfSchedule={setCourses} 
-  setSchedules={setSchedules}
+            
+            schedules={schedules}
+            currentScheduleId={currentScheduleId}
+            setCoursesOfSchedule={setCourses} 
+            setSchedules={setSchedules}
 />
+
       </div>
     </div>
   );

@@ -10,29 +10,34 @@ const ExamsPage = () => {
   const [schedules, setSchedules] = useState([]);
   const [courses, setCourses] = useState([]);
   const [currentScheduleId, setCurrentScheduleId] = useState(null);
-
   useEffect(() => {
     const fetchData = async () => {
-      const session = getSession(); 
-      if (session) setToken(session.accessToken);
-
       try {
-        const schedulesData = await api.schedule
-          .fetchSchedules()
-          .then((res) => res.data.data);
+        const storedSchedules = localStorage.getItem("schedules");
+        let schedulesData = storedSchedules ? JSON.parse(storedSchedules) : [];
 
-        schedulesData.forEach((schedule) => {
-          schedule.courses = schedule.classes.map(courseMapper);
-          delete schedule.classes;
-        });
+        if (!storedSchedules) {
+          const response = await fetch("/courses.json");
+          const coursesData = await response.json();
+
+          schedulesData = [
+            {
+              id: 1,
+              courses: [], 
+            },
+          ];
+
+          localStorage.setItem("schedules", JSON.stringify(schedulesData));
+        }
 
         setSchedules(schedulesData);
+
         if (schedulesData.length > 0) {
           setCurrentScheduleId(schedulesData[0].id);
           setCourses(schedulesData[0].courses);
         }
       } catch (error) {
-        console.error('خطا در دریافت اطلاعات:', error);
+        console.error("خطا در دریافت داده‌ها:", error);
       }
     };
 
@@ -40,23 +45,28 @@ const ExamsPage = () => {
   }, []);
 
   useEffect(() => {
-    if (currentScheduleId) {
-      const selectedSchedule = schedules.find((s) => s.id === currentScheduleId);
-      setCourses(selectedSchedule?.courses || []);
-    }
-  }, [currentScheduleId, schedules]);
+    setCourses(
+      schedules.find((s) => s.id === currentScheduleId)?.courses || []
+    );
+  }, [currentScheduleId, schedules ]);
+
 
   return (
-    <div className='flex h-full w-full justify-center p-6 text-black'>
-      <div className='flex max-w-[98.875rem] grow flex-col justify-between gap-4 rounded-xl bg-primary/50 p-4 backdrop-blur'>
-        <h1 className='text-2xl font-bold'>برنامه امتحانات</h1>
+
+    <div className='absolute flex bg-[#F1F5F7]  w-full justify-center p-6 text-black'>
+      <div className='flex  max-w-[83.875rem] grow flex-col justify-between gap-4 space-y-5 rounded-xl bg-[#ffffff] p-4 backdrop-blur'>
+
         <ScheduleTabs
           showAddButton={false}
           currentScheduleId={currentScheduleId}
           schedules={schedules.map((s) => ({ id: s.id }))}
           onChange={setCurrentScheduleId}
         />
-        <ExamsTable courses={courses} />
+        <ExamsTable  courses={courses}
+            setCurrentScheduleId={setCurrentScheduleId}
+            currentScheduleId={currentScheduleId}
+            setSchedules={setSchedules}
+            schedules={schedules} />
       </div>
     </div>
   );

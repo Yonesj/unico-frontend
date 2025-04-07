@@ -18,13 +18,29 @@ export default function ScheduleTabs({
   onChange,
   showAddButton = true,
 }) {
+  const selectedIndex = schedules.findIndex((s) => s.id === currentScheduleId);
   const toast = useToast();
   const [isLoading, setIsLoading] = useState(false);
 
 
 
+  const [totalUnits, setTotalUnits] = useState(0);
 
-  const selectedIndex = schedules.findIndex((s) => s.id === currentScheduleId);
+  useEffect(() => {
+    const savedSchedules = JSON.parse(localStorage.getItem('schedules'));
+
+    if (savedSchedules) {
+
+
+      const activeSchedule = savedSchedules.find(schedule => schedule.id === currentScheduleId);
+
+      if (activeSchedule) {
+        const total = activeSchedule.courses.reduce((sum, course) => sum + Number(course.theory), 0);
+        setTotalUnits(total); 
+      }
+    }
+  }, [schedules]); 
+
 
   const createNewSchedule = () => {
     if (schedules.length >= 5) {
@@ -39,7 +55,7 @@ export default function ScheduleTabs({
     setTimeout(() => {
       const newSchedule = {
         id: Math.floor(Math.random() * 1000),
-        name: `برنامه ${convertEnglishNumberToPersian(schedules.length + 1)}`,
+       
         courses: [],
       };
   
@@ -72,11 +88,11 @@ export default function ScheduleTabs({
               {({ selected }) => (
                  <button
                  className={classNames(
-                   'ripple h-full text-sm font-bold',
+                   'ripple  h-full text-sm font-bold',
                    'rounded-md px-4 py-2 focus-visible:outline-none',
                    selected
-                     ? 'bg-secondary/30 text-secondary ring-2 ring-secondary'
-                     : 'text-grey-200 hover:bg-white/10 hover:text-white',
+                     ? 'bg-[#E5F7F8] text-[#008F95] '
+                     : 'text-[#7A7E83] hover:bg-[#F0F3F5] hover:text-[#383E46]',
                  )}
                >
                  {'برنامه ' +
@@ -99,10 +115,10 @@ export default function ScheduleTabs({
 
       <div className="tab-side flex items-center">
         <div className="bg-white pl-4 font-iransans font-normal text-sm">
-          تعداد واحد انتخاب شده <span className="mr-2 font-semibold">۲۲</span>
+          تعداد واحد انتخاب شده <span className="mr-2 font-semibold">{totalUnits}</span>
         </div>
         <div className="border-r pr-4 border-gray-300 text-gray-600">
-          <LayoutOutlined width={20} height={20} />
+        {showAddButton && ( <LayoutOutlined width={20} height={20} />)}
         </div>
       </div>
     </div>
