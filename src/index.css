@@ -1,50 +1,17 @@
-
 @tailwind base;
+@tailwind components;
+@tailwind utilities;
 @import "./fonts.css";
 @import "./styles/full-calendar.css";
 @import "./styles/ripple.css";
 @import url("./fonts.css");;
-@tailwind components;
-@tailwind utilities;
 
-.course-list{
- overflow-x: visible !important;
-}
 .btoast-container {
     z-index: 999999999 !important; /* Highest priority */
   }
-
-  .table-wrapper {
-    width: 100%;
-    overflow-x: auto;
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  th, td {
-    padding: 10px;
-    text-align: center;
-    border: 1px solid #ccc;
-  }
-  
-  .sticky {
-    position: sticky;
-    left: 0;
-    background-color: #f4f4f4;
-    font-weight: bold;
-  }
-  
-  .section-wrapper {
-    height: 50px; /* یا هر اندازه‌ای که بخواهید */
-  }
-
 .ant-modal-close
 {
   position: absolute;
   right: 12px;
 
 } 
-

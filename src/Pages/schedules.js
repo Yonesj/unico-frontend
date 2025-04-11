@@ -61,7 +61,6 @@ const SchedulesPage = () => {
       
       <div className="flex w-[94.875rem] grow gap-4 relative ">
         <div className="absolute   right-0   z-[9999]">
-        <Sidebar/>
 
         </div>      
           <div className="flex grow flex-col justify-between  ms-24   rounded-xl bg-white p-4 backdrop-blur">
