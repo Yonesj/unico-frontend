@@ -10,7 +10,6 @@ import AuthContext from "./context/authContext";
 
 import Sidebar from "./Components/Sidebar/Sidebar";
 import {TimerToastProvider} from "./Components/dls/toast/TimerToastContext";
-import ViewportManager from "./Components/routing/ViewportManager";
 function App() {
   const router = useRoutes(routes);
 

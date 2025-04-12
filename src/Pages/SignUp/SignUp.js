@@ -105,6 +105,7 @@ export default function SignUp() {
        //     type: "error",
        //   });
        // } else {
+        
           toast.open({
             message: err.message,
             type: "error",
