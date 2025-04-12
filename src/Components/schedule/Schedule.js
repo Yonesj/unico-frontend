@@ -137,7 +137,7 @@ const deleteSchedule = () => {
   });
 
   timerToast.open({
-    message: `برنامه "${deletedSchedule.name}" حذف شد.`,
+    message: `برنامه  حذف شد.`,
     type: "warning",
     duration: 5000,
     onUndo: () => {
@@ -265,7 +265,7 @@ const deleteSchedule = () => {
 
   return (
 
-    <div className="h-[700px]  relative  ">
+    <div className="h-[500px]  ">
 
       <FullCalendar
         ref={calendarRef}
@@ -290,7 +290,7 @@ const deleteSchedule = () => {
         firstDay={0}
         
         
-        height={"700px"}
+        height={"500px"}
         views={{
           timeGrid: {
             component: DayTimeColsView,
@@ -370,7 +370,7 @@ const deleteSchedule = () => {
     onClose={() => setContextMenuPosition(null)}
   />
 )}
-<div dir="ltr" className="absolute left-0 bottom-[2px] flex justify-between w-[138px] h-[38px] z-50  ">
+<div dir="ltr" className="absolute left-2 bottom-[10px] flex justify-between w-[138px] h-[38px] z-50  ">
 <div><DeleteOutlined  onClick={deleteSchedule} className="text-xl p-[9px]  bg-[#E03B3A] text-[#FFFFFF] rounded-lg  " /></div>
 <div><CopyOutlined  className="text-xl p-[9px]  bg-[#EDF1F3] text-[#64696F] rounded-lg  "/></div>
 <div><ShareAltOutlined  className="text-xl  p-[9px] bg-[#EDF1F3] text-[#64696F] rounded-lg  "/></div>

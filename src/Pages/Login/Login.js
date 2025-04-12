@@ -13,8 +13,7 @@ import {
   maxValidator,
   emailValidator,
 } from "../../validators/rules";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import { useEffect } from "react";
+import Sidebar from "../../Components/Sidebar/Sidebar"
 import AuthContext from "../../context/authContext";
 import { LockOutlined, MailOutlined, UserOutlined } from "@ant-design/icons";
 import AccountVerificationModal from "../../Components/Modal/AccountVerificationModal";
@@ -124,6 +123,7 @@ export default function Login() {
   };
   return (
     <>
+
       <main
         dir="rtl"
         className="relative w-full  grid grid-cols-2  h-dvh font-iransans"
