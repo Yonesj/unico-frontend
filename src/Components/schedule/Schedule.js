@@ -69,6 +69,8 @@ export default function Schedule({
         x: e.clientX - calendarRect.left,
         y: e.clientY - calendarRect.top,
       });
+
+      
   
       findCoursesMatchingSlot(day, hour, {
         x: e.clientX - calendarRect.left,

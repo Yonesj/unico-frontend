@@ -62,6 +62,8 @@ export default function Login() {
       const res = await fetch("http://localhost:8000/auth/jwt/create/", {
         method: "POST",
         headers: {
+        "Accept-Language": "fa",
+
           "Content-Type": "application/json",
         },
         body: JSON.stringify(userData),

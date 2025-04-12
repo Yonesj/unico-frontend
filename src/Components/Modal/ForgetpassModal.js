@@ -4,13 +4,14 @@ import { Modal } from "antd";
 import ForgetpassLogo from "../../Assets/images/ForgetpassLogo.svg";
 import { useToast } from "../dls/toast/ToastService";
 import Spinner from "../../Components/spinner";
+import { Navigate, useNavigate } from "react-router";
 
 const ForgetpassModal = ({ open, onOk, onClose }) => {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const isValidEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g.test(email);
   const toast = useToast();
-
+const navigate = useNavigate();
   const handleSendEmail = async (event) => {
     event.preventDefault();
     if (!isValidEmail) {
@@ -61,7 +62,7 @@ const ForgetpassModal = ({ open, onOk, onClose }) => {
           {loading ? <Spinner size="lg" /> : "ارسال"}
         </button>
         <p className="text-sm font-normal text-center">
-          ثبت نام نکرده‌اید؟ <span className="text-[#EFB036]">صفحه ثبت نام</span>
+          ثبت نام نکرده‌اید؟ <span className="text-[#EFB036] cursor-pointer" onClick={()=> navigate("/sign-up")}>صفحه ثبت نام</span>
         </p>
       </div>
     </Modal>
