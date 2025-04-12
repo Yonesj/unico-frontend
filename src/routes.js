@@ -11,16 +11,20 @@ import SchedulesList from "./Pages/SchedulesList/SchedulesList";
 import Courses from "./Pages/Courses/Courses";
 import Poll from "./Pages/Poll/Poll";
 import MasterCard from "./Components/MasterCard/MasterCard";
-import ProtectedRoute from "./Components/ProtectedRoute";
+import ProtectedRoute from "./Components/routing/ProtectedRoute";
+import UnitWrapper from "./Components/routing/unitWrapper";
+import Index from "./Pages/Index";
 
 
 const routes = [
+    { path: "/", element: <Index /> },
+
     { path: "/login", element: <Login /> },
     { path: "/sign-up", element: <SignUp /> },
-    { path: "/404", element: <NotFound /> },
+    { path: "*", element: <NotFound /> },
     { path: "/reset-password", element: <Password /> },
     {
-        path: "/unit/*", element: <Unit />, children: [
+        path: "/unit/*", element: <UnitWrapper />, children: [
             { path: "courses", element: <Courses /> },
             { path: "schedule", element: <Schedules/> },
             { path: "exams", element: <Exams /> },
@@ -33,7 +37,7 @@ const routes = [
         ]
     },
     {
-        path: "/poll/*", element: <Poll />, children: [
+        path: "/poll/*", element: <Poll />,   children: [
             {
                 path: "popular", element: <div className='flex gap-[18px] items-center'>
                    

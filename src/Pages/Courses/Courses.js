@@ -182,13 +182,12 @@ const Courses = (children) => {
 
 
 
-                            style={{ direction: "rtl", height: "510px" }} // Keeps table content in RTL
+                            style={{ direction: "rtl", height: "510px" }} 
                             rowKey="key"
                             components={{ body: { row: Row } }}
                             columns={columns}
                             dataSource={dataSource}
-                            pagination={{ pageSize: 4 ,itemRender: customItemRender }}  // Set the number of rows per page
-
+                            pagination={{ pageSize: 4 ,itemRender: customItemRender }}  
                         />
                     </div>
                 </div>

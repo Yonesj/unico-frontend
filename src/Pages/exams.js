@@ -53,11 +53,11 @@ const ExamsPage = () => {
 
   return (
 
-    <div className='absolute flex bg-[#F1F5F7]  w-full justify-center p-6 text-black'>
-      <div className='flex  max-w-[83.875rem] grow flex-col justify-between gap-4 space-y-5 rounded-xl bg-[#ffffff] p-4 backdrop-blur'>
+    <div className=' flex-wrap  bg-[#F1F5F7] gap-2 w-full justify-center  overflow-x-scroll text-black font-iransans h-[600px]  '>
+      <div className='flex w-[4000px] grow flex-col justify-between  space-y-5 rounded-xl bg-[#ffffff] p-4 backdrop-blur'>
 
         <ScheduleTabs
-          showAddButton={false}
+          exams={true}
           currentScheduleId={currentScheduleId}
           schedules={schedules.map((s) => ({ id: s.id }))}
           onChange={setCurrentScheduleId}
