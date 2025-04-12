@@ -12,7 +12,6 @@ import Courses from "./Pages/Courses/Courses";
 import Poll from "./Pages/Poll/Poll";
 import MasterCard from "./Components/MasterCard/MasterCard";
 import ProtectedRoute from "./Components/ProtectedRoute";
-import CoursesList from "./Pages/Courses/Courses";
 
 
 const routes = [
@@ -22,7 +21,7 @@ const routes = [
     { path: "/reset-password", element: <Password /> },
     {
         path: "/unit/*", element: <Unit />, children: [
-            { path: "courses", element: <CoursesList /> },
+            { path: "courses", element: <Courses /> },
             { path: "schedule", element: <Schedules/> },
             { path: "exams", element: <Exams /> },
             {

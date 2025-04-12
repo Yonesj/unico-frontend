@@ -87,7 +87,7 @@ const Row = props => {
     );
 };
 
-const CoursesList = (children) => {
+const Courses = (children) => {
     const deleteConfirm = (index) => {
         Swal.fire({
             title: "آیا از حذف درس اطمینان دارید؟",
@@ -392,8 +392,8 @@ const CoursesList = (children) => {
     return (
         <DndContext modifiers={[restrictToVerticalAxis]} onDragEnd={onDragEnd}>
             <SortableContext items={dataSource.map(i => i.key)} strategy={verticalListSortingStrategy}>
-                <div className='bg-white px-4 py-2 rounded-xl '>
-                    <div className='flex justify-between p-3 mb-2  items-center '>
+            <div className='bg-white w-full rounded-xl overflow-auto' >
+            <div className='flex justify-between p-3 mb-2  items-center h-[65px] '>
                         <div>
                             <h1 className='text-base font-medium'>لیست دروس ارائه شده</h1>
 
@@ -430,17 +430,17 @@ const CoursesList = (children) => {
                         </div>
 
                     </div>
-                    <div className=''>
+                    <div className='' style={{ height: 'calc(100vh - 205px)' }}>
                         <Table
 
 
-                            style={{ direction: "rtl", height: "500px" }} // Keeps table content in RTL
+                            style={{ direction: "rtl" }} // Keeps table content in RTL
                             rowKey="key"
                             components={{ body: { row: Row } }}
                             columns={columns}
                             dataSource={filteredData}
                             pagination={false}
-                            scroll={{ y: 400 }} // <-- This is the key
+                            scroll={{ y: "calc(100vh - 285px)" }} // <-- This is the key
                         />
                     </div>
                 </div>
@@ -593,4 +593,4 @@ const CoursesList = (children) => {
         </DndContext>
     );
 };
-export default CoursesList;
+export default Courses;
