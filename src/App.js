@@ -7,13 +7,12 @@ import React, { useCallback, useEffect, useState } from "react";
 import { useRoutes } from "react-router-dom";
 import routes from "./routes";
 import AuthContext from "./context/authContext";
-
 import Sidebar from "./Components/Sidebar/Sidebar";
 import {TimerToastProvider} from "./Components/dls/toast/TimerToastContext";
 function App() {
   const router = useRoutes(routes);
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [accessToken, setAccessToken] = useState(false);
   const [refreshToken, setRefreshToken] = useState(false);
   const [userInfos, setUserInfos] = useState(null);
@@ -32,7 +31,6 @@ function App() {
     localStorage.removeItem("AccessToken");
     localStorage.removeItem("RefreshToken");
   }, []);
-
   // useEffect(() => {
   //   const AccessToken = JSON.parse(localStorage.getItem("AccessToken"));
   //   if (AccessToken) {
@@ -51,7 +49,6 @@ function App() {
   //     setIsLoggedIn(false)
   //   }
   // }, [login , logout]);
-
  //useEffect(() => {
   // const access = JSON.parse(localStorage.getItem("access"));
   // if (!accessToken) {
@@ -99,8 +96,7 @@ function App() {
         <TimerToastProvider>
 
         <ToastProvider>
-
-          <div className='min-h-screen  font-iransans'>
+          <div className='min-h-screen font-iransans'>
             <AnimatePresence initial={false} mode='wait'>
               <motion.div
                 key={router.asPath}
@@ -112,7 +108,7 @@ function App() {
               >
                 <div className="flex">
                 {isLoggedIn ? <Sidebar/> : null}
-                <div className="w-full   h-screen overflow-auto">{router}</div>
+                <div className="w-full h-screen overflow-auto">{router}</div>
                 </div>
               </motion.div>
             </AnimatePresence>

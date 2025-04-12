@@ -3,8 +3,8 @@ import { Link, NavLink } from 'react-router-dom'
 import "./UnitHeader.css"
 const UnitHeader = () => {
     return (
-       <div className='mb-3 w-full'>
-         <div className='flex justify-between py-4 '>
+       <div className='mb-3 h-[110px]'>
+         <div className='flex justify-between py-4'>
             <p className='font-normal text-sm'><span className='text-[#7A7E83]'>انتخاب واحد</span> / برنامه هفتگی</p>
             <p className='flex gap-1'>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -18,7 +18,7 @@ const UnitHeader = () => {
                 <li className='py-3 ' ><NavLink className="py-2.5 px-1.5 rounded-lg transition-all duration-200 hover:text-black hover:bg-[#E5F7F8]" to="/unit/courses">لیست دروس</NavLink></li>
                 <li className='py-3 ' ><NavLink className="py-2.5 px-1.5 rounded-lg transition-all duration-200 hover:text-black hover:bg-[#E5F7F8]" to='/unit/schedule'>برنامه هفتگی</NavLink></li>
                 <li className='py-3 ' ><NavLink className="py-2.5 px-1.5 rounded-lg transition-all duration-200 hover:text-black hover:bg-[#E5F7F8]" to="/unit/exams">برنامه امتحانی</NavLink></li>
-                <li className='py-3 ' ><NavLink className="py-2.5 px-1.5 rounded-lg transition-all duration-200 hover:text-black hover:bg-[#E5F7F8]" to="/unit/schedules">لیست برنامه ها</NavLink></li>
+                <li className='py-3 ' ><NavLink className="py-2.5 px-1.5 rounded-lg transition-all duration-200 hover:text-black hover:bg-[#E5F7F8]" to="/unit/schedules/1">لیست برنامه ها</NavLink></li>
             </ul>
         </div>
        </div>

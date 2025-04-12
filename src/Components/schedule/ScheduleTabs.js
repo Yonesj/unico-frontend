@@ -12,7 +12,6 @@ function classNames(...classes) {
 }
 
 export default function ScheduleTabs({
-  exams,
   currentScheduleId,
   schedules,
   setSchedules,
@@ -76,7 +75,7 @@ export default function ScheduleTabs({
   };
   
   return (
-    <div className={exams ? "flex  gap-6" : "flex justify-between"}>
+    <div className="flex justify-between">
       <Tab.Group
       selectedIndex={selectedIndex}
       onChange={(i) => {
@@ -102,7 +101,7 @@ export default function ScheduleTabs({
               )}
             </Tab>
           ))}
-          {!exams && (
+          {showAddButton && (
             <BBtn
               icon={faPlus}
               iconSize="lg"
@@ -119,7 +118,7 @@ export default function ScheduleTabs({
           تعداد واحد انتخاب شده <span className="mr-2 font-semibold">{totalUnits}</span>
         </div>
         <div className="border-r pr-4 border-gray-300 text-gray-600">
-        {!exams && ( <LayoutOutlined width={20} height={20} />)}
+        {showAddButton && ( <LayoutOutlined width={20} height={20} />)}
         </div>
       </div>
     </div>

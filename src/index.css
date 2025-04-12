@@ -6,52 +6,9 @@
 @import "./styles/ripple.css";
 @import url("./fonts.css");;
 
-
-
-.body {
-  max-width: 1800px;
-  margin: 0 auto;
-}
-
-
-
-.course-list{
- overflow-y: scroll;
- overflow-x: visible;
-}
-
 .btoast-container {
-    z-index: 999999999 !important; 
+    z-index: 999999999 !important; /* Highest priority */
   }
-
-
-  .table-wrapper {
-    width: 100%;
-    overflow-x: auto;
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  th, td {
-    padding: 10px;
-    text-align: center;
-    border: 1px solid #ccc;
-  }
-  
-  .sticky {
-    position: sticky;
-    left: 0;
-    background-color: #f4f4f4;
-    font-weight: bold;
-  }
-  
-  .section-wrapper {
-    height: 50px; 
-  }
-
 .ant-modal-close
 {
   position: absolute;

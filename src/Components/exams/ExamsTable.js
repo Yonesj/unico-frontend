@@ -77,7 +77,7 @@ export default function Schedule({
   };
 
   return (
-    <div className="h-[480px] ">
+    <div className="h-[700px] relative">
       <FullCalendar
         ref={calendarRef}
         plugins={[timeGridPlugin]}
@@ -98,7 +98,7 @@ export default function Schedule({
         locale={faLocale}
         firstDay={0}
         
-        height={"480px"}
+        height={"700px"}
         views={{
           timeGrid: {
             component: DayTimeColsView,
@@ -121,9 +121,8 @@ export default function Schedule({
               const thisEvent = arg.event;
   
               const overlapping = calendarApi.getEvents().filter((ev) => {
-                console.log(ev , "event");
                 return (
-                  ev.extendedProps.id !== thisEvent.extendedProps.id &&
+                  ev.id !== thisEvent.id &&
                   ev.start < thisEvent.end &&
                   ev.end > thisEvent.start
                 );

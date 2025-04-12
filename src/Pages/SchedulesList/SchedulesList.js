@@ -1,4 +1,4 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useContext, useEffect, useMemo, useState } from 'react';
 import "./SchedulesList.css"
 import { HolderOutlined } from '@ant-design/icons';
 import { DndContext } from '@dnd-kit/core';
@@ -95,9 +95,8 @@ const Row = props => {
 };
 const SchedulesList = () => {
     const number = useParams();
-    console.log(number.number);
 
-    const [dataSource, setDataSource] = React.useState(initialData);
+    const [dataSource, setDataSource] = useState([])
     const onDragEnd = ({ active, over }) => {
         if (active.id !== (over === null || over === void 0 ? void 0 : over.id)) {
             setDataSource(prevState => {
@@ -111,28 +110,54 @@ const SchedulesList = () => {
             });
         }
     };
+    const [schedules, setSchedules] = useState([])
+
+    console.log(dataSource);
+    
+
+     useEffect(() => {
+    
+            const saved = JSON.parse(localStorage.getItem("schedules")) || [];
+            const temp = saved[(number.number)-1].courses;
+            
+            setDataSource(saved)
+            setSchedules(saved[(number.number)-1]);
+            
+            const formatted = temp.map((c, i) => {
+                // Regex to extract course names after the numeric codes
+                return {
+                    key: (i + 1).toString(),
+                    sID: c.course_code,
+                    courseName: <><p>{c.course_name} - </p>{c.notes}<p></p></>,
+                    teacherName: c.professor_name,
+                    capacity: c.capacity,
+                    
+                   
+                    operation: (
+                        <button>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M12 4L4 12M4 4L12 12" stroke="#C12B2D" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                        </button>
+                    ),
+                };
+            });
+            
+            setSchedules(formatted);
+            
+        }, [number]);
+
     return (
         <DndContext modifiers={[restrictToVerticalAxis]} onDragEnd={onDragEnd}>
-            <SortableContext items={dataSource.map(i => i.key)} strategy={verticalListSortingStrategy}>
+            <SortableContext items={schedules.map(i => i.key)} strategy={verticalListSortingStrategy}>
                 <div className='bg-white px-4 py-2 rounded-xl'>
-                    <div className='flex justify-between p-3 mb-2  items-center '>
+                    <div className='flex justify-between p-3 mb-2  items-center h-[60px] '>
                         <div>
                             <ul className='flex gap-3 schedulesUl'>
-                                <li>
-                                    <NavLink className="px-3 py-2.5" to="/unit/schedules/1">برنامه 1</NavLink>
-                                </li>
-                                <li>
-                                    <NavLink className="px-3 py-2.5" to="/unit/schedules/2">برنامه 2</NavLink>
-                                </li>
-                                <li>
-                                    <NavLink className="px-3 py-2.5" to="/unit/schedules/3">برنامه 3</NavLink>
-                                </li>
-                                <li>
-                                    <NavLink className="px-3 py-2.5" to="/unit/schedules/4">برنامه 4</NavLink>
-                                </li>
-                                <li>
-                                    <NavLink className="px-3 py-2.5" to="/unit/schedules/5">برنامه 5</NavLink>
-                                </li>
+                            {dataSource.map((item,i) => {
+                                    return <li><NavLink className="px-3 py-2.5" to={`/unit/schedules/${i+1}`}>برنامه {i+1}</NavLink></li> 
+                                })}     
+                            
                             </ul>
 
                         </div>
@@ -152,18 +177,15 @@ const SchedulesList = () => {
                         </div>
 
                     </div>
-                    <div>
+                    <div className='' style={{ height: 'calc(100vh - 220px)' }}>
                         <Table
-                        
-
-
-                            style={{ direction: "rtl" , height : "510px"}} // Keeps table content in RTL
+                            style={{ direction: "rtl", height: "510px" }} // Keeps table content in RTL
                             rowKey="key"
                             components={{ body: { row: Row } }}
                             columns={columns}
-                            dataSource={dataSource}
+                            dataSource={schedules}
                             pagination={false}
-                            />
+                        />
                     </div>
                 </div>
             </SortableContext>

@@ -39,7 +39,7 @@ const columns = [
     { title: 'زمان', dataIndex: 'time', align: 'center' },
     { title: 'تاریخ امتحان', dataIndex: 'examTime', align: 'center' },
     { title: 'پیش نیاز/هم نیاز', dataIndex: 'prerequisite', align: 'center' },
-    { title: 'عملیات', dataIndex: 'operation', align: 'center' },
+    { title: 'حذف', dataIndex: 'operation', align: 'center' },
 ];
 
 
@@ -87,7 +87,7 @@ const Row = props => {
     );
 };
 
-const CoursesList = (children) => {
+const Courses = (children) => {
     const deleteConfirm = (index) => {
         Swal.fire({
             title: "آیا از حذف درس اطمینان دارید؟",
@@ -110,8 +110,7 @@ const CoursesList = (children) => {
 
     const [courses, setCourses] = useState([]);
     const [dataSource, setDataSource] = useState([]);
-    const startTime = dayjs('11:00', 'HH:mm');
-    const endTime = dayjs('12:00', 'HH:mm');
+  
 
 
 
@@ -135,10 +134,13 @@ const CoursesList = (children) => {
     };
     const handleDeleteUnit = (index) => {
 
+        // Log the index to see where it was clicked
 
+        // Update the courses state
         setCourses(prevState => {
             const updatedCourses = prevState.filter((_, i) => i !== index);
 
+            // Save updated courses to local storage
             localStorage.setItem('courses', JSON.stringify(updatedCourses));
             return updatedCourses;
         });
@@ -155,17 +157,20 @@ const CoursesList = (children) => {
         const saved = JSON.parse(localStorage.getItem("courses")) || [];
         setCourses(saved);
         const formatted = saved.map((c, i) => {
-            const noteText = c.prerequisites || "";
+            // Regex to extract course names after the numeric codes
+            
+            const noteText = c.prerequisites || "-";
             const matches = [...noteText.matchAll(/\d+\s+(.+)/g)];
             const extractedNames = matches.map(m => m[1]).join("، ");
-
+            
+            
             return {
                 key: (i + 1).toString(),
                 sID: c.course_code,
-                courseName: <><p>{c.course_name}</p> - {c.notes}<p></p></>,
+                courseName: <><p>{c.course_name} - </p>{c.notes}<p></p></>,
                 unitNumber: c.theory,
                 teacherName: c.professor_name,
-                gender: c.gender === "F" ? "خواهران" : "برادران",
+                gender: c.gender == "-" ? "-" :  c.gender === "F" ? "خواهران" : "برادران",
                 time: c.classes ? (
                     <div>
                         {c.classes.map((time, index) => (
@@ -181,7 +186,7 @@ const CoursesList = (children) => {
                         ) : "-"}
                     </>
                 ),
-                prerequisite: <p>{extractedNames}</p> || "-",  // <-- here is the parsed name
+                prerequisite: noteText != "-" ? <p>{extractedNames}</p> : "-",  // <-- here is the parsed name
                 operation: (
                     <button onClick={() => deleteConfirm(i)}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -243,15 +248,17 @@ const CoursesList = (children) => {
 
     const [addUnitModal, setAddUnitModal] = useState(false);
     const courseName = useRef("");
-    const [professorName, setProfessorName] = useState("");
-    const [courseCode, setCourseCode] = useState("");
-    const [theory, setTheory] = useState("");
-    const [gender, setGender] = useState("");
-    const [courseDay, setcourseDay] = useState("شنبه");
-    const [courseStarthour, setcourseStarthour] = useState("");
-    const [courseStartmin, setcourseStartmin] = useState("");
-    const [courseEndhour, setcourseEndhour] = useState("");
-    const [courseEndmin, setcourseEndmin] = useState("");
+    const professorName = useRef("");
+    const courseCode = useRef("");
+    // const [professorName, setProfessorName] = useState("");
+    // const [courseCode, setCourseCode] = useState("");
+    // const [theory, setTheory] = useState("");
+    // const [gender, setGender] = useState("");
+    // const [courseDay, setcourseDay] = useState("شنبه");
+    // const [courseStarthour, setcourseStarthour] = useState("");
+    // const [courseStartmin, setcourseStartmin] = useState("");
+    // const [courseEndhour, setcourseEndhour] = useState("");
+    // const [courseEndmin, setcourseEndmin] = useState("");
     const [courseExamStarthour, setcourseExamStarthour] = useState("");
     const [courseExamStartmin, setcourseExamStartmin] = useState("");
     const [courseExamEndhour, setcourseExamEndhour] = useState("");
@@ -260,15 +267,15 @@ const CoursesList = (children) => {
     const [prerequisites, setPrerequisites] = useState("");
     const [selectedDate, setSelectedDate] = useState("");
 
-    const handleTime = (value) => {
+    // const handleTime = (value) => {
 
-        if (value) {
-            setcourseStartmin(value[0].$m);
-            setcourseStarthour(value[0].$H);
-            setcourseEndmin(value[1].$m);
-            setcourseEndhour(value[1].$H);
-        }
-    }
+    //     if (value) {
+    //         setcourseStartmin(value[0].$m);
+    //         setcourseStarthour(value[0].$H);
+    //         setcourseEndmin(value[1].$m);
+    //         setcourseEndhour(value[1].$H);
+    //     }
+    // }
     const handleDateChange = (date) => {
 
 
@@ -284,23 +291,34 @@ const CoursesList = (children) => {
             setcourseExamEndhour(value[1].$H);
         }
     }
+
+
+
+    let [num, setNum] = useState(1);
+    const [courseTimes, setCourseTimes] = useState(
+        Array.from({ length: num }, () => ({ day: 'sat', start: '', end: '' }))
+    );
+    const handleDayChange = (value, index) => {        
+        const updated = [...courseTimes];
+        updated[index] = { ...updated[index], day: dayMapreverse[value] };
+        setCourseTimes(updated);
+    };
+    const handleTimeChange = (value, index) => {
+        const updated = [...courseTimes];
+        updated[index] = { ...updated[index], start: value[0].$H, end: value[1].$H };
+        setCourseTimes(updated);
+    };
     const handleAddUnit = () => {
         const newUnit = {
-            course_code: courseCode,
+            course_code: courseCode.current,
             course_name: courseName.current,
-            professor_name: professorName,
+            professor_name: professorName.current,
 
             theory: "-", // you can update this with actual data
             prerequisites: "-", // add if needed
             notes: "", // add if needed
             gender: "-", // or "F"
-            classes: [
-                {
-                    day: dayMapreverse[courseDay],
-                    start: courseStarthour,
-                    end: courseEndhour,
-                },
-            ],
+            classes:[...courseTimes],
             exam: {
                 date: selectedDate,
                 start: courseExamStarthour,
@@ -335,18 +353,23 @@ const CoursesList = (children) => {
         // Close the modal
         setAddUnitModal(false);
     };
-    const [searchText, setSearchText] = useState("")
 
+
+    const [searchText, setSearchText] = useState("")
     const normalizeText = (text) =>
-        text.replace(/ی/g, "ي").toLowerCase();
+        text.replace(/ی/g, "ي").replace(/ک/g, "ك").replace(/پ/g, "پ").toLowerCase();
 
     const filteredData = useMemo(() => {
         return dataSource.filter(item => {
-            const courseText = item.courseName.props?.children?.[0]?.props?.children?.toString() || "";
-            return normalizeText(courseText).includes(normalizeText(searchText));
+          const courseText = item.courseName.props?.children?.[0]?.props?.children?.toString() || "";
+               
+          const search = normalizeText(searchText);
+          return (
+            normalizeText(courseText).includes(search)
+          );
         });
-    }, [searchText, dataSource]);
-
+      }, [searchText, dataSource]);
+      
     const onDragEnd = ({ active, over }) => {
         if (active.id !== (over === null || over === void 0 ? void 0 : over.id)) {
             setDataSource(prevState => {
@@ -360,17 +383,17 @@ const CoursesList = (children) => {
             });
         }
     };
-
-
-    let [num,setNum] = useState(1);
     
+
+
+
 
 
     return (
         <DndContext modifiers={[restrictToVerticalAxis]} onDragEnd={onDragEnd}>
             <SortableContext items={dataSource.map(i => i.key)} strategy={verticalListSortingStrategy}>
-                <div className='bg-white px-4 py-2 rounded-xl '>
-                    <div className='flex justify-between p-3 mb-2  items-center '>
+            <div className='bg-white w-full rounded-xl overflow-auto' >
+            <div className='flex justify-between p-3 mb-2  items-center h-[65px] '>
                         <div>
                             <h1 className='text-base font-medium'>لیست دروس ارائه شده</h1>
 
@@ -407,18 +430,17 @@ const CoursesList = (children) => {
                         </div>
 
                     </div>
-                    <div className=''>
+                    <div className='' style={{ height: 'calc(100vh - 205px)' }}>
                         <Table
 
 
-                            style={{ direction: "rtl", height: "500px" }} // Keeps table content in RTL
+                            style={{ direction: "rtl" }} // Keeps table content in RTL
                             rowKey="key"
                             components={{ body: { row: Row } }}
                             columns={columns}
                             dataSource={filteredData}
                             pagination={false}
-                            scroll={{ y: 400 }} // <-- This is the key
-
+                            scroll={{ y: "calc(100vh - 285px)" }} // <-- This is the key
                         />
                     </div>
                 </div>
@@ -459,9 +481,8 @@ const CoursesList = (children) => {
                                 type="text"
                                 name="unitMaster"
                                 id="unitMaster"
-                                value={professorName}
                                 onChange={(e) =>
-                                    setProfessorName(e.target.value)
+                                   professorName.current =  e.target.value
                                 }
                                 placeholder="امینی هرندی"
                                 required
@@ -476,9 +497,8 @@ const CoursesList = (children) => {
                                 type="text"
                                 name="name"
                                 id="name"
-                                value={courseCode}
                                 onChange={(e) =>
-                                    setCourseCode(e.target.value)
+                                    courseCode.current =  e.target.value
                                 }
                                 placeholder="401351 - 05"
                                 required
@@ -496,36 +516,36 @@ const CoursesList = (children) => {
 
                         <div className='flex flex-col gap-2'>
                             {Array.from({ length: num }).map((_, i) => (
-                                     <div className="flex" key={i}>
+                                <div className="flex" key={i}>
 
-                                     <div className="flex w-1/2 items-center border border-solid border-[#A7A9AD] rounded-lg rounded-l-none outline-none text-base px-3">
-                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                             <path d="M14 6.66683H2M10.6667 1.3335V4.00016M5.33333 1.3335V4.00016M5.2 14.6668H10.8C11.9201 14.6668 12.4802 14.6668 12.908 14.4488C13.2843 14.2571 13.5903 13.9511 13.782 13.5748C14 13.147 14 12.5869 14 11.4668V5.86683C14 4.74672 14 4.18667 13.782 3.75885C13.5903 3.38252 13.2843 3.07656 12.908 2.88482C12.4802 2.66683 11.9201 2.66683 10.8 2.66683H5.2C4.0799 2.66683 3.51984 2.66683 3.09202 2.88482C2.71569 3.07656 2.40973 3.38252 2.21799 3.75885C2 4.18667 2 4.74672 2 5.86683V11.4668C2 12.5869 2 13.147 2.21799 13.5748C2.40973 13.9511 2.71569 14.2571 3.09202 14.4488C3.51984 14.6668 4.0799 14.6668 5.2 14.6668Z" stroke="#919498" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                                         </svg>
-         
-                                         <Select onChange={(e) => setcourseDay(e)} className="w-full  font-iransansfa " defaultValue={"شنبه"} suffixIcon={""} >
-                                             <Select.Option value="شنبه">شنبه</Select.Option>
-                                             <Select.Option value="یکشنبه">یکشنبه</Select.Option>
-                                             <Select.Option value="دوشنبه">دوشنبه</Select.Option>
-                                             <Select.Option value="سه شنبه">سه‌شنبه</Select.Option>
-                                             <Select.Option value="چهارشنبه">چهارشنبه</Select.Option>
-                                             <Select.Option value="پنج شنبه">پنج شنبه</Select.Option>
-                                         </Select>
-                                     </div>
-                                     <div className="w-1/2" dir="ltr">
-                                         <TimePicker.RangePicker onChange={(e) => handleTime(e)} className="border-[#A7A9AD] rounded-lg rounded-r-none py-2 px-3 border-r-0 font-iransansfa" placeholder={['شروع', 'پایان']} // <-- This is the key line
-                                             format={format}
-                                             separator={<span>-</span>} // Custom separator
-         
-                                         />
-                                     </div>
-         
-                                 </div>
+                                    <div className="flex w-1/2 items-center border border-solid border-[#A7A9AD] rounded-lg rounded-l-none outline-none text-base px-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                            <path d="M14 6.66683H2M10.6667 1.3335V4.00016M5.33333 1.3335V4.00016M5.2 14.6668H10.8C11.9201 14.6668 12.4802 14.6668 12.908 14.4488C13.2843 14.2571 13.5903 13.9511 13.782 13.5748C14 13.147 14 12.5869 14 11.4668V5.86683C14 4.74672 14 4.18667 13.782 3.75885C13.5903 3.38252 13.2843 3.07656 12.908 2.88482C12.4802 2.66683 11.9201 2.66683 10.8 2.66683H5.2C4.0799 2.66683 3.51984 2.66683 3.09202 2.88482C2.71569 3.07656 2.40973 3.38252 2.21799 3.75885C2 4.18667 2 4.74672 2 5.86683V11.4668C2 12.5869 2 13.147 2.21799 13.5748C2.40973 13.9511 2.71569 14.2571 3.09202 14.4488C3.51984 14.6668 4.0799 14.6668 5.2 14.6668Z" stroke="#919498" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                                        </svg>
+
+                                        <Select onChange={(value) => handleDayChange(value, i)} className="w-full  font-iransansfa " defaultValue={"شنبه"} suffixIcon={""} >
+                                            <Select.Option value="شنبه">شنبه</Select.Option>
+                                            <Select.Option value="یکشنبه">یکشنبه</Select.Option>
+                                            <Select.Option value="دوشنبه">دوشنبه</Select.Option>
+                                            <Select.Option value="سه‌شنبه">سه‌شنبه</Select.Option>
+                                            <Select.Option value="چهارشنبه">چهارشنبه</Select.Option>
+                                            <Select.Option value="پنج شنبه">پنج شنبه</Select.Option>
+                                        </Select>
+                                    </div>
+                                    <div className="w-1/2" dir="ltr">
+                                        <TimePicker.RangePicker onChange={(value) => handleTimeChange(value,i)} className="border-[#A7A9AD] rounded-lg rounded-r-none py-2 px-3 border-r-0 font-iransansfa" placeholder={['شروع', 'پایان']} // <-- This is the key line
+                                            format={format}
+                                            separator={<span>-</span>} // Custom separator
+
+                                        />
+                                    </div>
+
+                                </div>
                             ))}
                         </div>
 
                         <div className="">
-                            <button onClick={()=> setNum(prev => prev + 1)} className="flex cursor-pointer items-center justify-center m-auto bg-transparent border-dashed p-1.5 rounded-lg border-[#D9D9D9]" type="button">
+                            <button onClick={() => setNum(prev => prev + 1)} className="flex cursor-pointer items-center justify-center m-auto bg-transparent border-dashed p-1.5 rounded-lg border-[#D9D9D9]" type="button">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                                     <path d="M9.99984 4.1665V15.8332M4.1665 9.99984H15.8332" stroke="#929292" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                                 </svg>
@@ -573,4 +593,4 @@ const CoursesList = (children) => {
         </DndContext>
     );
 };
-export default CoursesList;
+export default Courses;

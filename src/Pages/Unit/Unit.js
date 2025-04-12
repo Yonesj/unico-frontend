@@ -13,7 +13,7 @@ const Unit = () => {
 
 
   return (
-    <div className="bg-[#F1F5F7] h-full px-4 font-iransansfa relative">
+    <div className="bg-[#F1F5F7] h-full px-4 font-iransansfa">
       {/* <Sidebar /> */}
       <UnitHeader/>
       <Outlet/>

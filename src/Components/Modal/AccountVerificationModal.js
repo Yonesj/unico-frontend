@@ -12,7 +12,7 @@ const AccountVerificationModal = ({ open, onOk, onClose, email, password }) => {
   const toast = useToast();
   const authContext = useContext(AuthContext);
 
-  const isValidCode = /^[A-Za-z0-9]{8}$/.test(code);
+  const isValidCode = /^[A-Za-z0-9]{6}$/.test(code);
 
   const userLogin = async (event) => {
     if (event) event.preventDefault();

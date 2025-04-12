@@ -53,8 +53,6 @@ export default function SignUp() {
     fetch("http://localhost:8000/auth/users/", {
       method: "POST",
       headers: {
-        "Accept-Language": "fa",
-
         "Content-Type": "application/json",
       },
       body: JSON.stringify(userData),
@@ -71,13 +69,14 @@ export default function SignUp() {
       .then((data) => {
         console.log(data);
         toast.open({
-          message: "کد ورود با موفقیت ارسال شد",
+          message: "کاربر با موفقیت ثبت نام شد",
           type: "success",
         });
         setIsModalOpen(true);
       })
       .catch((err) => {
         console.error(err);
+
 
        // if (err.message == "The password is too similar to the username.") {
        //   toast.open({
@@ -106,12 +105,13 @@ export default function SignUp() {
        //   });
        // } else {
         
+
           toast.open({
             message: err.message,
             type: "error",
           });
         }
-      )
+      })
       .finally(() => {
         setLoading(false);
       });
