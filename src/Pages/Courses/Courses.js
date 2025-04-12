@@ -422,6 +422,7 @@ const CoursesList = (children) => {
                             dataSource={filteredData}
                             pagination={false}
                             scroll={{ y: 400 }} // <-- This is the key
+
                         />
                     </div>
                 </div>

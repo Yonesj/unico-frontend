@@ -3,8 +3,8 @@ import { Link, NavLink } from 'react-router-dom'
 import "./UnitHeader.css"
 const UnitHeader = () => {
     return (
-       <div className='mb-3'>
-         <div className='flex justify-between py-4'>
+       <div className='mb-3 w-full'>
+         <div className='flex justify-between py-4 '>
             <p className='font-normal text-sm'><span className='text-[#7A7E83]'>انتخاب واحد</span> / برنامه هفتگی</p>
             <p className='flex gap-1'>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
