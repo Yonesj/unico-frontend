@@ -134,13 +134,10 @@ const Courses = (children) => {
     };
     const handleDeleteUnit = (index) => {
 
-        // Log the index to see where it was clicked
 
-        // Update the courses state
         setCourses(prevState => {
             const updatedCourses = prevState.filter((_, i) => i !== index);
 
-            // Save updated courses to local storage
             localStorage.setItem('courses', JSON.stringify(updatedCourses));
             return updatedCourses;
         });
@@ -157,9 +154,13 @@ const Courses = (children) => {
         const saved = JSON.parse(localStorage.getItem("courses")) || [];
         setCourses(saved);
         const formatted = saved.map((c, i) => {
+<<<<<<< HEAD
             // Regex to extract course names after the numeric codes
             
             const noteText = c.prerequisites || "-";
+=======
+            const noteText = c.prerequisites || "";
+>>>>>>> 889c248 (error_handle)
             const matches = [...noteText.matchAll(/\d+\s+(.+)/g)];
             const extractedNames = matches.map(m => m[1]).join("، ");
             

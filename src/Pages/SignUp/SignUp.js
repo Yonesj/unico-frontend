@@ -53,6 +53,8 @@ export default function SignUp() {
     fetch("http://localhost:8000/auth/users/", {
       method: "POST",
       headers: {
+        "Accept-Language": "fa",
+
         "Content-Type": "application/json",
       },
       body: JSON.stringify(userData),
@@ -69,7 +71,7 @@ export default function SignUp() {
       .then((data) => {
         console.log(data);
         toast.open({
-          message: "کاربر با موفقیت ثبت نام شد",
+          message: "کد ورود با موفقیت ارسال شد",
           type: "success",
         });
         setIsModalOpen(true);
@@ -77,38 +79,38 @@ export default function SignUp() {
       .catch((err) => {
         console.error(err);
 
-        if (err.message == "The password is too similar to the username.") {
-          toast.open({
-            message: "! نام کاربری و رمزعبور بسیار شبیه هستند",
-            type: "error",
-          });
-        } else if (err.message == "This password is too common.") {
-          toast.open({
-            message: "رمزعبور بسیار ساده است",
-            type: "error",
-          });
-        } else if (err.message == "A user with that username already exists.") {
-          toast.open({
-            message: "کاربری با این نام کاربری قبلا ثبت نام کرده",
-            type: "error",
-          });
-        } else if (err.message == "user with this email already exists.") {
-          toast.open({
-            message: "کاربری با این ایمیل قبلا ثبت نام کرده است",
-            type: "error",
-          });
-        } else if (err.message == "This password is too common.") {
-          toast.open({
-            message: "رمز عبور بسیار ساده است ",
-            type: "error",
-          });
-        } else {
+       // if (err.message == "The password is too similar to the username.") {
+       //   toast.open({
+       //     message: "! نام کاربری و رمزعبور بسیار شبیه هستند",
+       //     type: "error",
+       //   });
+       // } else if (err.message == "This password is too common.") {
+       //   toast.open({
+       //     message: "رمزعبور بسیار ساده است",
+       //     type: "error",
+       //   });
+       // } else if (err.message == "A user with that username already exists.") {
+       //   toast.open({
+       //     message: "کاربری با این نام کاربری قبلا ثبت نام کرده",
+       //     type: "error",
+       //   });
+       // } else if (err.message == "user with this email already exists.") {
+       //   toast.open({
+       //     message: "کاربری با این ایمیل قبلا ثبت نام کرده است",
+       //     type: "error",
+       //   });
+       // } else if (err.message == "This password is too common.") {
+       //   toast.open({
+       //     message: "رمز عبور بسیار ساده است ",
+       //     type: "error",
+       //   });
+       // } else {
           toast.open({
             message: err.message,
             type: "error",
           });
         }
-      })
+      )
       .finally(() => {
         setLoading(false);
       });
