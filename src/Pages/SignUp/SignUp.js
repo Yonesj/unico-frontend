@@ -77,35 +77,32 @@ export default function SignUp() {
       .catch((err) => {
         console.error(err);
 
-
-       // if (err.message == "The password is too similar to the username.") {
-       //   toast.open({
-       //     message: "! نام کاربری و رمزعبور بسیار شبیه هستند",
-       //     type: "error",
-       //   });
-       // } else if (err.message == "This password is too common.") {
-       //   toast.open({
-       //     message: "رمزعبور بسیار ساده است",
-       //     type: "error",
-       //   });
-       // } else if (err.message == "A user with that username already exists.") {
-       //   toast.open({
-       //     message: "کاربری با این نام کاربری قبلا ثبت نام کرده",
-       //     type: "error",
-       //   });
-       // } else if (err.message == "user with this email already exists.") {
-       //   toast.open({
-       //     message: "کاربری با این ایمیل قبلا ثبت نام کرده است",
-       //     type: "error",
-       //   });
-       // } else if (err.message == "This password is too common.") {
-       //   toast.open({
-       //     message: "رمز عبور بسیار ساده است ",
-       //     type: "error",
-       //   });
-       // } else {
-        
-
+        if (err.message == "The password is too similar to the username.") {
+          toast.open({
+            message: "! نام کاربری و رمزعبور بسیار شبیه هستند",
+            type: "error",
+          });
+        } else if (err.message == "This password is too common.") {
+          toast.open({
+            message: "رمزعبور بسیار ساده است",
+            type: "error",
+          });
+        } else if (err.message == "A user with that username already exists.") {
+          toast.open({
+            message: "کاربری با این نام کاربری قبلا ثبت نام کرده",
+            type: "error",
+          });
+        } else if (err.message == "user with this email already exists.") {
+          toast.open({
+            message: "کاربری با این ایمیل قبلا ثبت نام کرده است",
+            type: "error",
+          });
+        } else if (err.message == "This password is too common.") {
+          toast.open({
+            message: "رمز عبور بسیار ساده است ",
+            type: "error",
+          });
+        } else {
           toast.open({
             message: err.message,
             type: "error",
