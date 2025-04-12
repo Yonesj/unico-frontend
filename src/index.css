@@ -1,11 +1,11 @@
-
 @tailwind base;
+@tailwind components;
+@tailwind utilities;
 @import "./fonts.css";
 @import "./styles/full-calendar.css";
 @import "./styles/ripple.css";
 @import url("./fonts.css");;
-@tailwind components;
-@tailwind utilities;
+
 
 
 .body {
@@ -19,9 +19,11 @@
  overflow-y: scroll;
  overflow-x: visible;
 }
+
 .btoast-container {
     z-index: 999999999 !important; 
   }
+
 
   .table-wrapper {
     width: 100%;
@@ -56,4 +58,3 @@
   right: 12px;
 
 } 
-

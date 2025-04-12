@@ -37,6 +37,7 @@ const Course = ({ course,isOverlapping ,  className, ...props }) => {
 
       {mode === "filter" && <BBtn preIcon={faFilter}>فیلتر کردن</BBtn>}
     </div>
+    
   );
 };
 

@@ -15,17 +15,23 @@ import ProtectedRoute from "./Components/routing/ProtectedRoute";
 import UnitWrapper from "./Components/routing/unitWrapper";
 import Index from "./Pages/Index";
 
+import ProtectedRoute from "./Components/ProtectedRoute";
+import CoursesList from "./Pages/Courses/Courses";
+
+
 
 const routes = [
     { path: "/", element: <Index /> },
-
+    { path: "/reset-password", element: <Password /> },
     { path: "/login", element: <Login /> },
     { path: "/sign-up", element: <SignUp /> },
+
     { path: "*", element: <NotFound /> },
     { path: "/reset-password", element: <Password /> },
     {
         path: "/unit/*", element: <UnitWrapper />, children: [
-            { path: "courses", element: <Courses /> },
+    
+            { path: "courses", element: <CoursesList /> },
             { path: "schedule", element: <Schedules/> },
             { path: "exams", element: <Exams /> },
             {

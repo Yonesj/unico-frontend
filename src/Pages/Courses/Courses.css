@@ -2,6 +2,14 @@
 {
     font-family: IranSansFa;
 }
+.ant-table-content th
+{
+    border: none;
+}
+.ant-table-content tr
+{
+    height: 85px !important;
+}
 .ant-table-cell
 {
     font-weight: 500 !important;
@@ -68,4 +76,46 @@ th
 .ant-pagination-disabled
 {
     background-color: #E9EAEA !important;
+}
+.ant-pagination-item-link
+{
+    width: 100%;
+
+}
+.ant-pagination-options
+{
+    border-radius: 5px !important;
+}
+.ant-pagination-options .ant-select-selector
+{
+    border: none !important;
+}
+.ant-table-body {
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1;
+}
+
+.ant-table-body::-webkit-scrollbar {
+    width: 8px;
+}
+
+.ant-table-body::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.ant-table-body::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 4px;
+}
+.ant-table-header thead
+{
+    height: 70px;
+}
+.ant-table-container
+{
+    font-family: IranSansFa;
+}
+.swal2-container
+{
+    font-family: 'iranSans';
 }

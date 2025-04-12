@@ -56,6 +56,7 @@ const SchedulesPage = () => {
   }, [currentScheduleId, schedules]);
 
   return (
+
     <div className=" flex-wrap grid grid-cols-4 bg-[#F1F5F7] gap-2 w-full justify-center  text-black font-iransans h-[520px]   ">
       <div className="flex  col-span-3 grow flex-col justify-between  space-y-5 rounded-xl bg-[#ffffff] p-4 backdrop-blur">
         <ScheduleTabs
@@ -66,6 +67,7 @@ const SchedulesPage = () => {
           onChange={setCurrentScheduleId}
           setSchedules={setSchedules}
         />
+
 
         <Schedule
           courses={courses}

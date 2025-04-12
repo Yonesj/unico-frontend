@@ -33,24 +33,26 @@ function App() {
     localStorage.removeItem("AccessToken");
     localStorage.removeItem("RefreshToken");
   }, []);
- //useEffect(() => {
- //  const AccessToken = JSON.parse(localStorage.getItem("AccessToken"));
- //  if (AccessToken) {
- //    fetch(`http://localhost:8000/auth/uesrs/me/`, {
- //      headers: {
- //        Authorization: `Bearer ${AccessToken}`,
- //      },
- //    })
- //      .then((res) => res.json())
- //      .then((userData) => {
- //        setIsLoggedIn(true);
- //        setUserInfos(userData);
- //      });
- //  }
- //  else{
- //    setIsLoggedIn(false)
- //  }
- //}, [login , logout]);
+
+  // useEffect(() => {
+  //   const AccessToken = JSON.parse(localStorage.getItem("AccessToken"));
+  //   if (AccessToken) {
+  //     fetch(`http://localhost:8000/auth/uesrs/me/`, {
+  //       headers: {
+  //         Authorization: `Bearer ${AccessToken}`,
+  //       },
+  //     })
+  //       .then((res) => res.json())
+  //       .then((userData) => {
+  //         setIsLoggedIn(true);
+  //         setUserInfos(userData);
+  //       });
+  //   }
+  //   else{
+  //     setIsLoggedIn(false)
+  //   }
+  // }, [login , logout]);
+
  //useEffect(() => {
   // const access = JSON.parse(localStorage.getItem("access"));
   // if (!accessToken) {

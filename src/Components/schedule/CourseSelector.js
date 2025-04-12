@@ -68,6 +68,7 @@ export default function CourseSelector({
       fetch("/courses.json")
         .then((res) => res.json())
         .then((data) => {
+          
           setCourses(data.courses);
           localStorage.setItem("courses", JSON.stringify(data));
           setIsLoading(false);
