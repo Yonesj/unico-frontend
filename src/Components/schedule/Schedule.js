@@ -265,7 +265,8 @@ const deleteSchedule = () => {
 
   return (
 
-    <div className="h-[500px]  ">
+    <div className="h-[700px
+    ]  ">
 
       <FullCalendar
         ref={calendarRef}
@@ -290,7 +291,7 @@ const deleteSchedule = () => {
         firstDay={0}
         
         
-        height={"500px"}
+        height={"700px"}
         views={{
           timeGrid: {
             component: DayTimeColsView,
