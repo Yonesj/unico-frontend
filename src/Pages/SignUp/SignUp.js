@@ -111,7 +111,7 @@ export default function SignUp() {
             type: "error",
           });
         }
-      })
+      )
       .finally(() => {
         setLoading(false);
       });
