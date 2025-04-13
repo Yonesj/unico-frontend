@@ -33,13 +33,13 @@
     width: 100%;
     border-collapse: collapse;
   }
-  
+/*   
   th, td {
     padding: 10px;
     text-align: center;
     border: 1px solid #ccc;
   }
-  
+   */
   .sticky {
     position: sticky;
     left: 0;
