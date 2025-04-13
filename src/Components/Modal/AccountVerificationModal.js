@@ -47,7 +47,7 @@ const AccountVerificationModal = ({ open, onOk, onClose, email, password }) => {
   const handleVerifyAccount = async (event) => {
     event.preventDefault();
     if (!isValidCode) {
-      toast.open({ message: "کد تایید باید ۶ کاراکتر عددی یا حروفی باشد", type: "warning" });
+      toast.open({ message: "کد تایید باید 8 کاراکتر عددی یا حروفی باشد", type: "warning" });
       return;
     }
 
@@ -62,9 +62,8 @@ const AccountVerificationModal = ({ open, onOk, onClose, email, password }) => {
       const data = await response.json();
       if (!response.ok) throw new Error(data.message || "کد وارد شده نامعتبر است");
 
-      open({ message: "حساب کاربری با موفقیت فعال شد", type: "success" });
+      toast.open({ message: "حساب کاربری با موفقیت فعال شد", type: "success" });
       await userLogin();
-      onOk();
     } catch (error) {
       toast.open({ message: error.message, type: "error" });
     } finally {
