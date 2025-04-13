@@ -13,8 +13,7 @@ import {
   maxValidator,
   emailValidator,
 } from "../../validators/rules";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import { useEffect } from "react";
+import Sidebar from "../../Components/Sidebar/Sidebar"
 import AuthContext from "../../context/authContext";
 import { LockOutlined, MailOutlined, UserOutlined } from "@ant-design/icons";
 import AccountVerificationModal from "../../Components/Modal/AccountVerificationModal";
@@ -63,6 +62,8 @@ export default function Login() {
       const res = await fetch("http://localhost:8000/auth/jwt/create/", {
         method: "POST",
         headers: {
+        "Accept-Language": "fa",
+
           "Content-Type": "application/json",
         },
         body: JSON.stringify(userData),
@@ -122,6 +123,7 @@ export default function Login() {
   };
   return (
     <>
+
       <main
         dir="rtl"
         className="relative w-full  grid grid-cols-2  h-dvh font-iransans"

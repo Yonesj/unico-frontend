@@ -350,6 +350,7 @@ const Courses = (children) => {
       start: value[0].$H,
       end: value[1].$H,
     };
+
     setCourseTimes(updated);
   };
   const handleAddUnit = () => {
@@ -425,6 +426,7 @@ const Courses = (children) => {
         );
         return arrayMove(prevState, activeIndex, overIndex);
       });
+
     }
   };
 

@@ -38,8 +38,6 @@
 }
 
 .fc-col-header, .fc-timegrid-body , .fc-timegrid-slots > table, .fc-timegrid-cols > table {
-  min-width: 960px !important;
-  max-width: 1280px !important;
 }
 
 .fc-timegrid-event-harness-inset .fc-timegrid-event, .fc-timegrid-event.fc-event-mirror, .fc-timegrid-more-link {
@@ -63,7 +61,7 @@
 }
 
 .fc-timegrid-slot-label-frame.fc-scrollgrid-shrink-frame {
-  margin-top: -32px;
+  margin-top: -25px;
 }
 
 .fc .fc-scrollgrid-section-body table, .fc .fc-scrollgrid-section-footer table {
