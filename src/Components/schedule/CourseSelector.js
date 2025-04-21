@@ -62,7 +62,7 @@ export default function CourseSelector({
     setIsLoading(true);
     const savedCourses = JSON.parse(localStorage.getItem("courses"));
     if (savedCourses) {
-      setCourses(savedCourses);
+      setCourses(savedCourses||[]);
       setIsLoading(false);
     } else {
       fetch("/courses.json")

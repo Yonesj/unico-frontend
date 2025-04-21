@@ -2,19 +2,13 @@ import React, { useEffect, useState } from "react";
 import Schedule from "../Components/schedule/Schedule";
 import ScheduleTabs from "../Components/schedule/ScheduleTabs";
 import CourseSelector from "../Components/schedule/CourseSelector";
-import Sidebar from "../Components/Sidebar/Sidebar";
-import api from "../services/api";
-import { setToken } from "../services/axios";
-import { getSession } from "../services/authService";
-import { courseMapper } from "../utils/mappers";
-import { convertEnglishNumberToPersian } from "../utils/helpers";
-import ToastContext, { useToast } from "../Components/dls/toast/ToastService";
+
 
 const SchedulesPage = () => {
   const [schedules, setSchedules] = useState([]);
   const [currentScheduleId, setCurrentScheduleId] = useState(1);
   const [courses, setCourses] = useState([]);
-
+ 
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -22,8 +16,6 @@ const SchedulesPage = () => {
         let schedulesData = storedSchedules ? JSON.parse(storedSchedules) : [];
 
         if (!storedSchedules) {
-          const response = await fetch("/courses.json");
-          const coursesData = await response.json();
 
           schedulesData = [
             {
@@ -63,7 +55,7 @@ const SchedulesPage = () => {
           schedules={schedules.map((s) => ({
             id: s.id,
           }))}
-          onChange={setCurrentScheduleId}
+          setCurrentScheduleId={setCurrentScheduleId}
           setSchedules={setSchedules}
         />
 

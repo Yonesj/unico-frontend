@@ -5,28 +5,38 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { convertEnglishNumberToPersian } from "../../utils/helpers";
 import { useToast } from "../../Components/dls/toast/ToastService";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { LayoutOutlined } from "@ant-design/icons";
-
+import { DeleteOutlined, LayoutOutlined } from "@ant-design/icons";
+import { useTimerToast } from "../dls/toast/TimerToastContext";
+import {ReactComponent as Download} from "../../Assets/images/file-download-03.svg"
+import SaveCourseList from "../Modal/SaveCourseList";
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function ScheduleTabs({
   exams,
+  list,
   currentScheduleId,
   schedules,
   setSchedules,
-  onChange,
+  setCurrentScheduleId,
   showAddButton = true,
 }) {
   const selectedIndex = schedules.findIndex((s) => s.id === currentScheduleId);
   const toast = useToast();
   const [isLoading, setIsLoading] = useState(false);
 
+ const timerToast = useTimerToast();
 
+
+ const [saveCourseList , setSaveCourseList]=useState(false);
 
   const [totalUnits, setTotalUnits] = useState(0);
-
+  const handleOk = ()=>
+    {
+      setSaveCourseList(false);
+        
+    }
   useEffect(() => {
     const savedSchedules = JSON.parse(localStorage.getItem('schedules'));
 
@@ -43,7 +53,57 @@ export default function ScheduleTabs({
   }, [schedules]); 
 
 
-  const createNewSchedule = () => {
+
+  const deleteSchedule = () => {
+    if (!currentScheduleId) return;
+  
+    if (schedules.length === 1) {
+      timerToast.open({
+        message: "حداقل باید یک برنامه باقی بماند.",
+        type: "info",
+        duration: 3000,
+      });
+      return;
+    }
+  
+    const deletedSchedule = schedules.find((s) => s.id === currentScheduleId);
+    if (!deletedSchedule) return;
+  
+    setSchedules((prev) => {
+      const updated = prev.filter((s) => s.id !== currentScheduleId); 
+      localStorage.setItem("schedules", JSON.stringify(updated));
+  
+      if (currentScheduleId === deletedSchedule.id && updated.length > 0) {
+        setCurrentScheduleId(updated[0].id);
+      } else if (updated.length === 0) {
+        setCurrentScheduleId(null);
+      }
+  
+      return updated;
+    });
+  
+    timerToast.open({
+      message: `برنامه حذف شد.`,
+      type: "warning",
+      duration: 5000,
+      onUndo: () => {
+        const restoredSchedule = { ...deletedSchedule, courses: [] };
+  
+        setSchedules((prev) => {
+          const updated = [...prev, restoredSchedule]; 
+          localStorage.setItem("schedules", JSON.stringify(updated));
+          return updated;
+        });
+  
+        setCurrentScheduleId(restoredSchedule.id);
+      },
+    });
+  };
+  
+
+
+
+    const createNewSchedule = () => {
     if (schedules.length >= 5) {
       toast.open({
         message: "حداکثر تعداد برنامه‌ها ۵ عدد است!",
@@ -80,7 +140,7 @@ export default function ScheduleTabs({
       <Tab.Group
       selectedIndex={selectedIndex}
       onChange={(i) => {
-        onChange(schedules[i].id)
+        setCurrentScheduleId(schedules[i].id)
       }}
     >
         <Tab.List className="flex gap-2">
@@ -102,7 +162,7 @@ export default function ScheduleTabs({
               )}
             </Tab>
           ))}
-          {!exams && (
+          {!exams && !list && (
             <BBtn
               icon={faPlus}
               iconSize="lg"
@@ -114,14 +174,17 @@ export default function ScheduleTabs({
         </Tab.List>
       </Tab.Group>
 
-      <div className="tab-side flex items-center">
-        <div className="bg-white pl-4 font-iransans font-normal text-sm">
+      <div className="tab-side flex items-center px-6">
+        <div className="bg-white pl-4 font-iransans font-normal text-sm ">
           تعداد واحد انتخاب شده <span className="mr-2 font-semibold">{totalUnits}</span>
         </div>
         <div className="border-r pr-4 border-gray-300 text-gray-600">
-        {!exams && ( <LayoutOutlined width={20} height={20} />)}
+        {!exams && !list && ( <LayoutOutlined width={20} height={20} />)}
+        {list && (<div><DeleteOutlined onClick={deleteSchedule}  className="text-xl p-[9px] cursor-pointer bg-[#E03B3A] text-[#FFFFFF] rounded-lg  " /></div>)}
+        {list && (<div><Download onClick={()=>{setSaveCourseList(true)}} className="  cursor-pointer  text-[#FFFFFF] rounded-lg  " /></div>)}
         </div>
       </div>
+      <SaveCourseList onOk={() => handleOk()} onClose={() =>setSaveCourseList(false)} open={saveCourseList} />
     </div>
   );
 }

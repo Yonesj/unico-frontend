@@ -30,14 +30,12 @@ export default function Schedule({
   };
   const [remove, setRemove] = useState(false);
 
-  // تبدیل دوره‌ها به رویداد برای FullCalendar
   const convertCoursesToEvents = useCallback((courses) => {
-    const baseDate = new Date("2025-04-05"); // تاریخ پایه میلادی
+    const baseDate = new Date("2025-04-05"); 
     const events = [];
   
     courses.forEach((course) => {
       if (course.exam && course.exam.start && course.exam.end && course.exam.date) {
-        // تبدیل تاریخ شمسی به میلادی
         const [year, month, day] = course.exam.date.split("/").map(Number);
         const convertedDate = jalaali.toGregorian(year, month, day); 
         const classDate = new Date(convertedDate.gy, convertedDate.gm - 1, convertedDate.gd); 
@@ -64,7 +62,7 @@ export default function Schedule({
   useEffect(() => {
     const currentSchedule = schedules.find((s) => s.id === currentScheduleId);
     if (currentSchedule) {
-      setCourses(currentSchedule.courses);
+      setCourses(currentSchedule.courses||[]);
     }
   }, [currentScheduleId, remove, schedules]);
 

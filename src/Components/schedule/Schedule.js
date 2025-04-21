@@ -208,7 +208,7 @@ const deleteSchedule = () => {
       return updated;
     });
 
-    setCourses((prev) => prev.filter((c) => c.id !== courseId));
+    setCourses((prev) => prev.filter((c) => c.id !== courseId ||[]));
 
     timerToast.open({
       message: `درس "${courseData.course_name} - ${courseData.course_code.slice(

@@ -9,6 +9,7 @@ import routes from "./routes";
 import AuthContext from "./context/authContext";
 import Sidebar from "./Components/Sidebar/Sidebar";
 import {TimerToastProvider} from "./Components/dls/toast/TimerToastContext";
+import ViewportManager from "./Components/routing/ViewportManager";
 function App() {
   const router = useRoutes(routes);
 
@@ -94,8 +95,9 @@ function App() {
       }}
     >
         <TimerToastProvider>
-
         <ToastProvider>
+        <ViewportManager/>
+
           <div className='min-h-screen font-iransans'>
             <AnimatePresence initial={false} mode='wait'>
               <motion.div

@@ -47,7 +47,7 @@ const GolestanLoginModal = ({ onOk, onClose, open }) => {
       if (!response.ok) throw new Error(data.message || "خطایی رخ داده است");
       const courses = data.courses
       console.log(courses);
-      localStorage.setItem("courses", JSON.stringify(courses));
+      localStorage.setItem("courses", JSON.stringify(courses)||[]);
       toast.open({ message: "ورود موفقیت‌آمیز بود", type: "success" });
 
       onOk(data);
