@@ -53,7 +53,7 @@ const SaveCourseList =  ({ open, onOk, onClose }) => {
       ...base,
       zIndex: 1,
       marginTop: 4,
-      maxHeight: 300, // ارتفاع زیاد
+      maxHeight: 300, 
       overflowY: 'auto',
       animation: 'fadeIn 0.3s ease-in-out',
     }),
@@ -81,7 +81,6 @@ const SaveCourseList =  ({ open, onOk, onClose }) => {
     }),
   };
   
-  // انیمیشن ساده CSS
   const fadeInStyle = `
   @keyframes fadeIn {
     from { opacity: 0; transform: scaleY(0.95); }

@@ -31,7 +31,9 @@ const AccountVerificationModal = ({ open, onOk, onClose, email, password }) => {
       if (!res.ok) throw new Error(Object.values(data)[0] || "An error occurred");
       
       toast.open({ message: "ورود کاربر", type: "success" });
+
       authContext.login({}, data.access, data.refresh);
+      onOk(data)
     } catch (err) {
       toast.open({
         message: err.message === "No active account found with the given credentials" 

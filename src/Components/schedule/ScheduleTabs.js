@@ -178,10 +178,10 @@ export default function ScheduleTabs({
         <div className="bg-white pl-4 font-iransans font-normal text-sm ">
           تعداد واحد انتخاب شده <span className="mr-2 font-semibold">{totalUnits}</span>
         </div>
-        <div className="border-r pr-4 border-gray-300 text-gray-600">
+        <div className="border-r pr-4 border-gray-300 text-gray-600 flex  items-center gap-2">
         {!exams && !list && ( <LayoutOutlined width={20} height={20} />)}
-        {list && (<div><DeleteOutlined onClick={deleteSchedule}  className="text-xl p-[9px] cursor-pointer bg-[#E03B3A] text-[#FFFFFF] rounded-lg  " /></div>)}
-        {list && (<div><Download onClick={()=>{setSaveCourseList(true)}} className="  cursor-pointer  text-[#FFFFFF] rounded-lg  " /></div>)}
+        {list && (<div className="p-2 rounded-lg bg-[#EDF1F3] text-2xl "><Download onClick={()=>{setSaveCourseList(true)}} className="cursor-pointer  text-[#FFFFFF] rounded-lg  " /></div>)}
+        {list && (<div><DeleteOutlined onClick={deleteSchedule}  className="text-xl p-[8px] cursor-pointer bg-[#E03B3A] text-[#FFFFFF] rounded-lg  " /></div>)}
         </div>
       </div>
       <SaveCourseList onOk={() => handleOk()} onClose={() =>setSaveCourseList(false)} open={saveCourseList} />

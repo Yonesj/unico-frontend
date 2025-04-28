@@ -26,6 +26,8 @@ export default function CourseSelector({
       setGolestanModal(false);
       
   }
+  const normalizeText = (text) =>
+    text.replace(/ی/g, "ي ").replace(/ک/g, "ك").replace(/پ/g, "پ").toLowerCase();
   const getDaysOfWeek = (dayKey) => {
     const dayNamesFa = {
       sun: "یک‌شنبه",
@@ -87,11 +89,11 @@ export default function CourseSelector({
           const code = course.course_code || "";
           const name = course.course_name || "";
           const presenter = course.professor_name || "";
-
+          const normalQuery=query.replace(/ی/g, "ي").replace(/ک/g, "ك").replace(/پ/g, "پ").toLowerCase();
           return (
-            code.includes(query) ||
-            name.includes(query) ||
-            presenter.includes(query)
+            code.includes(normalQuery) ||
+            name.includes(normalQuery) ||
+            presenter.includes(normalQuery)
           );
         });
 

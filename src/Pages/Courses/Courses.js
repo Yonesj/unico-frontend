@@ -20,8 +20,10 @@ import "../../Components/Modal/AddUnitModal.css";
 import { TimePicker } from "antd";
 import dayjs, { Dayjs } from "dayjs";
 import { Select } from "antd";
-import { DatePicker } from "antd";
+import DatePicker from "react-multi-date-picker";
 import moment from "moment-jalaali"; // Import moment-jalaali
+import { ReactComponent as Close } from "../../Assets/images/x-close.svg";
+
 import Swal from "sweetalert2";
 import { random } from "node-forge";
 const format = "HH:mm";
@@ -172,12 +174,15 @@ const Courses = (children) => {
 
   const [isAdded, setIsAdded] = useState(false);
   const [isRemoved, setIsRemoved] = useState(false);
-
+  const handleDelete = (index) => {
+    const newCourseTimes = courseTimes.filter((_, i) => i !== index);
+    setCourseTimes(newCourseTimes);
+    setNum(newCourseTimes.length);
+  };
   useEffect(() => {
     const saved = JSON.parse(localStorage.getItem("courses")) || [];
     setCourses(saved);
     const formatted = saved.map((c, i) => {
-      // Regex to extract course names after the numeric codes
 
       const noteText = c.prerequisites || "-";
       const matches = [...noteText.matchAll(/\d+\s+(.+)/g)];
@@ -188,9 +193,10 @@ const Courses = (children) => {
         sID: c.course_code,
         courseName: (
           <>
-            <p>{c.course_name} - </p>
-            {c.notes}
+            <p>{c.course_name}</p>
+            {c.notes && <p>- {c.notes}</p>}
             <p></p>
+
           </>
         ),
         unitNumber: c.theory,
@@ -245,44 +251,6 @@ const Courses = (children) => {
     setDataSource(formatted);
   }, [isRemoved, isAdded]);
 
-  // const initialData = [
-  //     {
-  //         key: "1", sID: courses[0] && courses[0].id ? courses[0].id : "1", courseName: 'ریاضی عمومی 2', unitNumber: '3', teacherName: 'رحمانی مورچه خورتی نفیسه', gender: 'مختلط', time: <><p>شنبه ۱۴:۰۰ - ۱۶:۰۰</p><p>دوشنبه ۱۰:۰۰ - ۱۲:۰۰</p><p>چهارشنبه ۰۸:۰۰ - ۱۰:۰۰</p></>, examTime: <><p>۱۴۰۴.۰۳.۳۰</p><p>۰۹:۰۰ - ۱۲:۰۰</p></>, prerequisite: "مقدمه ای بر علم داده", operation: <button><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-  //             <path d="M12 4L4 12M4 4L12 12" stroke="#C12B2D" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-  //         </svg></button>
-  //     },
-  //     {
-  //         key: '2', sID: '4014142_11', courseName: 'ریاضی عمومی 2', unitNumber: '3', teacherName: 'رحمانی مورچه خورتی نفیسه', gender: 'مختلط', time: <><p>شنبه ۱۴:۰۰ - ۱۶:۰۰</p><p>دوشنبه ۱۰:۰۰ - ۱۲:۰۰</p><p>چهارشنبه ۰۸:۰۰ - ۱۰:۰۰</p></>, examTime: <><p>۱۴۰۴.۰۳.۳۰</p><p>۰۹:۰۰ - ۱۲:۰۰</p></>, prerequisite: "مقدمه ای بر علم داده", operation: <button><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-  //             <path d="M12 4L4 12M4 4L12 12" stroke="#C12B2D" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-  //         </svg></button>
-  //     },
-  //     {
-  //         key: '3', sID: '4014142_11', courseName: 'ریاضی عمومی 2', unitNumber: '3', teacherName: 'رحمانی مورچه خورتی نفیسه', gender: 'مختلط', time: <><p>شنبه ۱۴:۰۰ - ۱۶:۰۰</p><p>دوشنبه ۱۰:۰۰ - ۱۲:۰۰</p><p>چهارشنبه ۰۸:۰۰ - ۱۰:۰۰</p></>, examTime: <><p>۱۴۰۴.۰۳.۳۰</p><p>۰۹:۰۰ - ۱۲:۰۰</p></>, prerequisite: "مقدمه ای بر علم داده", operation: <button><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-  //             <path d="M12 4L4 12M4 4L12 12" stroke="#C12B2D" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-  //         </svg></button>
-  //     },
-  //     {
-  //         key: '4', sID: '4014142_11', courseName: 'ریاضی عمومی 2', unitNumber: '3', teacherName: 'رحمانی مورچه خورتی نفیسه', gender: 'مختلط', time: <><p>شنبه ۱۴:۰۰ - ۱۶:۰۰</p><p>دوشنبه ۱۰:۰۰ - ۱۲:۰۰</p><p>چهارشنبه ۰۸:۰۰ - ۱۰:۰۰</p></>, examTime: <><p>۱۴۰۴.۰۳.۳۰</p><p>۰۹:۰۰ - ۱۲:۰۰</p></>, prerequisite: "مقدمه ای بر علم داده", operation: <button><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-  //             <path d="M12 4L4 12M4 4L12 12" stroke="#C12B2D" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-  //         </svg></button>
-  //     },
-  //     {
-  //         key: '5', sID: '4014142_11', courseName: 'ریاضی عمومی 2', unitNumber: '3', teacherName: 'رحمانی مورچه خورتی نفیسه', gender: 'مختلط', time: <><p>شنبه ۱۴:۰۰ - ۱۶:۰۰</p><p>دوشنبه ۱۰:۰۰ - ۱۲:۰۰</p><p>چهارشنبه ۰۸:۰۰ - ۱۰:۰۰</p></>, examTime: <><p>۱۴۰۴.۰۳.۳۰</p><p>۰۹:۰۰ - ۱۲:۰۰</p></>, prerequisite: "مقدمه ای بر علم داده", operation: <button><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-  //             <path d="M12 4L4 12M4 4L12 12" stroke="#C12B2D" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-  //         </svg></button>
-  //     },
-  //     {
-  //         key: '6', sID: '4014142_11', courseName: 'ریاضی عمومی 2', unitNumber: '3', teacherName: 'رحمانی مورچه خورتی نفیسه', gender: 'مختلط', time: <><p>شنبه ۱۴:۰۰ - ۱۶:۰۰</p><p>دوشنبه ۱۰:۰۰ - ۱۲:۰۰</p><p>چهارشنبه ۰۸:۰۰ - ۱۰:۰۰</p></>, examTime: <><p>۱۴۰۴.۰۳.۳۰</p><p>۰۹:۰۰ - ۱۲:۰۰</p></>, prerequisite: "مقدمه ای بر علم داده", operation: <button><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-  //             <path d="M12 4L4 12M4 4L12 12" stroke="#C12B2D" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-  //         </svg></button>
-  //     },
-  //     {
-  //         key: '7', sID: '4014142_11', courseName: 'ریاضی عمومی 2', unitNumber: '3', teacherName: 'رحمانی مورچه خورتی نفیسه', gender: 'مختلط', time: <><p>شنبه ۱۴:۰۰ - ۱۶:۰۰</p><p>دوشنبه ۱۰:۰۰ - ۱۲:۰۰</p><p>چهارشنبه ۰۸:۰۰ - ۱۰:۰۰</p></>, examTime: <><p>۱۴۰۴.۰۳.۳۰</p><p>۰۹:۰۰ - ۱۲:۰۰</p></>, prerequisite: "مقدمه ای بر علم داده", operation: <button><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-  //             <path d="M12 4L4 12M4 4L12 12" stroke="#C12B2D" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-  //         </svg></button>
-  //     },
-
-  // ];
 
   const [golestanModal, setGolestanModal] = useState(false);
   const number = useParams();
@@ -338,6 +306,9 @@ const Courses = (children) => {
   const [courseTimes, setCourseTimes] = useState(
     Array.from({ length: num }, () => ({ day: "sat", start: "", end: "" }))
   );
+  useEffect(() => {
+    setCourseTimes(Array.from({ length: num }, () => ({ day: "sat", start: "", end: "" })));
+  }, [num]);
   const handleDayChange = (value, index) => {
     const updated = [...courseTimes];
     updated[index] = { ...updated[index], day: dayMapreverse[value] };
@@ -360,8 +331,8 @@ const Courses = (children) => {
       theory: unitNumber.current,
       id: Math.floor(Math.random() * 10000000) + 1,
       professor_name: professorName.current,
-      prerequisites: "-", 
-      notes: "", 
+      prerequisites: "-",
+      notes: "",
       gender: "-",
       classes: [...courseTimes],
       exam: {
@@ -383,18 +354,7 @@ const Courses = (children) => {
     });
     setIsAdded(!isAdded);
 
-    // // Reset the form fields
-    // setCourseName("");
-    // setProfessorName("");
-    // setCourseCode("");
-    // setCourseDay("شنبه");
-    // setStartTime(null);
-    // setEndTime(null);
-    // setExamDate(null);
-    // setExamStart(null);
-    // setExamEnd(null);
 
-    // Close the modal
     setAddUnitModal(false);
   };
 
@@ -560,18 +520,18 @@ const Courses = (children) => {
               />
             </div>
             <div className="flex flex-col flex-1">
-            <label for="unitName"> تعداد واحد</label>
-            <input
-              className="border border-solid border-[#A7A9AD] py-2 px-5 rounded-lg mt-2 placeholder:text-[#A7A9AD]"
-              type="text"
-              name="unitNumber"
-              id="unitNumber"
-              onChange={(e) => (unitNumber.current = e.target.value)}
+              <label for="unitName"> تعداد واحد</label>
+              <input
+                className="border border-solid border-[#A7A9AD] py-2 px-5 rounded-lg mt-2 placeholder:text-[#A7A9AD]"
+                type="text"
+                name="unitNumber"
+                id="unitNumber"
+                onChange={(e) => (unitNumber.current = e.target.value)}
 
-              placeholder="3"
-              required
-            />
-          </div>
+                placeholder="۳"
+                required
+              />
+            </div>
           </div>
           <div className="flex gap-6">
             <div className="flex flex-col flex-1 ">
@@ -594,7 +554,7 @@ const Courses = (children) => {
                 name="name"
                 id="name"
                 onChange={(e) => (courseCode.current = e.target.value)}
-                placeholder="401351 - 05"
+                placeholder="۱۱۱۱۱-۱۱"
                 required
               />
             </div>
@@ -606,49 +566,66 @@ const Courses = (children) => {
 
             <div className="flex flex-col gap-2">
               {Array.from({ length: num }).map((_, i) => (
-                <div className="flex" key={i}>
-                  <div className="flex w-1/2 items-center border border-solid border-[#A7A9AD] rounded-lg rounded-l-none outline-none text-base px-3">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 16 16"
-                      fill="none"
-                    >
-                      <path
-                        d="M14 6.66683H2M10.6667 1.3335V4.00016M5.33333 1.3335V4.00016M5.2 14.6668H10.8C11.9201 14.6668 12.4802 14.6668 12.908 14.4488C13.2843 14.2571 13.5903 13.9511 13.782 13.5748C14 13.147 14 12.5869 14 11.4668V5.86683C14 4.74672 14 4.18667 13.782 3.75885C13.5903 3.38252 13.2843 3.07656 12.908 2.88482C12.4802 2.66683 11.9201 2.66683 10.8 2.66683H5.2C4.0799 2.66683 3.51984 2.66683 3.09202 2.88482C2.71569 3.07656 2.40973 3.38252 2.21799 3.75885C2 4.18667 2 4.74672 2 5.86683V11.4668C2 12.5869 2 13.147 2.21799 13.5748C2.40973 13.9511 2.71569 14.2571 3.09202 14.4488C3.51984 14.6668 4.0799 14.6668 5.2 14.6668Z"
-                        stroke="#919498"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
+                <div className="flex w-full gap-2">
+                  <div className="flex w-[95%]" key={i}>
+                    <div className="flex w-1/2 items-center border border-solid border-[#A7A9AD] rounded-lg rounded-l-none outline-none text-base px-3">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        fill="none"
+                      >
+                        <path
+                          d="M14 6.66683H2M10.6667 1.3335V4.00016M5.33333 1.3335V4.00016M5.2 14.6668H10.8C11.9201 14.6668 12.4802 14.6668 12.908 14.4488C13.2843 14.2571 13.5903 13.9511 13.782 13.5748C14 13.147 14 12.5869 14 11.4668V5.86683C14 4.74672 14 4.18667 13.782 3.75885C13.5903 3.38252 13.2843 3.07656 12.908 2.88482C12.4802 2.66683 11.9201 2.66683 10.8 2.66683H5.2C4.0799 2.66683 3.51984 2.66683 3.09202 2.88482C2.71569 3.07656 2.40973 3.38252 2.21799 3.75885C2 4.18667 2 4.74672 2 5.86683V11.4668C2 12.5869 2 13.147 2.21799 13.5748C2.40973 13.9511 2.71569 14.2571 3.09202 14.4488C3.51984 14.6668 4.0799 14.6668 5.2 14.6668Z"
+                          stroke="#919498"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
 
-                    <Select
-                      onChange={(value) => handleDayChange(value, i)}
-                      className="w-full  font-iransansfa "
-                      defaultValue={"شنبه"}
-                      suffixIcon={""}
-                    >
-                      <Select.Option value="شنبه">شنبه</Select.Option>
-                      <Select.Option value="یکشنبه">یکشنبه</Select.Option>
-                      <Select.Option value="دوشنبه">دوشنبه</Select.Option>
-                      <Select.Option value="سه‌شنبه">سه‌شنبه</Select.Option>
-                      <Select.Option value="چهارشنبه">چهارشنبه</Select.Option>
-                      <Select.Option value="پنج شنبه">پنج شنبه</Select.Option>
-                    </Select>
+                      <Select
+                        onChange={(value) => handleDayChange(value, i)}
+                        className="w-full  font-iransans fa "
+                        defaultValue={"شنبه"}
+                        suffixIcon={""}
+                      >
+                        <Select.Option value="شنبه">شنبه</Select.Option>
+                        <Select.Option value="یکشنبه">یکشنبه</Select.Option>
+                        <Select.Option value="دوشنبه">دوشنبه</Select.Option>
+                        <Select.Option value="سه‌شنبه">سه‌شنبه</Select.Option>
+                        <Select.Option value="چهارشنبه">چهارشنبه</Select.Option>
+                        <Select.Option value="پنج شنبه">پنج شنبه</Select.Option>
+                      </Select>
+                    </div>
+                    <div className="w-1/2" dir="ltr">
+                      <TimePicker.RangePicker
+                        onChange={(value) => handleTimeChange(value, i)}
+                        className="border-[#A7A9AD] rounded-lg rounded-r-none py-2 px-3 border-r-0 font-iransansfa"
+                        placeholder={["شروع", "پایان"]}
+                        format="HH"
+                        separator={<span>-</span>}
+                        disabledHours={() => {
+                          const hours = [];
+                          for (let i = 0; i < 7; i++) hours.push(i);
+                          for (let i = 20; i < 24; i++) hours.push(i);
+                          return hours;
+                        }}
+                      />
+                    </div>
+
                   </div>
-                  <div className="w-1/2" dir="ltr">
-                    <TimePicker.RangePicker
-                      onChange={(value) => handleTimeChange(value, i)}
-                      className="border-[#A7A9AD] rounded-lg rounded-r-none py-2 px-3 border-r-0 font-iransansfa"
-                      placeholder={["شروع", "پایان"]} // <-- This is the key line
-                      format={format}
-                      separator={<span>-</span>} // Custom separator
-                    />
-                  </div>
+                  <button 
+                    onClick={() => handleDelete(i)}
+                    className="text-red-500  self-center"
+                  >
+                    <Close />
+                  </button>
                 </div>
+
               ))}
+
             </div>
 
             <div className="">
@@ -685,9 +662,11 @@ const Courses = (children) => {
                 className=" examDate flex w-1/2 items-center border border-solid border-[#A7A9AD] rounded-lg rounded-l-none outline-none text-base px-3"
               >
                 <DatePicker
-                  onChange={(e) => handleDateChange(e)}
+                  calendar="persian"
+                  locale="fa"
                   placeholder="انتخاب تاریخ"
-                  className="border-none h-full font-iransansfa "
+                  calendarPosition="bottom-right"
+                  className="border-none h-full"
                 />
               </div>
               <div className="w-1/2" dir="ltr">
@@ -695,8 +674,9 @@ const Courses = (children) => {
                   onChange={(e) => handleExamTime(e)}
                   className="border-[#A7A9AD] font-iransansfa rounded-lg rounded-r-none py-2 px-3 border-r-0"
                   placeholder={["شروع", "پایان"]} // <-- This is the key line
-                  format={format}
+                  format="HH"
                   separator={<span>-</span>}
+
                 />
               </div>
             </div>

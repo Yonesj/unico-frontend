@@ -148,7 +148,7 @@ export default function Password() {
                     رمز عبور
                   </label>
                   <div
-                    className={`user-name_input flex justify-start px-2 items-center h-[52px]  border brder-1 rounded-[8px] ${
+                    className={`user-name_input flex justify-start px-2 items-center h-[52px]   border brder-1 rounded-[8px] ${
                       formState.inputs.password.isValid
                         ? "border-green-500"
                         : "border-[#a7a9ad] "

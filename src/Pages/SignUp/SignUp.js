@@ -150,7 +150,7 @@ export default function SignUp() {
   const handleForgetpassCancel = () => {
     setIsForgetpassModalOpen(false);
   };
-  const myFunction = () => {
+  const visibility = () => {
     if (passType == "password") {
       setPassType("text");
     } else {
@@ -185,18 +185,14 @@ export default function SignUp() {
                     نام کاربری
                   </label>
                   <div
-                    className={`user-name_input flex justify-start px-2 items-center h-[52px]  border brder-1 rounded-[8px] ${
-                      formState.inputs.username.isValid
-                        ? "border-green-500"
-                        : "border-[#a7a9ad] "
-                    }`}
+                    className={`user-name_input flex justify-start px-2 items-center h-[52px]  border brder-1 rounded-[8px] 
+                      border-[#a7a9ad] 
+                    `}
                   >
                     <div
-                      className={`input h-[24px]   px-1 ${
-                        formState.inputs.username.isValid
-                          ? "text-green-500"
-                          : "text-[#a7a9ad] "
-                      }`}
+                      className={`input h-[24px]   px-1
+                           text-[#a7a9ad] 
+                      `}
                     >
                       {" "}
                       <UserOutlined />
@@ -249,7 +245,7 @@ export default function SignUp() {
                     رمز عبور
                   </label>
                   <div
-                    className={`user-name_input flex justify-start px-2 items-center h-[52px]  border brder-1 rounded-[8px]  ${
+                    className={`user-name_input flex justify-start px-2 items-center h-[52px] w-full  border brder-1 rounded-[8px]  ${
                       formState.inputs.password.isValid
                         ? "border-green-500"
                         : "border-[#a7a9ad] "
