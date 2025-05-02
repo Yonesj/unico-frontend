@@ -1,9 +1,11 @@
 import React from 'react'
 import MasterProf from "../../Assets/images/Ellipse 9.svg"
 import "./MasterCard.css"
+import { Navigate, useNavigate } from 'react-router-dom'
 const MasterCard = () => {
+  const navigate = useNavigate();
   return (
-    <div className='p-4 pt-6 bg-white w-[218px] h-[261px] flex justify-evenly items-center flex-col  rounded-xl cursor-pointer hover:bg-[#E5F7F8] transition-all z-10'>
+    <div onClick={()=>navigate("/poll/popular/ProfessorDetails/1")} className='amin p-4 pt-6 bg-white w-[218px] h-[261px] flex justify-evenly items-center flex-col  rounded-xl cursor-pointer hover:bg-[#E5F7F8] transition-all z-[5]'>
       <div className='relative'>
         <img src={MasterProf} alt="" />
         {/* <div className='w-20 h-20 rounded-full absolute top-0 amin'></div> */}

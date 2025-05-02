@@ -1,0 +1,24 @@
+.ant-select
+{
+    outline: none !important;
+    border: none !important;
+    width: 100% !important;
+}
+.ant-select-selection-item {
+    font-size: 12px !important ; /* This is equivalent to text-xs (12px) */
+    color: #919498;
+  }
+  .ant-select-item {
+    font-size: 14px !important; /* Each dropdown option font size */
+  }
+  @media (min-width: 1024px) { /* For screens 1024px and above (lg breakpoint) */
+    .ant-select-selection-item{
+      font-size: 14px; /* This sets font size to 16p4 */
+    }
+    .ant-select-item {
+      font-size: 14px !important; /* Each dropdown option font size */
+    }
+    
+  }
+
+ 

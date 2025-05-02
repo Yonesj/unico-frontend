@@ -1,0 +1,26 @@
+.select-container .ant-select
+{
+    outline: none !important;
+    border: none !important;
+    width: 100% !important;
+}
+/* Custom CSS for the select font size */
+.select-container .ant-select-selection-item {
+    font-size: 0.75rem; /* This is equivalent to text-xs (12px) */
+  }
+  .ant-select-item {
+    font-size: 12px !important; /* Each dropdown option font size */
+  }
+  
+  
+  @media (min-width: 1024px) { /* For screens 1024px and above (lg breakpoint) */
+    .select-container .ant-select-selection-item{
+      font-size: 16px; /* This sets font size to 16px */
+    }
+    .ant-select-item {
+      font-size: 16px !important; /* Each dropdown option font size */
+    }
+    
+  }
+ 
+

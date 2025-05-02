@@ -15,6 +15,10 @@ import ProtectedRoute from "./Components/routing/ProtectedRoute";
 import UnitWrapper from "./Components/routing/unitWrapper";
 import Index from "./Pages/Index";
 import CoursesList from "./Pages/Courses/Courses";
+import ProfessorsCard from "./Components/ProfessorsCard/ProfessorsCard";
+import ProfessorDetails from "./Components/ProfessorDetails/ProfessorDetails";
+import PostComment from "./Pages/PostComment/PostComment";
+import ProfessorWrapper from "./Components/ProfessorDetails/ProfessorWrapper";
 
 
 
@@ -28,7 +32,7 @@ const routes = [
     {
         path: "/unit/*", element: <ProtectedRoute><UnitWrapper /></ProtectedRoute>, children: [
             { path: "courses", element: <Courses /> },
-            { path: "schedule", element: <Schedules/> },
+            { path: "schedule", element: <Schedules /> },
             { path: "exams", element: <Exams /> },
             {
                 path: "schedules/*", element: <SchedulesList />, children: [
@@ -39,40 +43,29 @@ const routes = [
         ]
     },
     {
-        path: "/poll/*", element: <Poll />,   children: [
+        path: "/poll/*", element: <Poll />, children: [
             {
-                path: "popular", element: <div className='flex gap-[18px] items-center'>
-                   
-                    <MasterCard />
-                    <MasterCard />
-                    <MasterCard />
-                    <MasterCard />
+                path: "popular/*", element: <ProfessorsCard />, 
+            },
 
-                </div>
+            {
+                path: "most-visited", element: <ProfessorsCard />
             },
             {
-                path: "most-visited", element: <div className='flex gap-[18px] items-center'>
-                   
-                    <MasterCard />
-                    <MasterCard />
-                    <MasterCard />
-                    <MasterCard />
-
-                </div>
-            },
-            {
-                path: "last-comments", element: <div className='flex gap-[18px] items-center'>
-                   
-                    <MasterCard />
-                    <MasterCard />
-                    <MasterCard />
-                    <MasterCard />
-
-
-                </div>
+                path: "last-comments", element: <ProfessorsCard />
             },
         ]
     },
+    { path: "/poll/popular/ProfessorDetails", element: <ProfessorWrapper/> ,children : 
+        [
+            { path: "/poll/popular/ProfessorDetails/:professor", element: <ProfessorDetails/> }, // <- moved here
+            { path: "/poll/popular/ProfessorDetails/:professor/:comment", element: <PostComment/> }, // <- moved here
+
+        ]
+     }, // <- moved here
+
+
+
 ]
 
 

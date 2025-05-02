@@ -13,21 +13,26 @@ import React from "react";
 import react from "react";
 import { hover } from "@testing-library/user-event/dist/hover";
 import { Link } from "react-router-dom";
-const SidebarContext = createContext()
+import SidebarContext from "../../Components/SidbarContext/SidbarContext"; // adjust path as needed
 
-export default function Sidebar({ children }) {
+export default function Sidebar({ isSidebarOpen  }) {
   const [expanded, setExpanded] = useState(false);
   const [pin, setPin] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
+  const { setIsSidebarOpen } = useContext(SidebarContext);
 
   return (
 
-    <aside className="h-screen w-20">
-      <nav className={`h-full flex flex-col absolute z-10  bg-white border-r  ${expanded ? "w-[272px]" : "w-20 "} px-4   font-iransans rounded-r-2xl  transition-all duration-300 overflow-hidden`}
+    <aside className={`h-screen w-0 ${isSidebarOpen ? "" : ""}  lg:w-20 `}>
+      <nav className={`h-full flex flex-col absolute   bg-white border-r  z-[51]  ${isSidebarOpen ? "w-[272px]" : "w-20 opacity-0  translate-x-96 lg:opacity-100 lg:translate-x-0 lg:flex"} px-4   font-iransans rounded-r-2xl  transition-all duration-300 overflow-hidden`}
 
-        style={{ boxShadow: "0 16px 44px rgba(0, 0, 0, 0.07)" }}
-        onMouseEnter={() => setExpanded(true)}
-        onMouseLeave={() => pin ? null : setExpanded(false)}
+          style={{ boxShadow: "0 16px 44px rgba(0, 0, 0, 0.07)" }}
+          onMouseEnter={() => setIsSidebarOpen(true)}
+          onMouseLeave={() => {
+            if (window.innerWidth >= 1024 && !pin) {
+              setIsSidebarOpen(false);
+            }
+          }}
       >
         <div className={`py-6 flex justify-between  items-center relative`}>
           <div className={`flex`}>
@@ -36,20 +41,29 @@ export default function Sidebar({ children }) {
               className="w-8 mr-2"
               alt=""
             />
-            <h1 className={`text-xl font-semibold transition-all duration-500 mr-2.5  ${expanded ? "" : "translate-x-40 absolute"
+            <h1 className={`text-xl font-semibold transition-all duration-500 mr-2.5  ${isSidebarOpen ? "" : "translate-x-40 absolute"
               }`}>یونیکـــــــو </h1>
           </div>
           <button
             onClick={() => setPin((curr) => !curr)}
             className={`p-1 rounded-full bg-white hover:bg-gray-100 border border-solid transition-all duration-30000 
-  border-[#E2E8F0] transform ${expanded ? "translate-x-0 opacity-100" : "translate-x-10 opacity-0"} absolute left-0`}
+  border-[#E2E8F0] transform ${isSidebarOpen ? "translate-x-0 opacity-100" : "translate-x-10 opacity-0"} absolute left-0 hidden lg:inline-block`}
           >
             {!pin ? <img src={pinSvg} alt="" /> : <img src={unpinSvg} />}
+          </button>
+          <button
+            onClick={() => setIsSidebarOpen(false)}
+            className={`p-1 rounded-full bg-white hover:bg-gray-100 border lg:hidden border-solid transition-all duration-30000 
+  border-[#E2E8F0] transform ${isSidebarOpen ? "translate-x-0 opacity-100" : "translate-x-10 opacity-0"} absolute left-0`}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+  <path d="M12 4L4 12M4 4L12 12" stroke="#4E535A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
           </button>
 
         </div>
 
-        <SidebarContext.Provider value={{ expanded, activeIndex, setActiveIndex }}>
+        <SidebarContext.Provider value={{ isSidebarOpen, activeIndex, setActiveIndex }}>
           <ul className="flex flex-col flex-1 gap-1 ">
             <SidebarItem icon={<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
               <path d="M9.99984 17.5L9.91646 17.3749C9.33759 16.5066 9.04816 16.0725 8.66576 15.7582C8.32722 15.4799 7.93714 15.2712 7.51784 15.1438C7.04421 15 6.52243 15 5.47886 15H4.33317C3.39975 15 2.93304 15 2.57652 14.8183C2.26292 14.6586 2.00795 14.4036 1.84816 14.09C1.6665 13.7335 1.6665 13.2668 1.6665 12.3333V5.16667C1.6665 4.23325 1.6665 3.76654 1.84816 3.41002C2.00795 3.09641 2.26292 2.84144 2.57652 2.68166C2.93304 2.5 3.39975 2.5 4.33317 2.5H4.6665C6.53335 2.5 7.46677 2.5 8.17981 2.86331C8.80701 3.18289 9.31695 3.69282 9.63653 4.32003C9.99984 5.03307 9.99984 5.96649 9.99984 7.83333M9.99984 17.5V7.83333M9.99984 17.5L10.0832 17.3749C10.6621 16.5066 10.9515 16.0725 11.3339 15.7582C11.6725 15.4799 12.0625 15.2712 12.4818 15.1438C12.9555 15 13.4772 15 14.5208 15H15.6665C16.5999 15 17.0666 15 17.4232 14.8183C17.7368 14.6586 17.9917 14.4036 18.1515 14.09C18.3332 13.7335 18.3332 13.2668 18.3332 12.3333V5.16667C18.3332 4.23325 18.3332 3.76654 18.1515 3.41002C17.9917 3.09641 17.7368 2.84144 17.4232 2.68166C17.0666 2.5 16.5999 2.5 15.6665 2.5H15.3332C13.4663 2.5 12.5329 2.5 11.8199 2.86331C11.1927 3.18289 10.6827 3.69282 10.3631 4.32003C9.99984 5.03307 9.99984 5.96649 9.99984 7.83333" stroke="#7A7E83" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -65,7 +79,7 @@ export default function Sidebar({ children }) {
                   </clipPath>
                 </defs>
               </svg>
-            } text={"نظر سنجی اساتید"} link={"/poll"} index={1} />
+            } text={"نظر سنجی اساتید"} link={"/poll/popular"} index={1} />
             <SidebarItem icon={<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
               <path d="M18.3332 6.66672V10.0001M8.5415 4.58338H5.6665C4.26637 4.58338 3.56631 4.58338 3.03153 4.85587C2.56112 5.09555 2.17867 5.478 1.93899 5.94841C1.6665 6.48319 1.6665 7.18325 1.6665 8.58338L1.6665 9.58338C1.66651 10.36 1.66651 10.7482 1.79337 11.0545C1.96253 11.4629 2.28699 11.7874 2.69536 11.9565C3.00165 12.0834 3.38994 12.0834 4.16651 12.0834V15.625C4.16651 15.8185 4.16651 15.9153 4.17453 15.9967C4.25247 16.788 4.87852 17.4141 5.66981 17.492C5.75129 17.5 5.84803 17.5 6.04151 17.5C6.23498 17.5 6.33172 17.5 6.4132 17.492C7.2045 17.4141 7.83054 16.788 7.90848 15.9967C7.91651 15.9153 7.91651 15.8185 7.91651 15.625V12.0834H8.54151C10.0135 12.0834 11.8142 12.8725 13.2034 13.6298C14.0139 14.0715 14.4191 14.2924 14.6845 14.2599C14.9306 14.2298 15.1167 14.1193 15.2609 13.9176C15.4165 13.7002 15.4165 13.2651 15.4165 12.3948V4.27195C15.4165 3.40171 15.4165 2.96659 15.2609 2.74912C15.1167 2.54747 14.9306 2.43697 14.6845 2.40682C14.4191 2.37432 14.0139 2.59521 13.2034 3.03701C11.8142 3.79431 10.0135 4.58338 8.5415 4.58338Z" stroke="#7A7E83" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>} text={"سیستم اطلاع رسانی"} link={""} index={2} />
@@ -96,11 +110,11 @@ export default function Sidebar({ children }) {
         {/* <div>
           <img src={aboutSvg} alt="" />
         </div> */}
-        {/* <div className={`overflow-hidden transition-all duration-300 ${expanded ? "" : "hidden"}`}>
+        {/* <div className={`overflow-hidden transition-all duration-300 ${isSidebarOpen ? "" : "hidden"}`}>
           <button type="button" className="text-base font-medium py-3 px-4 bg-[#EFB036] w-[224px] rounded-lg text-white">درباره ما</button>
         </div>
         
-        <div className={`border-t flex items-center   py-6 h-[93px] ${expanded ? "gap-3" : ""}`}>
+        <div className={`border-t flex items-center   py-6 h-[93px] ${isSidebarOpen ? "gap-3" : ""}`}>
           <img
             src="https://ui-avatars.com/api/?background=c7d2fe&color=3730a3&bold=true"
             alt=""
@@ -108,7 +122,7 @@ export default function Sidebar({ children }) {
           />
           <div
             className={`flex justify-between items-center overflow-hidden transition-all duration-300 ${
-              expanded ? "ml-3" : ""
+              isSidebarOpen ? "ml-3" : ""
             }`}
           >
             <div className="leading-4">
@@ -119,7 +133,7 @@ export default function Sidebar({ children }) {
 
           </div>
         </div> */}
-        <div className={`overflow-hidden about-us  transition-all duration-500   text-center ${expanded ? "opacity-100" : "opacity-0 translate-x-80"}`}>
+        <div className={`overflow-hidden about-us  transition-all duration-500   text-center ${isSidebarOpen ? "opacity-100" : "opacity-0 translate-x-80"}`}>
           <button type="button" className="text-base font-medium py-3 px-4 flex m-auto justify-center items-center carretSvg   bg-[#EFB036] hover:bg-[#E09122] transition-all duration-300 w-[224px] rounded-lg text-white">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" className={`opacity-0`  }>
               <path fillRule="evenodd" clipRule="evenodd" d="M7.29289 14.7071C6.90237 14.3166 6.90237 13.6834 7.29289 13.2929L10.5858 10L7.29289 6.70711C6.90237 6.31658 6.90237 5.68342 7.29289 5.29289C7.68342 4.90237 8.31658 4.90237 8.70711 5.29289L12.7071 9.29289C13.0976 9.68342 13.0976 10.3166 12.7071 10.7071L8.70711 14.7071C8.31658 15.0976 7.68342 15.0976 7.29289 14.7071Z" fill="white" />
@@ -138,12 +152,12 @@ export default function Sidebar({ children }) {
               className="mr-1"
               alt=""
             />
-            <div className={`leading-4 transition-all duration-500 mr-4 ${expanded ? "" : "translate-x-40 absolute"}`}>
+            <div className={`leading-4 transition-all duration-500 mr-4 ${isSidebarOpen ? "" : "translate-x-40 absolute"}`}>
               <h4 className="font-medium text-xs text-[#7A7E83]">خوش آمدید 👋</h4>
               <span className="text-sm text-[#383E46] font-medium ">علیرضا غفاری</span>
             </div>
             <button
-              className={`p-1 rounded-full bg-white  transition-all duration-300 transform ${expanded ? "translate-x-0 opacity-100" : "translate-x-10 opacity-0"} absolute left-0`}
+              className={`p-1 rounded-full bg-white  transition-all duration-300 transform ${isSidebarOpen ? "translate-x-0 opacity-100" : "translate-x-10 opacity-0"} absolute left-0`}
 
             >
               <img src={caretSvg} alt="" />
@@ -159,27 +173,27 @@ export default function Sidebar({ children }) {
 }
 
 export function SidebarItem({ icon, text, index , link }) {
-  const { expanded, activeIndex, setActiveIndex } = useContext(SidebarContext);
+  const { isSidebarOpen, activeIndex, setActiveIndex } = useContext(SidebarContext);
 
   return (
     <li
       className={`h-[39px] flex items-center font-medium cursor-pointer transition-colors group text-sm font-iransans rounded-lg gap-2
         ${activeIndex === index ? "bg-[#E5F7F8] text-[#00ADB5] active" : "hover:bg-[#E5F7F8] text-[#7A7E83] hover:text-black"}
-        ${expanded ? "" : ""}
+        ${isSidebarOpen ? "" : ""}
       `}
       onClick={() => setActiveIndex(index)}
     >
       {/* Fixed-size icon wrapper */}
       <Link to={link}  className={`h-[39px] flex items-center font-medium cursor-pointer transition-colors group text-sm font-iransans rounded-lg gap-2
         ${activeIndex === index ? "bg-[#E5F7F8] text-[#00ADB5] active" : "hover:bg-[#E5F7F8] text-[#7A7E83] hover:text-black"}
-        ${expanded ? "" : ""}
+        ${isSidebarOpen ? "" : ""}
       `}>
-      <div className={`flex items-center justify-center flex-shrink-0 transition-all duration-500 ${expanded ? "mr-5" : "mr-3.5"} `}>
+      <div className={`flex items-center justify-center flex-shrink-0 transition-all duration-500 ${isSidebarOpen ? "mr-5" : "mr-3.5"} `}>
         {icon}
       </div>
       {/* Text transition but icon remains fixed */}
       <span
-        className={`overflow-hidden transition-all duration-500 ${expanded ? "ml-3" : "translate-x-40 absolute "
+        className={`overflow-hidden transition-all duration-500 ${isSidebarOpen ? "ml-3" : "translate-x-40 absolute "
           }`}
       >
         {text}
