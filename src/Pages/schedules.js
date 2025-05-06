@@ -7,6 +7,7 @@ import CourseSelector from "../Components/schedule/CourseSelector";
 const SchedulesPage = () => {
   const [schedules, setSchedules] = useState([]);
   const [currentScheduleId, setCurrentScheduleId] = useState(1);
+  const [courseListShow, setCourseListShow] = useState(true);
   const [courses, setCourses] = useState([]);
  
   useEffect(() => {
@@ -48,8 +49,10 @@ const SchedulesPage = () => {
   }, [currentScheduleId, schedules]);
 
   return (
-    <div className=" flex-wrap grid grid-cols-4 bg-[#F1F5F7] gap-2 w-full justify-center  text-black font-iransans h-[520px]   ">
-      <div className="flex  col-span-3 grow flex-col justify-between  space-y-5 rounded-xl bg-[#ffffff] p-4 backdrop-blur">
+    <div className=" flex-wrap grid grid-cols-4 bg-[#F1F5F7] gap-2 w-full justify-center  text-black font-iransans  h-[fit] ">
+      <div className={`flex  grow flex-col   space-y-5 rounded-xl bg-[#ffffff] p-4 backdrop-blur ${
+    courseListShow ? "col-span-3" : "col-span-4"
+  } `}>
         <ScheduleTabs
           currentScheduleId={currentScheduleId}
           schedules={schedules.map((s) => ({
@@ -57,6 +60,9 @@ const SchedulesPage = () => {
           }))}
           setCurrentScheduleId={setCurrentScheduleId}
           setSchedules={setSchedules}
+          setCourseListShow={setCourseListShow}
+          courseListShow={courseListShow}
+
         />
 
         <Schedule
@@ -66,8 +72,10 @@ const SchedulesPage = () => {
           setSchedules={setSchedules}
           schedules={schedules}
         />
-      </div>
-      <div className="col-span-1 ">
+      </div> 
+      <div className={`   transition-all ${
+    courseListShow ? "col-span-1" : "hidden"
+  }`}>
         <CourseSelector
           schedules={schedules}
           currentScheduleId={currentScheduleId}

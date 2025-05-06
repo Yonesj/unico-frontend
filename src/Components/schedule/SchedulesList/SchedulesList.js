@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useMemo, useState } from 'react';
+import React, { forwardRef, useContext, useEffect, useMemo, useState } from 'react';
 import "./SchedulesList.css";
 import { Button, Table } from 'antd';
 import { DndContext, closestCenter } from '@dnd-kit/core';
@@ -69,7 +69,7 @@ const Row = props => {
     );
 };
 
-const SchedulesList = ({ setCurrentScheduleId, currentScheduleId, setSchedules, schedules }) => {
+const SchedulesList = forwardRef(({ setCurrentScheduleId, currentScheduleId, setSchedules, schedules } , ref) => {
     const [courses, setCourses] = useState([]);
     const [dataSource, setDataSource] = useState([]);
     const timerToast = useTimerToast();
@@ -174,7 +174,7 @@ const deleteCourse = (c) => {
 
     return (
         <div className='bg-white px-4 py-2 rounded-xl'>
-            <div style={{ height: 'calc(100vh - 220px)' }}>
+            <div style={{ height: 'calc(100vh - 220px)' }} ref={ref}>
                 <DndContext
                     collisionDetection={closestCenter}
                     onDragEnd={onDragEnd}
@@ -197,6 +197,6 @@ const deleteCourse = (c) => {
             </div>
         </div>
     );
-};
+});
 
 export default SchedulesList;

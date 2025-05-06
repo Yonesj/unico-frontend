@@ -182,7 +182,7 @@ export default function CourseSelector({
   
 
   return (
-    <div className="    rounded-xl bg-white  backdrop-blur p-1    overflow-visible ">
+    <div className="    rounded-xl bg-white  backdrop-blur p-1   h-full   ">
       <BInput
         value={query}
         icon={SearchIcon}
@@ -195,7 +195,7 @@ export default function CourseSelector({
         <div className="col-span-1 "> نام درس</div>
         <div className="col-span-1"> زمان</div>
       </div>
-      <div   ref={parentRef} className="course-list   h-[660px] relative  w-full   ">
+      <div   ref={parentRef} className="course-list   relative  w-full overflow-scroll h-custom ">
         {isLoading ? (
           <Loading />
         ) : (

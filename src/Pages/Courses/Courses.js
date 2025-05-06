@@ -20,10 +20,11 @@ import "../../Components/Modal/AddUnitModal.css";
 import { TimePicker } from "antd";
 import dayjs, { Dayjs } from "dayjs";
 import { Select } from "antd";
-import DatePicker from "react-multi-date-picker";
 import moment from "moment-jalaali"; // Import moment-jalaali
 import { ReactComponent as Close } from "../../Assets/images/x-close.svg";
-
+import DatePicker from "react-multi-date-picker";
+import persian from "react-date-object/calendars/persian";
+import persian_fa from "react-date-object/locales/persian_fa";
 import Swal from "sweetalert2";
 import { random } from "node-forge";
 const format = "HH:mm";
@@ -290,7 +291,11 @@ const Courses = (children) => {
   //     }
   // }
   const handleDateChange = (date) => {
-    const persianDate = moment(date.$d).format("jYYYY/jMM/jDD"); // Persian date format
+    if (!date) return setSelectedDate(null);
+  
+    const jsDate = typeof date === "number" ? new Date(date) : date.toDate?.() || new Date(date);
+  
+    const persianDate = moment(jsDate).format("jYYYY/jMM/jDD");
     setSelectedDate(persianDate);
   };
   const handleExamTime = (value) => {
@@ -407,7 +412,6 @@ const Courses = (children) => {
                   xmlns="http://www.w3.org/2000/svg"
                   width="41"
                   height="40"
-                  viewBox="0 0 41 40"
                   fill="none"
                 >
                   <rect
@@ -616,7 +620,7 @@ const Courses = (children) => {
                     </div>
 
                   </div>
-                  <button 
+                  <button
                     onClick={() => handleDelete(i)}
                     className="text-red-500  self-center"
                   >
@@ -659,14 +663,16 @@ const Courses = (children) => {
             <div className="flex  ">
               <div
                 dir="ltr"
-                className=" examDate flex w-1/2 items-center border border-solid border-[#A7A9AD] rounded-lg rounded-l-none outline-none text-base px-3"
+                className=" examDate  flex w-1/2 items-center border border-solid border-[#A7A9AD] rounded-lg rounded-l-none outline-none text-base px-3"
               >
                 <DatePicker
-                  calendar="persian"
-                  locale="fa"
-                  placeholder="انتخاب تاریخ"
+                  calendar={persian}
+                  locale={persian_fa}
                   calendarPosition="bottom-right"
-                  className="border-none h-full"
+                                  inputClass="w-full bg-transparent outline-none text-right text-gray-700 placeholder:text-[#A7A9AD]  placeholder:text-sm"
+                  placeholder="انتخاب تاریخ"
+                  className="border-none h-full p-2 "
+                  onChange={handleDateChange}
                 />
               </div>
               <div className="w-1/2" dir="ltr">

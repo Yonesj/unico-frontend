@@ -85,27 +85,40 @@ export default function Schedule({
   }, []);
   
   const findCoursesMatchingSlot = (day, hour, position) => {
-  const myCourses = JSON.parse(localStorage.getItem("courses"));
-  if (!myCourses) return;
-
-  const matchingCourses = myCourses.filter((course) =>
-    (course.classes || []).some((cls) => {
-      console.log("day" , day , "hour" , hour);
-      return cls.day === day && cls.start <= hour && cls.end > hour;
-    })
-  );
-
-  setContextMenuCourses(matchingCourses);
-  if(matchingCourses.length==0){
-    toast.open({
-      message:"درسی در این بازه زمانی یافت نشد",
-      type:"error"
+    console.log("position", position);
+  
+    const myCourses = JSON.parse(localStorage.getItem("courses"));
+    if (!myCourses) return;
+  
+    const matchingCourses = myCourses.filter((course) =>
+      (course.classes || []).some((cls) => {
+        console.log("day", day, "hour", hour);
+        return cls.day === day && cls.start <= hour && cls.end > hour;
+      })
+    );
+  
+    setContextMenuCourses(matchingCourses);
+  
+    if (matchingCourses.length === 0) {
+      toast.open({
+        message: "درسی در این بازه زمانی یافت نشد",
+        type: "error",
+      });
     }
-      
-    )
-  }
-  setContextMenuPosition(position); 
-};
+  
+    if (day === "sat") { 
+      position.x -= 320; 
+    }
+    if (hour > 15) {
+      position.y -= 50; 
+    }
+    if (hour > 16) {
+      position.y -= 100; 
+    }
+  
+  
+    setContextMenuPosition(position);
+  };
 
 
 const deleteSchedule = () => {
@@ -265,9 +278,7 @@ const deleteSchedule = () => {
 
   return (
 
-    <div className="h-[700px
-    ]  ">
-
+    <div className="h-[80%] min-h-[700px] ">
       <FullCalendar
         ref={calendarRef}
 
@@ -291,7 +302,7 @@ const deleteSchedule = () => {
         firstDay={0}
         
         
-        height={"700px"}
+          height="min(70vh, 900px)"
         views={{
           timeGrid: {
             component: DayTimeColsView,
@@ -351,6 +362,7 @@ const deleteSchedule = () => {
       const selectedCourse = contextMenuCourses.find((c) => c.id === Number(selectedId));
       if (!selectedCourse) return;
 
+      
       setSchedules((prev) => {
         const updated = prev.map((schedule) => {
           if (schedule.id === currentScheduleId) {
