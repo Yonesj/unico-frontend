@@ -253,6 +253,15 @@ const Courses = (children) => {
   }, [isRemoved, isAdded]);
 
 
+  // const [professorName, setProfessorName] = useState("");
+  // const [courseCode, setCourseCode] = useState("");
+  // const [theory, setTheory] = useState("");
+  // const [gender, setGender] = useState("");
+  // const [courseDay, setcourseDay] = useState("شنبه");
+  // const [courseStarthour, setcourseStarthour] = useState("");
+  // const [courseStartmin, setcourseStartmin] = useState("");
+  // const [courseEndhour, setcourseEndhour] = useState("");
+  // const [courseEndmin, setcourseEndmin] = useState("");
   const [golestanModal, setGolestanModal] = useState(false);
   const number = useParams();
   const handleOk = () => {
@@ -264,15 +273,6 @@ const Courses = (children) => {
   const unitNumber = useRef("");
   const professorName = useRef("");
   const courseCode = useRef("");
-  // const [professorName, setProfessorName] = useState("");
-  // const [courseCode, setCourseCode] = useState("");
-  // const [theory, setTheory] = useState("");
-  // const [gender, setGender] = useState("");
-  // const [courseDay, setcourseDay] = useState("شنبه");
-  // const [courseStarthour, setcourseStarthour] = useState("");
-  // const [courseStartmin, setcourseStartmin] = useState("");
-  // const [courseEndhour, setcourseEndhour] = useState("");
-  // const [courseEndmin, setcourseEndmin] = useState("");
   const [courseExamStarthour, setcourseExamStarthour] = useState("");
   const [courseExamStartmin, setcourseExamStartmin] = useState("");
   const [courseExamEndhour, setcourseExamEndhour] = useState("");
@@ -306,13 +306,18 @@ const Courses = (children) => {
       setcourseExamEndhour(value[1].$H);
     }
   };
-
-  let [num, setNum] = useState(1);
+  const [examTimeRange, setExamTimeRange] = useState(null);
+  let [num, setNum] = useState(0);
   const [courseTimes, setCourseTimes] = useState(
-    Array.from({ length: num }, () => ({ day: "sat", start: "", end: "" }))
+[]
   );
   useEffect(() => {
-    setCourseTimes(Array.from({ length: num }, () => ({ day: "sat", start: "", end: "" })));
+    setCourseTimes((prev) => {
+      if (prev.length < num) {
+        return [...prev, { day: "sat", start: "", end: "" }];
+      }
+      return prev;
+    });
   }, [num]);
   const handleDayChange = (value, index) => {
     const updated = [...courseTimes];
@@ -323,11 +328,30 @@ const Courses = (children) => {
     const updated = [...courseTimes];
     updated[index] = {
       ...updated[index],
-      start: value[0].$H,
-      end: value[1].$H,
+      start: value?.[0]?.$H ?? "",
+      end: value?.[1]?.$H ?? "",
     };
 
     setCourseTimes(updated);
+  };
+  const resetForm = () => {
+    courseName.current = "";
+    unitNumber.current = "";
+    professorName.current = "";
+    courseCode.current = "";
+    setExamTimeRange(null);
+    setcourseExamStarthour("");
+    setcourseExamEndhour("");
+    setPrerequisites("");
+    setSelectedDate("");
+    setNum(0); 
+  
+
+    setCourseTimes([]);
+  
+
+    const inputs = document.querySelectorAll('.addUnitModal input');
+    inputs.forEach((input) => (input.value = ""));
   };
   const handleAddUnit = () => {
     const newUnit = {
@@ -345,13 +369,14 @@ const Courses = (children) => {
         start: courseExamStarthour,
         end: courseExamEndhour,
       },
+      
     };
 
-    // Save the new unit to the current list of courses
+
     const updatedCourses = [...courses, newUnit];
     setCourses(updatedCourses);
 
-    // Save to localStorage
+
     localStorage.setItem("courses", JSON.stringify(updatedCourses));
     Swal.fire({
       text: "درس مورد نظر با موفقیت اضافه شد",
@@ -359,7 +384,7 @@ const Courses = (children) => {
     });
     setIsAdded(!isAdded);
 
-
+    resetForm();
     setAddUnitModal(false);
   };
 
@@ -482,13 +507,13 @@ const Courses = (children) => {
           </div>
           <div className="" style={{ height: "calc(100vh - 205px)" }}>
             <Table
-              style={{ direction: "rtl" }} // Keeps table content in RTL
+              style={{ direction: "rtl" }} 
               rowKey="key"
               components={{ body: { row: Row } }}
               columns={columns}
               dataSource={filteredData}
               pagination={false}
-              scroll={{ y: "calc(100vh - 285px)" }} // <-- This is the key
+              scroll={{ y: "calc(100vh - 285px)" }} 
             />
           </div>
         </div>
@@ -504,6 +529,7 @@ const Courses = (children) => {
         onOk={() => handleAddUnit()}
         onCancel={() => setAddUnitModal(false)}
         footer={[]}
+        maskClosable={false} 
       >
         <div
           action=""
@@ -569,7 +595,7 @@ const Courses = (children) => {
             </div>
 
             <div className="flex flex-col gap-2">
-              {Array.from({ length: num }).map((_, i) => (
+              {Array.from({ length: num || 0 }).map((_, i) => (
                 <div className="flex w-full gap-2">
                   <div className="flex w-[95%]" key={i}>
                     <div className="flex w-1/2 items-center border border-solid border-[#A7A9AD] rounded-lg rounded-l-none outline-none text-base px-3">
@@ -677,7 +703,11 @@ const Courses = (children) => {
               </div>
               <div className="w-1/2" dir="ltr">
                 <TimePicker.RangePicker
-                  onChange={(e) => handleExamTime(e)}
+                value={examTimeRange}
+                
+                  onChange={(value) => {handleExamTime(value);    setExamTimeRange(value);
+                    ;
+                  }}
                   className="border-[#A7A9AD] font-iransansfa rounded-lg rounded-r-none py-2 px-3 border-r-0"
                   placeholder={["شروع", "پایان"]} // <-- This is the key line
                   format="HH"

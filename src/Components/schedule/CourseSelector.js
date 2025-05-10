@@ -54,6 +54,8 @@ export default function CourseSelector({
     const schedules = JSON.parse(localStorage.getItem("schedules"));
     schedules.map((schedule) => {
       if (schedule.id === currentScheduleId) {
+        console.log(schedule.courses, "schedule.courses");
+
         setSelected(schedule.courses);
         console.log(selected, "selected");
       }
@@ -200,14 +202,16 @@ export default function CourseSelector({
           <Loading />
         ) : (
           filteredCourses.map((course, i) => {
+
             const isSelected = selected.some((c) => c.id === course.id);
+
             return (
               <>
                 <div
                   key={i}
                   
-                  className={`    grid grid-cols-2 text-center    h-[76px] cursor-pointer justify-center items-center bg-[#FFFFFF] px-2 text-primary-darker transition-all hover:bg-[#F0F3F5] hover:text-gray-800   ${
-                    isSelected ? "bg-[#FDF7EB] text-[#DF9200]" : "bg-white"
+                  className={`    grid grid-cols-2 text-center    h-[76px] cursor-pointer justify-center items-center bg-[#FFFFFF] px-2  transition-all hover:bg-[#F0F3F5] hover:text-gray-800   ${
+                    isSelected ? "bg-[#FDF7EB] text-[#DF9200]  " : "bg-[#FFFFFF] text-primary-darker"
                   }`}
                   onMouseEnter={(e) => {
                     addCourseAsHoverToSchedule(course);
