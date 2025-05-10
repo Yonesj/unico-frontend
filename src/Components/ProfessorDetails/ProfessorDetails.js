@@ -1,7 +1,7 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useRef, useEffect } from 'react'
 import Progresswheel from '../Progresswheel'
 import profesorImg from "../../Assets/images/Rectangle 18.png"
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import SidebarContext from "../../Components/SidbarContext/SidbarContext"; // adjust path as needed
 import Progressbar from '../Progressbar';
 import prof from "../../Assets/images/professor.svg"
@@ -10,35 +10,131 @@ import "./ProfessorDetails.css"
 import UserComment from '../UserComment/UserComment';
 import ProfessorProf from "../../Assets/images/Rectangle 17.png"
 import { useNavigate } from 'react-router-dom';
- 
+import { Modal } from 'antd';
+import { Button, message, Upload } from 'antd';
+import SuccessAdd from "../../Assets/images/aaa 1 (1).svg"
 
+
+const props = {
+    name: 'file',
+    action: 'https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload',
+    headers: {
+        authorization: 'authorization-text',
+    },
+    onChange(info) {
+        if (info.file.status !== 'uploading') {
+            console.log(info.file, info.fileList);
+        }
+        if (info.file.status === 'done') {
+            message.success(`${info.file.name} file uploaded successfully`);
+        } else if (info.file.status === 'error') {
+            message.error(`${info.file.name} file upload failed.`);
+        }
+    },
+};
 
 const ProfessorDetails = () => {
+    const id = useParams().professor;
+
     const { isSidebarOpen, setIsSidebarOpen } = useContext(SidebarContext);
     const [searchDropdown, setSearchDropdown] = useState(false);
+    const [show, setShow] = useState(false);
     const navigate = useNavigate();
+    const commentsRef = useRef(null);
+    const allComments = Array(15).fill(<UserComment />); // Replace with actual data
+    const [visibleCount, setVisibleCount] = useState(5);
+    const showMore = () => setVisibleCount(prev => prev + 5);
+
+    const [addProfessorSchedule, setAddProfessorSchedule] = useState(false);
+    const [addProfessor, setAddProfessor] = useState(false);
+
+    const [professorList, setProfessorList] = useState([]);
+    const [professorDetails, setProfessorDetails] = useState({});
+
+    useEffect(() => {
+        const fetchProfessors = async () => {
+            try {
+                const res = await fetch("http://localhost:8000/professor-reviewer/professors/", {
+                    method: "GET",
+                    headers: {
+                        "Accept-Language": "fa",
+                        "Content-Type": "application/json",
+                    },
+                });
+
+                const data = await res.json();
+
+                if (res.ok) {
+                    setProfessorList(data);
+                } else {
+                    throw new Error(Object.values(data)[0] || "An error occurred");
+                }
+
+            } catch (err) {
+                console.error("Error:", err.message);
+            } finally {
+                console.log("finally");
+            }
+        };
+
+        fetchProfessors();
+    }, []);
+
+    useEffect(() => {
+        const fetchProfessors = async () => {
+            try {
+                const res = await fetch(`http://localhost:8000/professor-reviewer/professors/${id}`, {
+                    method: "GET",
+                    headers: {
+                        "Accept-Language": "fa",
+                        "Content-Type": "application/json",
+                    },
+                });
+
+                const data = await res.json();
+
+                if (res.ok) {
+                    console.log("ok");
+                    setProfessorDetails(data);
+
+                } else {
+                    throw new Error(Object.values(data)[0] || "An error occurred");
+                }
+
+            } catch (err) {
+                console.error("Error:", err.message);
+            } finally {
+                console.log("finally");
+            }
+        };
+
+        fetchProfessors();
+    }, []);
+
+
+
 
 
 
     return (
-        <div>
-           
+        <div className=''>
+
             <div className='h-[60px] px-6 lg:p-0 w-full bg-white rounded-xl flex justify-between text-[#959595] text-sm items-center font-medium'>
                 <div className='flex gap-14 lg:gap-0 w-[30%] sm:w-[70%] lg:w-[35%] lg:justify-around'>
-                    <button onClick={()=>navigate(-1)} className='flex gap-2 '>
+                    <button onClick={() => navigate(-1)} className='flex gap-2 '>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <path d="M4 12H20M20 12L14 6M20 12L14 18" stroke="#959595" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                         <p className='hidden lg:block'>بازگشت</p>
                     </button>
                     <div className='hidden sm:block'>
-                        <button>درخواست اصلاح اطلاعات</button>
+                        <button onClick={() => navigate("correction")}>درخواست اصلاح اطلاعات</button>
                     </div>
 
                 </div>
                 <div className='w-[70%]  justify-end  sm:w-[30%]  lg:justify-normal lg:w-[357px] flex items-center gap-2 relative'>
                     <div className='lg:hidden'>
-                        <button className='flex items-center gap-0.5 text-black'>
+                        <button onClick={() => commentsRef.current?.scrollIntoView({ behavior: "smooth" })} className='flex items-center gap-0.5 text-black'>
                             <p>مشاهده نظرات</p>
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                 <path d="M12 19V5" stroke="#565656" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
@@ -48,7 +144,7 @@ const ProfessorDetails = () => {
                         </button>
                     </div>
                     <div className='h-5 w-[1px]  bg-[#D8D8D8] lg:hidden'></div>
-                    <svg className='cursor-pointer' onClick={()=> setSearchDropdown(prev => !prev)} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <svg className='cursor-pointer' onClick={() => setSearchDropdown(prev => !prev)} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                         <path d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" stroke="#A7A9AD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
                     <input onFocus={() => setSearchDropdown(true)}
@@ -56,52 +152,44 @@ const ProfessorDetails = () => {
                         className='w-full h-full  hidden lg:inline-block' type="text" placeholder='نام استاد یا درس را وارد کنید' />
 
                     <div className={`h-[198px] poll-container w-[300px] md:w-[375px] rounded-xl outline-none  bg-white absolute  border border-[#DDD] p-2  transition-all text-nowrap opacity-0 text-xs lg:text-sm overflow-y-auto overflow-x-hidden rounded-b-2xl  ${searchDropdown ? "opacity-100 z-10" : "pointer-events-none"} top-12 -left-6 lg:left-0`}>
-                        <div className='flex gap-3.5 p-2  text-[#949494] items-center '>
-                            <img src={ProfessorProf} alt="" />
-                            <p className='font-semibold text-[#464646]'>مهران رضایی </p>
-                            <p>-</p>
-                            <p className=' font-normal'>معماری کامپیوتر . ریزپردازنده</p>
-                        </div>
-                        <div className='flex gap-3.5 p-2  text-[#949494] items-center '>
-                            <img src={ProfessorProf} alt="" />
-                            <p className='font-semibold text-[#464646]'>مهران رضایی </p>
-                            <p>-</p>
-                            <p className=' font-normal'>معماری کامپیوتر . ریزپردازنده</p>
-                        </div>
-                        <div className='flex gap-3.5 p-2  text-[#949494] items-center '>
-                            <img src={ProfessorProf} alt="" />
-                            <p className='font-semibold text-[#464646]'>مهران رضایی </p>
-                            <p>-</p>
-                            <p className=' font-normal'>معماری کامپیوتر . ریزپردازنده</p>
-                        </div>
-                        <div className='flex gap-3.5 p-2  text-[#949494] items-center '>
-                            <img src={ProfessorProf} alt="" />
-                            <p className='font-semibold text-[#464646]'>مهران رضایی </p>
-                            <p>-</p>
-                            <p className=' font-normal'>معماری کامپیوتر . ریزپردازنده</p>
-                        </div>
-                        <div className='flex gap-3.5 p-2  text-[#949494] items-center '>
-                            <img src={ProfessorProf} alt="" />
-                            <p className='font-semibold text-[#464646]'>مهران رضایی </p>
-                            <p>-</p>
-                            <p className=' font-normal'>معماری کامپیوتر . ریزپردازنده</p>
-                        </div>
-                        <div className='flex gap-3.5 p-2  text-[#949494] items-center '>
-                            <img src={ProfessorProf} alt="" />
-                            <p className='font-semibold text-[#464646]'>مهران رضایی </p>
-                            <p>-</p>
-                            <p className=' font-normal'>معماری کامپیوتر . ریزپردازنده</p>
-                        </div>
+                        {professorList.map((professor, index) => {
+                            return (
+                                <div key={index} className='flex gap-3.5 p-2  text-[#949494] items-center '>
+                                    <img src={ProfessorProf} alt="" />
+                                    <p className='font-semibold text-[#464646]'>{professor.first_name}  {professor.last_name}</p>
+                                    <p>-</p>
+                                    <p className=' font-normal'>{professor.courses.map((course, indx) => {
+                                        return (
+                                            <span>{course.name}</span>
+                                        )
+                                    })}</p>
+                                </div>
+                            )
+                        })}
                     </div>
                     <div className='h-5 w-[1px] absolute bg-[#D8D8D8] hidden lg:block -right-5 top-1'></div>
                 </div>
             </div>
             <div className='lg:h-[284px] w-full flex gap-2.5 mt-2.5 flex-col lg:flex-row'>
                 <div className='h-[120px] lg:h-full w-full  bg-white rounded-xl flex justify-center lg:hidden items-center'>
-                    <Progresswheel size={80} />
+                    <Progresswheel
+                        score={
+                            professorDetails.overall_rating
+                                ? Number(Number(professorDetails.overall_rating).toFixed(1))
+                                : 0
+                        }
+                        size={80}
+                    />
                 </div>
                 <div className='hidden h-[120px] lg:h-full w-[20%] bg-white rounded-xl lg:flex justify-center items-center'>
-                    <Progresswheel size={150} />
+                    <Progresswheel
+                        score={
+                            professorDetails.overall_rating
+                                ? Number(Number(professorDetails.overall_rating).toFixed(1))
+                                : 0
+                        }
+                        size={150}
+                    />
                 </div>
                 <div className='  bg-white flex justify-center lg:w-[80%] rounded-xl  overflow-hidden '>
                     <div className='h-[470px] lg:h-full overflow-hidden w-full sm:w-8/12 lg:w-full   border-2 border-solid border-white relative flex flex-col gap-9 lg:gap-0 lg:flex-row justify-around rounded-xl py-10 ' >
@@ -112,8 +200,8 @@ const ProfessorDetails = () => {
 
                                 </div>
                                 <div className='text-sm'>
-                                    <h4 className='text-base md:text-lg font-semibold'>استاد مهران رضایی</h4>
-                                    <p className='text-xs md:text-sm mt-3.5 mb-2'>دانشکده مهندسی کامپیوتر</p>
+                                    <h4 className='text-base md:text-lg font-semibold'>استاد {professorDetails.first_name} {professorDetails.last_name}</h4>
+                                    <p className='text-xs md:text-sm mt-3.5 mb-2'>دانشکده  {professorDetails.faculty}</p>
                                     <div className='flex items-center gap-2 font-normal text-xs lg:text-sm text-[#949494]'>
                                         <p>گسسته</p>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="3" height="4" viewBox="0 0 3 4" fill="none">
@@ -129,13 +217,13 @@ const ProfessorDetails = () => {
 
                             </div>
                             <div className='flex gap-4  lg:mt-12 w-full  lg:w-auto '>
-                                <button onClick={()=>navigate("/poll/popular/ProfessorDetails/1/3")} style={{ background: 'linear-gradient(90deg, #33BDC4 0%, #3C6AA0 100%)' }} className='h-9 lg:h-[52px] w-1/2  lg:w-[187px] rounded-md lg:rounded-xl  text-white justify-center gap-2 flex items-center'>
+                                <button onClick={() => navigate("/poll/popular/ProfessorDetails/1/3")} style={{ background: 'linear-gradient(90deg, #33BDC4 0%, #3C6AA0 100%)' }} className='h-9 lg:h-[52px] w-1/2  lg:w-[187px] rounded-md lg:rounded-xl  text-white justify-center gap-2 flex items-center'>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                         <path d="M12 13.5V7.5M9 10.5H15M9.9 19.2L11.36 21.1467C11.5771 21.4362 11.6857 21.5809 11.8188 21.6327C11.9353 21.678 12.0647 21.678 12.1812 21.6327C12.3143 21.5809 12.4229 21.4362 12.64 21.1467L14.1 19.2C14.3931 18.8091 14.5397 18.6137 14.7185 18.4645C14.9569 18.2656 15.2383 18.1248 15.5405 18.0535C15.7671 18 16.0114 18 16.5 18C17.8978 18 18.5967 18 19.1481 17.7716C19.8831 17.4672 20.4672 16.8831 20.7716 16.1481C21 15.5967 21 14.8978 21 13.5V7.8C21 6.11984 21 5.27976 20.673 4.63803C20.3854 4.07354 19.9265 3.6146 19.362 3.32698C18.7202 3 17.8802 3 16.2 3H7.8C6.11984 3 5.27976 3 4.63803 3.32698C4.07354 3.6146 3.6146 4.07354 3.32698 4.63803C3 5.27976 3 6.11984 3 7.8V13.5C3 14.8978 3 15.5967 3.22836 16.1481C3.53284 16.8831 4.11687 17.4672 4.85195 17.7716C5.40326 18 6.10218 18 7.5 18C7.98858 18 8.23287 18 8.45951 18.0535C8.76169 18.1248 9.04312 18.2656 9.2815 18.4645C9.46028 18.6137 9.60685 18.8091 9.9 19.2Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                     </svg>
                                     <p>ثبت نظر</p>
                                 </button>
-                                <button className='w-1/2 h-9  lg:h-[52px] lg:w-[187px]  rounded-md lg:rounded-xl border border-[#4CC6CB] py-2 px-4    text-[#00ADB5] justify-center gap-2 flex items-center'>
+                                <button className='w-1/2 h-9  lg:h-[52px] lg:w-[187px]  rounded-md lg:rounded-xl border border-[#4CC6CB] py-2 px-4    text-[#4CC6CB] hover:text-[#19B5BC] hover:border-[#19B5BC] transition-all justify-center gap-2 flex items-center'>
                                     مقایسه</button>
                             </div>
                         </div>
@@ -149,7 +237,7 @@ const ProfessorDetails = () => {
                                     <path d="M18.1744 13.1664C18.1817 12.7257 18.1002 12.288 17.9348 11.8795C17.7695 11.4709 17.5236 11.0997 17.2119 10.7881" stroke="#64748B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                     <path d="M19.5684 8.43164C20.1911 9.05277 20.685 9.79083 21.0216 10.6034C21.3583 11.416 21.531 12.2871 21.53 13.1666" stroke="#64748B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>
-                                <p>031-10253264</p>
+                                <p>{professorDetails.office_number}</p>
                             </div>
                             <div className='flex items-center w-full  lg:w-full gap-3.5'>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
@@ -157,7 +245,7 @@ const ProfessorDetails = () => {
                                     <path d="M13.8335 18.0883L12.1085 19.7625C12.0402 19.8286 11.9561 19.876 11.8642 19.9002C11.7724 19.9245 11.6758 19.9247 11.5838 19.901C11.4918 19.8772 11.4075 19.8303 11.3388 19.7646C11.2702 19.6989 11.2196 19.6167 11.1918 19.5258L10.0435 15.75" stroke="#64748B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                     <path d="M15.7499 13.1059L12.4857 16.0518C12.4084 16.1216 12.3475 16.2079 12.3076 16.3042C12.2677 16.4005 12.2498 16.5045 12.255 16.6086C12.2603 16.7127 12.2887 16.8143 12.3381 16.9061C12.3875 16.9979 12.4567 17.0775 12.5407 17.1393L17.0224 20.4501C17.1236 20.526 17.2423 20.5751 17.3676 20.5928C17.4928 20.6105 17.6205 20.5962 17.7388 20.5513C17.8571 20.5064 17.962 20.4323 18.044 20.336C18.1259 20.2396 18.1821 20.124 18.2074 20.0001L20.4116 9.62759C20.4357 9.51382 20.4287 9.39563 20.3913 9.28552C20.3538 9.17541 20.2873 9.07745 20.1988 9.002C20.1103 8.92655 20.003 8.8764 19.8884 8.85685C19.7737 8.8373 19.6559 8.84907 19.5474 8.89092L6.61824 13.8776C6.53467 13.9095 6.46315 13.9668 6.41364 14.0413C6.36413 14.1158 6.33909 14.2039 6.34203 14.2933C6.34496 14.3828 6.37572 14.469 6.43001 14.5402C6.4843 14.6113 6.55942 14.6637 6.64491 14.6901L10.0424 15.7501" stroke="#64748B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>
-                                <p>MehranRezaee</p>
+                                <p>{professorDetails.telegram_account}</p>
                             </div>
                             <div className='flex items-center w-full  lg:w-full gap-3.5'>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
@@ -167,7 +255,7 @@ const ProfessorDetails = () => {
                                     <path d="M6.98828 19.3447L12.1049 14.228" stroke="#64748B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                     <path d="M15.9004 14.2339L21.0087 19.3422" stroke="#64748B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>
-                                <p>MehranRezaee@gmail.com</p>
+                                <p>{professorDetails.email}</p>
                             </div>
                             <div className='flex items-center w-full  lg:w-full gap-3.5'>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
@@ -177,7 +265,7 @@ const ProfessorDetails = () => {
                                     <path d="M12.4732 7.38332C11.2907 9.38801 10.667 11.6729 10.667 14.0004C10.667 16.3279 11.2907 18.6128 12.4732 20.6175C12.6276 20.886 12.8501 21.109 13.1182 21.2641C13.3863 21.4192 13.6905 21.5008 14.0003 21.5008C14.31 21.5008 14.6142 21.4192 14.8823 21.2641C15.1504 21.109 15.3729 20.886 15.5273 20.6175C16.7098 18.6128 17.3335 16.3279 17.3335 14.0004C17.3335 11.6729 16.7098 9.38801 15.5273 7.38332C15.3729 7.11484 15.1504 6.89182 14.8823 6.73674C14.6142 6.58166 14.31 6.5 14.0003 6.5C13.6905 6.5 13.3863 6.58166 13.1182 6.73674C12.8501 6.89182 12.6276 7.11484 12.4732 7.38332V7.38332Z" stroke="#64748B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                     <path d="M6.5 14H21.5" stroke="#64748B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>
-                                <p>MehranRezaee.com</p>
+                                <p>{professorDetails.website_url}</p>
                             </div>
                             <div className='flex items-center w-full  lg:w-full gap-3.5'>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
@@ -186,8 +274,8 @@ const ProfessorDetails = () => {
                                     <path d="M19 10.5273C18.9813 9.21977 18.4441 7.97314 17.5065 7.0616C16.5689 6.15006 15.3076 5.64824 14 5.6665C12.6924 5.64824 11.4311 6.15006 10.4935 7.0616C9.55587 7.97314 9.01866 9.21977 9 10.5273C9 14.1732 14 18.1665 14 18.1665C14 18.1665 19 14.1732 19 10.5273Z" stroke="#64748B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                     <path d="M15.1785 9.48798C15.4116 9.72104 15.5704 10.018 15.6348 10.3413C15.6991 10.6646 15.6661 10.9998 15.54 11.3044C15.4139 11.6089 15.2003 11.8693 14.9262 12.0524C14.6521 12.2356 14.3298 12.3333 14.0002 12.3333C13.6705 12.3333 13.3483 12.2356 13.0742 12.0524C12.8001 11.8693 12.5864 11.6089 12.4603 11.3044C12.3342 10.9998 12.3012 10.6646 12.3656 10.3413C12.4299 10.018 12.5887 9.72104 12.8218 9.48798C13.1344 9.17553 13.5582 9 14.0002 9C14.4421 9 14.866 9.17553 15.1785 9.48798" stroke="#64748B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>
-                                <p>دانشکده مهندسی کامپیوتر - اتاق 118</p>
-                                <Link className="text-[#EFB036] underline underline-offset-[6px] text-nowrap" to="">برنامه حضور در دفتر</Link>
+                                <p>{professorDetails.office_location}</p>
+                                <Link onClick={() => setAddProfessorSchedule(true)} className="text-[#EFB036] underline underline-offset-[6px] text-nowrap" to="">برنامه حضور در دفتر</Link>
                             </div>
                         </div>
                         <div className='absolute left-28 top-7 hidden lg:inline-block'>
@@ -220,27 +308,27 @@ const ProfessorDetails = () => {
 
                         <div className='flex gap-3 items-center'>
                             <p className='w-[89px] text-xs lg:text-sm text-black'>نمره دهی</p>
-                            <Progressbar value={93} strok={8} />
+                            <Progressbar value={Number(professorDetails.grading_avg).toFixed(1)*5} strok={8} />
                             <p className="hidden md:block">دست باز و با ارفاق</p>
                         </div>
                         <div className='flex gap-3 items-center'>
                             <p className='w-[89px] text-xs lg:text-sm text-black'>دانش عمومی</p>
-                            <Progressbar value={77} strok={8} />
+                            <Progressbar value={Number(professorDetails.general_knowledge_avg).toFixed(1)* 20} strok={8} />
                             <p className="hidden md:block">دست باز و با ارفاق</p>
                         </div>
                         <div className='flex gap-3 items-center'>
                             <p className='w-[89px] text-xs lg:text-sm text-black'>جذابیت تدریس</p>
-                            <Progressbar value={93} strok={8} />
+                            <Progressbar value={Number(professorDetails.teaching_engagement_avg).toFixed(1)* 20} strok={8} />
                             <p className="hidden md:block">دست باز و با ارفاق</p>
                         </div>
                         <div className='flex gap-3 items-center'>
                             <p className='w-[89px] text-xs lg:text-sm text-black'>سختی تکالیف</p>
-                            <Progressbar value={15} strok={8} />
+                            <Progressbar value={Number(professorDetails.homework_difficulty_avg).toFixed(1)* 20} strok={8} />
                             <p className="hidden md:block">دست باز و با ارفاق</p>
                         </div>
                         <div className='flex gap-3 items-center'>
                             <p className='w-[89px] text-xs lg:text-sm text-black'>سختی امتحان</p>
-                            <Progressbar value={10} strok={8} />
+                            <Progressbar value={Number(professorDetails.exam_difficulty_avg).toFixed(1)* 20} strok={8} />
                             <p className="hidden md:block">دست باز و با ارفاق</p>
                         </div>
                     </div>
@@ -254,7 +342,7 @@ const ProfessorDetails = () => {
                                 </svg>
                             </div>
                             <div className='font-iransansfa text-[#7F7F7F] flex items-center lg:items-start lg:flex-col text-sm gap-3'>
-                                <h1 className='text-3xl xl:text-[40px] font-semibold text-black'>99%</h1>
+                                <h1 className='text-3xl xl:text-[40px] font-semibold text-black'>{Number(professorDetails.average_would_take_again)* 20 }%</h1>
                                 <p>دوباره انتخابش می‌کنند.</p>
                             </div>
 
@@ -269,7 +357,7 @@ const ProfessorDetails = () => {
                                 </svg>
                             </div>
                             <div className='font-iransansfa text-[#7F7F7F] flex items-center lg:items-start  lg:flex-col text-sm gap-3'>
-                                <h1 className='text-3xl xl:text-[40px] font-semibold text-black'>19.5</h1>
+                                <h1 className='text-3xl xl:text-[40px] font-semibold text-black'>{professorDetails.student_scores_avg}</h1>
                                 <p>میانگین نمرات</p>
                             </div>
 
@@ -303,7 +391,7 @@ const ProfessorDetails = () => {
 
                 </div>
             </div>
-            <div className='w-full px-3 md:px-0 lg:px-[37px] pt-8 flex flex-col  items-center rounded-xl mt-2.5  bg-white'>
+            <div ref={commentsRef} className='w-full px-3 md:px-0 lg:px-[37px] pt-8 flex flex-col  items-center rounded-xl mt-2.5  bg-white'>
                 <div className='sm:w-8/12 lg:w-full'>
                     <div className='flex flex-col md:flex-row justify-center md:justify-between gap-6 lg:gap-0 items-start md:items-center'>
                         <div>
@@ -354,18 +442,103 @@ const ProfessorDetails = () => {
 
                     </div>
                     <div className='flex flex-col gap-[60px]'>
-                        <UserComment />
-                        <UserComment />
-                        <UserComment />
-                        <UserComment />
-                        <UserComment />
+                        {allComments.slice(0, visibleCount).map((comment, idx) => (
+                            <div key={idx}>{comment}</div>
+                        ))}
+                    </div>
 
+                </div>
+                {visibleCount < allComments.length && (
+                    <div className='my-14'>
+                        <button
+                            onClick={showMore}
+                            className='bg-[#F1F5F7]  w-[147px] lg:w-[193px] px-3 py-1 lg:px-4 lg:py-2 text-[#919498] hover:text-[#4E535A] border border-gray-300 transition-all  hover:border-[#4E535A] text-sm lg:text-base h-9 lg:h-12 rounded-xl'
+                        >
+                            نمایش نظرات بیشتر
+                        </button>
+                    </div>
+                )}
+
+            </div>
+
+            <Modal
+                className="font-iransans professor-details"
+                open={addProfessorSchedule}
+                onOk={() => setAddProfessorSchedule(false)}
+                onCancel={() => setAddProfessorSchedule(false)}
+                footer={[]}
+                width={800}
+            >
+                <div className='h-full'>
+                    <p className='text-left px-4 mb-3 md:px-[22px]'>برنامه حضور در دفتر</p>
+                    <hr />
+                    <div className='flex flex-col items-center justify-center h-full gap-8 pb-12'>
+                        <div>
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="142" height="74" viewBox="0 0 142 74" fill="none">
+                                    <g clip-path="url(#clip0_15302_34349)">
+                                        <path d="M30.2407 63.7274H90.0648C90.4034 63.7274 90.7321 63.6912 91.0509 63.622C91.3698 63.6912 91.6985 63.7274 92.037 63.7274H126.222C128.763 63.7274 130.824 61.6622 130.824 59.116C130.824 56.5698 128.763 54.5046 126.222 54.5046H122.278C119.737 54.5046 117.676 52.4393 117.676 49.8932C117.676 47.347 119.737 45.2818 122.278 45.2818H134.769C137.309 45.2818 139.37 43.2165 139.37 40.6703C139.37 38.1242 137.309 36.0589 134.769 36.0589H120.306C122.846 36.0589 124.907 33.9937 124.907 31.4475C124.907 28.9014 122.846 26.8361 120.306 26.8361H78.2315C80.7724 26.8361 82.8333 24.7709 82.8333 22.2247C82.8333 19.6785 80.7724 17.6133 78.2315 17.6133H40.7593C38.2184 17.6133 36.1574 19.6785 36.1574 22.2247C36.1574 24.7709 38.2184 26.8361 40.7593 26.8361H14.463C11.9221 26.8361 9.86111 28.9014 9.86111 31.4475C9.86111 33.9937 11.9221 36.0589 14.463 36.0589H30.8981C33.439 36.0589 35.5 38.1242 35.5 40.6703C35.5 43.2165 33.439 45.2818 30.8981 45.2818H4.60185C2.06097 45.2818 0 47.347 0 49.8932C0 52.4393 2.06097 54.5046 4.60185 54.5046H30.2407C27.6999 54.5046 25.6389 56.5698 25.6389 59.116C25.6389 61.6622 27.6999 63.7274 30.2407 63.7274Z" fill="#E9EAEA" />
+                                        <path d="M137.398 63.7267C139.939 63.7267 142 61.6615 142 59.1153C142 56.5692 139.939 54.5039 137.398 54.5039C134.857 54.5039 132.796 56.5692 132.796 59.1153C132.796 61.6615 134.857 63.7267 137.398 63.7267Z" fill="#E9EAEA" />
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M45.5454 65.1238L42.8698 65.4993C41.4301 65.7002 40.1021 64.6989 39.8983 63.2562L32.5781 11.0682C32.3743 9.62544 33.3768 8.29472 34.8165 8.0905L86.2488 0.850578C87.6885 0.646359 89.0165 1.65099 89.2203 3.0937C89.2203 3.0937 89.687 6.43039 89.8481 7.57995" fill="white" />
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M47.2051 62.2179L44.776 62.5638C43.471 62.7515 42.2647 61.8391 42.0839 60.5315L35.5131 13.1492C35.3323 11.8416 36.2428 10.6294 37.5478 10.445L84.2467 3.79135C85.5517 3.60689 86.758 4.516 86.9388 5.82366L87.5042 9.89488C87.5338 10.1156 89.552 24.7403 93.5556 53.7692C93.7561 55.2251 92.7536 56.5723 91.3138 56.7765C91.2974 56.7765 91.2843 56.7798 91.2678 56.7831L47.2018 62.2179H47.2051Z" fill="#E9EAEA" />
+                                        <path d="M45.5454 65.1238L42.8698 65.4993C41.4301 65.7002 40.1021 64.6989 39.8983 63.2562L32.5781 11.0682C32.3743 9.62544 33.3768 8.29472 34.8165 8.0905L86.2488 0.850578C87.6885 0.646359 89.0165 1.65099 89.2203 3.0937C89.2203 3.0937 89.687 6.43039 89.8481 7.57995" stroke="#A7A9AD" stroke-width="2" stroke-linecap="round" />
+                                        <path d="M90.3936 10.6133L90.7223 12.6687" stroke="#A7A9AD" stroke-width="2" stroke-linecap="round" />
+                                        <path d="M54.4464 13.3209C54.5516 12.3261 55.4391 11.6048 56.4318 11.7069L108.081 17.1451C109.074 17.2505 109.794 18.1398 109.692 19.1346L104.192 71.5466C104.087 72.5413 103.2 73.2627 102.207 73.1606L50.5546 67.7191C49.5619 67.6137 48.842 66.7243 48.9472 65.7296L54.4464 13.3176V13.3209Z" fill="white" stroke="#A7A9AD" stroke-width="2" />
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M58.966 19.0963C59.0811 18.0126 60.0508 17.2221 61.1322 17.3373L102.322 21.6754C103.407 21.7906 104.192 22.7623 104.077 23.846L100.435 58.57C100.32 59.6536 99.3506 60.4442 98.2659 60.3289L57.076 55.9909C55.9946 55.8756 55.2057 54.9039 55.3207 53.8202L58.9628 19.0963H58.966Z" fill="white" />
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M60.9681 45.8581L67.4107 41.5036C68.4856 40.779 69.9253 40.9437 70.8063 41.8956L75.5231 46.9846C75.7598 47.2383 76.151 47.2679 76.4172 47.0472L86.5019 38.8587C87.7181 37.8738 89.5161 38.1604 90.3641 39.4746L96.925 49.6461L97.8684 51.2205L97.4181 56.5731C97.3885 56.942 97.0598 57.2121 96.6917 57.1726L59.2457 53.0025C58.8907 52.963 58.6311 52.6435 58.6639 52.2878L59.1603 46.8858L60.9714 45.8581H60.9681Z" fill="#E9EAEA" />
+                                        <path d="M59.7813 19.1836C59.8471 18.5512 60.4125 18.09 61.0469 18.1592L102.237 22.4972C102.868 22.5631 103.328 23.133 103.262 23.7654L99.6202 58.4893C99.5545 59.1217 98.9891 59.5829 98.3547 59.5137L57.1649 55.1757C56.5338 55.1098 56.0736 54.5433 56.1426 53.9075L59.7846 19.1836H59.7813Z" stroke="#A7A9AD" stroke-width="2" />
+                                        <path d="M69.0475 34.0459C71.2259 34.0459 72.9919 32.2762 72.9919 30.0933C72.9919 27.9103 71.2259 26.1406 69.0475 26.1406C66.869 26.1406 65.103 27.9103 65.103 30.0933C65.103 32.2762 66.869 34.0459 69.0475 34.0459Z" fill="#F3F7FF" stroke="#A7A9AD" stroke-width="2" />
+                                        <path d="M59.6465 46.8799C62.2334 45.088 67.4105 41.5076 67.4105 41.5076C68.4853 40.7829 69.925 40.9476 70.806 41.8996L75.5229 46.9886C75.7595 47.2422 76.1507 47.2718 76.4169 47.0512L86.5016 38.8626C87.629 37.9469 89.2857 38.1215 90.1995 39.2513C90.2587 39.3237 90.3145 39.3995 90.3638 39.4786C90.3638 39.4786 96.2608 48.8529 97.6381 51.0433" stroke="#A7A9AD" stroke-width="2" stroke-linecap="round" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_15302_34349">
+                                            <rect width="142" height="74" fill="white" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                            </div>
+                        </div>
+                        <div className='text-xs lg:text-sm '>
+                            <p className='text-[#4A4A4A] font-bold'>تصویری موجود نیست!</p>
+                            <p className='text-[#929292] font-normal mb-4 mt-2'>برای ارسال برنامه حضور در دفتر کلیک کنید</p>
+                            <Upload {...props}>
+                                <Button className='custom-upload-button  lg:w-[204px] h-[40px] text-white bg-[#4CC6CB] font-iransans flex-row-reverse '
+                                >
+                                    آپلود برنامه حضور در دفتر
+                                </Button>
+                            </Upload>
+
+                        </div>
                     </div>
                 </div>
-                <div className='my-14'>
-                    <button className='bg-[#F1F5F7] w-[147px] lg:w-[193px] px-3 py-1 lg:px-4 lg:py-2 text-[#919498] text-sm lg:text-base h-9 lg:h-12   rounded-xl '>نمایش نظرات بیشتر</button>
+
+            </Modal>
+            <Modal
+                className="font-iransans AddProfessor"
+                open={addProfessor}
+                onOk={() => setAddProfessor(false)}
+                onCancel={() => setAddProfessor(false)}
+                footer={[]}
+                width={540}
+
+            >
+                <div className=''>
+                    <div className='flex flex-col items-center justify-center h-full gap-8 mt-7'>
+                        <div>
+                            <div>
+                                <img className='w-36 h-36 lg:h-[186px] lg:w-[186px]' src={SuccessAdd} alt="" />
+                            </div>
+                        </div>
+                        <div className='text-sm w-full lg:text-base '>
+                            <p className='text-black font-normal mb-10'>درخواست افزودن استاد مهران رضایی ثبت شد!</p>
+                            <button onClick={() => setAddProfessor(false)} className=' w-full h-[40px] text-white bg-[#4CC6CB] font-iransans flex-row-reverse rounded-lg'>تایید</button>
+
+                        </div>
+                    </div>
                 </div>
-            </div>
+
+            </Modal>
+
 
         </div>
     )

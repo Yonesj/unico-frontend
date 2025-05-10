@@ -36,9 +36,14 @@
 
   
 .ant-radio-button-wrapper-checked {
-    background-color: #00ADB5 !important;
+    background-color: #4CC6CB !important;
     color: white !important;
-    border-color: #00ADB5 !important;
+    border-color: #4CC6CB !important;
+  }
+.ant-radio-button-wrapper-checked:hover {
+    background-color:#33BDC4 !important;
+    color: white !important;
+    border-color: #33BDC4 !important;
   }
 .ant-radio-group span
 {
@@ -55,5 +60,48 @@
     margin: 7px 0 ;
     margin-left: 14px;
   }
+  .ant-select:not(.ant-select-disabled):hover .ant-select-selector {
+    border-color: #33BDC4 !important;
+  }
+  .ant-select-focused:not(.ant-select-disabled) .ant-select-selector {
+    border-color: #33BDC4 !important;
+  }
+  .select-container .ant-select
+{
+    outline: none !important;
+    border: none !important;
+    width: 100% !important;
+}
+/* Custom CSS for the select font size */
+.ant-select-selection-item {
+    font-size: 0.75rem; /* This is equivalent to text-xs (12px) */
+  }
+  .ant-select-item {
+    font-size: 12px !important; /* Each dropdown option font size */
+  }
+  
+  
+  @media (min-width: 1024px) { /* For screens 1024px and above (lg breakpoint) */
+    .ant-select-selection-item{
+      font-size: 16px; /* This sets font size to 16px */
+    }
+    .ant-select-item {
+      font-size: 16px !important; /* Each dropdown option font size */
+    }
+    
+  }
+
+  
+  .custom-upload-button:hover {
+    background-color: #33BDC4 !important;
+    border-color: #33BDC4 !important;
+    color: white !important;
+  }
+  .ant-upload 
+  {
+    width: 100%;
+  }
+  
+
   
   

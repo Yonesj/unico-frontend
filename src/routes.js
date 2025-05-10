@@ -19,6 +19,9 @@ import ProfessorsCard from "./Components/ProfessorsCard/ProfessorsCard";
 import ProfessorDetails from "./Components/ProfessorDetails/ProfessorDetails";
 import PostComment from "./Pages/PostComment/PostComment";
 import ProfessorWrapper from "./Components/ProfessorDetails/ProfessorWrapper";
+import PostCommentContainer from "./Pages/PostCommentContainer/PostCommentContainer";
+import CommentSubmitted from "./Components/CommentSubmitted/CommentSubmitted";
+import Correction from "./Components/Correction/Correction";
 
 
 
@@ -56,14 +59,37 @@ const routes = [
             },
         ]
     },
-    { path: "/poll/popular/ProfessorDetails", element: <ProfessorWrapper/> ,children : 
-        [
-            { path: "/poll/popular/ProfessorDetails/:professor", element: <ProfessorDetails/> }, // <- moved here
-            { path: "/poll/popular/ProfessorDetails/:professor/:comment", element: <PostComment/> }, // <- moved here
+    {
+        path: "/poll/popular/ProfessorDetails",
+        element: <ProfessorWrapper />,
+        children: [
+          {
+            path: ":professor",
+            element: <ProfessorDetails />
+          },
+          {
+            path: ":professor/correction",
+            element: <Correction/>
+          },
 
+          {
+            path: ":professor/:comment",
+            element: <PostCommentContainer />,
+            children: [
+              {
+                path: "",
+                element: <PostComment />
+              },
+              {
+                path: "submitted",
+                element: <CommentSubmitted/>
+              }
+              
+            ]
+          }
         ]
-     }, // <- moved here
-
+      }
+      
 
 
 ]
