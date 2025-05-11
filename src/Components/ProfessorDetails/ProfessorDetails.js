@@ -14,6 +14,10 @@ import { Modal } from 'antd';
 import { Button, message, Upload } from 'antd';
 import SuccessAdd from "../../Assets/images/aaa 1 (1).svg"
 
+// Example usage
+// Output: "18 اردیبهشت 1404"
+
+
 
 const props = {
     name: 'file',
@@ -35,13 +39,15 @@ const props = {
 
 const ProfessorDetails = () => {
     const id = useParams().professor;
+    const [options, setOptions] = useState([
+        { value: 'all', label: 'همه ی دروس' }
+    ]);
 
     const { isSidebarOpen, setIsSidebarOpen } = useContext(SidebarContext);
     const [searchDropdown, setSearchDropdown] = useState(false);
     const [show, setShow] = useState(false);
     const navigate = useNavigate();
     const commentsRef = useRef(null);
-    const allComments = Array(15).fill(<UserComment />); // Replace with actual data
     const [visibleCount, setVisibleCount] = useState(5);
     const showMore = () => setVisibleCount(prev => prev + 5);
 
@@ -66,6 +72,7 @@ const ProfessorDetails = () => {
 
                 if (res.ok) {
                     setProfessorList(data);
+
                 } else {
                     throw new Error(Object.values(data)[0] || "An error occurred");
                 }
@@ -96,6 +103,46 @@ const ProfessorDetails = () => {
                 if (res.ok) {
                     console.log("ok");
                     setProfessorDetails(data);
+                    const courseOptions = data.courses.map(course => ({
+                        value: course.id, // or course.slug, etc.
+                        label: course.name
+                    }));
+                    setOptions([{ value: 'all', label: 'همه ی دروس' }, ...courseOptions]);
+
+
+                } else {
+                    throw new Error(Object.values(data)[0] || "An error occurred");
+                }
+
+            } catch (err) {
+                console.error("Error:", err.message);
+            } finally {
+                console.log("finally");
+            }
+        };
+
+        fetchProfessors();
+    }, [id]);
+
+
+    const [professorComments, setProfessorComments] = useState({});
+
+    useEffect(() => {
+        const fetchProfessors = async () => {
+            try {
+                const res = await fetch(`http://localhost:8000/professor-reviewer/professors/${id}/reviews/`, {
+                    method: "GET",
+                    headers: {
+                        "Accept-Language": "fa",
+                        "Content-Type": "application/json",
+                    },
+                });
+
+                const data = await res.json();
+
+                if (res.ok) {
+                    console.log("ok");
+                    setProfessorComments(data);
 
                 } else {
                     throw new Error(Object.values(data)[0] || "An error occurred");
@@ -110,6 +157,9 @@ const ProfessorDetails = () => {
 
         fetchProfessors();
     }, []);
+
+    const allComments = Array(professorComments.count); // Replace with actual data
+
 
 
 
@@ -148,13 +198,14 @@ const ProfessorDetails = () => {
                         <path d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" stroke="#A7A9AD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
                     <input onFocus={() => setSearchDropdown(true)}
-                        onBlur={() => setSearchDropdown(false)}
+                        onBlur={() => setTimeout(() => setSearchDropdown(false), 100)}
                         className='w-full h-full  hidden lg:inline-block' type="text" placeholder='نام استاد یا درس را وارد کنید' />
 
                     <div className={`h-[198px] poll-container w-[300px] md:w-[375px] rounded-xl outline-none  bg-white absolute  border border-[#DDD] p-2  transition-all text-nowrap opacity-0 text-xs lg:text-sm overflow-y-auto overflow-x-hidden rounded-b-2xl  ${searchDropdown ? "opacity-100 z-10" : "pointer-events-none"} top-12 -left-6 lg:left-0`}>
                         {professorList.map((professor, index) => {
                             return (
-                                <div key={index} className='flex gap-3.5 p-2  text-[#949494] items-center '>
+                                <div onClick={() => navigate(`/poll/popular/ProfessorDetails/${professor.id}`)
+                                } key={index} className='flex gap-3.5 p-2  text-[#949494] items-center cursor-pointer '>
                                     <img src={ProfessorProf} alt="" />
                                     <p className='font-semibold text-[#464646]'>{professor.first_name}  {professor.last_name}</p>
                                     <p>-</p>
@@ -179,6 +230,7 @@ const ProfessorDetails = () => {
                                 : 0
                         }
                         size={80}
+                        count={professorDetails.reviews_count}
                     />
                 </div>
                 <div className='hidden h-[120px] lg:h-full w-[20%] bg-white rounded-xl lg:flex justify-center items-center'>
@@ -189,6 +241,8 @@ const ProfessorDetails = () => {
                                 : 0
                         }
                         size={150}
+                        count={professorDetails.reviews_count}
+
                     />
                 </div>
                 <div className='  bg-white flex justify-center lg:w-[80%] rounded-xl  overflow-hidden '>
@@ -202,17 +256,17 @@ const ProfessorDetails = () => {
                                 <div className='text-sm'>
                                     <h4 className='text-base md:text-lg font-semibold'>استاد {professorDetails.first_name} {professorDetails.last_name}</h4>
                                     <p className='text-xs md:text-sm mt-3.5 mb-2'>دانشکده  {professorDetails.faculty}</p>
-                                    <div className='flex items-center gap-2 font-normal text-xs lg:text-sm text-[#949494]'>
-                                        <p>گسسته</p>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="3" height="4" viewBox="0 0 3 4" fill="none">
-                                            <circle cx="1.5" cy="2" r="1.5" fill="#D9D9D9" />
-                                        </svg>
-                                        <p>معماری کامپیوتر</p>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="3" height="4" viewBox="0 0 3 4" fill="none">
-                                            <circle cx="1.5" cy="2" r="1.5" fill="#D9D9D9" />
-                                        </svg>
-                                        <p>ریزپردازنده</p>
-                                    </div>
+                                    {professorDetails.courses?.map((course) => {
+                                        return (
+                                            <div key={course.id} className='flex items-center gap-2 font-normal text-xs lg:text-sm text-[#949494]'>
+                                                <p>{course.name}</p>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="3" height="4" viewBox="0 0 3 4" fill="none">
+                                                    <circle cx="1.5" cy="2" r="1.5" fill="#D9D9D9" />
+                                                </svg>
+
+                                            </div>
+                                        )
+                                    })}
                                 </div>
 
                             </div>
@@ -308,27 +362,27 @@ const ProfessorDetails = () => {
 
                         <div className='flex gap-3 items-center'>
                             <p className='w-[89px] text-xs lg:text-sm text-black'>نمره دهی</p>
-                            <Progressbar value={Number(professorDetails.grading_avg).toFixed(1)*5} strok={8} />
+                            <Progressbar value={Number(professorDetails.grading_avg).toFixed(1) * 5} strok={8} />
                             <p className="hidden md:block">دست باز و با ارفاق</p>
                         </div>
                         <div className='flex gap-3 items-center'>
                             <p className='w-[89px] text-xs lg:text-sm text-black'>دانش عمومی</p>
-                            <Progressbar value={Number(professorDetails.general_knowledge_avg).toFixed(1)* 20} strok={8} />
+                            <Progressbar value={Number(professorDetails.general_knowledge_avg).toFixed(1) * 20} strok={8} />
                             <p className="hidden md:block">دست باز و با ارفاق</p>
                         </div>
                         <div className='flex gap-3 items-center'>
                             <p className='w-[89px] text-xs lg:text-sm text-black'>جذابیت تدریس</p>
-                            <Progressbar value={Number(professorDetails.teaching_engagement_avg).toFixed(1)* 20} strok={8} />
+                            <Progressbar value={Number(professorDetails.teaching_engagement_avg).toFixed(1) * 20} strok={8} />
                             <p className="hidden md:block">دست باز و با ارفاق</p>
                         </div>
                         <div className='flex gap-3 items-center'>
                             <p className='w-[89px] text-xs lg:text-sm text-black'>سختی تکالیف</p>
-                            <Progressbar value={Number(professorDetails.homework_difficulty_avg).toFixed(1)* 20} strok={8} />
+                            <Progressbar value={Number(professorDetails.homework_difficulty_avg).toFixed(1) * 20} strok={8} />
                             <p className="hidden md:block">دست باز و با ارفاق</p>
                         </div>
                         <div className='flex gap-3 items-center'>
                             <p className='w-[89px] text-xs lg:text-sm text-black'>سختی امتحان</p>
-                            <Progressbar value={Number(professorDetails.exam_difficulty_avg).toFixed(1)* 20} strok={8} />
+                            <Progressbar value={Number(professorDetails.exam_difficulty_avg).toFixed(1) * 20} strok={8} />
                             <p className="hidden md:block">دست باز و با ارفاق</p>
                         </div>
                     </div>
@@ -342,7 +396,7 @@ const ProfessorDetails = () => {
                                 </svg>
                             </div>
                             <div className='font-iransansfa text-[#7F7F7F] flex items-center lg:items-start lg:flex-col text-sm gap-3'>
-                                <h1 className='text-3xl xl:text-[40px] font-semibold text-black'>{Number(professorDetails.average_would_take_again)* 20 }%</h1>
+                                <h1 className='text-3xl xl:text-[40px] font-semibold text-black'>{Number(professorDetails.average_would_take_again) * 20}%</h1>
                                 <p>دوباره انتخابش می‌کنند.</p>
                             </div>
 
@@ -367,22 +421,15 @@ const ProfessorDetails = () => {
                         <div>
                             <p className='text-[#717171] text-sm mb-6'>اساتید مرتبط</p>
                             <div className='flex gap-10 sm:gap-12 xl:gap-4 text-xs sm:text-sm md:text-bace'>
-                                <div className='flex gap-1.5 md:gap-4 w-[100px] items-center   sm:w-[161px] h-[58px]'>
-                                    <img className='w-[42px] lg:w-[58px]' src={prof} alt="" />
-                                    <p>احمدرضا منتظرالقائم</p>
+                                {professorDetails.related_professors?.map((value) => {
+                                    return (
+                                        <div key={value.id} className='flex gap-1.5 md:gap-4 w-[100px] items-center   sm:w-[161px] h-[58px]'>
+                                            <img className='w-[42px] lg:w-[58px]' src={prof} alt="" />
+                                            <p>{value.first_name} {value.last_name}</p>
 
-                                </div>
-                                <div className='flex gap-1.5 md:gap-4 w-[100px] items-center   sm:w-[161px] h-[58px]'>
-                                    <img className='w-[42px] lg:w-[58px] ' src={prof} alt="" />
-                                    <p>احمدرضا منتظرالقائم</p>
-
-                                </div>
-                                <div className='hidden sm:flex gap-1.5 md:gap-4 w-[100px] items-center   sm:w-[161px] h-[58px]'>
-                                    <img className='w-[42px] lg:w-[58px] ' src={prof} alt="" />
-                                    <p>احمدرضا منتظرالقائم</p>
-
-                                </div>
-
+                                        </div>
+                                    )
+                                })}
 
 
                             </div>
@@ -395,7 +442,7 @@ const ProfessorDetails = () => {
                 <div className='sm:w-8/12 lg:w-full'>
                     <div className='flex flex-col md:flex-row justify-center md:justify-between gap-6 lg:gap-0 items-start md:items-center'>
                         <div>
-                            <p className='text-[#717171] text-sm lg:text-lg font-medium font-iransansfa'>585 امتیاز و دیدگاه دانشجویان</p>
+                            <p className='text-[#717171] text-sm lg:text-lg font-medium font-iransansfa'>{professorDetails.reviews_count} امتیاز و دیدگاه دانشجویان</p>
                         </div>
                         <div className='flex gap-4 select-container'>
                             <div className='w-[109px] lg:w-[166px]'>
@@ -403,11 +450,7 @@ const ProfessorDetails = () => {
                                     className='border border-gray-500 border-solid font-iransansfa text-xs lg:text-[16px]' // Responsive font size
                                     defaultValue="همه ی دروس"
                                     style={{ width: 186 }}
-                                    options={[
-                                        { value: 'jack', label: 'همه ی دروس' },
-                                        { value: 'lucy', label: 'همه ی دروس' },
-                                        { value: 'Yiminghe', label: 'همه ی دروس' },
-                                    ]}
+                                    options={options}
                                 />
                             </div>
 
@@ -442,8 +485,8 @@ const ProfessorDetails = () => {
 
                     </div>
                     <div className='flex flex-col gap-[60px]'>
-                        {allComments.slice(0, visibleCount).map((comment, idx) => (
-                            <div key={idx}>{comment}</div>
+                        {professorComments.results?.map((comment, idx) => (
+                            <div key={idx}><UserComment comment={comment} /></div>
                         ))}
                     </div>
 

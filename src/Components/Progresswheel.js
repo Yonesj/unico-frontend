@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Progress } from 'antd';
 
-const Progresswheel = ({ score, size }) => {
+const Progresswheel = ({ score, size , count = 0}) => {
   const maxScore = 5;
   const [displayScore, setDisplayScore] = useState(0);
 
@@ -52,7 +52,7 @@ const Progresswheel = ({ score, size }) => {
       {/* Below Text */}
       <div className='lg:mt-5 text-center'>
         <p className='text-sm text-black w-44'>
-          امتیاز کلی بر اساس <span className='font-bold underline'>585 نظر</span>
+          امتیاز کلی بر اساس <span className='font-bold underline'>{count} نظر</span>
         </p>
       </div>
     </div>
