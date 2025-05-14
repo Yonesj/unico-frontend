@@ -57,35 +57,35 @@ const ProfessorDetails = () => {
     const [professorList, setProfessorList] = useState([]);
     const [professorDetails, setProfessorDetails] = useState({});
 
-    useEffect(() => {
-        const fetchProfessors = async () => {
-            try {
-                const res = await fetch("http://localhost:8000/professor-reviewer/professors/", {
-                    method: "GET",
-                    headers: {
-                        "Accept-Language": "fa",
-                        "Content-Type": "application/json",
-                    },
-                });
+    // useEffect(() => {
+    //     const fetchProfessors = async () => {
+    //         try {
+    //             const res = await fetch("http://localhost:8000/professor-reviewer/professors/", {
+    //                 method: "GET",
+    //                 headers: {
+    //                     "Accept-Language": "fa",
+    //                     "Content-Type": "application/json",
+    //                 },
+    //             });
 
-                const data = await res.json();
+    //             const data = await res.json();
 
-                if (res.ok) {
-                    setProfessorList(data);
+    //             if (res.ok) {
+    //                 setProfessorList(data);
 
-                } else {
-                    throw new Error(Object.values(data)[0] || "An error occurred");
-                }
+    //             } else {
+    //                 throw new Error(Object.values(data)[0] || "An error occurred");
+    //             }
 
-            } catch (err) {
-                console.error("Error:", err.message);
-            } finally {
-                console.log("finally");
-            }
-        };
+    //         } catch (err) {
+    //             console.error("Error:", err.message);
+    //         } finally {
+    //             console.log("finally");
+    //         }
+    //     };
 
-        fetchProfessors();
-    }, []);
+    //     fetchProfessors();
+    // }, []);
 
     useEffect(() => {
         const fetchProfessors = async () => {
@@ -169,7 +169,7 @@ const ProfessorDetails = () => {
     return (
         <div className=''>
 
-            <div className='h-[60px] px-6 lg:p-0 w-full bg-white rounded-xl flex justify-between text-[#959595] text-sm items-center font-medium'>
+            <div className='h-[60px] px-6 lg:p-0 w-full bg-white rounded-xl flex justify-between relative text-[#959595] text-sm items-center font-medium'>
                 <div className='flex gap-14 lg:gap-0 w-[30%] sm:w-[70%] lg:w-[35%] lg:justify-around'>
                     <button onClick={() => navigate(-1)} className='flex gap-2 '>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -178,46 +178,74 @@ const ProfessorDetails = () => {
                         <p className='hidden lg:block'>بازگشت</p>
                     </button>
                     <div className='hidden sm:block'>
-                        <button onClick={() => navigate("correction")}>درخواست اصلاح اطلاعات</button>
+                        <button onClick={() => navigate("revisions")}>درخواست اصلاح اطلاعات</button>
                     </div>
 
                 </div>
-                <div className='w-[70%]  justify-end  sm:w-[30%]  lg:justify-normal lg:w-[357px] flex items-center gap-2 relative'>
-                    <div className='lg:hidden'>
-                        <button onClick={() => commentsRef.current?.scrollIntoView({ behavior: "smooth" })} className='flex items-center gap-0.5 text-black'>
-                            <p>مشاهده نظرات</p>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path d="M12 19V5" stroke="#565656" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                <path d="M17 14L12 19L7 14" stroke="#565656" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
+                <div className='w-[10%]  justify-end   lg:justify-normal lg:w-[30%] xl:w-[357px] flex items-center gap-2 '>
 
-                        </button>
-                    </div>
-                    <div className='h-5 w-[1px]  bg-[#D8D8D8] lg:hidden'></div>
-                    <svg className='cursor-pointer' onClick={() => setSearchDropdown(prev => !prev)} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                        <path d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" stroke="#A7A9AD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
+                     <button className='cursor-pointer' onBlur={() => setSearchDropdown(false)}
+                        onClick={() => setSearchDropdown(prev => !prev)}>  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" stroke="#A7A9AD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg></button>
                     <input onFocus={() => setSearchDropdown(true)}
                         onBlur={() => setTimeout(() => setSearchDropdown(false), 100)}
-                        className='w-full h-full  hidden lg:inline-block' type="text" placeholder='نام استاد یا درس را وارد کنید' />
 
-                    <div className={`h-[198px] poll-container w-[300px] md:w-[375px] rounded-xl outline-none  bg-white absolute  border border-[#DDD] p-2  transition-all text-nowrap opacity-0 text-xs lg:text-sm overflow-y-auto overflow-x-hidden rounded-b-2xl  ${searchDropdown ? "opacity-100 z-10" : "pointer-events-none"} top-12 -left-6 lg:left-0`}>
+                        className='w-full h-full  hidden lg:inline-block z-[53]' type="text" placeholder='نام استاد یا درس را وارد کنید' />
+                    <div className={`${searchDropdown ? "" : "hidden"} lg:hidden z-[53] absolute left-0 w-full  flex gap-2 bg-white h-12 rounded-xl items-center px-4 `}>
+                        <svg className='cursor-pointer' onClick={() => setSearchDropdown(prev => !prev)} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" stroke="#A7A9AD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <input onFocus={() => setSearchDropdown(true)}
+                            onBlur={() => setSearchDropdown(false)}
+                            className='w-full h-full   z-[53]' type="text" placeholder='نام استاد یا درس را وارد کنید' />
+                    </div>
+
+                    <div className={`h-[198px] poll-container w-full  lg:w-[375px] rounded-xl outline-none  bg-white absolute  border border-[#DDD] p-2  transition-all text-nowrap opacity-0 text-xs lg:text-sm overflow-y-auto overflow-x-hidden rounded-b-2xl  ${searchDropdown ? "opacity-100 z-[53]" : "pointer-events-none"} top-[60px] lg:top-16 left-0`}>
                         {professorList.map((professor, index) => {
                             return (
-                                <div onClick={() => navigate(`/poll/popular/ProfessorDetails/${professor.id}`)
-                                } key={index} className='flex gap-3.5 p-2  text-[#949494] items-center cursor-pointer '>
-                                    <img src={ProfessorProf} alt="" />
-                                    <p className='font-semibold text-[#464646]'>{professor.first_name}  {professor.last_name}</p>
-                                    <p>-</p>
-                                    <p className=' font-normal'>{professor.courses.map((course, indx) => {
-                                        return (
-                                            <span>{course.name}</span>
-                                        )
-                                    })}</p>
+                                <div
+                                    onClick={() => {
+                                        setSearchDropdown(false);
+                                        navigate(`/poll/popular/ProfessorDetails/${professor.id}`);
+
+                                    }}
+                                    key={index}
+                                    className="flex items-center gap-3.5 p-2 text-[#949494] cursor-pointer"
+                                >
+                                    <img src={ProfessorProf} alt="" className="flex-shrink-0 w-8 h-8" />
+
+                                    <p className="font-semibold text-[#464646] whitespace-nowrap">
+                                        {professor.first_name} {professor.last_name}
+                                    </p>
+
+                                    <div className='h-[2px] w-2.5 bg-[#E3E3E3]'></div>
+
+                                    <div className="flex-1 overflow-hidden">
+                                        <div className="flex flex-wrap gap-1 overflow-hidden text-ellipsis">
+                                            {professor.courses.map((course, indx) => (
+                                                <span
+                                                    key={indx}
+                                                    className="truncate inline-block max-w-full"
+                                                    title={course.name}
+                                                >
+                                                    {course.name}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    </div>
                                 </div>
                             )
                         })}
                     </div>
+                    {searchDropdown && (
+                        <div
+                            className="lg:hidden fixed top-0 left-0 w-full h-full backdrop-blur-[5px] z-[52]"
+                            onClick={() => setSearchDropdown(false)} // Clicking outside closes it
+                            style={{ backgroundColor: "rgba(209, 209, 209, 0.31)" }}
+                        />
+                    )}
+
                     <div className='h-5 w-[1px] absolute bg-[#D8D8D8] hidden lg:block -right-5 top-1'></div>
                 </div>
             </div>

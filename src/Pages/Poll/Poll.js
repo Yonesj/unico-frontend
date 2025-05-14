@@ -166,10 +166,10 @@ const Poll = () => {
                     <div className='hidden lg:block z-20'>
                         <ul className='flex justify-center mb-7'>
                             <li>
-                                <NavLink to="/poll/popular" className="w-[114px] mx-6">محبوب ترین اساتید</NavLink>
+                                <NavLink to="/poll/most-popular" className="w-[114px] mx-6">محبوب ترین اساتید</NavLink>
                             </li>
                             <li>
-                                <NavLink to="/poll/most-visited" className="w-[114px] mx-6">پربازدید ترین اساتید</NavLink>
+                                <NavLink to="/poll/most-viewed" className="w-[114px] mx-6">پربازدید ترین اساتید</NavLink>
                             </li>
                             <li>
                                 <NavLink to="/poll/last-comments" className="w-[114px] mx-6">آخرین نظرات</NavLink>

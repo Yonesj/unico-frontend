@@ -21,7 +21,7 @@ import PostComment from "./Pages/PostComment/PostComment";
 import ProfessorWrapper from "./Components/ProfessorDetails/ProfessorWrapper";
 import PostCommentContainer from "./Pages/PostCommentContainer/PostCommentContainer";
 import CommentSubmitted from "./Components/CommentSubmitted/CommentSubmitted";
-import Correction from "./Components/Correction/Correction";
+import Revisions from "./Components/Correction/Revisions";
 
 
 
@@ -48,14 +48,14 @@ const routes = [
     {
         path: "/poll/*", element: <Poll />, children: [
             {
-                path: "popular/*", element: <ProfessorsCard />, 
+                path: "most-popular/*", element: <ProfessorsCard type={"most-popular"} />, 
             },
 
             {
-                path: "most-visited", element: <ProfessorsCard />
+                path: "most-viewed", element: <ProfessorsCard type={"most-viewed"} />
             },
             {
-                path: "last-comments", element: <ProfessorsCard />
+                path: "last-comments", element: <ProfessorsCard type={"last-comments"}  />
             },
         ]
     },
@@ -68,8 +68,8 @@ const routes = [
             element: <ProfessorDetails />
           },
           {
-            path: ":professor/correction",
-            element: <Correction/>
+            path: ":professor/revisions",
+            element: <Revisions/>
           },
 
           {
