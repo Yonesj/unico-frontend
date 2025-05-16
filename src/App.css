@@ -83,10 +83,10 @@
   
   @media (min-width: 1024px) { /* For screens 1024px and above (lg breakpoint) */
     .ant-select-selection-item{
-      font-size: 16px; /* This sets font size to 16px */
+      font-size: 14px; /* This sets font size to 16px */
     }
     .ant-select-item {
-      font-size: 16px !important; /* Each dropdown option font size */
+      font-size: 14px !important; /* Each dropdown option font size */
     }
     
   }

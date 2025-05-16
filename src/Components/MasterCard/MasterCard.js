@@ -36,7 +36,7 @@ const MasterCard = ({ first_name, last_name, id, courses, reviews_count, overall
   return (
     <div onMouseEnter={()=>setIsHover(true)}
       onMouseLeave={()=>setIsHover(false)}
-    onClick={() => navigate(`/poll/popular/ProfessorDetails/${id}`)} className='amin p-4 pt-6 bg-white w-[218px] h-[261px] flex justify-evenly items-center flex-col  rounded-xl cursor-pointer hover:bg-[#E5F7F8] transition-all z-[5]'>
+    onClick={() => navigate(`/poll/ProfessorDetails/${id}`)} className='amin p-4 pt-6 bg-white w-[218px] h-[261px] flex justify-evenly items-center flex-col  rounded-xl cursor-pointer hover:bg-[#E5F7F8] transition-all z-[5]'>
       <div className='relative'>
         <img src={MasterProf} alt="" />
         {/* <div className='w-20 h-20 rounded-full absolute top-0 amin'></div> */}
@@ -54,7 +54,7 @@ const MasterCard = ({ first_name, last_name, id, courses, reviews_count, overall
         <div className={`absolute flex transition-all duration-300  ${isHover ? "opacity-100" : "opacity-0"} font-semibold text-[22px] text-white font-iransansfa items-center justify-center top-0 left-0 w-20 h-20 rounded-full`}
           style={{ background: "linear-gradient(0deg, rgba(51, 189, 196, 0.70) 0%, rgba(51, 189, 196, 0.70) 100%)" }}
         >
-          {overall_rating}
+          {Number(Number(overall_rating).toFixed(1))}
 
         </div>
 

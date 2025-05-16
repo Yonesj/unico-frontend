@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Progress } from 'antd';
 
-const Progresswheel = ({ score, size , count = 0}) => {
+const Progresswheel = ({ score, size , count = 0 , compare}) => {
   const maxScore = 5;
   const [displayScore, setDisplayScore] = useState(0);
 
@@ -37,20 +37,20 @@ const Progresswheel = ({ score, size , count = 0}) => {
           percent={percent}
           strokeColor={conicColors}
           format={() => ''}
-          strokeWidth={13}
+          strokeWidth={12}
           size={size}
         />
 
         {/* Centered Score Text */}
         <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center flex items-center gap-0.5'>
-          <p className='text-sm text-[#3B3D53]/40'>{maxScore}</p>
-          <p>/</p>
-          <p className='text-xl lg:text-3xl font-extrabold'>{displayScore}</p>
+          <p className={`text-sm text-[#3B3D53]/40 ${compare  ? "hidden" : ""}`}>{maxScore}</p>
+          <p className={`${compare  ? "hidden" : ""}`}>/</p>
+          <p className={`text-xl lg:text-3xl ${compare ? "font-semibold" : "font-extrabold"}`}>{displayScore}</p>
         </div>
       </div>
 
       {/* Below Text */}
-      <div className='lg:mt-5 text-center'>
+      <div className={`lg:mt-5 text-center ${compare ? "hidden" : ""}`}>
         <p className='text-sm text-black w-44'>
           امتیاز کلی بر اساس <span className='font-bold underline'>{count} نظر</span>
         </p>

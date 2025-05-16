@@ -1,11 +1,13 @@
 import RatingSlider from '../../Components/RatingSlider'
 import React, { useContext, useState, useEffect } from 'react'
 import ProfessorProf from "../../Assets/images/Rectangle 17.png"
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { Select } from 'antd';
 import { Flex, Radio } from 'antd';
 import { Outlet } from 'react-router-dom';
 const PostCommentContainer = () => {
+    const id = useParams().professor;
+
     const [searchDropdown, setSearchDropdown] = useState(false);
     const navigate = useNavigate();
     const [professorList, setProfessorList] = useState([]);
@@ -41,6 +43,41 @@ const PostCommentContainer = () => {
 
         fetchProfessors();
     }, []);
+
+    const [professorDetails, setProfessorDetails] = useState({});
+    useEffect(() => {
+        const fetchProfessors = async () => {
+            try {
+                const res = await fetch(`http://localhost:8000/professor-reviewer/professors/${id}`, {
+                    method: "GET",
+                    headers: {
+                        "Accept-Language": "fa",
+                        "Content-Type": "application/json",
+                    },
+                });
+
+                const data = await res.json();
+
+                if (res.ok) {
+                    console.log("ok");
+                    setProfessorDetails(data);
+
+
+
+                } else {
+                    throw new Error(Object.values(data)[0] || "An error occurred");
+                }
+
+            } catch (err) {
+                console.error("Error:", err.message);
+            } finally {
+                console.log("finally");
+            }
+        };
+
+        fetchProfessors();
+    }, [id]);
+
     return (
         <>
             <div className='h-[60px] px-6 lg:p-0 w-full bg-white rounded-xl flex justify-between relative text-[#959595] text-sm items-center font-medium'>
@@ -53,13 +90,13 @@ const PostCommentContainer = () => {
                     </button>
                     <div className='flex gap-3 md:gap-6 lg:gap-10 items-center' >
                         <div className='font-semibold text-xs lg:text-base'>
-                            <button>ثبت نظر</button>
+                            <p>ثبت نظر</p>
                         </div>
                         <div className='h-5 w-[1px]  bg-[#D8D8D8]'></div>
 
                         <div className='flex gap-6 items-center text-sm font-normal'>
-                            <p className='font-semibold text-sm lg:text-base text-black'>استاد مهران رضایی</p>
-                            <p className='hidden md:block text-xs lg:text-sm'>دانشکده مهندسی کامپیوتر</p>
+                            <p className='font-semibold text-sm lg:text-base text-black'>استاد {professorDetails?.first_name} {professorDetails?.last_name}</p>
+                            <p className='hidden md:block text-xs lg:text-sm'>دانشکده  {professorDetails?.faculty}</p>
                         </div>
                     </div>
 
@@ -67,7 +104,8 @@ const PostCommentContainer = () => {
 
                 <div className='w-[10%]  justify-end   lg:justify-normal lg:w-[30%] xl:w-[357px] flex items-center gap-2 '>
 
-                    <button className='cursor-pointer' onBlur={() => setSearchDropdown(false)}
+                    <button className='cursor-pointer'                        onBlur={() => setTimeout(() => setSearchDropdown(false), 100)}
+
                         onClick={() => setSearchDropdown(prev => !prev)}>  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <path d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" stroke="#A7A9AD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                         </svg></button>
@@ -80,7 +118,7 @@ const PostCommentContainer = () => {
                             <path d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" stroke="#A7A9AD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                         <input onFocus={() => setSearchDropdown(true)}
-                            onBlur={() => setSearchDropdown(false)}
+                        onBlur={() => setTimeout(() => setSearchDropdown(false), 100)}
                             className='w-full h-full   z-[53]' type="text" placeholder='نام استاد یا درس را وارد کنید' />
                     </div>
 
@@ -88,7 +126,7 @@ const PostCommentContainer = () => {
                         {professorList.map((professor, index) => {
                             return (
                                 <div
-                                    onClick={() => navigate(`/poll/popular/ProfessorDetails/${professor.id}`)}
+                                    onClick={() => navigate(`/poll/ProfessorDetails/${professor.id}`)}
                                     key={index}
                                     className="flex items-center gap-3.5 p-2 text-[#949494] cursor-pointer"
                                 >

@@ -212,7 +212,7 @@ const Revisions = () => {
         setProfessorCourses((prevCourses) => prevCourses.filter(course => course.id !== id));
     };
 
-        const [courseName, setCourseName] = useState('');
+    const [courseName, setCourseName] = useState('');
 
 
     const newCourse = {
@@ -254,12 +254,13 @@ const Revisions = () => {
                 </div>
                 <div className='w-[70%]  justify-end  sm:w-[30%]  lg:justify-normal lg:w-[357px] flex items-center gap-2 '>
 
-                    <button className='cursor-pointer' onBlur={() => setSearchDropdown(false)}
+                    <button className='cursor-pointer' onBlur={() => setTimeout(() => setSearchDropdown(false), 100)}
+
                         onClick={() => setSearchDropdown(prev => !prev)}>  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <path d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" stroke="#A7A9AD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                         </svg></button>
                     <input onFocus={() => setSearchDropdown(true)}
-                        onBlur={() => setSearchDropdown(false)}
+                        onBlur={() => setTimeout(() => setSearchDropdown(false), 100)}
                         className='w-full h-full  hidden lg:inline-block' type="text" placeholder='نام استاد یا درس را وارد کنید' />
                     <div className={`${searchDropdown ? "" : "hidden"} lg:hidden z-[53] absolute left-0 w-[100%]  flex gap-2 bg-white h-12 rounded-xl items-center px-4 `}>
                         <svg className='cursor-pointer' onClick={() => setSearchDropdown(prev => !prev)} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -275,7 +276,7 @@ const Revisions = () => {
                             return (
                                 <div
                                     onClick={() => {
-                                        navigate(`/poll/popular/ProfessorDetails/${professor.id}`);
+                                        navigate(`/poll/ProfessorDetails/${professor.id}`);
 
                                     }}
                                     key={index}

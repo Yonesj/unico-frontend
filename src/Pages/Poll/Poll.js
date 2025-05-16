@@ -113,7 +113,7 @@ const Poll = () => {
                     <div className={`h-[198px] w-[282px] sm:w-[312px] md:w-[470px] lg:w-[574px] bg-white absolute  left-[30px] border border-[#DDD] py-3 pl-2.5 pr-4 transition-all text-nowrap opacity-0 text-xs lg:text-sm overflow-y-auto overflow-x-hidden rounded-b-2xl ${searchDropdown ? "opacity-100 z-10" : "pointer-events-none"}`}>
                         {professorList.map((professor, index) => {
                             return (
-                                <div onClick={() => navigate(`ProfessorDetails/${professor.id}`)} key={index} className='flex gap-3.5 p-2  text-[#949494] cursor-pointer items-center'>
+                                <div onClick={() => navigate(`/poll/ProfessorDetails/${professor.id}`)} key={index} className='flex gap-3.5 p-2  text-[#949494] cursor-pointer items-center'>
                                     <img src={ProfessorProf} alt="" />
                                     <p className='font-semibold text-[#464646]'>{professor.first_name}  {professor.last_name}</p>
                                     <div className='h-[2px] w-2.5 bg-[#E3E3E3]'></div>
@@ -136,7 +136,7 @@ const Poll = () => {
 
                     </div>
                     <div className='flex justify-end'>
-                        <button className='text-[#00ADB5] flex mt-5 gap-2 '>
+                        <button onClick={()=>navigate("/poll/add-new-professor")} className='text-[#00ADB5] flex mt-5 gap-2 '>
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
                                 <path d="M9.99984 13.4167H6.24984C5.08687 13.4167 4.50538 13.4167 4.03222 13.5602C2.96688 13.8834 2.1332 14.717 1.81004 15.7824C1.6665 16.2555 1.6665 16.837 1.6665 18M15.8332 18V13M13.3332 15.5H18.3332M12.0832 6.75C12.0832 8.82107 10.4042 10.5 8.33317 10.5C6.2621 10.5 4.58317 8.82107 4.58317 6.75C4.58317 4.67893 6.2621 3 8.33317 3C10.4042 3 12.0832 4.67893 12.0832 6.75Z" stroke="#00ADB5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
@@ -177,18 +177,18 @@ const Poll = () => {
                         </ul>
                     </div>
                     <div className='flex gap-2 sm:gap-[18px] items-center'>
-                        <button type="button">
+                        {/* <button type="button">
                             <svg className='ml-1' xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                 <path d="M4 12H20M20 12L14 6M20 12L14 18" stroke="#C9C9C9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
-                        </button>
+                        </button> */}
 
                         <Outlet />
-                        <button type="button">
+                        {/* <button type="button">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="14" viewBox="0 0 18 14" fill="none">
                                 <path d="M17 7H1M1 7L7 1M1 7L7 13" stroke="#C9C9C9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
-                        </button>
+                        </button> */}
 
                     </div>
 

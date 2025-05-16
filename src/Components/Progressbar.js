@@ -1,7 +1,7 @@
 import React from 'react';
 import { Flex } from 'antd';
 
-const SegmentedProgress = ({ segments = 5, value = 0 , strok }) => {
+const SegmentedProgress = ({ segments = 5, value = 0 , strok  }) => {
     const activeSegments = (value / 100) * segments;
     const filledCount = Math.floor(activeSegments);
     const partialFill = activeSegments - filledCount;
@@ -54,8 +54,8 @@ const SegmentedProgress = ({ segments = 5, value = 0 , strok }) => {
     );
 };
 
-const Progressbar = ({ value , strok }) => (
-    <div className='w-[70%] sm:w-[260px] md:w-7/12' dir='ltr'>
+const Progressbar = ({ value , strok , compare }) => (
+    <div className={`${compare ? "w-full md:w-11/12" : "w-[70%] sm:w-[260px] md:w-7/12 "} `} dir='ltr'>
         <SegmentedProgress value={value} strok={strok} />
     </div>
 );

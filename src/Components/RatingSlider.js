@@ -1,7 +1,7 @@
 import React from 'react';
 import { Slider } from 'antd';
 
-const RatingSlider = ({ label, onChange }) => {
+const RatingSlider = ({ label, onChange , value}) => {
   return (
     <div className="mb-[55px] flex flex-col w-full lg:w-[48%] lg:flex-row lg:items-center">
       <div className="flex gap-1 mb-2 lg:mb-0 w-[140px]">
@@ -20,7 +20,7 @@ const RatingSlider = ({ label, onChange }) => {
           4: '۴',
           5: '۵',
         }}
-        defaultValue={3}
+        value={value}
         onChange={onChange}
         tooltipVisible={false}
         trackStyle={{ backgroundColor: '#00ADB5' }}

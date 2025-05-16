@@ -21,75 +21,91 @@ import PostComment from "./Pages/PostComment/PostComment";
 import ProfessorWrapper from "./Components/ProfessorDetails/ProfessorWrapper";
 import PostCommentContainer from "./Pages/PostCommentContainer/PostCommentContainer";
 import CommentSubmitted from "./Components/CommentSubmitted/CommentSubmitted";
-import Revisions from "./Components/Correction/Revisions";
+import Revisions from "./Components/Revisions/Revisions";
+import AddNewProfessor from "./Components/AddNewProfessor/AddNewProfessor";
+import CompareProfessor from "./Pages/CompareProfessor/CompareProfessor";
 
 
 
 const routes = [
-    { path: "/", element: <Index /> },
+  { path: "/", element: <Index /> },
 
-    { path: "/login", element: <Login /> },
-    { path: "/sign-up", element: <SignUp /> },
-    { path: "*", element: <NotFound /> },
-    { path: "/reset-password", element: <Password /> },
-    {
-        path: "/unit/*", element: <ProtectedRoute><UnitWrapper /></ProtectedRoute>, children: [
-            { path: "courses", element: <Courses /> },
-            { path: "schedule", element: <Schedules /> },
-            { path: "exams", element: <Exams /> },
-            {
-                path: "schedules/*", element: <SchedulesList />, children: [
-                    { path: ":number", element: <SchedulesList /> },
-                ]
-            },
-
+  { path: "/login", element: <Login /> },
+  { path: "/sign-up", element: <SignUp /> },
+  { path: "*", element: <NotFound /> },
+  { path: "/reset-password", element: <Password /> },
+  {
+    path: "/unit/*", element: <ProtectedRoute><UnitWrapper /></ProtectedRoute>, children: [
+      { path: "courses", element: <Courses /> },
+      { path: "schedule", element: <Schedules /> },
+      { path: "exams", element: <Exams /> },
+      {
+        path: "schedules/*", element: <SchedulesList />, children: [
+          { path: ":number", element: <SchedulesList /> },
         ]
-    },
-    {
-        path: "/poll/*", element: <Poll />, children: [
-            {
-                path: "most-popular/*", element: <ProfessorsCard type={"most-popular"} />, 
-            },
+      },
 
-            {
-                path: "most-viewed", element: <ProfessorsCard type={"most-viewed"} />
-            },
-            {
-                path: "last-comments", element: <ProfessorsCard type={"last-comments"}  />
-            },
-        ]
-    },
-    {
-        path: "/poll/popular/ProfessorDetails",
-        element: <ProfessorWrapper />,
+    ]
+  },
+  {
+    path: "/poll/*", element: <Poll />, children: [
+      {
+        path: "most-popular/*", element: <ProfessorsCard type={"most-popular"} />,
+      },
+
+      {
+        path: "most-viewed", element: <ProfessorsCard type={"most-viewed"} />
+      },
+      {
+        path: "last-comments", element: <ProfessorsCard type={"last-comments"} />
+      }
+
+    ]
+  },
+  {
+    path: "/poll/ProfessorDetails",
+    element: <ProfessorWrapper />,
+    children: [
+      {
+        path: ":professor",
+        element: <ProfessorDetails />
+      },
+      {
+        path: ":professor/revisions",
+        element: <Revisions />
+      },
+      {
+        path: ":professor/compare",
+        element: <CompareProfessor/>
+      },
+
+      {
+        path: ":professor/comment",
+        element: <PostCommentContainer />,
         children: [
           {
-            path: ":professor",
-            element: <ProfessorDetails />
+            path: "",
+            element: <PostComment />
           },
           {
-            path: ":professor/revisions",
-            element: <Revisions/>
-          },
-
-          {
-            path: ":professor/:comment",
-            element: <PostCommentContainer />,
-            children: [
-              {
-                path: "",
-                element: <PostComment />
-              },
-              {
-                path: "submitted",
-                element: <CommentSubmitted/>
-              }
-              
-            ]
+            path: "submitted",
+            element: <CommentSubmitted />
           }
+
         ]
       }
-      
+    ]
+  },
+  {
+    path: "/poll/add-new-professor", element: <ProfessorWrapper /> , children : 
+    [
+      {
+        path: "",
+        element: <AddNewProfessor />
+      },
+    ]
+  },
+
 
 
 ]
