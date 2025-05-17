@@ -306,7 +306,7 @@ const ProfessorDetails = () => {
                                     </svg>
                                     <p>ثبت نظر</p>
                                 </button>
-                                <button className='w-1/2 h-9  lg:h-[52px] lg:w-[187px]  rounded-md lg:rounded-xl border border-[#4CC6CB] py-2 px-4    text-[#4CC6CB] hover:text-[#19B5BC] hover:border-[#19B5BC] transition-all justify-center gap-2 flex items-center'>
+                                <button onClick={()=>navigate("compare")} className='w-1/2 h-9  lg:h-[52px] lg:w-[187px]  rounded-md lg:rounded-xl border border-[#4CC6CB] py-2 px-4    text-[#4CC6CB] hover:text-[#19B5BC] hover:border-[#19B5BC] transition-all justify-center gap-2 flex items-center'>
                                     مقایسه</button>
                             </div>
                         </div>

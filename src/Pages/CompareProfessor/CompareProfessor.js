@@ -1,54 +1,33 @@
-import React, { useContext, useState, useRef, useEffect } from 'react'
+import React, {useState, useRef, useEffect } from 'react'
 
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
-import prof from "../../Assets/images/professor.svg"
-import { Select } from 'antd';
 import ProfessorProf from "../../Assets/images/Rectangle 17.png"
 import { useNavigate } from 'react-router-dom';
-import { UploadOutlined } from '@ant-design/icons';
 import { Button, message, Upload } from 'antd';
-import { DownOutlined } from '@ant-design/icons'; // or any icon you want
 import { Modal } from 'antd';
 import "../../Components/Revisions/Revisions.css"
 import Progresswheel from '../../Components/Progresswheel';
 import Progressbar from '../../Components/Progressbar';
+import MasterCard from '../../Components/MasterCard/MasterCard';
 
 
 const CompareProfessor = () => {
     const [addCourseModal, setAddCourseModal] = useState(false);
 
-    const [fileList, setFileList] = useState([]);
-    const [fileToUpload, setFileToUpload] = useState(null);
-    const [previewUrl, setPreviewUrl] = useState(null);
-    const props = {
-        beforeUpload: (file) => {
-            const isImage = file.type.startsWith('image/');
-            if (!isImage) {
-                message.error('فقط فایل‌های تصویری مجاز هستند.');
-                return false;
-            }
-
-            setFileToUpload(file);
-            setFileList([file]);
-            setPreviewUrl(URL.createObjectURL(file)); // Preview image
-
-            return false; // Prevent auto-upload
-        },
-        onRemove: () => {
-            setFileList([]);
-            setFileToUpload(null);
-            setPreviewUrl(null);
-        },
-        fileList,
-    };
+   
+ 
     const [professorList, setProfessorList] = useState([]);
     const [professorDetails, setProfessorDetails] = useState({});
-    const id = useParams().professor;
+    const [id, setId] = useState(useParams().professor);
+
+
 
     const [options, setOptions] = useState([
         { value: 'all', label: 'همه ی دروس' }
     ]);
+
+
 
 
 
@@ -68,13 +47,8 @@ const CompareProfessor = () => {
                 const data = await res.json();
 
                 if (res.ok) {
-                    console.log("ok");
                     setProfessorDetails(data);
                     setProfessorCourses(data.courses);
-
-
-
-
                 } else {
                     throw new Error(Object.values(data)[0] || "An error occurred");
                 }
@@ -89,12 +63,14 @@ const CompareProfessor = () => {
         fetchProfessors();
     }, [id]);
 
-    const [facultiesList, setFacultiesList] = useState([]);
+   
+
+    const [relatedProfessors, setRelatedProfessors] = useState([]);
 
     useEffect(() => {
         const fetchProfessors = async () => {
             try {
-                const res = await fetch(`http://localhost:8000/professor-reviewer/faculties/`, {
+                const res = await fetch(`http://localhost:8000/professor-reviewer/professors/${id}/`, {
                     method: "GET",
                     headers: {
                         "Accept-Language": "fa",
@@ -106,12 +82,7 @@ const CompareProfessor = () => {
 
                 if (res.ok) {
                     console.log("ok");
-                    setFacultiesList(data);
-                    const courseOptions = data.map(course => ({
-                        value: course.id, // or course.slug, etc.
-                        label: course.name
-                    }));
-                    setOptions([{ value: 'all', label: 'همه ی دروس' }, ...courseOptions]);
+                    setRelatedProfessors(data?.related_professors);
                 } else {
                     throw new Error(Object.values(data)[0] || "An error occurred");
                 }
@@ -125,8 +96,6 @@ const CompareProfessor = () => {
 
         fetchProfessors();
     }, []);
-
-
     useEffect(() => {
         const fetchProfessors = async () => {
             try {
@@ -161,82 +130,37 @@ const CompareProfessor = () => {
     const [searchDropdown, setSearchDropdown] = useState(false);
     const [coursesDropdown, setCoursesDropdown] = useState(false);
     const navigate = useNavigate();
-    const commentsRef = useRef(null);
 
-    const [courseList, setCourseList] = useState([]);
+ 
+
+
+
+
+
+
+
+    const [showList, setShowList] = useState([]);
+    const myid = useParams().professor;
 
     useEffect(() => {
-        const fetchProfessors = async () => {
-            try {
-                const res = await fetch(`http://localhost:8000/professor-reviewer/courses/`, {
-                    method: "GET",
-                    headers: {
-                        "Accept-Language": "fa",
-                        "Content-Type": "application/json",
-                    },
-                });
+        console.log(professorDetails);
 
-                const data = await res.json();
-
-                if (res.ok) {
-                    console.log("ok");
-                    setCourseList(data);
-
-
-
-                } else {
-                    throw new Error(Object.values(data)[0] || "An error occurred");
-                }
-
-            } catch (err) {
-                console.error("Error:", err.message);
-            } finally {
-                console.log("finally");
-            }
-        };
-
-        fetchProfessors();
-    }, []);
-
-
-    const emailRef = useRef(professorDetails.email);
-
-    const [newEmail, setNewEmail] = useState("");
-    const [newTelegram, setNewTelegram] = useState("");
-    const [newWebsite, setNewWebsite] = useState("");
-    const [newOfficeNumber, setNewOfficeNumber] = useState("");
-    const [newOfficeLocation, setNewOfficeLocation] = useState("");
-
-    const removeCourse = (id) => {
-        setProfessorCourses((prevCourses) => prevCourses.filter(course => course.id !== id));
-    };
-
-    const [courseName, setCourseName] = useState('');
-
-
-    const newCourse = {
-        id: courseList.length > 0 ? courseList[courseList.length - 1].id + 1 : 1,
-        name: courseName.trim()
-    };
-
-    const addNewcourse = () => {
-        if (!courseName.trim()) return; // Prevent adding empty names
-
-        const newCourse = {
-            id: courseList.length > 0 ? courseList[courseList.length - 1].id + 1 : 1,
-            name: courseName.trim()
-        };
-
-        setProfessorCourses([...professorCourses, newCourse]);
-        setCourseName('');
-        setAddCourseModal(false);
-    };
-    const addCourse = (course) => {
-        // Prevent duplicates
-        if (!professorCourses.some(c => c.id === course.id)) {
-            setProfessorCourses([...professorCourses, course]);
+        if (
+            professorDetails &&
+            Object.keys(professorDetails).length > 0
+            &&
+            !showList.some(prof => prof.id === professorDetails.id)
+        ) {
+            setShowList(prev => [...prev, professorDetails]);
         }
+    }, [professorDetails]);
+
+    const handleRemove = (id) => {
+        setShowList(prev => prev.filter(item => item.id !== id));
+        setId(myid);
     };
+    const [addProfessorModal, setAddProfessorModal] = useState(false);
+
 
     return (
         <div>
@@ -320,377 +244,117 @@ const CompareProfessor = () => {
 
             <div className=' w-full bg-white  px-[5%] font-iransansfa   lg:px-8  flex flex-col gap-9 lg:gap-0  rounded-xl p-8 '>
                 <h5 className='font-medium text-sm lg:text-base lg:mb-12'>مقایسه اساتید</h5>
-                <div className='flex flex-wrap justify-evenly'>
-                    <div className='flex-1 py-3 border-l border-[#F0F0F0]  flex flex-col  items-center'>
-                        <button className='w-11/12'>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path d="M17.9995 6L5.99951 18M5.99951 6L17.9995 18" stroke="#7A7E83" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </button>
-                        <div className='md:hidden mb-6'>
-                            <Progresswheel
-                                score={
-                                    professorDetails.overall_rating
-                                        ? Number(Number(professorDetails.overall_rating).toFixed(1))
-                                        : 0
-                                }
-                                size={92}
+                <div className='flex flex-wrap h-[1020px] overflow-hidden'>
+                    {showList.map((item, index) => {
+                        const isLastItem = index === showList.length - 1;
+
+                        return (
+                            <div key={item.id} // Always add a key when mapping
+                                className={`w-1/2 lg:w-1/3 xl:w-1/4 py-3 ${!isLastItem ? 'border-l' : ''
+                                    } border-[#F0F0F0] flex flex-col items-center`}>
+                                <button onClick={()=>handleRemove(item.id)} className='w-11/12'>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <path d="M17.9995 6L5.99951 18M5.99951 6L17.9995 18" stroke="#7A7E83" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </button>
+                                <div className='md:hidden mb-6'>
+                                    <Progresswheel
+                                        score={
+                                            item.overall_rating
+                                                ? Number(Number(item.overall_rating).toFixed(1))
+                                                : 0
+                                        }
+                                        size={92}
 
 
 
-                                compare={true}
-                            />
-                        </div>
-                        <div className='hidden h-[126px] mb-6 md:block'>
-                            <Progresswheel
-                                score={
-                                    professorDetails.overall_rating
-                                        ? Number(Number(professorDetails.overall_rating).toFixed(1))
-                                        : 0
-                                }
-                                size={126}
+                                        compare={true}
+                                    />
+                                </div>
+                                <div className='hidden h-[126px] mb-6 md:block'>
+                                    <Progresswheel
+                                        score={
+                                            item.overall_rating
+                                                ? Number(Number(item.overall_rating).toFixed(1))
+                                                : 0
+                                        }
+                                        size={126}
 
 
 
-                                compare={true}
-                            />
-                        </div>
+                                        compare={true}
+                                    />
+                                </div>
 
-                        <div className='flex flex-col items-center'>
-                            <p className='text-sm lg:text-lg font-semibold'>استاد {professorDetails?.first_name} {professorDetails?.last_name}</p>
-                            <p className='mb-2 mt-1.5 text-xs text-center lg:text-sm'>دانشکده {professorDetails?.faculty} </p>
-                            <div className='flex gap-2 items-center '>
-                                {professorDetails?.courses?.map((course) => {
-                                    return (
-                                        <div className='flex gap-2 items-center text-center text-[#949494] text-xs lg:text-sm font-normal'>
-                                            <p key={course.id}>{course.name}</p>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="3" height="4" viewBox="0 0 3 4" fill="none">
-                                                <circle cx="1.5" cy="1.66797" r="1.5" fill="#D9D9D9" />
-                                            </svg>
+                                <div className='flex flex-col items-center h-20'>
+                                    <p className='text-sm lg:text-lg font-semibold'>استاد {item?.first_name} {item?.last_name}</p>
+                                    <p className='mb-2 mt-1.5 text-xs text-center lg:text-sm'>دانشکده {item?.faculty} </p>
+                                    <div className='flex gap-2 items-center '>
+                                        {item?.courses?.map((course) => {
+                                            return (
+                                                <div className='flex gap-2 items-center text-center text-[#949494] text-xs lg:text-sm font-normal'>
+                                                    <p key={course.id}>{course.name}</p>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="3" height="4" viewBox="0 0 3 4" fill="none">
+                                                        <circle cx="1.5" cy="1.66797" r="1.5" fill="#D9D9D9" />
+                                                    </svg>
+                                                </div>
+                                            )
+                                        })}
+                                    </div>
+                                </div>
+                                <div className='w-full  text-center p-2 md:p-6  bg-[#FAFAFA] border border-[#F0F0F0] mt-10 border-r-0'>
+                                    <p className='mb-5'>{item?.reviews_count} نظر</p>
+                                    <div className='flex flex-col gap-6'>
+                                        <div className='flex flex-col gap-3  items-start'>
+                                            <p className='text-xs lg:text-sm  text-[#181818] font-medium'>نمره دهی</p>
+                                            <Progressbar compare={true} value={Number(item?.grading_avg).toFixed(1) * 5} strok={8} />
+                                            <p className=" text-xs lg:text-sm md:block text-[#6C6C6C]">دست باز و با ارفاق</p>
                                         </div>
-                                    )
-                                })}
-                            </div>
-                        </div>
-                        <div className='w-full  text-center p-2 md:p-6  bg-[#FAFAFA] border border-[#F0F0F0] mt-10 border-r-0'>
-                            <p className='mb-5'>{professorDetails?.reviews_count} نظر</p>
-                            <div className='flex flex-col gap-6'>
-                                <div className='flex flex-col gap-3  items-start'>
-                                    <p className='text-xs lg:text-sm  text-[#181818] font-medium'>نمره دهی</p>
-                                    <Progressbar compare={true} value={Number(professorDetails?.grading_avg).toFixed(1) * 5} strok={8} />
-                                    <p className=" text-xs lg:text-sm md:block text-[#6C6C6C]">دست باز و با ارفاق</p>
-                                </div>
-                                <div className='flex flex-col gap-3  items-start'>
-                                    <p className='text-xs lg:text-sm  text-[#181818] font-medium'>دانش عمومی</p>
-                                    <Progressbar compare={true} value={Number(professorDetails?.general_knowledge_avg).toFixed(1) * 20} strok={8} />
-                                    <p className=" text-xs lg:text-sm md:block text-[#6C6C6C]">دست باز و با ارفاق</p>
-                                </div>
-                                <div className='flex flex-col gap-3  items-start'>
-                                    <p className='text-xs lg:text-sm  text-[#181818] font-medium'>جذابیت تدریس</p>
-                                    <Progressbar compare={true} value={Number(professorDetails?.teaching_engagement_avg).toFixed(1) * 20} strok={8} />
-                                    <p className=" text-xs lg:text-sm md:block text-[#6C6C6C]">دست باز و با ارفاق</p>
-                                </div>
-                                <div className='flex flex-col gap-3  items-start'>
-                                    <p className='text-xs lg:text-sm  text-[#181818] font-medium'>سختی تکالیف</p>
-                                    <Progressbar compare={true} value={Number(professorDetails?.homework_difficulty_avg).toFixed(1) * 20} strok={8} />
-                                    <p className=" text-xs lg:text-sm md:block text-[#6C6C6C]">دست باز و با ارفاق</p>
-                                </div>
-                                <div className='flex flex-col gap-3  items-start'>
-                                    <p className='text-xs lg:text-sm  text-[#181818] font-medium'>سختی امتحان</p>
-                                    <Progressbar compare={true} value={Number(professorDetails?.exam_difficulty_avg).toFixed(1) * 20} strok={8} />
-                                    <p className=" text-xs lg:text-sm md:block text-[#6C6C6C]">دست باز و با ارفاق</p>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div className='w-full py-7 border-b border-[#F0F0F0] text-center'>
-                            <h1 className='text-[32px] lg:text-[40px] font-semibold'>{Number(professorDetails?.average_would_take_again)*20}%</h1>
-                            <p className='text-xs lg:text-sm text-[#7F7F7F] font-medium'>دوباره انتخابش می‌کنند.</p>
-                        </div>
-                        <div className='py-7 text-center'>
-                            <h1 className='text-[32px] lg:text-[40px] font-semibold'>{Number(professorDetails?.student_scores_avg)}</h1>
-                            <p className='text-xs lg:text-sm text-[#7F7F7F] font-medium'>میانگین نمرات</p>
-                        </div>
-                    </div>
-                    <div className='flex-1 py-3  flex flex-col  items-center'>
-                        <button className='w-11/12'>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path d="M17.9995 6L5.99951 18M5.99951 6L17.9995 18" stroke="#7A7E83" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </button>
-                        <div className='md:hidden mb-6'>
-                            <Progresswheel
-                                score={
-                                    professorDetails.overall_rating
-                                        ? Number(Number(professorDetails.overall_rating).toFixed(1))
-                                        : 0
-                                }
-                                size={92}
-
-
-
-                                compare={true}
-                            />
-                        </div>
-                        <div className='hidden h-[126px] mb-6 md:block'>
-                            <Progresswheel
-                                score={
-                                    professorDetails.overall_rating
-                                        ? Number(Number(professorDetails.overall_rating).toFixed(1))
-                                        : 0
-                                }
-                                size={126}
-
-
-
-                                compare={true}
-                            />
-                        </div>
-
-                        <div className='flex flex-col items-center'>
-                            <p className='text-sm lg:text-lg font-semibold'>استاد {professorDetails?.first_name} {professorDetails?.last_name}</p>
-                            <p className='mb-2 mt-1.5 text-xs text-center lg:text-sm'>دانشکده {professorDetails?.faculty} </p>
-                            <div className='flex gap-2 items-center '>
-                                {professorDetails?.courses?.map((course) => {
-                                    return (
-                                        <div className='flex gap-2 items-center text-center text-[#949494] text-xs lg:text-sm font-normal'>
-                                            <p key={course.id}>{course.name}</p>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="3" height="4" viewBox="0 0 3 4" fill="none">
-                                                <circle cx="1.5" cy="1.66797" r="1.5" fill="#D9D9D9" />
-                                            </svg>
+                                        <div className='flex flex-col gap-3  items-start'>
+                                            <p className='text-xs lg:text-sm  text-[#181818] font-medium'>دانش عمومی</p>
+                                            <Progressbar compare={true} value={Number(item?.general_knowledge_avg).toFixed(1) * 20} strok={8} />
+                                            <p className=" text-xs lg:text-sm md:block text-[#6C6C6C]">دست باز و با ارفاق</p>
                                         </div>
-                                    )
-                                })}
-                            </div>
-                        </div>
-                        <div className='w-full  text-center p-2 md:p-6  bg-[#FAFAFA] border border-[#F0F0F0] mt-10 border-r-0'>
-                            <p className='mb-5'>{professorDetails?.reviews_count} نظر</p>
-                            <div className='flex flex-col gap-6'>
-                                <div className='flex flex-col gap-3  items-start'>
-                                    <p className='text-xs lg:text-sm  text-[#181818] font-medium'>نمره دهی</p>
-                                    <Progressbar compare={true} value={Number(professorDetails?.grading_avg).toFixed(1) * 5} strok={8} />
-                                    <p className=" text-xs lg:text-sm md:block text-[#6C6C6C]">دست باز و با ارفاق</p>
-                                </div>
-                                <div className='flex flex-col gap-3  items-start'>
-                                    <p className='text-xs lg:text-sm  text-[#181818] font-medium'>دانش عمومی</p>
-                                    <Progressbar compare={true} value={Number(professorDetails?.general_knowledge_avg).toFixed(1) * 20} strok={8} />
-                                    <p className=" text-xs lg:text-sm md:block text-[#6C6C6C]">دست باز و با ارفاق</p>
-                                </div>
-                                <div className='flex flex-col gap-3  items-start'>
-                                    <p className='text-xs lg:text-sm  text-[#181818] font-medium'>جذابیت تدریس</p>
-                                    <Progressbar compare={true} value={Number(professorDetails?.teaching_engagement_avg).toFixed(1) * 20} strok={8} />
-                                    <p className=" text-xs lg:text-sm md:block text-[#6C6C6C]">دست باز و با ارفاق</p>
-                                </div>
-                                <div className='flex flex-col gap-3  items-start'>
-                                    <p className='text-xs lg:text-sm  text-[#181818] font-medium'>سختی تکالیف</p>
-                                    <Progressbar compare={true} value={Number(professorDetails?.homework_difficulty_avg).toFixed(1) * 20} strok={8} />
-                                    <p className=" text-xs lg:text-sm md:block text-[#6C6C6C]">دست باز و با ارفاق</p>
-                                </div>
-                                <div className='flex flex-col gap-3  items-start'>
-                                    <p className='text-xs lg:text-sm  text-[#181818] font-medium'>سختی امتحان</p>
-                                    <Progressbar compare={true} value={Number(professorDetails?.exam_difficulty_avg).toFixed(1) * 20} strok={8} />
-                                    <p className=" text-xs lg:text-sm md:block text-[#6C6C6C]">دست باز و با ارفاق</p>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div className='w-full py-7 border-b border-[#F0F0F0] text-center'>
-                            <h1 className='text-[32px] lg:text-[40px] font-semibold'>{Number(professorDetails?.average_would_take_again)*20}%</h1>
-                            <p className='text-xs lg:text-sm text-[#7F7F7F] font-medium'>دوباره انتخابش می‌کنند.</p>
-                        </div>
-                        <div className='py-7 text-center'>
-                            <h1 className='text-[32px] lg:text-[40px] font-semibold'>{Number(professorDetails?.student_scores_avg)}</h1>
-                            <p className='text-xs lg:text-sm text-[#7F7F7F] font-medium'>میانگین نمرات</p>
-                        </div>
-                    </div>
-                
-                    <div className='flex-1 py-3 border-r border-[#F0F0F0] hidden  lg:flex   flex-col  items-center'>
-                        <button className='w-11/12'>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path d="M17.9995 6L5.99951 18M5.99951 6L17.9995 18" stroke="#7A7E83" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </button>
-                        <div className='md:hidden mb-6'>
-                            <Progresswheel
-                                score={
-                                    professorDetails.overall_rating
-                                        ? Number(Number(professorDetails.overall_rating).toFixed(1))
-                                        : 0
-                                }
-                                size={92}
-
-
-
-                                compare={true}
-                            />
-                        </div>
-                        <div className='hidden h-[126px] mb-6 md:block'>
-                            <Progresswheel
-                                score={
-                                    professorDetails.overall_rating
-                                        ? Number(Number(professorDetails.overall_rating).toFixed(1))
-                                        : 0
-                                }
-                                size={126}
-
-
-
-                                compare={true}
-                            />
-                        </div>
-
-                        <div className='flex flex-col items-center'>
-                            <p className='text-sm lg:text-lg font-semibold'>استاد {professorDetails?.first_name} {professorDetails?.last_name}</p>
-                            <p className='mb-2 mt-1.5 text-xs text-center lg:text-sm'>دانشکده {professorDetails?.faculty} </p>
-                            <div className='flex gap-2 items-center '>
-                                {professorDetails?.courses?.map((course) => {
-                                    return (
-                                        <div className='flex gap-2 items-center text-center text-[#949494] text-xs lg:text-sm font-normal'>
-                                            <p key={course.id}>{course.name}</p>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="3" height="4" viewBox="0 0 3 4" fill="none">
-                                                <circle cx="1.5" cy="1.66797" r="1.5" fill="#D9D9D9" />
-                                            </svg>
+                                        <div className='flex flex-col gap-3  items-start'>
+                                            <p className='text-xs lg:text-sm  text-[#181818] font-medium'>جذابیت تدریس</p>
+                                            <Progressbar compare={true} value={Number(item?.teaching_engagement_avg).toFixed(1) * 20} strok={8} />
+                                            <p className=" text-xs lg:text-sm md:block text-[#6C6C6C]">دست باز و با ارفاق</p>
                                         </div>
-                                    )
-                                })}
-                            </div>
-                        </div>
-                        <div className='w-full  text-center p-6  bg-[#FAFAFA] border border-[#F0F0F0] mt-10 border-r-0'>
-                            <p className='mb-5'>{professorDetails?.reviews_count} نظر</p>
-                            <div className='flex flex-col gap-6'>
-                                <div className='flex flex-col gap-3  items-start'>
-                                    <p className='text-xs lg:text-sm  text-[#181818] font-medium'>نمره دهی</p>
-                                    <Progressbar compare={true} value={Number(professorDetails?.grading_avg).toFixed(1) * 5} strok={8} />
-                                    <p className=" text-xs lg:text-sm md:block text-[#6C6C6C]">دست باز و با ارفاق</p>
-                                </div>
-                                <div className='flex flex-col gap-3  items-start'>
-                                    <p className='text-xs lg:text-sm  text-[#181818] font-medium'>دانش عمومی</p>
-                                    <Progressbar compare={true} value={Number(professorDetails?.general_knowledge_avg).toFixed(1) * 20} strok={8} />
-                                    <p className=" text-xs lg:text-sm md:block text-[#6C6C6C]">دست باز و با ارفاق</p>
-                                </div>
-                                <div className='flex flex-col gap-3  items-start'>
-                                    <p className='text-xs lg:text-sm  text-[#181818] font-medium'>جذابیت تدریس</p>
-                                    <Progressbar compare={true} value={Number(professorDetails?.teaching_engagement_avg).toFixed(1) * 20} strok={8} />
-                                    <p className=" text-xs lg:text-sm md:block text-[#6C6C6C]">دست باز و با ارفاق</p>
-                                </div>
-                                <div className='flex flex-col gap-3  items-start'>
-                                    <p className='text-xs lg:text-sm  text-[#181818] font-medium'>سختی تکالیف</p>
-                                    <Progressbar compare={true} value={Number(professorDetails?.homework_difficulty_avg).toFixed(1) * 20} strok={8} />
-                                    <p className=" text-xs lg:text-sm md:block text-[#6C6C6C]">دست باز و با ارفاق</p>
-                                </div>
-                                <div className='flex flex-col gap-3  items-start'>
-                                    <p className='text-xs lg:text-sm  text-[#181818] font-medium'>سختی امتحان</p>
-                                    <Progressbar compare={true} value={Number(professorDetails?.exam_difficulty_avg).toFixed(1) * 20} strok={8} />
-                                    <p className=" text-xs lg:text-sm md:block text-[#6C6C6C]">دست باز و با ارفاق</p>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div className='w-full py-7 border-b border-[#F0F0F0] text-center'>
-                            <h1 className='text-[32px] lg:text-[40px] font-semibold'>{Number(professorDetails?.average_would_take_again)*20}%</h1>
-                            <p className='text-xs lg:text-sm text-[#7F7F7F] font-medium'>دوباره انتخابش می‌کنند.</p>
-                        </div>
-                        <div className='py-7 text-center'>
-                            <h1 className='text-[32px] lg:text-[40px] font-semibold'>{Number(professorDetails?.student_scores_avg)}</h1>
-                            <p className='text-xs lg:text-sm text-[#7F7F7F] font-medium'>میانگین نمرات</p>
-                        </div>
-                    </div>
-                    <div className='flex-1 py-3 border-r border-[#F0F0F0] hidden  xl:flex   flex-col  items-center'>
-                        <button className='w-11/12'>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path d="M17.9995 6L5.99951 18M5.99951 6L17.9995 18" stroke="#7A7E83" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </button>
-                        <div className='md:hidden mb-6'>
-                            <Progresswheel
-                                score={
-                                    professorDetails.overall_rating
-                                        ? Number(Number(professorDetails.overall_rating).toFixed(1))
-                                        : 0
-                                }
-                                size={92}
-
-
-
-                                compare={true}
-                            />
-                        </div>
-                        <div className='hidden h-[126px] mb-6 md:block'>
-                            <Progresswheel
-                                score={
-                                    professorDetails.overall_rating
-                                        ? Number(Number(professorDetails.overall_rating).toFixed(1))
-                                        : 0
-                                }
-                                size={126}
-
-
-
-                                compare={true}
-                            />
-                        </div>
-
-                        <div className='flex flex-col items-center'>
-                            <p className='text-sm lg:text-lg font-semibold'>استاد {professorDetails?.first_name} {professorDetails?.last_name}</p>
-                            <p className='mb-2 mt-1.5 text-xs text-center lg:text-sm'>دانشکده {professorDetails?.faculty} </p>
-                            <div className='flex gap-2 items-center '>
-                                {professorDetails?.courses?.map((course) => {
-                                    return (
-                                        <div className='flex gap-2 items-center text-center text-[#949494] text-xs lg:text-sm font-normal'>
-                                            <p key={course.id}>{course.name}</p>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="3" height="4" viewBox="0 0 3 4" fill="none">
-                                                <circle cx="1.5" cy="1.66797" r="1.5" fill="#D9D9D9" />
-                                            </svg>
+                                        <div className='flex flex-col gap-3  items-start'>
+                                            <p className='text-xs lg:text-sm  text-[#181818] font-medium'>سختی تکالیف</p>
+                                            <Progressbar compare={true} value={Number(item?.homework_difficulty_avg).toFixed(1) * 20} strok={8} />
+                                            <p className=" text-xs lg:text-sm md:block text-[#6C6C6C]">دست باز و با ارفاق</p>
                                         </div>
-                                    )
-                                })}
-                            </div>
-                        </div>
-                        <div className='w-full  text-center p-6  bg-[#FAFAFA] border border-[#F0F0F0] mt-10 border-r-0'>
-                            <p className='mb-5'>{professorDetails?.reviews_count} نظر</p>
-                            <div className='flex flex-col gap-6'>
-                                <div className='flex flex-col gap-3  items-start'>
-                                    <p className='text-xs lg:text-sm  text-[#181818] font-medium'>نمره دهی</p>
-                                    <Progressbar compare={true} value={Number(professorDetails?.grading_avg).toFixed(1) * 5} strok={8} />
-                                    <p className=" text-xs lg:text-sm md:block text-[#6C6C6C]">دست باز و با ارفاق</p>
-                                </div>
-                                <div className='flex flex-col gap-3  items-start'>
-                                    <p className='text-xs lg:text-sm  text-[#181818] font-medium'>دانش عمومی</p>
-                                    <Progressbar compare={true} value={Number(professorDetails?.general_knowledge_avg).toFixed(1) * 20} strok={8} />
-                                    <p className=" text-xs lg:text-sm md:block text-[#6C6C6C]">دست باز و با ارفاق</p>
-                                </div>
-                                <div className='flex flex-col gap-3  items-start'>
-                                    <p className='text-xs lg:text-sm  text-[#181818] font-medium'>جذابیت تدریس</p>
-                                    <Progressbar compare={true} value={Number(professorDetails?.teaching_engagement_avg).toFixed(1) * 20} strok={8} />
-                                    <p className=" text-xs lg:text-sm md:block text-[#6C6C6C]">دست باز و با ارفاق</p>
-                                </div>
-                                <div className='flex flex-col gap-3  items-start'>
-                                    <p className='text-xs lg:text-sm  text-[#181818] font-medium'>سختی تکالیف</p>
-                                    <Progressbar compare={true} value={Number(professorDetails?.homework_difficulty_avg).toFixed(1) * 20} strok={8} />
-                                    <p className=" text-xs lg:text-sm md:block text-[#6C6C6C]">دست باز و با ارفاق</p>
-                                </div>
-                                <div className='flex flex-col gap-3  items-start'>
-                                    <p className='text-xs lg:text-sm  text-[#181818] font-medium'>سختی امتحان</p>
-                                    <Progressbar compare={true} value={Number(professorDetails?.exam_difficulty_avg).toFixed(1) * 20} strok={8} />
-                                    <p className=" text-xs lg:text-sm md:block text-[#6C6C6C]">دست باز و با ارفاق</p>
-                                </div>
+                                        <div className='flex flex-col gap-3  items-start'>
+                                            <p className='text-xs lg:text-sm  text-[#181818] font-medium'>سختی امتحان</p>
+                                            <Progressbar compare={true} value={Number(item?.exam_difficulty_avg).toFixed(1) * 20} strok={8} />
+                                            <p className=" text-xs lg:text-sm md:block text-[#6C6C6C]">دست باز و با ارفاق</p>
+                                        </div>
 
+                                    </div>
+                                </div>
+                                <div className='w-full py-7 border-b border-[#F0F0F0] text-center'>
+                                    <h1 className='text-[32px] lg:text-[40px] font-semibold'>{Number(item?.average_would_take_again) * 20}%</h1>
+                                    <p className='text-xs lg:text-sm text-[#7F7F7F] font-medium'>دوباره انتخابش می‌کنند.</p>
+                                </div>
+                                <div className='py-7 text-center'>
+                                    <h1 className='text-[32px] lg:text-[40px] font-semibold'>{Number(item?.student_scores_avg)}</h1>
+                                    <p className='text-xs lg:text-sm text-[#7F7F7F] font-medium'>میانگین نمرات</p>
+                                </div>
                             </div>
-                        </div>
-                        <div className='w-full py-7 border-b border-[#F0F0F0] text-center'>
-                            <h1 className='text-[32px] lg:text-[40px] font-semibold'>{Number(professorDetails?.average_would_take_again)*20}%</h1>
-                            <p className='text-xs lg:text-sm text-[#7F7F7F] font-medium'>دوباره انتخابش می‌کنند.</p>
-                        </div>
-                        <div className='py-7 text-center'>
-                            <h1 className='text-[32px] lg:text-[40px] font-semibold'>{Number(professorDetails?.student_scores_avg)}</h1>
-                            <p className='text-xs lg:text-sm text-[#7F7F7F] font-medium'>میانگین نمرات</p>
-                        </div>
+                        )
+
+                    })}
+                    <div className='h-80 w-1/2 lg:w-1/3  xl:w-1/4 flex justify-center items-center border-r border-[#F0F0F0]'>
+                        <button onClick={() => setAddProfessorModal(true)} className='border border-[#919498] text-[#383E46] font-semibold h-9 md:h-10 lg:h-12 w-[104px] md:w-36  lg:w-40 rounded-[10px] text-sm md:text-base'>افزودن استاد</button>
                     </div>
-                
-                   
-                
-                  
-                  
+
+
+
+
+
+
+
 
 
 
@@ -698,6 +362,49 @@ const CompareProfessor = () => {
 
 
             </div>
+
+            <Modal
+                className="font-iransans"
+                open={addProfessorModal}
+                // onOk={() => setAddProfessorSchedule(false)}
+                // onCancel={() => setAddProfessorSchedule(false)}
+                footer={[]}
+                width={545}
+                centered
+                onCancel={() => setAddProfessorModal(false)}
+            >
+                <div className='h-full'>
+                    <p className='text-left pr-4 font-medium text-sm lg:text-base mb-3 '>انتخاب استاد</p>
+                    <div className='flex gap-2 py-3 px-5 items-center rounded-xl w-full border border-[#D1D1D1]'>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" stroke="#A7A9AD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <input className='w-full' type="text" placeholder='نام استاد یا درس را وارد کنید' />
+
+                    </div>
+                    <p className='text-right my-5 text-sm font-normal text-[#737373]'>مرتبط ترین استادان برای مقایسه</p>
+                    <div className='w-full flex flex-wrap gap-[18px] h-[400px] overflow-scroll'>
+                        {relatedProfessors.map((item) => {
+                            return (
+                                <div onClick={() => {
+                                    setId(item.id);
+                                    setAddProfessorModal(false);
+
+                                }} className=''>
+                                    <MasterCard event={false} first_name={item?.first_name} last_name={item?.last_name} id={item?.id} reviews_count={item?.reviews_count} overall_rating={item?.overall_rating} courses={item?.courses} />
+
+                                </div>
+
+                            )
+                        })}
+
+
+
+                    </div>
+
+                </div>
+
+            </Modal>
 
 
         </div>

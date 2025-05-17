@@ -4,7 +4,7 @@ import MasterProf from "../../Assets/images/Ellipse 9.svg"
 import "./MasterCard.css"
 import { Navigate, useNavigate } from 'react-router-dom'
 import Progresswheel from '../Progresswheel'
-const MasterCard = ({ first_name, last_name, id, courses, reviews_count, overall_rating = 0 }) => {
+const MasterCard = ({ first_name, last_name, id, courses, reviews_count, overall_rating = 0 , event = true}) => {
   const maxScore = 5;
   const [displayScore, setDisplayScore] = useState(0);
   const [isHover, setIsHover] = useState(false);
@@ -36,7 +36,7 @@ const MasterCard = ({ first_name, last_name, id, courses, reviews_count, overall
   return (
     <div onMouseEnter={()=>setIsHover(true)}
       onMouseLeave={()=>setIsHover(false)}
-    onClick={() => navigate(`/poll/ProfessorDetails/${id}`)} className='amin p-4 pt-6 bg-white w-[218px] h-[261px] flex justify-evenly items-center flex-col  rounded-xl cursor-pointer hover:bg-[#E5F7F8] transition-all z-[5]'>
+    onClick={() =>event ?  navigate(`/poll/ProfessorDetails/${id}`) : ""} className='amin p-4 pt-6  bg-white w-[218px] h-[261px] flex justify-evenly items-center flex-col  rounded-xl cursor-pointer hover:bg-[#E5F7F8] transition-all z-[5]'>
       <div className='relative'>
         <img src={MasterProf} alt="" />
         {/* <div className='w-20 h-20 rounded-full absolute top-0 amin'></div> */}

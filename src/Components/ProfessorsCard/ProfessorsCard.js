@@ -72,6 +72,8 @@ const ProfessorsCard = ({ type }) => {
   }, []);
 
   console.log(commentList);
+  console.log(professorList);
+  
   
   return (
     <div>
