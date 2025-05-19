@@ -17,12 +17,12 @@ const ProfessorWrapper = () => {
 
 
     return (
-        <div className='p-4  relative bg-[#F1F5F7] overflow-x-hidden  overflow-y-auto h-screen'>
-            <div className='flex h-[5%] justify-between '>
+        <div className='p-4 pt-2  relative bg-[#F1F5F7] overflow-x-hidden  overflow-y-auto h-screen'>
+            <div className='flex h-[5%] justify-between items-center mb-1.5 '>
                 <div className='flex items-center gap-7 '>
                     <button onClick={() => setIsSidebarOpen(prev => !prev)} className='lg:hidden'>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <path d="M21 6H3M21 12H9M21 18H7" stroke="#4E535A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M21 6H3M21 12H9M21 18H7" stroke="#4E535A" stroke-width="2" strokeLinecap="round" stroke-linejoin="round" />
                         </svg>
                     </button>
                     <p className='font-normal text-sm'><span className='text-[#7A7E83]'>نظر سنجی اساتید</span> / جستجو استاد</p>

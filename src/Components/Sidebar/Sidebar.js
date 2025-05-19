@@ -57,7 +57,7 @@ export default function Sidebar({ isSidebarOpen  }) {
   border-[#E2E8F0] transform ${isSidebarOpen ? "translate-x-0 opacity-100" : "translate-x-10 opacity-0"} absolute left-0`}
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-  <path d="M12 4L4 12M4 4L12 12" stroke="#4E535A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M12 4L4 12M4 4L12 12" stroke="#4E535A" stroke-width="1.5" strokeLinecap="round" stroke-linejoin="round"/>
 </svg>
           </button>
 

@@ -8,7 +8,6 @@ import CommentCard from '../CommentCard/CommentCard';
 const ProfessorsCard = ({ type }) => {
 
   const [professorList, setProfessorList] = useState([]);
-  console.log(type);
 
   useEffect(() => {
     const fetchProfessors = async () => {
@@ -71,8 +70,7 @@ const ProfessorsCard = ({ type }) => {
     fetchProfessors();
   }, []);
 
-  console.log(commentList);
-  console.log(professorList);
+
   
   
   return (

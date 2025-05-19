@@ -9,7 +9,7 @@ import ProfessorProf from "../../Assets/images/Rectangle 17.png"
 const CustomArrowIcon = () => (
     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g id="chevron-down">
-            <path id="Icon" d="M3.5 5.25L7 8.75L10.5 5.25" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path id="Icon" d="M3.5 5.25L7 8.75L10.5 5.25" stroke="black" stroke-width="1.5" strokeLinecap="round" stroke-linejoin="round" />
         </g>
     </svg>
 
@@ -19,44 +19,52 @@ const Poll = () => {
     const { isSidebarOpen, setIsSidebarOpen } = useContext(SidebarContext);
     const [searchDropdown, setSearchDropdown] = useState(false);
     const [professorList, setProfessorList] = useState([]);
+    const [professorName, setProfessorName] = useState("");
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(false);
+
 
     useEffect(() => {
-        const fetchProfessors = async () => {
-            try {
-                const res = await fetch("http://localhost:8000/professor-reviewer/professors/", {
-                    method: "GET",
-                    headers: {
-                        "Accept-Language": "fa",
-                        "Content-Type": "application/json",
-                    },
-                });
+        const delayDebounce = setTimeout(() => {
 
-                const data = await res.json();
 
-                if (res.ok) {
-                    console.log("ok");
-                    console.log(data); // use data directly here
-                    setProfessorList(data);
-                } else {
-                    throw new Error(Object.values(data)[0] || "An error occurred");
+            const fetchProfessors = async () => {
+                setLoading(true);
+                try {
+                    const params = new URLSearchParams({ search: professorName });
+                    const res = await fetch(`http://localhost:8000/professor-reviewer/professors/?${params.toString()}`, {
+                        method: "GET",
+                        headers: {
+                            "Accept-Language": "fa",
+                            "Content-Type": "application/json",
+                        },
+                    });
+
+                    const data = await res.json();
+                    if (res.ok) {
+                        setProfessorList(data);
+                    } else {
+                        throw new Error(Object.values(data)[0] || "An error occurred");
+                    }
+                } catch (err) {
+                    console.error("Error:", err.message);
                 }
+                finally {
+                    setLoading(false);
+                }
+            };
 
-            } catch (err) {
-                console.error("Error:", err.message);
-            } finally {
-                console.log("finally");
-            }
-        };
+            fetchProfessors();
+        }, 500);
 
-        fetchProfessors();
-    }, []);
+        return () => clearTimeout(delayDebounce);
+    }, [professorName]);
 
 
 
 
     return (
-        <div className='p-4 Poll-container relative bg-[#F1F5F7] overflow-hidden '>
+        <div className='p-4  Poll-container relative bg-[#F1F5F7] overflow-hidden '>
 
             <div className='absolute -left-72 lg:left-auto pointer-events-none'>
 
@@ -72,11 +80,11 @@ const Poll = () => {
                 </svg>
             </div>
 
-            <div className='flex h-[5%] justify-between '>
+            <div className='flex h-[5%] justify-between mb-3 '>
                 <div className='flex items-center gap-7 '>
                     <button onClick={() => setIsSidebarOpen(prev => !prev)} className='lg:hidden'>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <path d="M21 6H3M21 12H9M21 18H7" stroke="#4E535A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M21 6H3M21 12H9M21 18H7" stroke="#4E535A" stroke-width="2" strokeLinecap="round" stroke-linejoin="round" />
                         </svg>
                     </button>
                     <p className='font-normal text-sm'><span className='text-[#7A7E83]'>نظر سنجی اساتید</span> / جستجو استاد</p>
@@ -98,11 +106,12 @@ const Poll = () => {
                 <div className='py-5 px-[30px] mb-8 relative'>
                     <div className={`border border-solid input-container transition-all  bg-white border-[#DDD] w-[282px] sm:w-[312px] md:w-[470px] lg:w-[574px] flex gap-2 py-3 px-[22px] ${searchDropdown ? "rounded-t-2xl " : "rounded-2xl"}`}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
-                            <path d="M21 21.5L16.65 17.15M19 11.5C19 15.9183 15.4183 19.5 11 19.5C6.58172 19.5 3 15.9183 3 11.5C3 7.08172 6.58172 3.5 11 3.5C15.4183 3.5 19 7.08172 19 11.5Z" stroke="#A7A9AD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M21 21.5L16.65 17.15M19 11.5C19 15.9183 15.4183 19.5 11 19.5C6.58172 19.5 3 15.9183 3 11.5C3 7.08172 6.58172 3.5 11 3.5C15.4183 3.5 19 7.08172 19 11.5Z" stroke="#A7A9AD" stroke-width="1.5" strokeLinecap="round" stroke-linejoin="round" />
                         </svg>
                         <input
+                            onChange={(e) => setProfessorName(e.target.value)}
                             onFocus={() => setSearchDropdown(true)}
-                            onBlur={() => setTimeout(() => setSearchDropdown(false), 100)}
+                            onBlur={() => setSearchDropdown(false)}
                             className='w-full'
                             type="text"
                             placeholder='نام استاد یا درس را وارد کنید'
@@ -110,23 +119,45 @@ const Poll = () => {
 
 
                     </div>
-                    <div className={`h-[198px] w-[282px] sm:w-[312px] md:w-[470px] lg:w-[574px] bg-white absolute  left-[30px] border border-[#DDD] py-3 pl-2.5 pr-4 transition-all text-nowrap opacity-0 text-xs lg:text-sm overflow-y-auto overflow-x-hidden rounded-b-2xl ${searchDropdown ? "opacity-100 z-10" : "pointer-events-none"}`}>
+                    <div className={`h-[198px] w-[282px] sm:w-[312px] md:w-[470px] lg:w-[574px] bg-white absolute  left-[30px] border border-[#DDD] py-3 pl-2.5 pr-4 transition-all text-nowrap opacity-0 text-xs lg:text-sm overflow-y-auto overflow-x-hidden rounded-b-2xl overscroll-contain ${searchDropdown ? "opacity-100 z-10" : "pointer-events-none"}`}>
                         {professorList.map((professor, index) => {
                             return (
-                                <div onClick={() => navigate(`/poll/ProfessorDetails/${professor.id}`)} key={index} className='flex gap-3.5 p-2  text-[#949494] cursor-pointer items-center'>
+
+                                <div onMouseDown={(e) => {
+                                    if (e.button === 0) {
+                                        navigate(`/poll/ProfessorDetails/${professor.id}`);
+                                    }
+                                }} key={index} className='flex gap-3.5 p-2  text-[#949494] cursor-pointer items-center'>
                                     <img src={ProfessorProf} alt="" />
                                     <p className='font-semibold text-[#464646]'>{professor.first_name}  {professor.last_name}</p>
                                     <div className='h-[2px] w-2.5 bg-[#E3E3E3]'></div>
                                     <p className="font-normal">
-                                        {professor.courses.map((course, indx) => (
-                                            <span
-                                                key={indx}
-                                                className="inline-block max-w-[70px] overflow-hidden text-ellipsis whitespace-nowrap align-middle md:max-w-none md:whitespace-normal md:overflow-visible md:text-clip"
-                                                title={course.name}
-                                            >
-                                                {course.name}
-                                            </span>
-                                        ))}
+                                        <div className='flex gap-2'>
+                                            {professor.courses.map((course, indx) => {
+
+                                                return (
+                                                    <div key={course.id} className='font-iransansfa flex items-center gap-2 font-normal text-xs lg:text-sm text-[#949494]'>
+                                                        <span
+                                                            key={indx}
+                                                            className="inline-block max-w-[70px] overflow-hidden text-ellipsis whitespace-nowrap align-middle md:max-w-none md:whitespace-normal md:overflow-visible md:text-clip"
+                                                            title={course.name}
+                                                        >
+                                                            {course.name}
+
+
+                                                        </span>
+
+                                                        {indx !== professor.courses.length - 1 ? <svg xmlns="http://www.w3.org/2000/svg" width="3" height="4" viewBox="0 0 3 4" fill="none">
+                                                            <circle cx="1.5" cy="2" r="1.5" fill="#D9D9D9" />
+                                                        </svg> : ""}
+                                                    </div>
+
+                                                )
+                                            }
+
+
+                                            )}
+                                        </div>
                                     </p>
 
 
@@ -136,9 +167,9 @@ const Poll = () => {
 
                     </div>
                     <div className='flex justify-end'>
-                        <button onClick={()=>navigate("/poll/add-new-professor")} className='text-[#00ADB5] flex mt-5 gap-2 '>
+                        <button onClick={() => navigate("/poll/add-new-professor")} className='text-[#00ADB5] flex mt-5 gap-2 '>
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
-                                <path d="M9.99984 13.4167H6.24984C5.08687 13.4167 4.50538 13.4167 4.03222 13.5602C2.96688 13.8834 2.1332 14.717 1.81004 15.7824C1.6665 16.2555 1.6665 16.837 1.6665 18M15.8332 18V13M13.3332 15.5H18.3332M12.0832 6.75C12.0832 8.82107 10.4042 10.5 8.33317 10.5C6.2621 10.5 4.58317 8.82107 4.58317 6.75C4.58317 4.67893 6.2621 3 8.33317 3C10.4042 3 12.0832 4.67893 12.0832 6.75Z" stroke="#00ADB5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M9.99984 13.4167H6.24984C5.08687 13.4167 4.50538 13.4167 4.03222 13.5602C2.96688 13.8834 2.1332 14.717 1.81004 15.7824C1.6665 16.2555 1.6665 16.837 1.6665 18M15.8332 18V13M13.3332 15.5H18.3332M12.0832 6.75C12.0832 8.82107 10.4042 10.5 8.33317 10.5C6.2621 10.5 4.58317 8.82107 4.58317 6.75C4.58317 4.67893 6.2621 3 8.33317 3C10.4042 3 12.0832 4.67893 12.0832 6.75Z" stroke="#00ADB5" stroke-width="1.5" strokeLinecap="round" stroke-linejoin="round" />
                             </svg>
                             <p>افزودن استاد</p>
                         </button>
@@ -179,14 +210,14 @@ const Poll = () => {
                     <div className='flex gap-2 sm:gap-[18px] items-center'>
                         {/* <button type="button">
                             <svg className='ml-1' xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path d="M4 12H20M20 12L14 6M20 12L14 18" stroke="#C9C9C9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M4 12H20M20 12L14 6M20 12L14 18" stroke="#C9C9C9" stroke-width="1.5" strokeLinecap="round" stroke-linejoin="round" />
                             </svg>
                         </button> */}
 
                         <Outlet />
                         {/* <button type="button">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="14" viewBox="0 0 18 14" fill="none">
-                                <path d="M17 7H1M1 7L7 1M1 7L7 13" stroke="#C9C9C9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M17 7H1M1 7L7 1M1 7L7 13" stroke="#C9C9C9" stroke-width="1.5" strokeLinecap="round" stroke-linejoin="round" />
                             </svg>
                         </button> */}
 
@@ -219,7 +250,7 @@ const Poll = () => {
                     <path d="M18.5 26.4375C18.5 21.7776 22.3033 18 26.9949 18H35.4898V26.4375C35.4898 31.0974 31.6865 34.875 26.9949 34.875C22.3033 34.875 18.5 31.0974 18.5 26.4375Z" fill="white" />
                     <path d="M1.51025 26.4375C1.51025 31.0974 5.31354 34.875 10.0052 34.875H18.5V26.4375C18.5 21.7776 14.6967 18 10.0052 18C5.31354 18 1.51025 21.7776 1.51025 26.4375Z" fill="white" />
                     <path d="M27.7823 2.58065L29.1331 6.07138C29.3528 6.63904 29.4626 6.92288 29.6334 7.16162C29.7848 7.37322 29.9708 7.55809 30.1837 7.70855C30.4239 7.87831 30.7095 7.98747 31.2806 8.2058L34.7928 9.54839L31.2807 10.891C30.7095 11.1093 30.4239 11.2185 30.1837 11.3882C29.9708 11.5387 29.7848 11.7236 29.6334 11.9352C29.4626 12.1739 29.3528 12.4577 29.1331 13.0254L27.7823 16.5161L26.4315 13.0254C26.2118 12.4577 26.1019 12.1739 25.9311 11.9352C25.7798 11.7236 25.5938 11.5387 25.3809 11.3882C25.1407 11.2185 24.8551 11.1093 24.2839 10.891L20.7718 9.54839L24.2839 8.2058C24.8551 7.98747 25.1406 7.87831 25.3809 7.70855C25.5938 7.55809 25.7798 7.37322 25.9311 7.16162C26.1019 6.92288 26.2118 6.63904 26.4315 6.07138L27.7823 2.58065Z" fill="white" />
-                    <path d="M21.1612 17.2903V13.4194M21.1612 5.67743V1.80646M19.2139 3.74194H23.1086M19.2139 15.3548H23.1086M27.7823 2.58065L26.4315 6.07138C26.2118 6.63904 26.1019 6.92288 25.9311 7.16162C25.7798 7.37322 25.5938 7.55809 25.3809 7.70855C25.1406 7.87831 24.8551 7.98747 24.2839 8.2058L20.7718 9.54839L24.2839 10.891C24.8551 11.1093 25.1407 11.2185 25.3809 11.3882C25.5938 11.5387 25.7798 11.7236 25.9311 11.9352C26.1019 12.1739 26.2118 12.4577 26.4315 13.0254L27.7823 16.5161L29.1331 13.0254C29.3528 12.4577 29.4626 12.1739 29.6334 11.9352C29.7848 11.7236 29.9708 11.5387 30.1837 11.3882C30.4239 11.2185 30.7095 11.1093 31.2806 10.891L34.7928 9.54839L31.2806 8.2058C30.7095 7.98747 30.4239 7.87831 30.1837 7.70855C29.9708 7.55809 29.7848 7.37322 29.6334 7.16162C29.4626 6.92288 29.3528 6.63904 29.1331 6.07138L27.7823 2.58065Z" stroke="white" stroke-linecap="round" />
+                    <path d="M21.1612 17.2903V13.4194M21.1612 5.67743V1.80646M19.2139 3.74194H23.1086M19.2139 15.3548H23.1086M27.7823 2.58065L26.4315 6.07138C26.2118 6.63904 26.1019 6.92288 25.9311 7.16162C25.7798 7.37322 25.5938 7.55809 25.3809 7.70855C25.1406 7.87831 24.8551 7.98747 24.2839 8.2058L20.7718 9.54839L24.2839 10.891C24.8551 11.1093 25.1407 11.2185 25.3809 11.3882C25.5938 11.5387 25.7798 11.7236 25.9311 11.9352C26.1019 12.1739 26.2118 12.4577 26.4315 13.0254L27.7823 16.5161L29.1331 13.0254C29.3528 12.4577 29.4626 12.1739 29.6334 11.9352C29.7848 11.7236 29.9708 11.5387 30.1837 11.3882C30.4239 11.2185 30.7095 11.1093 31.2806 10.891L34.7928 9.54839L31.2806 8.2058C30.7095 7.98747 30.4239 7.87831 30.1837 7.70855C29.9708 7.55809 29.7848 7.37322 29.6334 7.16162C29.4626 6.92288 29.3528 6.63904 29.1331 6.07138L27.7823 2.58065Z" stroke="white" strokeLinecap="round" />
                 </svg>
             </div>
 

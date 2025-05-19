@@ -13,36 +13,39 @@ const PostCommentContainer = () => {
     const [professorList, setProfessorList] = useState([]);
 
 
+    const [professorName, setProfessorName] = useState("");
     useEffect(() => {
-        const fetchProfessors = async () => {
-            try {
-                const res = await fetch("http://localhost:8000/professor-reviewer/professors/", {
-                    method: "GET",
-                    headers: {
-                        "Accept-Language": "fa",
-                        "Content-Type": "application/json",
-                    },
-                });
+        const delayDebounce = setTimeout(() => {
 
-                const data = await res.json();
 
-                if (res.ok) {
-                    console.log("ok");
-                    console.log(data); // use data directly here
-                    setProfessorList(data);
-                } else {
-                    throw new Error(Object.values(data)[0] || "An error occurred");
+            const fetchProfessors = async () => {
+                try {
+                    const params = new URLSearchParams({ search: professorName });
+                    const res = await fetch(`http://localhost:8000/professor-reviewer/professors/?${params.toString()}`, {
+                        method: "GET",
+                        headers: {
+                            "Accept-Language": "fa",
+                            "Content-Type": "application/json",
+                        },
+                    });
+
+                    const data = await res.json();
+                    if (res.ok) {
+                        setProfessorList(data);
+                    } else {
+                        throw new Error(Object.values(data)[0] || "An error occurred");
+                    }
+                } catch (err) {
+                    console.error("Error:", err.message);
                 }
 
-            } catch (err) {
-                console.error("Error:", err.message);
-            } finally {
-                console.log("finally");
-            }
-        };
+            };
 
-        fetchProfessors();
-    }, []);
+            fetchProfessors();
+        }, 500);
+
+        return () => clearTimeout(delayDebounce);
+    }, [professorName]);
 
     const [professorDetails, setProfessorDetails] = useState({});
     useEffect(() => {
@@ -84,7 +87,7 @@ const PostCommentContainer = () => {
                 <div className='flex gap-8 sm:gap-14 lg:gap-0 w-[90%]  lg:w-[70%] xl:w-[50%] lg:justify-around'>
                     <button onClick={() => navigate(-1)} className='flex gap-2 items-center'>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <path d="M4 12H20M20 12L14 6M20 12L14 18" stroke="#959595" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M4 12H20M20 12L14 6M20 12L14 18" stroke="#959595" stroke-width="1.5" strokeLinecap="round" stroke-linejoin="round" />
                         </svg>
                         <p className='hidden lg:block'>بازگشت</p>
                     </button>
@@ -104,29 +107,38 @@ const PostCommentContainer = () => {
 
                 <div className='w-[10%]  justify-end   lg:justify-normal lg:w-[30%] xl:w-[357px] flex items-center gap-2 '>
 
-                    <button className='cursor-pointer'                        onBlur={() => setTimeout(() => setSearchDropdown(false), 100)}
+                    <button className='cursor-pointer'
 
                         onClick={() => setSearchDropdown(prev => !prev)}>  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <path d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" stroke="#A7A9AD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" stroke="#A7A9AD" stroke-width="1.5" strokeLinecap="round" stroke-linejoin="round" />
                         </svg></button>
                     <input onFocus={() => setSearchDropdown(true)}
-                        onBlur={() => setTimeout(() => setSearchDropdown(false), 100)}
+                        onBlur={() => setSearchDropdown(false)}
+                        onChange={(e) => setProfessorName(e.target.value)}
 
                         className='w-full h-full  hidden lg:inline-block z-[53]' type="text" placeholder='نام استاد یا درس را وارد کنید' />
                     <div className={`${searchDropdown ? "" : "hidden"} lg:hidden z-[53] absolute left-0 w-full  flex gap-2 bg-white h-12 rounded-xl items-center px-4 `}>
                         <svg className='cursor-pointer' onClick={() => setSearchDropdown(prev => !prev)} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <path d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" stroke="#A7A9AD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" stroke="#A7A9AD" stroke-width="1.5" strokeLinecap="round" stroke-linejoin="round" />
                         </svg>
                         <input onFocus={() => setSearchDropdown(true)}
-                        onBlur={() => setTimeout(() => setSearchDropdown(false), 100)}
+                            onBlur={() => setSearchDropdown(false)}
+                            onChange={(e) => setProfessorName(e.target.value)}
+
                             className='w-full h-full   z-[53]' type="text" placeholder='نام استاد یا درس را وارد کنید' />
+
                     </div>
 
-                    <div className={`h-[198px] poll-container w-full lg:w-[375px] rounded-xl outline-none  bg-white absolute  border border-[#DDD] p-2  transition-all text-nowrap opacity-0 text-xs lg:text-sm overflow-y-auto overflow-x-hidden rounded-b-2xl  ${searchDropdown ? "opacity-100 z-[53]" : "pointer-events-none"} top-[60px] left-0`}>
+                    <div className={`h-[198px] overscroll-contain poll-container w-full lg:w-[375px] rounded-xl outline-none  bg-white absolute  border border-[#DDD] p-2  transition-all text-nowrap opacity-0 text-xs lg:text-sm overflow-y-auto overflow-x-hidden rounded-b-2xl  ${searchDropdown ? "opacity-100 z-[53]" : "pointer-events-none"} top-[60px] left-0`}>
                         {professorList.map((professor, index) => {
                             return (
                                 <div
-                                    onClick={() => navigate(`/poll/ProfessorDetails/${professor.id}`)}
+                                    onMouseDown={(e) => {
+                                        if (e.button === 0) {
+                                            navigate(`/poll/ProfessorDetails/${professor.id}`);
+                                            setProfessorName("");
+                                        }
+                                    }}
                                     key={index}
                                     className="flex items-center gap-3.5 p-2 text-[#949494] cursor-pointer"
                                 >
@@ -138,17 +150,25 @@ const PostCommentContainer = () => {
 
                                     <div className='h-[2px] w-2.5 bg-[#E3E3E3]'></div>
 
-                                    <div className="flex-1 overflow-hidden">
-                                        <div className="flex flex-wrap gap-1 overflow-hidden text-ellipsis">
-                                            {professor.courses.map((course, indx) => (
-                                                <span
-                                                    key={indx}
-                                                    className="truncate inline-block max-w-full"
-                                                    title={course.name}
-                                                >
-                                                    {course.name}
-                                                </span>
-                                            ))}
+                                    <div className="flex-1 overflow-hidden whitespace-nowrap text-ellipsis">
+                                        <div className="text-xs lg:text-sm text-[#949494] overflow-hidden whitespace-nowrap text-ellipsis">
+                                            <span
+                                                className="inline-block truncate max-w-full align-middle"
+                                                title={professor.courses.map(c => c.name).join(' - ')}
+                                            >
+                                                {professor.courses.map((course, index) => (
+                                                    <React.Fragment key={course.id}>
+                                                        {course.name}
+                                                        {index !== professor.courses.length - 1 && (
+                                                            <span className="inline-block mx-2 align-middle">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="3" height="4" viewBox="0 0 3 4" fill="none">
+                                                                    <circle cx="1.5" cy="2" r="1.5" fill="#D9D9D9" />
+                                                                </svg>
+                                                            </span>
+                                                        )}
+                                                    </React.Fragment>
+                                                ))}
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
