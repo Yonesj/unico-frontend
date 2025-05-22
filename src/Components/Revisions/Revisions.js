@@ -14,10 +14,12 @@ import { Button, message, Upload } from 'antd';
 import { DownOutlined } from '@ant-design/icons'; // or any icon you want
 import { Modal } from 'antd';
 import "./Revisions.css"
+import SuccessAdd from "../../Assets/images/aaa 1 (1).svg"
 
 
 const Revisions = () => {
     const [addCourseModal, setAddCourseModal] = useState(false);
+    const [professorRevisionModal, setProfessorRevisionModal] = useState(false);
 
     const [fileList, setFileList] = useState([]);
     const [fileToUpload, setFileToUpload] = useState(null);
@@ -128,36 +130,36 @@ const Revisions = () => {
     }, []);
 
 
-    useEffect(() => {
-        const fetchProfessors = async () => {
-            try {
-                const res = await fetch("http://localhost:8000/professor-reviewer/professors/", {
-                    method: "GET",
-                    headers: {
-                        "Accept-Language": "fa",
-                        "Content-Type": "application/json",
-                    },
-                });
+    // useEffect(() => {
+    //     const fetchProfessors = async () => {
+    //         try {
+    //             const res = await fetch("http://localhost:8000/professor-reviewer/professors/", {
+    //                 method: "GET",
+    //                 headers: {
+    //                     "Accept-Language": "fa",
+    //                     "Content-Type": "application/json",
+    //                 },
+    //             });
 
-                const data = await res.json();
+    //             const data = await res.json();
 
-                if (res.ok) {
-                    console.log("ok");
-                    console.log(data); // use data directly here
-                    setProfessorList(data);
-                } else {
-                    throw new Error(Object.values(data)[0] || "An error occurred");
-                }
+    //             if (res.ok) {
+    //                 console.log("ok");
+    //                 console.log(data); // use data directly here
+    //                 setProfessorList(data);
+    //             } else {
+    //                 throw new Error(Object.values(data)[0] || "An error occurred");
+    //             }
 
-            } catch (err) {
-                console.error("Error:", err.message);
-            } finally {
-                console.log("finally");
-            }
-        };
+    //         } catch (err) {
+    //             console.error("Error:", err.message);
+    //         } finally {
+    //             console.log("finally");
+    //         }
+    //     };
 
-        fetchProfessors();
-    }, []);
+    //     fetchProfessors();
+    // }, []);
 
     const [searchDropdown, setSearchDropdown] = useState(false);
     const [coursesDropdown, setCoursesDropdown] = useState(false);
@@ -207,6 +209,7 @@ const Revisions = () => {
     const [newWebsite, setNewWebsite] = useState("");
     const [newOfficeNumber, setNewOfficeNumber] = useState("");
     const [newOfficeLocation, setNewOfficeLocation] = useState("");
+    const [newFaculty, setNewFaculty] = useState(null);
 
     const removeCourse = (id) => {
         setProfessorCourses((prevCourses) => prevCourses.filter(course => course.id !== id));
@@ -273,6 +276,49 @@ const Revisions = () => {
 
         return () => clearTimeout(delayDebounce);
     }, [professorName]);
+
+    const submitProfessorRevision = async () => {
+        try {
+            const res = await fetch(`http://localhost:8000/professor-reviewer/professors/1/revisions/`, {
+                method: "POST",
+                headers: {
+                    "Accept-Language": "fa",
+                    "Content-Type": "application/json",
+                    "Authorization": `JWT ${JSON.parse(localStorage.getItem("AccessToken"))}`
+                },
+                body: JSON.stringify({
+                    "professor": id,
+                    "faculty": newFaculty,
+                    "proposed_courses": professorCourses.map(course => course.name),
+                    "office_number": newOfficeNumber,
+                    "telegram_account": newTelegram,
+                    "email": newEmail,
+                    // "website_url": newWebsite,
+                    "office_location": newOfficeLocation,
+                    "profile_image": null,
+                    "schedule_image": null
+
+                })
+            });
+
+            const data = await res.json();
+
+            if (res.ok) {
+                console.log("ok");
+                setProfessorRevisionModal(true);
+
+
+
+            } else {
+                throw new Error(Object.values(data)[0] || "An error occurred");
+            }
+
+        } catch (err) {
+            console.error("Error:", err.message);
+        } finally {
+            console.log("finally");
+        }
+    };
 
     return (
         <div>
@@ -373,11 +419,11 @@ const Revisions = () => {
                     <div className='w-full flex flex-col lg:flex-row mb-12 gap-9 lg:gap-0 justify-between'>
                         <div className='flex  flex-col lg:flex-row gap-2.5  lg:gap-8 w-full lg:w-1/2 items-center'>
                             <label className='w-full  lg:w-[82px] font-normal text-sm lg:text-base' htmlFor="">نام استاد :</label>
-                            <input className='w-full lg:w-3/5 py-1.5 px-3 text-sm lg:text-base text-[#8B8B8B] rounded-md h-10  bg-[#F1F1F1]' type="text" placeholder='' disabled value="مهران" />
+                            <input className='w-full lg:w-3/5 py-1.5 px-3 text-sm lg:text-base text-[#8B8B8B] rounded-md h-10  bg-[#F1F1F1]' type="text" placeholder='' disabled value={professorDetails.first_name} />
                         </div>
                         <div className='flex  flex-col lg:flex-row gap-2.5  lg:gap-8 w-full lg:w-1/2 items-center'>
                             <label className='w-full lg:w-auto  lg:font-normal text-sm lg:text-base' htmlFor="">نام خانوادگی استاد :</label>
-                            <input className='w-full lg:w-3/5 py-1.5 px-3 rounded-md h-10  text-[#8B8B8B] bg-[#F1F1F1] text-sm lg:text-base' type="text" placeholder='' disabled value="رضایی" />
+                            <input className='w-full lg:w-3/5 py-1.5 px-3 rounded-md h-10  text-[#8B8B8B] bg-[#F1F1F1] text-sm lg:text-base' type="text" placeholder='' disabled value={professorDetails.last_name} />
                         </div>
                     </div>
                     <div className='w-full flex flex-col lg:flex-row mb-20 gap-9 lg:gap-0 justify-between'>
@@ -389,6 +435,7 @@ const Revisions = () => {
                                     defaultValue="مهندسی کامپیوتر"
                                     style={{ width: 186 }}
                                     options={options}
+                                    onChange={(e) => setNewFaculty(e)}
 
                                     suffixIcon={<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                                         <path d="M4 6L8 10L12 6" stroke="#3B3B3B" stroke-width="1.5" strokeLinecap="round" stroke-linejoin="round" />
@@ -517,7 +564,7 @@ const Revisions = () => {
 
                     </div>
                     <div>
-                        <button className='w-full lg:w-[293px] h-[52px] py-2 px-[15px] rounded-xl bg-[#4CC6CB] hover:bg-[#33BDC4]  transition-all text-white mr-2 '>ثبت درخواست اصلاح</button>
+                        <button onClick={submitProfessorRevision} className='w-full lg:w-[293px] h-[52px] py-2 px-[15px] rounded-xl bg-[#4CC6CB] hover:bg-[#33BDC4]  transition-all text-white mr-2 '>ثبت درخواست اصلاح</button>
                     </div>
                 </div>
 
@@ -543,6 +590,35 @@ const Revisions = () => {
 
             </Modal>
 
+            <Modal
+                className="font-iransans AddProfessor"
+                open={professorRevisionModal}
+                onOk={() => setProfessorRevisionModal(false)}
+                onCancel={() => setProfessorRevisionModal(false)}
+                footer={[]}
+                width={540}
+
+            >
+                <div className=''>
+                    <div className='flex flex-col items-center justify-center h-full gap-8 mt-7'>
+                        <div>
+                            <div>
+                                <img className='w-36 h-36 lg:h-[186px] lg:w-[186px]' src={SuccessAdd} alt="" />
+                            </div>
+                        </div>
+                        <div className='text-sm w-full lg:text-base '>
+                            <p className='text-black font-normal mb-10'>درخواست اصلاح استاد {professorDetails.first_name} {professorDetails.last_name} ثبت شد!</p>
+                            <button onClick={() => {
+                                setProfessorRevisionModal(false);
+                                navigate("/poll/most-popular");
+
+                            }} className=' w-full h-[40px] text-white bg-[#4CC6CB] font-iransans flex-row-reverse rounded-lg'>تایید</button>
+
+                        </div>
+                    </div>
+                </div>
+
+            </Modal>
         </div>
     )
 }

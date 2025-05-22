@@ -12,7 +12,6 @@ import ProfessorProf from "../../Assets/images/Rectangle 17.png"
 import { useNavigate } from 'react-router-dom';
 import { Modal } from 'antd';
 import { Button, message, Upload } from 'antd';
-import SuccessAdd from "../../Assets/images/aaa 1 (1).svg"
 
 // Example usage
 // Output: "18 اردیبهشت 1404"
@@ -42,6 +41,11 @@ const ProfessorDetails = () => {
     const [options, setOptions] = useState([
         { value: 'all', label: 'همه ی دروس' }
     ]);
+    const [options2, setOptions2] = useState([
+        { value: 'created_at', label: 'جدیدترین نظرات' },
+        { value: 'poplikes_countular', label: 'محبوب ترین نظرات' },
+        { value: 'grading', label: 'پربازدید ترین  نظرات' }
+    ]);
 
     const { isSidebarOpen, setIsSidebarOpen } = useContext(SidebarContext);
     const [searchDropdown, setSearchDropdown] = useState(false);
@@ -58,6 +62,8 @@ const ProfessorDetails = () => {
     const [professorDetails, setProfessorDetails] = useState({});
     const [professorName, setProfessorName] = useState("");
 
+    const [courseID, setCourseID] = useState("all");
+    const [ordering, setOrdering] = useState("created_at");
 
     useEffect(() => {
         const delayDebounce = setTimeout(() => {
@@ -134,7 +140,16 @@ const ProfessorDetails = () => {
     useEffect(() => {
         const fetchProfessors = async () => {
             try {
-                const res = await fetch(`http://localhost:8000/professor-reviewer/professors/${id}/reviews/`, {
+                let url = `http://localhost:8000/professor-reviewer/professors/${id}/reviews/`;
+                if (courseID !== 'all') {
+                    url += `?course_id=${courseID}&`;
+                }
+                if (ordering !== 'created_at') {
+                    url += `?ordering=${ordering}`
+
+                }
+
+                const res = await fetch(url, {
                     method: "GET",
                     headers: {
                         "Accept-Language": "fa",
@@ -146,7 +161,6 @@ const ProfessorDetails = () => {
 
                 if (res.ok) {
                     setProfessorComments(data);
-
                 } else {
                     throw new Error(Object.values(data)[0] || "An error occurred");
                 }
@@ -159,7 +173,7 @@ const ProfessorDetails = () => {
         };
 
         fetchProfessors();
-    }, [id]);
+    }, [id, courseID, ordering]);
 
     const allComments = Array(professorComments.count); // Replace with actual data
 
@@ -184,9 +198,20 @@ const ProfessorDetails = () => {
                         <button onClick={() => navigate("revisions")}>درخواست اصلاح اطلاعات</button>
                     </div>
 
-                </div>
-                <div className='w-[10%]  justify-end   lg:justify-normal lg:w-[30%] xl:w-[357px] flex items-center gap-2 '>
 
+                </div>
+
+                <div className='w-[70%]  justify-end   lg:justify-normal lg:w-[30%] xl:w-[357px] flex items-center gap-2 '>
+                    <div className="flex gap-0.5 ml-8 lg:hidden">
+                        <button className='flex gap-0.5 items-center' onClick={() => commentsRef.current.scrollIntoView({ behavior: 'smooth' })}>
+                            <p className='text-[#424242] font-normal text-sm'>مشاهده نظرات</p>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M12 19V5" stroke="#565656" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M17 14L12 19L7 14" stroke="#565656" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+
+                    </div>
                     <button className='cursor-pointer'
 
                         onClick={() => setSearchDropdown(prev => !prev)}>  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -195,7 +220,7 @@ const ProfessorDetails = () => {
                     <input onFocus={() => setSearchDropdown(true)}
                         onBlur={() => setSearchDropdown(false)}
                         onChange={(e) => setProfessorName(e.target.value)}
-                                                    value={professorName}
+                        value={professorName}
 
 
                         className='w-full h-full  hidden lg:inline-block z-[53]' type="text" placeholder='نام استاد یا درس را وارد کنید' />
@@ -221,7 +246,7 @@ const ProfessorDetails = () => {
                                             navigate(`/poll/ProfessorDetails/${professor.id}`);
                                             setProfessorName("");
                                             setSearchDropdown(false);
-                                            
+
                                         }
                                     }}
                                     key={index}
@@ -347,7 +372,7 @@ const ProfessorDetails = () => {
                                     <path d="M18.1744 13.1664C18.1817 12.7257 18.1002 12.288 17.9348 11.8795C17.7695 11.4709 17.5236 11.0997 17.2119 10.7881" stroke="#64748B" stroke-width="1.5" strokeLinecap="round" stroke-linejoin="round" />
                                     <path d="M19.5684 8.43164C20.1911 9.05277 20.685 9.79083 21.0216 10.6034C21.3583 11.416 21.531 12.2871 21.53 13.1666" stroke="#64748B" stroke-width="1.5" strokeLinecap="round" stroke-linejoin="round" />
                                 </svg>
-                                <p>{professorDetails.office_number}</p>
+                                <p>{professorDetails.office_number ? professorDetails.office_number : <Link className='text-[#34AFBD]' to={"revisions"}>افزودن</Link>}</p>
                             </div>
                             <div className='flex items-center w-full  lg:w-full gap-3.5'>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
@@ -355,7 +380,7 @@ const ProfessorDetails = () => {
                                     <path d="M13.8335 18.0883L12.1085 19.7625C12.0402 19.8286 11.9561 19.876 11.8642 19.9002C11.7724 19.9245 11.6758 19.9247 11.5838 19.901C11.4918 19.8772 11.4075 19.8303 11.3388 19.7646C11.2702 19.6989 11.2196 19.6167 11.1918 19.5258L10.0435 15.75" stroke="#64748B" stroke-width="1.5" strokeLinecap="round" stroke-linejoin="round" />
                                     <path d="M15.7499 13.1059L12.4857 16.0518C12.4084 16.1216 12.3475 16.2079 12.3076 16.3042C12.2677 16.4005 12.2498 16.5045 12.255 16.6086C12.2603 16.7127 12.2887 16.8143 12.3381 16.9061C12.3875 16.9979 12.4567 17.0775 12.5407 17.1393L17.0224 20.4501C17.1236 20.526 17.2423 20.5751 17.3676 20.5928C17.4928 20.6105 17.6205 20.5962 17.7388 20.5513C17.8571 20.5064 17.962 20.4323 18.044 20.336C18.1259 20.2396 18.1821 20.124 18.2074 20.0001L20.4116 9.62759C20.4357 9.51382 20.4287 9.39563 20.3913 9.28552C20.3538 9.17541 20.2873 9.07745 20.1988 9.002C20.1103 8.92655 20.003 8.8764 19.8884 8.85685C19.7737 8.8373 19.6559 8.84907 19.5474 8.89092L6.61824 13.8776C6.53467 13.9095 6.46315 13.9668 6.41364 14.0413C6.36413 14.1158 6.33909 14.2039 6.34203 14.2933C6.34496 14.3828 6.37572 14.469 6.43001 14.5402C6.4843 14.6113 6.55942 14.6637 6.64491 14.6901L10.0424 15.7501" stroke="#64748B" stroke-width="1.5" strokeLinecap="round" stroke-linejoin="round" />
                                 </svg>
-                                <p>{professorDetails.telegram_account}</p>
+                                <p>{professorDetails.telegram_account ? professorDetails.telegram_account : <Link className='text-[#34AFBD]' to={"revisions"}>افزودن</Link>}</p>
                             </div>
                             <div className='flex items-center w-full  lg:w-full gap-3.5'>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
@@ -365,7 +390,8 @@ const ProfessorDetails = () => {
                                     <path d="M6.98828 19.3447L12.1049 14.228" stroke="#64748B" stroke-width="1.5" strokeLinecap="round" stroke-linejoin="round" />
                                     <path d="M15.9004 14.2339L21.0087 19.3422" stroke="#64748B" stroke-width="1.5" strokeLinecap="round" stroke-linejoin="round" />
                                 </svg>
-                                <p>{professorDetails.email}</p>
+                                <p>{professorDetails.email ? professorDetails.email : <Link className='text-[#34AFBD]' to={"revisions"}>افزودن</Link>}</p>
+
                             </div>
                             <div className='flex items-center w-full  lg:w-full gap-3.5'>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
@@ -375,7 +401,8 @@ const ProfessorDetails = () => {
                                     <path d="M12.4732 7.38332C11.2907 9.38801 10.667 11.6729 10.667 14.0004C10.667 16.3279 11.2907 18.6128 12.4732 20.6175C12.6276 20.886 12.8501 21.109 13.1182 21.2641C13.3863 21.4192 13.6905 21.5008 14.0003 21.5008C14.31 21.5008 14.6142 21.4192 14.8823 21.2641C15.1504 21.109 15.3729 20.886 15.5273 20.6175C16.7098 18.6128 17.3335 16.3279 17.3335 14.0004C17.3335 11.6729 16.7098 9.38801 15.5273 7.38332C15.3729 7.11484 15.1504 6.89182 14.8823 6.73674C14.6142 6.58166 14.31 6.5 14.0003 6.5C13.6905 6.5 13.3863 6.58166 13.1182 6.73674C12.8501 6.89182 12.6276 7.11484 12.4732 7.38332V7.38332Z" stroke="#64748B" stroke-width="1.5" strokeLinecap="round" stroke-linejoin="round" />
                                     <path d="M6.5 14H21.5" stroke="#64748B" stroke-width="1.5" strokeLinecap="round" stroke-linejoin="round" />
                                 </svg>
-                                <p>{professorDetails.website_url}</p>
+                                <p>{professorDetails.website_url ? professorDetails.website_url : <Link className='text-[#34AFBD]' to={"revisions"}>افزودن</Link>}</p>
+
                             </div>
                             <div className='flex items-center w-full  lg:w-full gap-3.5'>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
@@ -384,7 +411,8 @@ const ProfessorDetails = () => {
                                     <path d="M19 10.5273C18.9813 9.21977 18.4441 7.97314 17.5065 7.0616C16.5689 6.15006 15.3076 5.64824 14 5.6665C12.6924 5.64824 11.4311 6.15006 10.4935 7.0616C9.55587 7.97314 9.01866 9.21977 9 10.5273C9 14.1732 14 18.1665 14 18.1665C14 18.1665 19 14.1732 19 10.5273Z" stroke="#64748B" stroke-width="1.5" strokeLinecap="round" stroke-linejoin="round" />
                                     <path d="M15.1785 9.48798C15.4116 9.72104 15.5704 10.018 15.6348 10.3413C15.6991 10.6646 15.6661 10.9998 15.54 11.3044C15.4139 11.6089 15.2003 11.8693 14.9262 12.0524C14.6521 12.2356 14.3298 12.3333 14.0002 12.3333C13.6705 12.3333 13.3483 12.2356 13.0742 12.0524C12.8001 11.8693 12.5864 11.6089 12.4603 11.3044C12.3342 10.9998 12.3012 10.6646 12.3656 10.3413C12.4299 10.018 12.5887 9.72104 12.8218 9.48798C13.1344 9.17553 13.5582 9 14.0002 9C14.4421 9 14.866 9.17553 15.1785 9.48798" stroke="#64748B" stroke-width="1.5" strokeLinecap="round" stroke-linejoin="round" />
                                 </svg>
-                                <p>{professorDetails.office_location}</p>
+                                <p>{professorDetails.office_location ? professorDetails.office_location : <Link className='text-[#34AFBD]' to={"revisions"}>افزودن</Link>}</p>
+
                                 <Link onClick={() => setAddProfessorSchedule(true)} className="text-[#EFB036] underline underline-offset-[6px] text-nowrap" to="">برنامه حضور در دفتر</Link>
                             </div>
                         </div>
@@ -507,6 +535,7 @@ const ProfessorDetails = () => {
                                     defaultValue="همه ی دروس"
                                     style={{ width: 186 }}
                                     options={options}
+                                    onChange={(e) => setCourseID(e)}
                                 />
                             </div>
 
@@ -515,11 +544,8 @@ const ProfessorDetails = () => {
                                     className='border border-gray-500 border-solid font-iransansfa'
                                     defaultValue="جدیدترین نظرات"
                                     style={{ width: 186 }}
-                                    options={[
-                                        { value: 'jack', label: 'جدیدترین نظرات' },
-                                        { value: 'lucy', label: 'جدیدترین نظرات' },
-                                        { value: 'Yiminghe', label: 'جدیدترین نظرات' },
-                                    ]}
+                                    options={options2}
+                                    onChange={(e) => setOrdering(e)}
                                 />
                             </div>
                         </div>
@@ -541,7 +567,7 @@ const ProfessorDetails = () => {
 
                     </div>
                     <div className='flex flex-col gap-[60px]'>
-                        {professorComments.results?.map((comment, idx) => (
+                        {professorComments.results?.slice(0, visibleCount).map((comment, idx) => (
                             <div key={idx}><UserComment comment={comment} /></div>
                         ))}
                     </div>
@@ -612,31 +638,7 @@ const ProfessorDetails = () => {
                 </div>
 
             </Modal>
-            <Modal
-                className="font-iransans AddProfessor"
-                open={addProfessor}
-                onOk={() => setAddProfessor(false)}
-                onCancel={() => setAddProfessor(false)}
-                footer={[]}
-                width={540}
 
-            >
-                <div className=''>
-                    <div className='flex flex-col items-center justify-center h-full gap-8 mt-7'>
-                        <div>
-                            <div>
-                                <img className='w-36 h-36 lg:h-[186px] lg:w-[186px]' src={SuccessAdd} alt="" />
-                            </div>
-                        </div>
-                        <div className='text-sm w-full lg:text-base '>
-                            <p className='text-black font-normal mb-10'>درخواست افزودن استاد مهران رضایی ثبت شد!</p>
-                            <button onClick={() => setAddProfessor(false)} className=' w-full h-[40px] text-white bg-[#4CC6CB] font-iransans flex-row-reverse rounded-lg'>تایید</button>
-
-                        </div>
-                    </div>
-                </div>
-
-            </Modal>
 
 
         </div>

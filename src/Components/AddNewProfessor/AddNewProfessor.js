@@ -14,10 +14,12 @@ import { Button, message, Upload } from 'antd';
 import { DownOutlined } from '@ant-design/icons'; // or any icon you want
 import { Modal } from 'antd';
 import "../Revisions/Revisions.css"
+import SuccessAdd from "../../Assets/images/aaa 1 (1).svg"
 
 
 const AddNewProfessor = () => {
     const [addCourseModal, setAddCourseModal] = useState(false);
+    const [professorAddedModal, setProfessorAddedModal] = useState(false);
 
     const [fileList, setFileList] = useState([]);
     const [fileToUpload, setFileToUpload] = useState(null);
@@ -53,40 +55,40 @@ const AddNewProfessor = () => {
 
     const [professorCourses, setProfessorCourses] = useState([]);
 
-    useEffect(() => {
-        const fetchProfessors = async () => {
-            try {
-                const res = await fetch(`http://localhost:8000/professor-reviewer/professors/${id}`, {
-                    method: "GET",
-                    headers: {
-                        "Accept-Language": "fa",
-                        "Content-Type": "application/json",
-                    },
-                });
+    // useEffect(() => {
+    //     const fetchProfessors = async () => {
+    //         try {
+    //             const res = await fetch(`http://localhost:8000/professor-reviewer/professors/${id}`, {
+    //                 method: "GET",
+    //                 headers: {
+    //                     "Accept-Language": "fa",
+    //                     "Content-Type": "application/json",
+    //                 },
+    //             });
 
-                const data = await res.json();
+    //             const data = await res.json();
 
-                if (res.ok) {
-                    setProfessorDetails(data);
-                    setProfessorCourses(data.courses);
-
-
+    //             if (res.ok) {
+    //                 setProfessorDetails(data);
+    //                 setProfessorCourses(data.courses);
 
 
-                } else {
-                    throw new Error(Object.values(data)[0] || "An error occurred");
-                }
 
-            } catch (err) {
-                console.error("Error:", err.message);
-            }
-            //  finally {
-            //     console.log("finally");
-            // }
-        };
 
-        fetchProfessors();
-    }, [id]);
+    //             } else {
+    //                 throw new Error(Object.values(data)[0] || "An error occurred");
+    //             }
+
+    //         } catch (err) {
+    //             console.error("Error:", err.message);
+    //         }
+    //         //  finally {
+    //         //     console.log("finally");
+    //         // }
+    //     };
+
+    //     fetchProfessors();
+    // }, [id]);
 
     const [facultiesList, setFacultiesList] = useState([]);
 
@@ -179,6 +181,50 @@ const AddNewProfessor = () => {
     const [newLastName, setNewLastName] = useState("");
 
     const [professorName, setProfessorName] = useState("");
+    const [professorLastname, setProfessorLastname] = useState("");
+    const [professorFirstname, setProfessorFirstname] = useState("");
+    const [newFaculty, setNewFaculty] = useState(null);
+
+    const AddProfessor = async () => {
+        try {
+            const res = await fetch(`http://localhost:8000/professor-reviewer/professors/proposals/`, {
+                method: "POST",
+                headers: {
+                    "Accept-Language": "fa",
+                    "Content-Type": "application/json",
+                    "Authorization": `JWT ${JSON.parse(localStorage.getItem("AccessToken"))}`
+                },
+                body: JSON.stringify({
+                    "first_name": professorFirstname,
+                    "last_name": professorLastname,
+                    "faculty": newFaculty,
+                    "proposed_courses": professorCourses.map(course => course.name),
+                    "office_number": newOfficeNumber,
+                    "telegram_account": newTelegram,
+                    "email": newEmail,
+                    // "website_url": newWebsite,
+                    "office_location": newOfficeLocation,
+                    "profile_image": null
+                })
+            });
+
+            const data = await res.json();
+
+            if (res.ok) {
+                console.log("ok");
+                setProfessorAddedModal(true);
+
+
+            } else {
+                throw new Error(Object.values(data)[0] || "An error occurred");
+            }
+
+        } catch (err) {
+            console.error("Error:", err.message);
+        } finally {
+            console.log("finally");
+        }
+    };
     useEffect(() => {
         const delayDebounce = setTimeout(() => {
 
@@ -342,11 +388,17 @@ const AddNewProfessor = () => {
                     <div className='w-full flex flex-col lg:flex-row mb-12 gap-9 lg:gap-0 justify-between'>
                         <div className='flex  flex-col lg:flex-row gap-2.5  lg:gap-8 w-full lg:w-1/2 items-center'>
                             <label className='w-full  lg:w-[82px] font-normal text-sm lg:text-base' htmlFor="">نام استاد <span className='text-[#E03B3A]'>*</span> :</label>
-                            <input className='w-full lg:w-3/5 py-1.5 px-3 text-sm lg:text-base  border border-solid border-[#D9D9D9] rounded-md h-10  ' type="text" placeholder='' />
+                            <input
+                                onBlur={(e) => setProfessorFirstname(e.target.value)}
+                                className="w-full lg:w-3/5 py-1.5 px-3 text-sm lg:text-base border border-solid border-[#D9D9D9] rounded-md h-10"
+                                type="text"
+                                placeholder=""
+
+                            />
                         </div>
                         <div className='flex  flex-col lg:flex-row gap-2.5  lg:gap-8 w-full lg:w-1/2 items-center'>
                             <label className='w-full lg:w-auto  lg:font-normal text-sm lg:text-base -mr-3' htmlFor="">نام خانوادگی استاد <span className='text-[#E03B3A]'>*</span> :</label>
-                            <input className='w-full lg:w-3/5 py-1.5 px-3 rounded-md h-10  border border-solid border-[#D9D9D9] text-sm lg:text-base' type="text" placeholder='' />
+                            <input onBlur={(e) => setProfessorLastname(e.target.value)} className='w-full lg:w-3/5 py-1.5 px-3 rounded-md h-10  border border-solid border-[#D9D9D9] text-sm lg:text-base' type="text" placeholder='' />
                         </div>
                     </div>
                     <div className='w-full flex flex-col lg:flex-row mb-20 gap-9 lg:gap-0 justify-between'>
@@ -358,6 +410,7 @@ const AddNewProfessor = () => {
                                     defaultValue="مهندسی کامپیوتر"
                                     style={{ width: 186 }}
                                     options={options}
+                                    onChange={(e) => setNewFaculty(e)}
 
                                     suffixIcon={<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                                         <path d="M4 6L8 10L12 6" stroke="#3B3B3B" stroke-width="1.5" strokeLinecap="round" stroke-linejoin="round" />
@@ -400,15 +453,15 @@ const AddNewProfessor = () => {
                                         return (
                                             <div
                                                 key={index}
-                                                className="flex flex-col gap-2 p-2 text-[#949494] cursor-pointer"
+                                                className="flex flex-col items-end gap-2 p-2 pr-0 text-[#949494] cursor-pointer"
                                             >
 
 
-                                                <button onClick={() => addCourse(course)}
-                                                    className="font-semibold text-[#464646] whitespace-nowrap">
+                                                <button onMouseDown={() => addCourse(course)}
+                                                    className="font-semibold text-[#464646]  whitespace-nowrap">
                                                     {course.name}
                                                 </button>
-                                                <div className='w-full h-[1px] bg-gray-300'></div>
+                                                <div className='w-full h-[0.5px] bg-gray-300'></div>
 
 
                                             </div>
@@ -486,7 +539,7 @@ const AddNewProfessor = () => {
 
                     </div>
                     <div>
-                        <button className='w-full lg:w-[293px] h-[52px] py-2 px-[15px] rounded-xl bg-[#4CC6CB] hover:bg-[#33BDC4]  transition-all text-white mr-2 '>ثبت استاد جدید</button>
+                        <button onClick={AddProfessor} className='w-full lg:w-[293px] h-[52px] py-2 px-[15px] rounded-xl bg-[#4CC6CB] hover:bg-[#33BDC4]  transition-all text-white mr-2 '>ثبت استاد جدید</button>
                     </div>
                 </div>
 
@@ -508,6 +561,35 @@ const AddNewProfessor = () => {
                     <input type="text" placeholder='ریاضی 1' value={courseName} onChange={e => setCourseName(e.target.value)}
                         className='mt-2.5 mb-6 h-[52px] py-3 px-5 rounded-lg border border-solid border-[#A7A9AD] w-full' />
                     <button onClick={addNewcourse} className='w-full h-[52px] rounded-lg   bg-[#4CC6CB] hover:bg-[#33BDC4] transition-all text-white font-bold text-base'>افزودن</button>
+                </div>
+
+            </Modal>
+            <Modal
+                className="font-iransans AddProfessor"
+                open={professorAddedModal}
+                onOk={() => setProfessorAddedModal(false)}
+                onCancel={() => setProfessorAddedModal(false)}
+                footer={[]}
+                width={540}
+
+            >
+                <div className=''>
+                    <div className='flex flex-col items-center justify-center h-full gap-8 mt-7'>
+                        <div>
+                            <div>
+                                <img className='w-36 h-36 lg:h-[186px] lg:w-[186px]' src={SuccessAdd} alt="" />
+                            </div>
+                        </div>
+                        <div className='text-sm w-full lg:text-base '>
+                            <p className='text-black font-normal mb-10'>درخواست افزودن استاد {professorFirstname} {professorLastname} ثبت شد!</p>
+                            <button onClick={() => {
+                                setProfessorAddedModal(false);
+                                navigate("/poll/most-popular");
+
+                            }} className=' w-full h-[40px] text-white bg-[#4CC6CB] font-iransans flex-row-reverse rounded-lg'>تایید</button>
+
+                        </div>
+                    </div>
                 </div>
 
             </Modal>

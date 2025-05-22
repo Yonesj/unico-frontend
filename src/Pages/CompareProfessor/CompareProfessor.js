@@ -160,9 +160,12 @@ const CompareProfessor = () => {
         }
     }, [professorDetails]);
 
-    const handleRemove = (id) => {
-        setShowList(prev => prev.filter(item => item.id !== id));
+    const handleRemove = (target) => {
+
+        setRelatedProfessors(prev => [...prev, target]);
+        setShowList(prev => prev.filter(item => item.id !== target.id));
         setId(myid);
+
     };
     const [addProfessorModal, setAddProfessorModal] = useState(false);
 
@@ -262,19 +265,18 @@ const CompareProfessor = () => {
 
             <div className=' w-full bg-white  px-[5%] font-iransansfa   lg:px-8  flex flex-col gap-9 lg:gap-0  rounded-xl p-8 '>
                 <h5 className='font-medium text-sm lg:text-base lg:mb-12'>مقایسه اساتید</h5>
-                <div className='flex flex-wrap h-[1020px] lg:h-[1120px] overflow-hidden'>
+                <div className='flex flex-wrap h-[980px] md:h-[1030px] lg:h-[1100px] overflow-hidden'>
                     {showList.map((item, index) => {
                         const isLastItem = index === showList.length - 1;
-
                         return (
                             <div key={item.id} // Always add a key when mapping
                                 className={`w-1/2 lg:w-1/3 xl:w-1/4 py-3 ${!isLastItem ? 'border-l' : ''
                                     } border-[#F0F0F0] flex flex-col items-center`}>
-                                <button onClick={() => handleRemove(item.id)} className='w-11/12'>
+                                {item.id != myid ? (<button onClick={() => handleRemove(item)} className='w-11/12'>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                         <path d="M17.9995 6L5.99951 18M5.99951 6L17.9995 18" stroke="#7A7E83" stroke-width="1.5" strokeLinecap="round" strokeLinejoin="round" />
                                     </svg>
-                                </button>
+                                </button>)  : (<div className='h-6'></div>)}
                                 <div className='md:hidden mb-6'>
                                     <Progresswheel
                                         score={
@@ -320,7 +322,7 @@ const CompareProfessor = () => {
                                         })}
                                     </div>
                                 </div>
-                                <div className='w-full  text-center p-2 md:p-6  bg-[#FAFAFA] border border-[#F0F0F0] mt-10 border-r-0'>
+                                <div className={`w-full  text-center p-2 md:p-6  bg-[#FAFAFA] border border-[#F0F0F0] mt-10 border-r-0 `}>
                                     <p className='mb-5'>{item?.reviews_count} نظر</p>
                                     <div className='flex flex-col gap-6'>
                                         <div className='flex flex-col gap-3  items-start'>
@@ -407,6 +409,7 @@ const CompareProfessor = () => {
                                 <div onClick={() => {
                                     setId(item.id);
                                     setAddProfessorModal(false);
+                                    setRelatedProfessors(relatedProfessors.filter((temp) => item.id != temp.id));
 
 
                                 }}

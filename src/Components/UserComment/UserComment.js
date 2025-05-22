@@ -23,6 +23,8 @@ function convertToShamsi(gregorianDateStr) {
 
 const UserComment = ({ comment }) => {
 
+    console.log(comment);
+    
     return (
         <div className='w-full pb-6  lg:p-6  rounded-xl font-iransansfa '>
             <div className='flex justify-between items-center'>
