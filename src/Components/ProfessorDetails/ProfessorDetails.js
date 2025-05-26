@@ -1,4 +1,4 @@
-import React, { useContext, useState, useRef, useEffect } from 'react'
+import React, { useContext, useState, useRef, useEffect ,useCallback } from 'react'
 import Progresswheel from '../Progresswheel'
 import profesorImg from "../../Assets/images/Rectangle 18.png"
 import { Link, useParams } from 'react-router-dom'
@@ -65,38 +65,38 @@ const ProfessorDetails = () => {
     const [courseID, setCourseID] = useState("all");
     const [ordering, setOrdering] = useState("created_at");
 
-    useEffect(() => {
-        const delayDebounce = setTimeout(() => {
+    // useEffect(() => {
+    //     const delayDebounce = setTimeout(() => {
 
 
-            const fetchProfessors = async () => {
-                try {
-                    const params = new URLSearchParams({ search: professorName });
-                    const res = await fetch(`http://localhost:8000/professor-reviewer/professors/?${params.toString()}`, {
-                        method: "GET",
-                        headers: {
-                            "Accept-Language": "fa",
-                            "Content-Type": "application/json",
-                        },
-                    });
+    //         const fetchProfessors = async () => {
+    //             try {
+    //                 const params = new URLSearchParams({ search: professorName });
+    //                 const res = await fetch(`http://localhost:8000/professor-reviewer/professors/?${params.toString()}`, {
+    //                     method: "GET",
+    //                     headers: {
+    //                         "Accept-Language": "fa",
+    //                         "Content-Type": "application/json",
+    //                     },
+    //                 });
 
-                    const data = await res.json();
-                    if (res.ok) {
-                        setProfessorList(data);
-                    } else {
-                        throw new Error(Object.values(data)[0] || "An error occurred");
-                    }
-                } catch (err) {
-                    console.error("Error:", err.message);
-                }
+    //                 const data = await res.json();
+    //                 if (res.ok) {
+    //                     setProfessorList(data);
+    //                 } else {
+    //                     throw new Error(Object.values(data)[0] || "An error occurred");
+    //                 }
+    //             } catch (err) {
+    //                 console.error("Error:", err.message);
+    //             }
 
-            };
+    //         };
 
-            fetchProfessors();
-        }, 500);
+    //         fetchProfessors();
+    //     }, 500);
 
-        return () => clearTimeout(delayDebounce);
-    }, [professorName]);
+    //     return () => clearTimeout(delayDebounce);
+    // }, [professorName]);
     useEffect(() => {
         const fetchProfessors = async () => {
             try {
@@ -176,9 +176,61 @@ const ProfessorDetails = () => {
     }, [id, courseID, ordering]);
 
     const allComments = Array(professorComments.count); // Replace with actual data
+    function debounce(fn, delay) {
+        let timer;
+        return (...args) => {
+            clearTimeout(timer);
+            timer = setTimeout(() => fn(...args), delay);
+        };
+    }
+
+
+    const fetchProfessors = async (name) => {
+        try {
+            const params = new URLSearchParams({ search: name });
+            const res = await fetch(`http://localhost:8000/professor-reviewer/professors/?${params.toString()}`, {
+                method: "GET",
+                headers: {
+                    "Accept-Language": "fa",
+                    "Content-Type": "application/json",
+                },
+            });
+
+            const data = await res.json();
+            if (res.ok) {
+                setProfessorList(data);
+            } else {
+                throw new Error(Object.values(data)[0] || "An error occurred");
+            }
+        } catch (err) {
+            console.error("Error:", err.message);
+        } finally {
+        }
+    };
 
 
 
+    const debouncedFetch = useCallback(
+        debounce((name) => {
+            if (name.trim()) {
+                fetchProfessors(name);
+                setSearchDropdown(true);
+            }
+            else
+                setSearchDropdown(false)
+
+
+        }, 500),
+        []
+
+    );
+
+    const handleInputChange = (e) => {
+        const name = e;
+        setProfessorName(name);
+        debouncedFetch(name); // only runs after 500ms of inactivity
+
+    };
 
 
 
@@ -217,9 +269,10 @@ const ProfessorDetails = () => {
                         onClick={() => setSearchDropdown(prev => !prev)}>  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <path d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" stroke="#A7A9AD" stroke-width="1.5" strokeLinecap="round" stroke-linejoin="round" />
                         </svg></button>
-                    <input onFocus={() => setSearchDropdown(true)}
-                        onBlur={() => setSearchDropdown(false)}
-                        onChange={(e) => setProfessorName(e.target.value)}
+                    <input
+                        // onFocus={() => setSearchDropdown(true)}
+                        // onBlur={() => setSearchDropdown(false)}
+                        onChange={(e) => handleInputChange(e.target.value)}
                         value={professorName}
 
 
@@ -237,7 +290,7 @@ const ProfessorDetails = () => {
 
                     </div>
 
-                    <div className={`h-[198px] poll-container w-full  lg:w-[375px] rounded-xl outline-none  bg-white absolute  border border-[#DDD] p-2  transition-all text-nowrap opacity-0 text-xs lg:text-sm overflow-y-auto overflow-x-hidden rounded-b-2xl overscroll-contain  ${searchDropdown ? "opacity-100 z-[53]" : "pointer-events-none"} top-[60px] lg:top-16 left-0`}>
+                    <div className={`max-h-[198px] poll-container w-full  lg:w-[375px] rounded-xl outline-none  bg-white absolute  border border-[#DDD] p-2  transition-all text-nowrap opacity-0 text-xs lg:text-sm overflow-y-auto overflow-x-hidden rounded-b-2xl overscroll-contain  ${searchDropdown ? "opacity-100 z-[53]" : "pointer-events-none"} top-[60px] lg:top-16 left-0`}>
                         {professorList.map((professor, index) => {
                             return (
                                 <div
@@ -324,7 +377,7 @@ const ProfessorDetails = () => {
                     />
                 </div>
                 <div className='  bg-white flex justify-center lg:w-[80%] rounded-xl  overflow-hidden '>
-                    <div className='h-[470px] lg:h-full overflow-hidden w-full sm:w-8/12 lg:w-full   border-2 border-solid border-white relative flex flex-col gap-9 lg:gap-0 xl:gap-32 lg:pr-[3%] lg:flex-row  rounded-xl py-10 ' >
+                    <div className='h-[480px] lg:h-full overflow-hidden w-full sm:w-8/12 lg:w-full   border-2 border-solid border-white relative flex flex-col gap-9 lg:gap-0 xl:gap-32 lg:pr-[3%] lg:flex-row  rounded-xl py-10 ' >
                         <div className='flex flex-col items-center px-3 md:px-7 gap-8 lg:gap-0'>
                             <div className='flex gap-2 md:gap-6 w-full lg:w-full '>
                                 <div className='w-[70px] h-[70px] lg:w-[100px] lg:h-[100px]'>
@@ -415,6 +468,9 @@ const ProfessorDetails = () => {
 
                                 <Link onClick={() => setAddProfessorSchedule(true)} className="text-[#EFB036] underline underline-offset-[6px] text-nowrap" to="">برنامه حضور در دفتر</Link>
                             </div>
+                            <div>
+                                <Link to={"revisions"} className='text-[#959595] mb-2 sm:hidden '>درخواست اصلاح اطلاعات</Link>
+                            </div>
                         </div>
                         <div className='absolute left-28 top-7 hidden lg:inline-block'>
                             <svg xmlns="http://www.w3.org/2000/svg" className='hidden lg:inline-block w-[77px] h-[77px] md:w-[137px] md:h-[137px] lg:w-[157px] lg:h-[157px]' viewBox="0 0 137 137" fill="none">
@@ -439,6 +495,7 @@ const ProfessorDetails = () => {
                     </div>
                 </div>
             </div>
+
             <div className='flex flex-col xl:flex-row w-full mt-2.5 gap-2.5'>
                 <div className='h-[350px] w-full xl:w-1/2 py-7 pb-11 px-0 lg:px-10 items-center bg-white rounded-xl text-[#717171] text-sm flex flex-col gap-7'>
                     <div className='h-[270px] w-11/12 sm:w-auto md:w-[70%]   xl:w-10/12 flex flex-col  justify-between text-nowrap'>
@@ -501,7 +558,7 @@ const ProfessorDetails = () => {
 
                         </div>
                     </div>
-                    <div className='h-[169px] px-3 sm:px-9 py-6 w-full flex flex-col justify-center gap-5 items-center bg-white rounded-xl'>
+                    <div className='h-[169px] px-3 sm:pr-10 py-6 w-full flex flex-col justify-center items-center xl:items-start gap-5  bg-white rounded-xl'>
                         <div>
                             <p className='text-[#717171] text-sm mb-6'>اساتید مرتبط</p>
                             <div className='flex gap-10 sm:gap-12 xl:gap-4 text-xs sm:text-sm md:text-bace'>
@@ -632,6 +689,7 @@ const ProfessorDetails = () => {
                                     آپلود برنامه حضور در دفتر
                                 </Button>
                             </Upload>
+                            <p className='text-[#929292] mt-2 text-xs'>حداکثر حجم ارسالی 4 مگابایت میباشد</p>
 
                         </div>
                     </div>

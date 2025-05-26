@@ -23,14 +23,13 @@ function convertToShamsi(gregorianDateStr) {
 
 const UserComment = ({ comment }) => {
 
-    console.log(comment);
     
     return (
         <div className='w-full pb-6  lg:p-6  rounded-xl font-iransansfa '>
             <div className='flex justify-between items-center'>
                 <div className='flex  gap-2 lg:gap-4 items-center'>
                     <div className='w-8 h-8 text-xs lg:h-11 lg:w-11 pt-0.5 bg-[#92DEAC] rounded-[10px] flex justify-center items-center font-semibold text-black lg:text-base'>
-                        4.9
+                        {comment?.overall}
                     </div>
                     <p className='text-[#1B1B1B] text-[13px] lg:text-base  font-semibold'>{comment?.course?.name}</p>
                 </div>

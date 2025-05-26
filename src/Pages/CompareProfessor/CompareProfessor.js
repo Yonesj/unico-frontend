@@ -67,11 +67,15 @@ const CompareProfessor = () => {
 
 
     const [relatedProfessors, setRelatedProfessors] = useState([]);
+    const [query, setQuery] = useState("");
 
     useEffect(() => {
-        const fetchProfessors = async () => {
-            try {
-                const res = await fetch(`http://localhost:8000/professor-reviewer/professors/${id}/`, {
+         const delayDebounce = setTimeout(() => {
+
+
+            const fetchProfessors = async () => {
+                 try {
+                const res = await fetch(`http://localhost:8000/professor-reviewer/professors/compare/?search=${query}`, {
                     method: "GET",
                     headers: {
                         "Accept-Language": "fa",
@@ -82,7 +86,7 @@ const CompareProfessor = () => {
                 const data = await res.json();
 
                 if (res.ok) {
-                    setRelatedProfessors(data?.related_professors);
+                    setRelatedProfessors(data);
                 } else {
                     throw new Error(Object.values(data)[0] || "An error occurred");
                 }
@@ -90,13 +94,16 @@ const CompareProfessor = () => {
             } catch (err) {
                 console.error("Error:", err.message);
             }
-            // finally {
-            //     console.log("finally");
-            // }
-        };
 
-        fetchProfessors();
-    }, []);
+            };
+
+            fetchProfessors();
+        }, 500);
+
+        return () => clearTimeout(delayDebounce);
+
+
+    }, [query]);
 
     const [professorName, setProfessorName] = useState("");
 
@@ -399,12 +406,12 @@ const CompareProfessor = () => {
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <path d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" stroke="#A7A9AD" stroke-width="1.5" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
-                        <input className='w-full' type="text" placeholder='نام استاد یا درس را وارد کنید' />
+                        <input className='w-full' onChange={(e)=>setQuery(e.target.value)} type="text" placeholder='نام استاد یا درس را وارد کنید' />
 
                     </div>
                     <p className='text-right my-5 text-sm font-normal text-[#737373]'>مرتبط ترین استادان برای مقایسه</p>
                     <div className='w-full flex flex-wrap gap-[18px] h-[400px] overflow-scroll'>
-                        {relatedProfessors.map((item) => {
+                        {relatedProfessors?.map((item) => {
                             return (
                                 <div onClick={() => {
                                     setId(item.id);

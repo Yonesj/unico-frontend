@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext, useEffect, useCallback } from 'react'
 import PollImg from "../../Assets/images/16393 1 (1).svg"
 import { NavLink, Outlet, useNavigate } from 'react-router-dom'
 import "./Poll.css"
@@ -6,6 +6,14 @@ import MasterCard from '../../Components/MasterCard/MasterCard'
 import { Select, Space } from 'antd';
 import SidebarContext from "../../Components/SidbarContext/SidbarContext"; // adjust path as needed
 import ProfessorProf from "../../Assets/images/Rectangle 17.png"
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+
+
 const CustomArrowIcon = () => (
     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g id="chevron-down">
@@ -24,42 +32,61 @@ const Poll = () => {
     const [loading, setLoading] = useState(false);
 
 
-    useEffect(() => {
-        const delayDebounce = setTimeout(() => {
+
+    function debounce(fn, delay) {
+        let timer;
+        return (...args) => {
+            clearTimeout(timer);
+            timer = setTimeout(() => fn(...args), delay);
+        };
+    }
 
 
-            const fetchProfessors = async () => {
-                setLoading(true);
-                try {
-                    const params = new URLSearchParams({ search: professorName });
-                    const res = await fetch(`http://localhost:8000/professor-reviewer/professors/?${params.toString()}`, {
-                        method: "GET",
-                        headers: {
-                            "Accept-Language": "fa",
-                            "Content-Type": "application/json",
-                        },
-                    });
+    const fetchProfessors = async (name) => {
+        try {
+            const params = new URLSearchParams({ search: name });
+            const res = await fetch(`http://localhost:8000/professor-reviewer/professors/?${params.toString()}`, {
+                method: "GET",
+                headers: {
+                    "Accept-Language": "fa",
+                    "Content-Type": "application/json",
+                },
+            });
 
-                    const data = await res.json();
-                    if (res.ok) {
-                        setProfessorList(data);
-                    } else {
-                        throw new Error(Object.values(data)[0] || "An error occurred");
-                    }
-                } catch (err) {
-                    console.error("Error:", err.message);
-                }
-                finally {
-                    setLoading(false);
-                }
-            };
+            const data = await res.json();
+            if (res.ok) {
+                setProfessorList(data);
+            } else {
+                throw new Error(Object.values(data)[0] || "An error occurred");
+            }
+        } catch (err) {
+            console.error("Error:", err.message);
+        } finally {
+        }
+    };
 
-            fetchProfessors();
-        }, 500);
+    // Debounced fetch function
+    const debouncedFetch = useCallback(
+        debounce((name) => {
+            if (name.trim()) {
+                fetchProfessors(name);
+                setSearchDropdown(true);
+            }
+            else
+                setSearchDropdown(false)
 
-        return () => clearTimeout(delayDebounce);
-    }, [professorName]);
 
+        }, 500),
+        []
+
+    );
+
+    const handleInputChange = (e) => {
+        const name = e;
+        setProfessorName(name);
+        debouncedFetch(name); // only runs after 500ms of inactivity
+
+    };
 
 
 
@@ -109,9 +136,9 @@ const Poll = () => {
                             <path d="M21 21.5L16.65 17.15M19 11.5C19 15.9183 15.4183 19.5 11 19.5C6.58172 19.5 3 15.9183 3 11.5C3 7.08172 6.58172 3.5 11 3.5C15.4183 3.5 19 7.08172 19 11.5Z" stroke="#A7A9AD" stroke-width="1.5" strokeLinecap="round" stroke-linejoin="round" />
                         </svg>
                         <input
-                            onChange={(e) => setProfessorName(e.target.value)}
-                            onFocus={() => setSearchDropdown(true)}
-                            onBlur={() => setSearchDropdown(false)}
+                            onChange={(e) => handleInputChange(e.target.value)}
+                            // onFocus={() => setSearchDropdown(true)}
+                            // onBlur={() => setSearchDropdown(false)}
                             className='w-full'
                             type="text"
                             placeholder='نام استاد یا درس را وارد کنید'
@@ -119,8 +146,8 @@ const Poll = () => {
 
 
                     </div>
-                    <div className={`h-[198px] w-[282px] sm:w-[312px] md:w-[470px] lg:w-[574px] bg-white absolute  left-[30px] border border-[#DDD] py-3 pl-2.5 pr-4 transition-all text-nowrap opacity-0 text-xs lg:text-sm overflow-y-auto overflow-x-hidden rounded-b-2xl overscroll-contain ${searchDropdown ? "opacity-100 z-10" : "pointer-events-none"}`}>
-                        {professorList.map((professor, index) => {
+                    <div className={`max-h-[198px] w-[282px] sm:w-[312px] md:w-[470px] lg:w-[574px] bg-white absolute  left-[30px] border border-[#DDD] py-3 pl-2.5 pr-4 transition-all text-nowrap opacity-0 text-xs lg:text-sm overflow-y-auto overflow-x-hidden rounded-b-2xl overscroll-contain ${searchDropdown ? "opacity-100 z-10" : "pointer-events-none"}`}>
+                        {professorList.length ? professorList.map((professor, index) => {
                             return (
 
                                 <div onMouseDown={(e) => {
@@ -163,7 +190,7 @@ const Poll = () => {
 
                                 </div>
                             )
-                        })}
+                        }) : <h1 className='text-gray-400 text-xs'>استادی با این نام یا درس یافت نشد.</h1>}
 
                     </div>
                     <div className='flex justify-end'>
@@ -187,10 +214,12 @@ const Poll = () => {
                                 options={
 
                                     [
-                                        { value: 'popular', label: 'محبوب ترین اساتید' },
-                                        { value: 'most-visited', label: 'پربازدید ترین اساتید' },
+                                        { value: 'most-popular', label: 'محبوب ترین اساتید' },
+                                        { value: 'most-viewed', label: 'پربازدید ترین اساتید' },
                                         { value: 'last-comments', label: 'آخرین نظرات' },
                                     ]}
+                                onChange={(e) => navigate(`/poll/${e}`)}
+
                             />
                         </Space>
                     </div>

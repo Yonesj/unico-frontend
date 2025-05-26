@@ -201,8 +201,8 @@ const AddNewProfessor = () => {
                     "proposed_courses": professorCourses.map(course => course.name),
                     "office_number": newOfficeNumber,
                     "telegram_account": newTelegram,
-                    "email": newEmail,
-                    // "website_url": newWebsite,
+                    "email": newEmail ? newEmail : "",
+                    "website_url": newWebsite,
                     "office_location": newOfficeLocation,
                     "profile_image": null
                 })
@@ -448,7 +448,7 @@ const AddNewProfessor = () => {
                                     onClick={() => setCoursesDropdown(prev => !prev)}>  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                                         <path d="M14 14L11.1 11.1M12.6667 7.33333C12.6667 10.2789 10.2789 12.6667 7.33333 12.6667C4.38781 12.6667 2 10.2789 2 7.33333C2 4.38781 4.38781 2 7.33333 2C10.2789 2 12.6667 4.38781 12.6667 7.33333Z" stroke="#7A7E83" stroke-width="1.5" strokeLinecap="round" stroke-linejoin="round" />
                                     </svg></button>
-                                <div className={`h-[198px] poll-container w-full  rounded-xl outline-none  bg-white absolute  border border-[#DDD] p-2  transition-all text-nowrap opacity-0 text-xs lg:text-sm overflow-y-auto overflow-x-hidden rounded-b-2xl  ${coursesDropdown ? "opacity-100 z-[53]" : "pointer-events-none"} -bottom-52 left-0`}>
+                                <div className={`h-[198px] poll-container w-full overscroll-contain  rounded-xl outline-none  bg-white absolute  border border-[#DDD] p-2  transition-all text-nowrap opacity-0 text-xs lg:text-sm overflow-y-auto overflow-x-hidden rounded-b-2xl  ${coursesDropdown ? "opacity-100 z-[53]" : "pointer-events-none"} -bottom-52 left-0`}>
                                     {courseList.map((course, index) => {
                                         return (
                                             <div
@@ -568,7 +568,10 @@ const AddNewProfessor = () => {
                 className="font-iransans AddProfessor"
                 open={professorAddedModal}
                 onOk={() => setProfessorAddedModal(false)}
-                onCancel={() => setProfessorAddedModal(false)}
+                onCancel={() => {
+                    setProfessorAddedModal(false);
+                    navigate("/poll/most-popular");
+                }}
                 footer={[]}
                 width={540}
 

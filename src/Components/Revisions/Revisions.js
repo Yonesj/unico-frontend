@@ -216,6 +216,7 @@ const Revisions = () => {
     };
 
     const [courseName, setCourseName] = useState('');
+    const [newCourseId, setNewCourseId] = useState('');
 
 
     const newCourse = {
@@ -289,11 +290,14 @@ const Revisions = () => {
                 body: JSON.stringify({
                     "professor": id,
                     "faculty": newFaculty,
-                    "proposed_courses": professorCourses.map(course => course.name),
+                    "proposed_course_ids": [
+                        19,
+                        1
+                    ],
                     "office_number": newOfficeNumber,
                     "telegram_account": newTelegram,
                     "email": newEmail,
-                    // "website_url": newWebsite,
+                    "website_url": newWebsite,
                     "office_location": newOfficeLocation,
                     "profile_image": null,
                     "schedule_image": null
@@ -308,6 +312,38 @@ const Revisions = () => {
                 setProfessorRevisionModal(true);
 
 
+
+            } else {
+                throw new Error(Object.values(data)[0] || "An error occurred");
+            }
+
+        } catch (err) {
+            console.error("Error:", err.message);
+        } finally {
+            console.log("finally");
+        }
+    };
+    const submitCourse = async () => {
+        try {
+            const res = await fetch(`http://localhost:8000/professor-reviewer/courses/`, {
+                method: "POST",
+                headers: {
+                    "Accept-Language": "fa",
+                    "Content-Type": "application/json",
+                    "Authorization": `JWT ${JSON.parse(localStorage.getItem("AccessToken"))}`
+                },
+                body: JSON.stringify({
+                    "professor": id,
+                    "name": courseName
+                })
+            });
+
+            const data = await res.json();
+
+            if (res.ok) {
+                console.log("ok");
+                setNewCourseId(data.id)
+                addNewcourse();
 
             } else {
                 throw new Error(Object.values(data)[0] || "An error occurred");
@@ -428,7 +464,7 @@ const Revisions = () => {
                     </div>
                     <div className='w-full flex flex-col lg:flex-row mb-20 gap-9 lg:gap-0 justify-between'>
                         <div className='flex  flex-col lg:flex-row gap-2.5  lg:gap-8 w-full lg:w-1/2  items-center'>
-                            <label className='w-full  lg:w-[82px] font-normal text-sm lg:text-base' htmlFor="">دانشکده <span>*</span>  :</label>
+                            <label className='w-full  lg:w-[82px] font-normal text-sm lg:text-base' htmlFor="">دانشکده <span className='text-[#E03B3A]'>*</span>  :</label>
                             <div className='w-full lg:w-3/5'>
                                 <Select
                                     className='border  border-gray-500 border-solid h-10 font-iransansfa text-xs lg:text-base' // Responsive font size
@@ -445,7 +481,7 @@ const Revisions = () => {
                             </div>
                         </div>
                         <div className='flex  flex-col lg:flex-row gap-2.5  lg:gap-8 w-full lg:w-1/2 items-center relative'>
-                            <label className='w-full text-sm lg:text-base lg:font-normal lg:text-left  lg:w-[130px]' htmlFor="">دروس <span>*</span> :</label>
+                            <label className='w-full text-sm lg:text-base lg:font-normal lg:text-left  lg:w-[130px]' htmlFor="">دروس <span className="text-[#E03B3A]">*</span> :</label>
                             <div style={{ direction: "ltr" }} className='relative w-full lg:w-3/5'>
                                 <div style={{ direction: "rtl" }} className='w-full text-sm flex-wrap pl-8   gap-2 lg:text-base flex items-center min-h-10 py-1.5 px-2 rounded-md  bg-white border border-solid border-[#D9D9D9]'>
                                     {professorCourses?.map((course) => {
@@ -468,12 +504,13 @@ const Revisions = () => {
                                     </svg>
                                     <p>افزودن درس</p>
                                 </button>
-                                <button className='cursor-pointer absolute left-2 top-3' onBlur={() => setSearchDropdown(false)}
+                                <button className='cursor-pointer absolute left-2 top-3' onBlur={() => setCoursesDropdown(false)}
 
                                     onClick={() => setCoursesDropdown(prev => !prev)}>  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                                         <path d="M14 14L11.1 11.1M12.6667 7.33333C12.6667 10.2789 10.2789 12.6667 7.33333 12.6667C4.38781 12.6667 2 10.2789 2 7.33333C2 4.38781 4.38781 2 7.33333 2C10.2789 2 12.6667 4.38781 12.6667 7.33333Z" stroke="#7A7E83" stroke-width="1.5" strokeLinecap="round" stroke-linejoin="round" />
-                                    </svg></button>
-                                <div className={`h-[198px] poll-container w-full  rounded-xl outline-none  bg-white absolute  border border-[#DDD] p-2  transition-all text-nowrap opacity-0 text-xs lg:text-sm overflow-y-auto overflow-x-hidden rounded-b-2xl  ${coursesDropdown ? "opacity-100 z-[53]" : "pointer-events-none"} -bottom-52 left-0`}>
+                                    </svg>
+                                </button>
+                                <div className={`h-[198px] poll-container w-full overscroll-contain  rounded-xl outline-none  bg-white absolute  border border-[#DDD] p-2  transition-all text-nowrap opacity-0 text-xs lg:text-sm overflow-y-auto overflow-x-hidden rounded-b-2xl  ${coursesDropdown ? "opacity-100 z-[53]" : "pointer-events-none"} -bottom-52 left-0`}>
                                     {courseList.map((course, index) => {
                                         return (
                                             <div
@@ -482,7 +519,7 @@ const Revisions = () => {
                                             >
 
 
-                                                <button onClick={() => addCourse(course)}
+                                                <button onMouseDown={() => addCourse(course)}
                                                     className="font-semibold text-[#464646] whitespace-nowrap">
                                                     {course.name}
                                                 </button>
@@ -585,7 +622,7 @@ const Revisions = () => {
                     <p>عنوان درس</p>
                     <input type="text" placeholder='ریاضی 1' value={courseName} onChange={e => setCourseName(e.target.value)}
                         className='mt-2.5 mb-6 h-[52px] py-3 px-5 rounded-lg border border-solid border-[#A7A9AD] w-full' />
-                    <button onClick={addNewcourse} className='w-full h-[52px] rounded-lg   bg-[#4CC6CB] hover:bg-[#33BDC4] transition-all text-white font-bold text-base'>افزودن</button>
+                    <button onClick={submitCourse} className='w-full h-[52px] rounded-lg   bg-[#4CC6CB] hover:bg-[#33BDC4] transition-all text-white font-bold text-base'>افزودن</button>
                 </div>
 
             </Modal>

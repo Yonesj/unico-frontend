@@ -1,6 +1,6 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import PollImg from "../../Assets/images/16393 1 (1).svg"
-import { NavLink, Outlet } from 'react-router-dom'
+import { NavLink, Outlet, useParams, useNavigate , useLocation } from 'react-router-dom'
 import MasterCard from '../../Components/MasterCard/MasterCard'
 import { Select, Space } from 'antd';
 import SidebarContext from "../../Components/SidbarContext/SidbarContext"; // adjust path as needed
@@ -16,9 +16,19 @@ const CustomArrowIcon = () => (
 );
 
 const CommentSubmitted = () => {
+
     const { isSidebarOpen, setIsSidebarOpen } = useContext(SidebarContext);
     const [searchDropdown, setSearchDropdown] = useState(false);
+    const id = useParams().professor;
+    console.log(id);
+    const navigate = useNavigate();
+  const location = useLocation();
 
+    useEffect(() => {
+        if (!location.state?.fromSubmit) {
+            navigate("/poll/most-popular");
+        }
+    }, [location, navigate]);
 
 
     return (

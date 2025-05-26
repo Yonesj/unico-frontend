@@ -106,6 +106,10 @@ const PostComment = () => {
 
       if (res.ok) {
         console.log("ok");
+        if (res.ok) {
+
+          navigate("submitted", { state: { fromSubmit: true } });
+        }
 
       } else {
         throw new Error(Object.values(data)[0] || "An error occurred");
