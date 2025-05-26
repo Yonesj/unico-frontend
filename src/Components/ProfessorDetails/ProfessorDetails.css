@@ -1,0 +1,17 @@
+.professor-details .ant-modal-content
+{
+    padding-left: 0 ;
+    padding-right: 0;
+    height: 70vh;
+}
+.professor-details .ant-modal-body
+{
+    
+    height: 100%;
+}
+
+.AddProfessor .ant-modal-content
+{
+    
+    height: 390px ; 
+}
