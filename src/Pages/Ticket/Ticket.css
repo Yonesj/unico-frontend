@@ -1,0 +1,13 @@
+.ticket-header-ul .active
+{
+    color: #00ADB5;
+    border-bottom: 3px solid #00ADB5;
+    padding-bottom: 13.5px;
+    border-radius: 0;
+    font-weight: 600;
+
+}
+.ticket-header-ul .active:hover
+{
+    background-color: transparent ;
+}

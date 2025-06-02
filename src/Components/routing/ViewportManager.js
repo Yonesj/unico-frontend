@@ -15,7 +15,7 @@ const ViewportManager = () => {
   );
 
   const content = isDesktop
-    ? "width=1200"
+    ? "width=device-width, initial-scale=1.0"
     : "width=device-width, initial-scale=1.0";
 
   return (
