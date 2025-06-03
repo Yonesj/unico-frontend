@@ -278,7 +278,7 @@ const deleteSchedule = () => {
 
   return (
 
-    <div className="h-[80%] min-h-[700px] ">
+    <div className="h-[70%]  ">
       <FullCalendar
         ref={calendarRef}
 

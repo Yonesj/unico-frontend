@@ -76,7 +76,7 @@ export default function Schedule({
 
 
   return (
-    <div className="flex h-[80%] min-h-[700px] w-full overflow-hidden">
+    <div className="flex  w-full overflow-hidden">
       <div className="flex flex-col sticky right-0 z-10 mt-[22px] bg-[#FFFFFF]  min-w-[40px] text-sm text-gray-500 font-iransans">
         {Array.from({ length: 13 }).map((_, i) => (
           <div key={i} className="custom-height px-2 py-1    bg-[#FFFFFF] ">

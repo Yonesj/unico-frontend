@@ -49,7 +49,7 @@ const SchedulesPage = () => {
   }, [currentScheduleId, schedules]);
 
   return (
-    <div className=" flex-wrap grid grid-cols-4 bg-[#F1F5F7] gap-2 w-full justify-center  text-black font-iransans  h-[fit] ">
+    <div className="  flex-wrap grid grid-cols-4 bg-[#F1F5F7] gap-2 w-full justify-center  text-black font-iransans  h-[fit] ">
       <div className={`flex  grow flex-col   space-y-5 rounded-xl bg-[#ffffff] p-4 backdrop-blur ${
     courseListShow ? "col-span-3" : "col-span-4"
   } `}>
