@@ -15,6 +15,9 @@ import ProtectedRoute from "./Components/routing/ProtectedRoute";
 import UnitWrapper from "./Components/routing/unitWrapper";
 import Index from "./Pages/Index";
 import CoursesList from "./Pages/Courses/Courses";
+
+import Notification from "./Pages/Notification/Notification"
+
 import ProfessorsCard from "./Components/ProfessorsCard/ProfessorsCard";
 import ProfessorDetails from "./Components/ProfessorDetails/ProfessorDetails";
 import PostComment from "./Pages/PostComment/PostComment";
@@ -43,11 +46,12 @@ const routes = [
     { path: "/chat/:id", element: <ChatPage /> },
     
     { path: "/login", element: <Login /> },
+    { path: "/Notification", element: <Notification /> },
     { path: "/sign-up", element: <SignUp /> },
     { path: "*", element: <NotFound /> },
     { path: "/reset-password", element: <Password /> },
     {
-        path: "/unit/*", element: <ProtectedRoute><UnitWrapper /></ProtectedRoute>, children: [
+        path: "/unit/*", element: <ProtectedRoute><UnitWrapper /></ProtectedRoute>,  children: [
             { path: "courses", element: <Courses /> },
             { path: "schedule", element: <Schedules /> },
             { path: "exams", element: <Exams /> },

@@ -1,3 +1,4 @@
+
 // ViewportManager.jsx
 import { useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet";
@@ -26,3 +27,4 @@ const ViewportManager = () => {
 };
 
 export default ViewportManager;
+
