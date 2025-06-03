@@ -25,9 +25,14 @@ import Revisions from "./Components/Revisions/Revisions";
 import AddNewProfessor from "./Components/AddNewProfessor/AddNewProfessor";
 import CompareProfessor from "./Pages/CompareProfessor/CompareProfessor";
 import Home from "./Pages/Home/Home";
+
 import Ticket from "./Pages/Ticket/Ticket";
 import NewTicket from "./Pages/Ticket/NewTicket/NewTicket";
 import ChatPage from "./Pages/Ticket/Chat/Chat";
+
+import AboutUs from "./Pages/AboutUs/AboutUs";
+import Rules from "./Pages/Rules/Rules";
+
 
 
 
@@ -113,6 +118,8 @@ const routes = [
             ]
     },
         { path: "/home", element: <Home/> },
+        { path: "/about-us", element: <AboutUs/> },
+        { path: "/rules", element: <Rules/> },
 
 
 
