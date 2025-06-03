@@ -6,7 +6,7 @@ import IsfahanSvg from "../../Assets/images/University-of-Isfahan-Logo(4) 1.svg"
 import "./GolestanLoginModal.css";
 import { useToast } from "../../Components/dls/toast/ToastService";
 import Spinner from "../../Components/spinner";
-
+import Animation from"../Animation/Animation"
 const GolestanLoginModal = ({ onOk, onClose, open }) => {
   const [stuID, setStuID] = useState("");
   const [stuPass, setStuPass] = useState("");
@@ -111,7 +111,7 @@ const GolestanLoginModal = ({ onOk, onClose, open }) => {
             onClick={handleLogin}
             disabled={!isValidNum || !isValidPass || loading}
           >
-            {loading ? <Spinner size="lg" /> : "ورود"}
+          {loading ? <Animation /> : "ورود"}
           </button>
         </div>
       </div>
