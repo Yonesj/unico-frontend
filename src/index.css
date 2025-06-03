@@ -12,8 +12,12 @@
 .body {
   max-width: 1800px;
   margin: 0 auto;
+
 }
 
+.notif-max-height {
+  max-height: calc(100dvh - 200px);
+}
 
 
 .course-list{
