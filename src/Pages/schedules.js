@@ -2,34 +2,62 @@ import React, { useEffect, useState } from "react";
 import Schedule from "../Components/schedule/Schedule";
 import ScheduleTabs from "../Components/schedule/ScheduleTabs";
 import CourseSelector from "../Components/schedule/CourseSelector";
+import { useToast } from "../Components/dls/toast/ToastService";
 
 
 const SchedulesPage = () => {
-  const [schedules, setSchedules] = useState([]);
+  const [schedules, setSchedules] = useState([]);   
   const [currentScheduleId, setCurrentScheduleId] = useState(1);
   const [courseListShow, setCourseListShow] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [courses, setCourses] = useState([]);
- 
+  const toast = useToast();
   useEffect(() => {
     const fetchData = async () => {
       try {
         const storedSchedules = localStorage.getItem("schedules");
         let schedulesData = storedSchedules ? JSON.parse(storedSchedules) : [];
-
+  
         if (!storedSchedules) {
+          setLoading(true);
+          try {
+            const response = await fetch(
+              "http://localhost:8000/course-scheduler/plans/",
+              {
+                method: "GET",
+                headers: {
+                  "Content-Type": "application/json",
+                  "Authorization": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ4MTEwMzA4LCJpYXQiOjE3NDc1MDU1MDgsImp0aSI6ImIzNWJiNDY2MTI5MzQ2ZjE5ZGJjNDFjMDc3YzMyYjM3IiwidXNlcl9pZCI6MjV9.RoIM4mtxFWLqTtg2DcE1i3RRfympNTVXMH7qkxYw5hE"
 
-          schedulesData = [
-            {
-              id: 1,
-              courses: [],
-            },
-          ];
+                },
+              }
+            );
+  
+            const data = await response.json();
+  
+            if (!response.ok)
+              throw new Error(data.message || "خطایی رخ داده است");
 
-          localStorage.setItem("schedules", JSON.stringify(schedulesData));
+              console.log("plans " , data);
+            localStorage.setItem("schedules", JSON.stringify(data || []));
+            toast.open({
+              message: "برنامه‌ها با موفقیت دریافت شد",
+              type: "success",
+            });
+  
+            schedulesData = data; 
+          } catch (err) {
+            toast.open({
+              message: err.message || "خطایی رخ داده است",
+              type: "error",
+            });
+          } finally {
+            setLoading(false);
+          }
         }
-
+  
         setSchedules(schedulesData);
-
+  
         if (schedulesData.length > 0) {
           setCurrentScheduleId(schedulesData[0].id);
           setCourses(schedulesData[0].courses);
@@ -38,10 +66,10 @@ const SchedulesPage = () => {
         console.error("خطا در دریافت داده‌ها:", error);
       }
     };
-
+  
     fetchData();
   }, []);
-
+  
   useEffect(() => {
     setCourses(
       schedules.find((s) => s.id === currentScheduleId)?.courses || []

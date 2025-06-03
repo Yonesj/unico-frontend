@@ -52,7 +52,7 @@ export default function CourseSelector({
   const parentRef = useRef();
   useEffect(() => {
     const schedules = JSON.parse(localStorage.getItem("schedules"));
-    schedules.map((schedule) => {
+    schedules?.map((schedule) => {
       if (schedule.id === currentScheduleId) {
         console.log(schedule.courses, "schedule.courses");
 
