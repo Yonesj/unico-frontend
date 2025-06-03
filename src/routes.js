@@ -25,14 +25,23 @@ import Revisions from "./Components/Revisions/Revisions";
 import AddNewProfessor from "./Components/AddNewProfessor/AddNewProfessor";
 import CompareProfessor from "./Pages/CompareProfessor/CompareProfessor";
 import Home from "./Pages/Home/Home";
+
+import Ticket from "./Pages/Ticket/Ticket";
+import NewTicket from "./Pages/Ticket/NewTicket/NewTicket";
+import ChatPage from "./Pages/Ticket/Chat/Chat";
+
 import AboutUs from "./Pages/AboutUs/AboutUs";
 import Rules from "./Pages/Rules/Rules";
 
 
 
+
 const routes = [
     { path: "/", element: <Index /> },
-
+    { path: "/ticket", element: <Ticket /> },
+    { path: "/new-ticket", element: <NewTicket /> },
+    { path: "/chat/:id", element: <ChatPage /> },
+    
     { path: "/login", element: <Login /> },
     { path: "/sign-up", element: <SignUp /> },
     { path: "*", element: <NotFound /> },
