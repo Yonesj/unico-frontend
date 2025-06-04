@@ -18,11 +18,15 @@ import AuthContext from "../../context/authContext";
 import { LockOutlined, MailOutlined, UserOutlined } from "@ant-design/icons";
 import AccountVerificationModal from "../../Components/Modal/AccountVerificationModal";
 import ForgetpassModal from "../../Components/Modal/ForgetpassModal";
+import { EyeOutlined, EyeInvisibleOutlined } from "@ant-design/icons";
+
 import MySwiper from "../../Components/Swipper";
 import BBtn from "../../Components/dls/BBtn";
 import Spinner from "../../Components/spinner";
 export default function Login() {
-  const [reCaptchaVerify, setReCaptchaVerify] = useState(false);
+  const [reCaptchaVerify, setReCaptchaVerify] = useState(false);  
+  const [showPassword, setShowPassword] = useState(false);
+  
   const [loading, setLoading] = useState(false);
   const toast = useToast();
   const onChangeHandler = () => {
@@ -173,48 +177,48 @@ export default function Login() {
                       type="text"
                       placeholder="example@gmail.com"
                       element="input"
-                      validations={[requiredValidator(), emailValidator()]}
+                      validations={[requiredValidator()]}
                       onInputHandler={onInputHandler}
                     />
                   </div>
                 </div>
-                <div className="login-input flex flex-col gap-2 ">
-                  <label className="text-gray-800  font-normal text-base px-2">
+                <div className="login-input flex flex-col gap-2">
+                  <label className="text-gray-800 font-normal text-base px-2">
                     رمز عبور
                   </label>
                   <div
-                    className={`user-name_input flex justify-start px-2 items-center h-[52px]  border brder-1 rounded-[8px] ${formState.inputs.password.isValid
+                    className={`user-name_input flex justify-between px-2 items-center h-[52px] w-full border brder-1 rounded-[8px] ${formState.inputs.password.isValid
                         ? "border-green-500"
-                        : "border-[#a7a9ad] "
+                        : "border-[#a7a9ad]"
                       }`}
                   >
                     <div
-                      className={`input h-[24px]   px-1 ${formState.inputs.password.isValid
+                      className={`input h-[24px] px-1 ${formState.inputs.password.isValid
                           ? "text-green-500"
-                          : "text-[#a7a9ad] "
+                          : "text-[#a7a9ad]"
+
                         }`}
                     >
                       <LockOutlined />
                     </div>
+
                     <Input
-                      className="login-form__username-input"
+                      className="login-form__username-input flex-grow px-2"
                       id="password"
-                      type="text"
+                      type={showPassword ? "text" : "password"}
                       placeholder="*******"
                       element="input"
                       validations={[requiredValidator(), minValidator(8)]}
                       onInputHandler={onInputHandler}
                     />
-                  </div>
-                  <div
-                    onClick={() => {
-                      {
-                        setIsForgetpassModalOpen(true);
-                      }
-                    }}
-                    className="text-[#EFB036] font-medium text-sm leading-4 hover:cursor-pointer   w-fit  self-end p-1 "
-                  >
-                    فراموشی رمز عبور
+
+                    <button
+                      type="button"
+                      className="text-xl text-[#a7a9ad] hover:text-gray-700 px-2"
+                      onClick={() => setShowPassword((prev) => !prev)}
+                    >
+                      {showPassword ? <EyeInvisibleOutlined /> : <EyeOutlined />}
+                    </button>
                   </div>
                 </div>
               </div>

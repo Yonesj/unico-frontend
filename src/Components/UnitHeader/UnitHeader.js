@@ -18,7 +18,7 @@ const UnitHeader = () => {
                 <li className='py-3 ' ><NavLink className="py-2.5 px-1.5 rounded-lg transition-all duration-200 hover:text-black hover:bg-[#E5F7F8]" to="/unit/courses">لیست دروس</NavLink></li>
                 <li className='py-3 ' ><NavLink className="py-2.5 px-1.5 rounded-lg transition-all duration-200 hover:text-black hover:bg-[#E5F7F8]" to='/unit/schedule'>برنامه هفتگی</NavLink></li>
                 <li className='py-3 ' ><NavLink className="py-2.5 px-1.5 rounded-lg transition-all duration-200 hover:text-black hover:bg-[#E5F7F8]" to="/unit/exams">برنامه امتحانی</NavLink></li>
-                <li className='py-3 ' ><NavLink className="py-2.5 px-1.5 rounded-lg transition-all duration-200 hover:text-black hover:bg-[#E5F7F8]" to="/unit/schedules/1">لیست برنامه ها</NavLink></li>
+                <li className='py-3 ' ><NavLink className="py-2.5 px-1.5 rounded-lg transition-all duration-200 hover:text-black hover:bg-[#E5F7F8]" to="/unit/schedules">لیست برنامه ها</NavLink></li>
             </ul>
         </div>
        </div>

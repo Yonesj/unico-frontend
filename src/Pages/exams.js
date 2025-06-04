@@ -53,14 +53,14 @@ const ExamsPage = () => {
 
   return (
 
-    <div className=' flex-wrap  bg-[#F1F5F7] gap-2 w-full justify-center  overflow-x-scroll text-black font-iransans h-[600px]  '>
-      <div className='flex w-[4000px] grow flex-col justify-between  space-y-5 rounded-xl bg-[#ffffff] p-4 backdrop-blur'>
+    <div className=' flex-wrap  bg-[#F1F5F7] gap-2 w-full justify-center  text-black font-iransans h-[fit] '>
+      <div className='flex  grow flex-col justify-between  space-y-5 rounded-xl bg-[#ffffff] p-4 backdrop-blur'>
 
         <ScheduleTabs
           exams={true}
           currentScheduleId={currentScheduleId}
           schedules={schedules.map((s) => ({ id: s.id }))}
-          onChange={setCurrentScheduleId}
+          setCurrentScheduleId={setCurrentScheduleId}
         />
         <ExamsTable  courses={courses}
             setCurrentScheduleId={setCurrentScheduleId}

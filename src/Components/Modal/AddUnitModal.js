@@ -5,15 +5,16 @@ import React from "react";
 import { TimePicker } from "antd";
 import dayjs, { Dayjs } from "dayjs";
 import { Select } from "antd";
-import { DatePicker } from "antd";
-const format = "HH:mm";
+import DatePicker from "react-multi-date-picker";
+
+const format = "HH";
 const AddUnitModal = ({ onOk, onClose, open }) => {
   const [unitName, setUnitName] = useState("");
   const [unitCode, setUnitCode] = useState("");
   const [unitCount, setUnitCount] = useState("");
   const [unitMaster, setUnitMaster] = useState("");
-  const startTime = dayjs("11:00", "HH:mm");
-  const endTime = dayjs("12:00", "HH:mm");
+  const startTime = dayjs("07", "HH");
+  const endTime = dayjs("19", "HH");
   return (
     <Modal
       className="font-iransans addUnitModal"
@@ -224,16 +225,20 @@ const AddUnitModal = ({ onOk, onClose, open }) => {
               dir="ltr"
               className=" examDate flex w-1/2 items-center border border-solid border-[#A7A9AD] rounded-lg rounded-l-none outline-none text-base px-3"
             >
-              <DatePicker
-                placeholder="انتخاب تاریخ"
-                className="border-none h-full "
-              />
+         <DatePicker
+        calendar="persian"         
+        locale="fa"      
+        format="YYYY/MM/DD"        
+        placeholder="انتخاب تاریخ"
+        calendarPosition="bottom-right"
+        className="border-none h-full"
+      />
             </div>
             <div className="w-1/2" dir="ltr">
               <TimePicker.RangePicker
                 className="border-[#A7A9AD] rounded-lg rounded-r-none py-2 px-3 border-r-0"
                 defaultValue={[startTime, endTime]}
-                format={format}
+                format="HH"
                 separator={<span>-</span>} // Custom separator
               />
             </div>

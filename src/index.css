@@ -12,6 +12,15 @@
 .body {
   max-width: 1800px;
   margin: 0 auto;
+
+}
+
+
+.custom-height {
+  height: calc(min(70vh, 900px) / 27 *2);
+}
+.notif-max-height {
+  max-height: calc(100dvh - 200px);
 }
 
 

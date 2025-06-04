@@ -7,6 +7,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      height: {
+        'custom': 'min(70vh, 900px)',
+      },
       colors,
       fontFamily: {
         iransans: ["IranSans", "sans-serif"],

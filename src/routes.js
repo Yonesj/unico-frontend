@@ -7,7 +7,7 @@ import NotFound from "./Pages/404";
 import Exams from "./Pages/exams";
 import Schedules from "./Pages/schedules";
 import Unit from "./Pages/Unit/Unit";
-import SchedulesList from "./Pages/SchedulesList/SchedulesList";
+import SchedulesLists from "./Pages/SchedulesLists/SchedulesLists";
 import Courses from "./Pages/Courses/Courses";
 import Poll from "./Pages/Poll/Poll";
 import MasterCard from "./Components/MasterCard/MasterCard";
@@ -15,6 +15,9 @@ import ProtectedRoute from "./Components/routing/ProtectedRoute";
 import UnitWrapper from "./Components/routing/unitWrapper";
 import Index from "./Pages/Index";
 import CoursesList from "./Pages/Courses/Courses";
+
+import Notification from "./Pages/Notification/Notification"
+
 import ProfessorsCard from "./Components/ProfessorsCard/ProfessorsCard";
 import ProfessorDetails from "./Components/ProfessorDetails/ProfessorDetails";
 import PostComment from "./Pages/PostComment/PostComment";
@@ -25,6 +28,11 @@ import Revisions from "./Components/Revisions/Revisions";
 import AddNewProfessor from "./Components/AddNewProfessor/AddNewProfessor";
 import CompareProfessor from "./Pages/CompareProfessor/CompareProfessor";
 import Home from "./Pages/Home/Home";
+
+import Ticket from "./Pages/Ticket/Ticket";
+import NewTicket from "./Pages/Ticket/NewTicket/NewTicket";
+import ChatPage from "./Pages/Ticket/Chat/Chat";
+
 import AboutUs from "./Pages/AboutUs/AboutUs";
 import Rules from "./Pages/Rules/Rules";
 import ProfileWrapper from "./Pages/ProfileWrapper/ProfileWrapper";
@@ -33,22 +41,28 @@ import Notifications from "./Pages/Notifications/Notifications";
 
 
 
+
 const routes = [
     { path: "/", element: <Index /> },
 
+    { path: "/ticket", element: <Ticket /> },
+    { path: "/new-ticket", element: <NewTicket /> },
+    { path: "/chat/:id", element: <ChatPage /> },
+    
     { path: "/login", element: <Login /> },
+    { path: "/Notification", element: <Notification /> },
+
     { path: "/sign-up", element: <SignUp /> },
     { path: "*", element: <NotFound /> },
     { path: "/reset-password", element: <Password /> },
     {
-        path: "/unit/*", element: <ProtectedRoute><UnitWrapper /></ProtectedRoute>, children: [
-            { path: "courses", element: <Courses /> },
-            { path: "schedule", element: <Schedules /> },
-            { path: "exams", element: <Exams /> },
+        path: "/unit/*",   element: <ProtectedRoute><UnitWrapper /></ProtectedRoute>, desktop:true , children: [
+            { path: "courses", element: <Courses /> , desktop:true },
+            { path: "schedule", element: <Schedules/> , desktop:true },
+            { path: "exams", element: <Exams />  , desktop:true},
+
             {
-                path: "schedules/*", element: <SchedulesList />, children: [
-                    { path: ":number", element: <SchedulesList /> },
-                ]
+                path: "schedules/*", element: <SchedulesLists />
             },
 
         ]

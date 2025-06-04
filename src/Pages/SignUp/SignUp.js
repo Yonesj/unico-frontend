@@ -6,6 +6,7 @@ import { useForm } from "../../hooks/useForm";
 import Input from "../../Components/Form/Input";
 import { ReactComponent as UnicoLogo } from "../../Assets/images/unicoLogo.svg";
 import { ReactComponent as SignUpImage } from "../../Assets/images/sign-up.svg";
+import { EyeOutlined, EyeInvisibleOutlined } from "@ant-design/icons";
 import { Modal } from "antd";
 import Swal from "sweetalert2";
 import {
@@ -23,8 +24,8 @@ import { useToast } from "../../Components/dls/toast/ToastService";
 import Swipper from "../../Components/Swipper";
 import MySwiper from "../../Components/Swipper";
 import Spinner from "../../Components/spinner";
-
 export default function SignUp() {
+  const [showPassword, setShowPassword] = useState(false);
   const [reCaptchaVerify, setReCaptchaVerify] = useState(false);
   const [email, setEmail] = useState("email");
   const [loading, setLoading] = useState(false);
@@ -32,13 +33,13 @@ export default function SignUp() {
   const onChangeHandler = () => {
     setReCaptchaVerify(true);
   };
-  
+
 
   const toast = useToast();
   const navigate = useNavigate();
   const authContext = useContext(AuthContext);
 
-  const userSignUp = (event  , setLoading) => {
+  const userSignUp = (event, setLoading) => {
     setLoading(true);
     event.preventDefault();
 
@@ -60,7 +61,7 @@ export default function SignUp() {
       body: JSON.stringify(userData),
     })
       .then(async (res) => {
-        const data = await res.json(); 
+        const data = await res.json();
 
         if (!res.ok) {
           console.log(Object.values(data));
@@ -79,37 +80,37 @@ export default function SignUp() {
       .catch((err) => {
         console.error(err);
 
-       // if (err.message == "The password is too similar to the username.") {
-       //   toast.open({
-       //     message: "! نام کاربری و رمزعبور بسیار شبیه هستند",
-       //     type: "error",
-       //   });
-       // } else if (err.message == "This password is too common.") {
-       //   toast.open({
-       //     message: "رمزعبور بسیار ساده است",
-       //     type: "error",
-       //   });
-       // } else if (err.message == "A user with that username already exists.") {
-       //   toast.open({
-       //     message: "کاربری با این نام کاربری قبلا ثبت نام کرده",
-       //     type: "error",
-       //   });
-       // } else if (err.message == "user with this email already exists.") {
-       //   toast.open({
-       //     message: "کاربری با این ایمیل قبلا ثبت نام کرده است",
-       //     type: "error",
-       //   });
-       // } else if (err.message == "This password is too common.") {
-       //   toast.open({
-       //     message: "رمز عبور بسیار ساده است ",
-       //     type: "error",
-       //   });
-       // } else {
-          toast.open({
-            message: err.message,
-            type: "error",
-          });
-        }
+        // if (err.message == "The password is too similar to the username.") {
+        //   toast.open({
+        //     message: "! نام کاربری و رمزعبور بسیار شبیه هستند",
+        //     type: "error",
+        //   });
+        // } else if (err.message == "This password is too common.") {
+        //   toast.open({
+        //     message: "رمزعبور بسیار ساده است",
+        //     type: "error",
+        //   });
+        // } else if (err.message == "A user with that username already exists.") {
+        //   toast.open({
+        //     message: "کاربری با این نام کاربری قبلا ثبت نام کرده",
+        //     type: "error",
+        //   });
+        // } else if (err.message == "user with this email already exists.") {
+        //   toast.open({
+        //     message: "کاربری با این ایمیل قبلا ثبت نام کرده است",
+        //     type: "error",
+        //   });
+        // } else if (err.message == "This password is too common.") {
+        //   toast.open({
+        //     message: "رمز عبور بسیار ساده است ",
+        //     type: "error",
+        //   });
+        // } else {
+        toast.open({
+          message: err.message,
+          type: "error",
+        });
+      }
       )
       .finally(() => {
         setLoading(false);
@@ -150,7 +151,7 @@ export default function SignUp() {
   const handleForgetpassCancel = () => {
     setIsForgetpassModalOpen(false);
   };
-  const myFunction = () => {
+  const visibility = () => {
     if (passType == "password") {
       setPassType("text");
     } else {
@@ -185,18 +186,14 @@ export default function SignUp() {
                     نام کاربری
                   </label>
                   <div
-                    className={`user-name_input flex justify-start px-2 items-center h-[52px]  border brder-1 rounded-[8px] ${
-                      formState.inputs.username.isValid
-                        ? "border-green-500"
-                        : "border-[#a7a9ad] "
-                    }`}
+                    className={`user-name_input flex justify-start px-2 items-center h-[52px]  border brder-1 rounded-[8px] 
+                      border-[#a7a9ad] 
+                    `}
                   >
                     <div
-                      className={`input h-[24px]   px-1 ${
-                        formState.inputs.username.isValid
-                          ? "text-green-500"
-                          : "text-[#a7a9ad] "
-                      }`}
+                      className={`input h-[24px]   px-1
+                           text-[#a7a9ad] 
+                      `}
                     >
                       {" "}
                       <UserOutlined />
@@ -217,18 +214,16 @@ export default function SignUp() {
                     ایمیل
                   </label>
                   <div
-                    className={`user-name_input flex justify-start px-2 items-center h-[52px]  border brder-1 rounded-[8px] ${
-                      formState.inputs.email.isValid
+                    className={`user-name_input flex justify-start px-2 items-center h-[52px]  border brder-1 rounded-[8px] ${formState.inputs.email.isValid
                         ? "border-green-500"
                         : "border-[#a7a9ad] "
-                    }`}
+                      }`}
                   >
                     <div
-                      className={`input h-[24px]   px-1 ${
-                        formState.inputs.email.isValid
+                      className={`input h-[24px]   px-1 ${formState.inputs.email.isValid
                           ? "text-green-500"
                           : "text-[#a7a9ad] "
-                      }`}
+                        }`}
                     >
                       {" "}
                       <MailOutlined />
@@ -243,38 +238,51 @@ export default function SignUp() {
                       onInputHandler={onInputHandler}
                     />
                   </div>
+                  {!formState.inputs.email.isValid && formState.inputs.email.value && (
+                    <div className="text-red-500 text-xs   px-2 transition-all duration-300 ease-in-out">
+                      لطفاً یک ایمیل معتبر وارد کنید.
+                    </div>
+                  )}
                 </div>
-                <div className="login-input flex flex-col gap-2 ">
-                  <label className="text-gray-800  font-normal text-base px-2">
+                <div className="login-input flex flex-col gap-2">
+                  <label className="text-gray-800 font-normal text-base px-2">
                     رمز عبور
                   </label>
                   <div
-                    className={`user-name_input flex justify-start px-2 items-center h-[52px]  border brder-1 rounded-[8px]  ${
-                      formState.inputs.password.isValid
+                    className={`user-name_input flex justify-between px-2 items-center h-[52px] w-full border brder-1 rounded-[8px] ${formState.inputs.password.isValid
                         ? "border-green-500"
-                        : "border-[#a7a9ad] "
-                    }`}
+                        : "border-[#a7a9ad]"
+                      }`}
                   >
                     <div
-                      className={`input h-[24px]   px-1 ${
-                        formState.inputs.password.isValid
+                      className={`input h-[24px] px-1 ${formState.inputs.password.isValid
                           ? "text-green-500"
-                          : "text-[#a7a9ad] "
-                      }`}
+                          : "text-[#a7a9ad]"
+                        }`}
                     >
                       <LockOutlined />
                     </div>
+
                     <Input
-                      className="login-form__username-input"
+                      className="login-form__username-input flex-grow px-2"
                       id="password"
-                      type="password"
+                      type={showPassword ? "text" : "password"}
                       placeholder="*******"
                       element="input"
                       validations={[requiredValidator(), minValidator(8)]}
                       onInputHandler={onInputHandler}
                     />
+
+                    <button
+                      type="button"
+                      className="text-xl text-[#a7a9ad] hover:text-gray-700 px-2"
+                      onClick={() => setShowPassword((prev) => !prev)}
+                    >
+                      {showPassword ? <EyeInvisibleOutlined /> : <EyeOutlined />}
+                    </button>
                   </div>
                 </div>
+
               </div>
               <div className="login-body-footer h-[96px] flex flex-col justify-between">
                 <div className="login-button">
@@ -294,14 +302,13 @@ export default function SignUp() {
                       !formState.inputs.email.isValid ||
                       !formState.inputs.password.isValid
                     }
-                    className={`w-full h-[52px] bg-[#4CC6CB] text-white rounded-lg transition-all duration-300 ${
-                      formState.inputs.username.isValid &&
-                      formState.inputs.email.isValid &&
-                      formState.inputs.password.isValid &&
-                      !loading
+                    className={`w-full h-[52px] bg-[#4CC6CB] text-white rounded-lg transition-all duration-300 ${formState.inputs.username.isValid &&
+                        formState.inputs.email.isValid &&
+                        formState.inputs.password.isValid &&
+                        !loading
                         ? ""
                         : "opacity-50 cursor-not-allowed"
-                    }`}
+                      }`}
                   >
                     {loading ? <Spinner size="lg" /> : <span>ساخت اکانت</span>}
                   </button>
