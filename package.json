@@ -43,13 +43,10 @@
     "react-dom": "^18.3.1",
     "react-helmet": "^6.1.0",
     "react-modal": "^3.16.3",
-
+    "react-multi-carousel": "^2.8.6",
     "react-multi-date-picker": "^4.5.2",
     "react-router": "^7.5.0",
     "react-router-dom": "^7.5.0",
-
-    "react-multi-carousel": "^2.8.6",
-
     "react-scripts": "^5.0.1",
     "react-select": "^5.10.1",
     "sweetalert2": "^11.17.2",
@@ -86,5 +83,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "typescript": "^4.9.5"
   }
 }

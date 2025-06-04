@@ -35,6 +35,9 @@ import ChatPage from "./Pages/Ticket/Chat/Chat";
 
 import AboutUs from "./Pages/AboutUs/AboutUs";
 import Rules from "./Pages/Rules/Rules";
+import ProfileWrapper from "./Pages/ProfileWrapper/ProfileWrapper";
+import MyComments from "./Pages/MyComments/MyComments";
+import Notifications from "./Pages/Notifications/Notifications";
 
 
 
@@ -125,6 +128,11 @@ const routes = [
         { path: "/home", element: <Home/> },
         { path: "/about-us", element: <AboutUs/> },
         { path: "/rules", element: <Rules/> },
+        { path: "/profile/*", element: <ProfileWrapper/>  , children : [
+                { path: "userComments", element: <MyComments/>},
+                { path: "notifications", element: <Notifications/>},
+        ]},
+
 
 
 

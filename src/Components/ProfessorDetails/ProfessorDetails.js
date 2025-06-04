@@ -454,7 +454,7 @@ const ProfessorDetails = () => {
                                     <path d="M12.4732 7.38332C11.2907 9.38801 10.667 11.6729 10.667 14.0004C10.667 16.3279 11.2907 18.6128 12.4732 20.6175C12.6276 20.886 12.8501 21.109 13.1182 21.2641C13.3863 21.4192 13.6905 21.5008 14.0003 21.5008C14.31 21.5008 14.6142 21.4192 14.8823 21.2641C15.1504 21.109 15.3729 20.886 15.5273 20.6175C16.7098 18.6128 17.3335 16.3279 17.3335 14.0004C17.3335 11.6729 16.7098 9.38801 15.5273 7.38332C15.3729 7.11484 15.1504 6.89182 14.8823 6.73674C14.6142 6.58166 14.31 6.5 14.0003 6.5C13.6905 6.5 13.3863 6.58166 13.1182 6.73674C12.8501 6.89182 12.6276 7.11484 12.4732 7.38332V7.38332Z" stroke="#64748B" stroke-width="1.5" strokeLinecap="round" stroke-linejoin="round" />
                                     <path d="M6.5 14H21.5" stroke="#64748B" stroke-width="1.5" strokeLinecap="round" stroke-linejoin="round" />
                                 </svg>
-                                <p>{professorDetails.website_url ? professorDetails.website_url : <Link className='text-[#34AFBD]' to={"revisions"}>افزودن</Link>}</p>
+                                <Link to={professorDetails.website_url}>{professorDetails.website_url ? professorDetails.website_url : <Link className='text-[#34AFBD]' to={"revisions"}>افزودن</Link>}</Link>
 
                             </div>
                             <div className='flex items-center w-full  lg:w-full gap-3.5'>
