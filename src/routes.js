@@ -7,7 +7,7 @@ import NotFound from "./Pages/404";
 import Exams from "./Pages/exams";
 import Schedules from "./Pages/schedules";
 import Unit from "./Pages/Unit/Unit";
-import SchedulesList from "./Pages/SchedulesList/SchedulesList";
+import SchedulesLists from "./Pages/SchedulesLists/SchedulesLists";
 import Courses from "./Pages/Courses/Courses";
 import Poll from "./Pages/Poll/Poll";
 import MasterCard from "./Components/MasterCard/MasterCard";
@@ -41,24 +41,25 @@ import Rules from "./Pages/Rules/Rules";
 
 const routes = [
     { path: "/", element: <Index /> },
+
     { path: "/ticket", element: <Ticket /> },
     { path: "/new-ticket", element: <NewTicket /> },
     { path: "/chat/:id", element: <ChatPage /> },
     
     { path: "/login", element: <Login /> },
     { path: "/Notification", element: <Notification /> },
+
     { path: "/sign-up", element: <SignUp /> },
     { path: "*", element: <NotFound /> },
     { path: "/reset-password", element: <Password /> },
     {
-        path: "/unit/*", element: <ProtectedRoute><UnitWrapper /></ProtectedRoute>,  children: [
-            { path: "courses", element: <Courses /> },
-            { path: "schedule", element: <Schedules /> },
-            { path: "exams", element: <Exams /> },
+        path: "/unit/*",   element: <ProtectedRoute><UnitWrapper /></ProtectedRoute>, desktop:true , children: [
+            { path: "courses", element: <Courses /> , desktop:true },
+            { path: "schedule", element: <Schedules/> , desktop:true },
+            { path: "exams", element: <Exams />  , desktop:true},
+
             {
-                path: "schedules/*", element: <SchedulesList />, children: [
-                    { path: ":number", element: <SchedulesList /> },
-                ]
+                path: "schedules/*", element: <SchedulesLists />
             },
 
         ]

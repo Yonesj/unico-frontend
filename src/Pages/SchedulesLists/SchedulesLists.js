@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import ScheduleTabs from '../Components/schedule/ScheduleTabs';
-import ExamsTable from '../Components/exams/ExamsTable';
-import { getSession } from '../services/authService'; 
-import { setToken } from '../services/axios';
-import api from '../services/api';
-import { courseMapper } from '../utils/mappers';
+import React, { useEffect, useRef, useState } from 'react';
+import ScheduleTabs from '../../Components/schedule/ScheduleTabs';
+import ScheduelsList from '../../Components/schedule/SchedulesList/SchedulesList';
+import SaveCourseList from '../../Components/Modal/SaveCourseList';
 
-const ExamsPage = () => {
+const SchedulesLisis = () => {
   const [schedules, setSchedules] = useState([]);
   const [courses, setCourses] = useState([]);
   const [currentScheduleId, setCurrentScheduleId] = useState(null);
+  const scheduelsListRef = useRef(null); // ریف برای بخش ScheduelsList
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -48,28 +47,30 @@ const ExamsPage = () => {
     setCourses(
       schedules.find((s) => s.id === currentScheduleId)?.courses || []
     );
-  }, [currentScheduleId, schedules ]);
-
+  }, [currentScheduleId, schedules]);
 
   return (
-
-    <div className=' flex-wrap  bg-[#F1F5F7] gap-2 w-full justify-center  text-black font-iransans h-[fit] '>
-      <div className='flex  grow flex-col justify-between  space-y-5 rounded-xl bg-[#ffffff] p-4 backdrop-blur'>
-
+    <div className='flex-wrap bg-[#F1F5F7] gap-2 w-full justify-center overflow-x-scroll text-black font-iransans h-fit'>
+      <div className='flex w-full overflow-hidden grow flex-col justify-between space-y-5 rounded-xl bg-[#ffffff] p-4 backdrop-blur'>
         <ScheduleTabs
-          exams={true}
+          list={true}
           currentScheduleId={currentScheduleId}
           schedules={schedules.map((s) => ({ id: s.id }))}
+          setSchedules={setSchedules}
           setCurrentScheduleId={setCurrentScheduleId}
+          scheduelsListRef={scheduelsListRef} 
         />
-        <ExamsTable  courses={courses}
-            setCurrentScheduleId={setCurrentScheduleId}
-            currentScheduleId={currentScheduleId}
-            setSchedules={setSchedules}
-            schedules={schedules} />
+        <ScheduelsList
+          ref={scheduelsListRef} 
+          courses={courses}
+          setCurrentScheduleId={setCurrentScheduleId}
+          currentScheduleId={currentScheduleId}
+          setSchedules={setSchedules}
+          schedules={schedules}
+        />
       </div>
     </div>
   );
 };
 
-export default ExamsPage;
+export default SchedulesLisis;

@@ -26,6 +26,7 @@ export default function Sidebar({ isSidebarOpen  }) {
     <aside className={`h-screen w-0 ${isSidebarOpen ? "" : ""}  lg:w-20 `}>
       <nav className={`h-full flex flex-col absolute   bg-white border-r  z-[51]  ${isSidebarOpen ? "w-[272px]" : "w-20 opacity-0  translate-x-96 lg:opacity-100 lg:translate-x-0 lg:flex"} px-4   font-iransans rounded-r-2xl  transition-all duration-300 overflow-hidden`}
 
+
           style={{ boxShadow: "0 16px 44px rgba(0, 0, 0, 0.07)" }}
           onMouseEnter={() => setIsSidebarOpen(true)}
           onMouseLeave={() => {

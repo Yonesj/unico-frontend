@@ -1,7 +1,9 @@
 .login-form__username-input {
   align-items: center;
  background-color: white;
- width: 300px;
+ min-width: 100%; 
+ 
+ max-width: 1200px;
   height: 35px;
   padding: 9px 3px;
   margin: 0.8rem 0;

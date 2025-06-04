@@ -7,7 +7,7 @@ import { convertEnglishNumberToPersian } from "../../utils/helpers";
 import { useState, useEffect, useRef, useCallback } from "react";
 import { useToast } from "../dls/toast/ToastService";
 import jalaali from 'jalaali-js';
-
+import { useLayoutEffect } from "react";
 export default function Schedule({
   currentScheduleId,
   setCurrentScheduleId,
@@ -30,25 +30,23 @@ export default function Schedule({
   };
   const [remove, setRemove] = useState(false);
 
-  // تبدیل دوره‌ها به رویداد برای FullCalendar
   const convertCoursesToEvents = useCallback((courses) => {
-    const baseDate = new Date("2025-04-05"); // تاریخ پایه میلادی
+    const baseDate = new Date("2025-04-05");
     const events = [];
-  
+
     courses.forEach((course) => {
       if (course.exam && course.exam.start && course.exam.end && course.exam.date) {
-        // تبدیل تاریخ شمسی به میلادی
         const [year, month, day] = course.exam.date.split("/").map(Number);
-        const convertedDate = jalaali.toGregorian(year, month, day); 
-        const classDate = new Date(convertedDate.gy, convertedDate.gm - 1, convertedDate.gd); 
-  
+        const convertedDate = jalaali.toGregorian(year, month, day);
+        const classDate = new Date(convertedDate.gy, convertedDate.gm - 1, convertedDate.gd);
+
         const dateStr = classDate.toISOString().split("T")[0];
-  
+
         const pad = (n) => String(n).padStart(2, "0");
-  
+
         events.push({
-          start: `${dateStr}T${pad(course.exam.start)}:00:00`, 
-          end: `${dateStr}T${pad(course.exam.end)}:00:00`,    
+          start: `${dateStr}T${pad(course.exam.start)}:00:00`,
+          end: `${dateStr}T${pad(course.exam.end)}:00:00`,
           extendedProps: {
             ...course,
             classInfo: course.exam,
@@ -56,94 +54,104 @@ export default function Schedule({
         });
       }
     });
-    
-  
+
+
     return events;
   }, []);
-
+ 
   useEffect(() => {
     const currentSchedule = schedules.find((s) => s.id === currentScheduleId);
     if (currentSchedule) {
-      setCourses(currentSchedule.courses);
+      setCourses(currentSchedule.courses || []);
     }
   }, [currentScheduleId, remove, schedules]);
 
   const getShamsiDate = (date) => {
-    const day = date.getDate()+1;
-    const month = date.getMonth() + 1; 
+    const day = date.getDate() + 1;
+    const month = date.getMonth() + 1;
     const year = date.getFullYear();
     const converted = jalaali.toJalaali(year, month, day);
     return `${converted.jy}/${String(converted.jm).padStart(2, '0')}/${String(converted.jd).padStart(2, '0')}`;
   };
 
+
   return (
-    <div className="h-[480px] ">
-      <FullCalendar
-        ref={calendarRef}
-        plugins={[timeGridPlugin]}
-        initialView="timeGridDay"
-        headerToolbar={false}
-        editable={false}
-        selectable={false}
-        expandRows
-        dayMaxEvents
-        eventOverlap={false}
-        slotEventOverlap={true}
-        weekends
-        events={convertCoursesToEvents(courses)}  
-        slotMinTime={"07:00"}
-        slotMaxTime={"20:00"}
-        direction="rtl"
-        initialDate={"2025-06-11"}
-        locale={faLocale}
-        firstDay={0}
-        
-        height={"480px"}
-        views={{
-          timeGrid: {
-            component: DayTimeColsView,
-            usesMinMaxTime: true,
-            allDaySlot: false,
-            slotDuration: "01:00:00",
-            duration: { days: 17 },
-            slotLabelContent: ({ date }) => (
-              <div className="me-1 ms-2 text-sm font-medium text-gray-500 font-iransans">
-                {convertEnglishNumberToPersian(date.getHours().toString())}:۰۰
-              </div>
-            ),
-            dayHeaderContent: ({ date }) => (
-              <div className="pb-2 text-xs font-medium text-gray-500 font-iransans">
-                {convertEnglishNumberToPersian(getShamsiDate(date))} {/* نمایش تاریخ شمسی */}
-              </div>
-            ),
-            eventContent: (arg) => {
-              const calendarApi = arg.view.calendar;
-              const thisEvent = arg.event;
+    <div className="flex  w-full overflow-hidden">
+      <div className="flex flex-col sticky right-0 z-10 mt-[22px] bg-[#FFFFFF]  min-w-[40px] text-sm text-gray-500 font-iransans">
+        {Array.from({ length: 13 }).map((_, i) => (
+          <div key={i} className="custom-height px-2 py-1    bg-[#FFFFFF] ">
+            {`${convertEnglishNumberToPersian((7 + i).toString().padStart(2, "0"))}:۰۰`}
+          </div>
+        ))}
+      </div>
   
-              const overlapping = calendarApi.getEvents().filter((ev) => {
-                console.log(ev , "event");
-                return (
-                  ev.extendedProps.id !== thisEvent.extendedProps.id &&
-                  ev.start < thisEvent.end &&
-                  ev.end > thisEvent.start
-                );
-              });
+      <div className="overflow-x-auto w-full">
+        <div className="min-w-[4000px]">
+          <FullCalendar
+            ref={calendarRef}
+            plugins={[timeGridPlugin]}
+            className="my-calendar"
+            initialView="timeGridDay"
+            headerToolbar={false}
+            editable={false}
+            selectable={false}
+            expandRows
+            dayMaxEvents
+            eventOverlap={false}
+            slotEventOverlap={true}
+            weekends
+            events={convertCoursesToEvents(courses)}
+            slotMinTime={"07:00"}
+            slotMaxTime={"20:00"}
+            direction="rtl"
+            initialDate={"2025-06-11"}
+            locale={faLocale}
+            firstDay={0}
+            height="min(70vh, 900px)"
+            views={{
+              timeGrid: {
+                component: DayTimeColsView,
+                usesMinMaxTime: true,
+                allDaySlot: false,
+                slotDuration: "01:00:00",
+                duration: { days: 17 },
+                slotLabelContent: () => null, 
+                dayHeaderContent: ({ date }) => (
+                  <div className="pb-2 text-xs font-medium text-gray-500 font-iransans">
+                    {convertEnglishNumberToPersian(getShamsiDate(date))}
+                  </div>
+                ),
+                eventContent: (arg) => {
+                  const calendarApi = arg.view.calendar;
+                  const thisEvent = arg.event;
   
-              const isOverlapping = overlapping.length > 0;
+                  const overlapping = calendarApi.getEvents().filter((ev) => {
+                    return (
+                      ev.extendedProps.id !== thisEvent.extendedProps.id &&
+                      ev.start < thisEvent.end &&
+                      ev.end > thisEvent.start
+                    );
+                  });
   
-              return (
-                <Course
-                  course={{
-                    id: thisEvent.id,
-                    ...thisEvent.extendedProps,
-                  }}
-                  isOverlapping={isOverlapping}
-                />
-              );
-            },
-          },
-        }}
-      />
+                  const isOverlapping = overlapping.length > 0;
+  
+                  return (
+                    <Course
+                      course={{
+                        id: thisEvent.id,
+                        ...thisEvent.extendedProps,
+                      }}
+                      isOverlapping={isOverlapping}
+                    />
+                  );
+                },
+              },
+            }}
+          />
+        </div>
+      </div>
     </div>
   );
+  
+
 }

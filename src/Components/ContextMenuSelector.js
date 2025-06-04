@@ -43,7 +43,7 @@ export default function ContextMenuSelector({
   return (
     <div
       ref={menuRef}
-      className="absolute  rounded-xl font-iransans bg-white border border-gray-300shadow-[5px_20px_32px_0px_rgba(31,41,55,0.08)] shadow-[5px_2px_16px_0px_rgba(31,41,55,0.08)]  z-50 p-2 w-[279px] h-[396px]"
+      className="absolute  rounded-xl font-iransans bg-white border border-gray-300shadow-[5px_20px_32px_0px_rgba(31,41,55,0.08)] shadow-[5px_2px_16px_0px_rgba(31,41,55,0.08)]  z-50 p-2 w-[279px] max-h-[396px] min-h-[fit]"
       style={{ top: position.y -50, left: position.x + 50 }}
     >
       <div className=" absolute top-0 right-0 py-1 px-2 text-gray-500 cursor-pointer">
