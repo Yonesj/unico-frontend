@@ -3,7 +3,11 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { ReactComponent as Send} from "../../../Assets/images/send-03.svg";
 import BreadCrumb from "../../../Components/BreadCrumb/BreadCrumb";
+import { useToast } from "../../../Components/dls/toast/ToastService";
+
+
 export default function TicketChat() {
+  const toast = useToast();
   const { id } = useParams();
   const nav = useNavigate();
   const [ticket, setTicket] = useState(null);
