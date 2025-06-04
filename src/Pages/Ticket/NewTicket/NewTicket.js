@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import { useToast } from "../../../Components/dls/toast/ToastService";
+
 import "./NewTicket.css";
 import { ArrowRightOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
+import BreadCrumb from "../../../Components/BreadCrumb/BreadCrumb";
 export default function NewTicket() {
   const [title, setTitle] = useState("");
   const [subject, setSubject] = useState("financial");
@@ -10,6 +13,8 @@ export default function NewTicket() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
+  const toast = useToast();
+
   const nav=useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,25 +39,46 @@ export default function NewTicket() {
       });
 
       if (response.ok) {
-        setSuccess(true);
+
         setTitle("");
         setSubject("financial");
         setUnit("none");
         setDescription("");
+        toast.open({
+          message: "تیکت با موفقیت ثبت شد",
+          type: "success",
+        });
       } else {
         const errData = await response.json();
         throw new Error(errData.message || "ارسال با خطا مواجه شد.");
       }
     } catch (err) {
-      setError(err.message);
+      toast.open({
+        message: "خطا در ثبت تیکت ",
+        type: "error",
+      });
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className=" h-screen overflow-y-auto bg-gray-100 flex flex-col p-4  font-iransansfa space-y-2">
-      <div className="flex  w-full text-[#959595] text-base font-medium px-8 py-4 items-start bg-white runded-12px justify-start sm:gap-[90px] gap-7  md:gap-[140px] rounded-xl">
+    <div className=" h-screen overflow-y-auto bg-gray-100 flex flex-col px-4 font-iransansfa ">
+     <BreadCrumb
+        links={[
+          { id: 1, title: "پشتیبانی", to: "/" },
+          {
+            id: 2,
+            title: "تیکت ها",
+            to: "/ticket",
+          },          {
+            id: 3,
+            title: "ارسال تیکت جدید",
+            to: "/new-ticket",
+          },
+        ]}
+      />
+      <div className="flex mb-2  w-full text-[#959595] text-base font-medium px-8 py-4 items-start bg-white runded-12px justify-start sm:gap-[90px] gap-7  md:gap-[140px] rounded-xl">
         <div onClick={()=>{ nav('/ticket')}} className=" cursor-pointer">
           <ArrowRightOutlined /> <span className="lg:inline hidden ms-2"> بازگشت</span>
         </div>
@@ -72,13 +98,13 @@ export default function NewTicket() {
                 >
                   عنوان:
                 </div>
-                <div className="border rounded-md border-1  border-gray-200  flex sm:px-3 py-[8px] w-[300px]  sm:w-[380px]">
+                <div className="border rounded-md border-1   border-gray-200  flex sm:px-3 py-[8px] w-[250px]  sm:w-[380px]">
                   <input
                     type="text"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
-                    placeholder="مهران"
-                    className="w-full !border !border-1 !border-gray-300 rounded-md  "
+                    placeholder="عنوان"
+                    className="w-full !border !border-1 !border-gray-300 rounded-md  px-3 "
                     required
                   />
                 </div>
@@ -92,7 +118,7 @@ export default function NewTicket() {
                 >
                   موضوع:
                 </div>
-                <div className="w-[300px]  sm:w-[380px]">
+                <div className="w-[250px]  sm:w-[380px]">
                   <select
                     value={subject}
                     onChange={(e) => setSubject(e.target.value)}
@@ -100,7 +126,8 @@ export default function NewTicket() {
                   >
                     <option value="financial">مالی</option>
                     <option value="technical">فنی</option>
-                    <option value="support">پشتیبانی</option>
+                    <option value="suggestion">پیشنهادات و انتقادات</option>
+                    <option value="advertisement">تبلیغات</option>
                   </select>
                 </div>
               </div>
@@ -113,7 +140,7 @@ export default function NewTicket() {
                 >
                   واحد:
                 </div>
-                <div className=" w-[300px] sm:w-[380px]">
+                <div className=" w-[250px] sm:w-[380px]">
                   <select
                     disabled={true}
                     value={unit}
