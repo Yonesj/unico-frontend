@@ -15,7 +15,8 @@ import { hover } from "@testing-library/user-event/dist/hover";
 import { Link } from "react-router-dom";
 import SidebarContext from "../../Components/SidbarContext/SidbarContext"; // adjust path as needed
 
-export default function Sidebar({ isSidebarOpen  }) {
+
+export default function Sidebar({ isSidebarOpen }) {
   const [expanded, setExpanded] = useState(false);
   const [pin, setPin] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -27,13 +28,14 @@ export default function Sidebar({ isSidebarOpen  }) {
       <nav className={`h-full flex flex-col absolute   bg-white border-r  z-[51]  ${isSidebarOpen ? "w-[272px]" : "w-20 opacity-0  translate-x-96 lg:opacity-100 lg:translate-x-0 lg:flex"} px-4   font-iransans rounded-r-2xl  transition-all duration-300 overflow-hidden`}
 
 
-          style={{ boxShadow: "0 16px 44px rgba(0, 0, 0, 0.07)" }}
-          onMouseEnter={() => setIsSidebarOpen(true)}
-          onMouseLeave={() => {
-            if (window.innerWidth >= 1024 && !pin) {
-              setIsSidebarOpen(false);
-            }
-          }}
+        style={{ boxShadow: "0 16px 44px rgba(0, 0, 0, 0.07)" }}
+        onMouseEnter={() => setIsSidebarOpen(true)}
+        onMouseLeave={() => {
+          if (window.innerWidth >= 1024 && !pin) {
+            setIsSidebarOpen(false);
+          }
+        }}
+
       >
         <div className={`py-6 flex justify-between  items-center relative`}>
           <div className={`flex`}>
@@ -58,8 +60,8 @@ export default function Sidebar({ isSidebarOpen  }) {
   border-[#E2E8F0] transform ${isSidebarOpen ? "translate-x-0 opacity-100" : "translate-x-10 opacity-0"} absolute left-0`}
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-  <path d="M12 4L4 12M4 4L12 12" stroke="#4E535A" stroke-width="1.5" strokeLinecap="round" stroke-linejoin="round"/>
-</svg>
+              <path d="M12 4L4 12M4 4L12 12" stroke="#4E535A" stroke-width="1.5" strokeLinecap="round" stroke-linejoin="round" />
+            </svg>
           </button>
 
         </div>
@@ -136,11 +138,11 @@ export default function Sidebar({ isSidebarOpen  }) {
         </div> */}
         <div className={`overflow-hidden about-us  transition-all duration-500   text-center ${isSidebarOpen ? "opacity-100" : "opacity-0 translate-x-80"}`}>
           <button type="button" className="text-base font-medium py-3 px-4 flex m-auto justify-center items-center carretSvg   bg-[#EFB036] hover:bg-[#E09122] transition-all duration-300 w-[224px] rounded-lg text-white">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" className={`opacity-0`  }>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" className={`opacity-0`}>
               <path fillRule="evenodd" clipRule="evenodd" d="M7.29289 14.7071C6.90237 14.3166 6.90237 13.6834 7.29289 13.2929L10.5858 10L7.29289 6.70711C6.90237 6.31658 6.90237 5.68342 7.29289 5.29289C7.68342 4.90237 8.31658 4.90237 8.70711 5.29289L12.7071 9.29289C13.0976 9.68342 13.0976 10.3166 12.7071 10.7071L8.70711 14.7071C8.31658 15.0976 7.68342 15.0976 7.29289 14.7071Z" fill="white" />
             </svg>
-            <p className="transition-all duration-300 ml-4">درباره ما
-            </p>
+            <Link to={"/about-us"} className="transition-all duration-300 ml-4">درباره ما
+            </Link>
           </button>
 
         </div>
@@ -173,7 +175,7 @@ export default function Sidebar({ isSidebarOpen  }) {
   );
 }
 
-export function SidebarItem({ icon, text, index , link }) {
+export function SidebarItem({ icon, text, index, link }) {
   const { isSidebarOpen, activeIndex, setActiveIndex } = useContext(SidebarContext);
 
   return (
@@ -185,22 +187,22 @@ export function SidebarItem({ icon, text, index , link }) {
       onClick={() => setActiveIndex(index)}
     >
       {/* Fixed-size icon wrapper */}
-      <Link to={link}  className={`h-[39px] flex items-center font-medium cursor-pointer transition-colors group text-sm font-iransans rounded-lg gap-2
+      <Link to={link} className={`h-[39px] flex items-center font-medium cursor-pointer transition-colors group text-sm font-iransans rounded-lg gap-2
         ${activeIndex === index ? "bg-[#E5F7F8] text-[#00ADB5] active" : "hover:bg-[#E5F7F8] text-[#7A7E83] hover:text-black"}
         ${isSidebarOpen ? "" : ""}
       `}>
-      <div className={`flex items-center justify-center flex-shrink-0 transition-all duration-500 ${isSidebarOpen ? "mr-5" : "mr-3.5"} `}>
-        {icon}
-      </div>
-      {/* Text transition but icon remains fixed */}
-      <span
-        className={`overflow-hidden transition-all duration-500 ${isSidebarOpen ? "ml-3" : "translate-x-40 absolute "
-          }`}
-      >
-        {text}
-      </span>
+        <div className={`flex items-center justify-center flex-shrink-0 transition-all duration-500 ${isSidebarOpen ? "mr-5" : "mr-3.5"} `}>
+          {icon}
+        </div>
+        {/* Text transition but icon remains fixed */}
+        <span
+          className={`overflow-hidden transition-all duration-500 ${isSidebarOpen ? "ml-3" : "translate-x-40 absolute "
+            }`}
+        >
+          {text}
+        </span>
       </Link>
-     
+
     </li>
   );
 }
