@@ -1,0 +1,9 @@
+.addCourseModal .ant-modal-content
+{
+    padding-left: 0 ;
+    padding-right: 0;
+}
+.addCourseModal .ant-modal
+{
+    top: 70% !important;
+}

@@ -55,7 +55,7 @@ export default function Login() {
 
   const userLogin = async (event, setLoading) => {
     event.preventDefault();
-    setLoading(true); 
+    setLoading(true);
 
     const userData = {
       email: formState.inputs.email.value,
@@ -66,7 +66,7 @@ export default function Login() {
       const res = await fetch("http://localhost:8000/auth/jwt/create/", {
         method: "POST",
         headers: {
-        "Accept-Language": "fa",
+          "Accept-Language": "fa",
 
           "Content-Type": "application/json",
         },
@@ -85,6 +85,9 @@ export default function Login() {
         type: "success",
       });
 
+      navigate("/home");
+
+
       authContext.login({}, data.access, data.refresh);
     } catch (err) {
       if (
@@ -96,7 +99,7 @@ export default function Login() {
         });
       }
     } finally {
-      setLoading(false); 
+      setLoading(false);
     }
   };
 
@@ -154,18 +157,16 @@ export default function Login() {
                     ایمیل
                   </label>
                   <div
-                    className={`user-name_input flex justify-start px-2 items-center h-[52px]  border brder-1 rounded-[8px] ${
-                      formState.inputs.email.isValid
+                    className={`user-name_input flex justify-start px-2 items-center h-[52px]  border brder-1 rounded-[8px] ${formState.inputs.email.isValid
                         ? "border-green-500"
                         : "border-[#a7a9ad] "
-                    }`}
+                      }`}
                   >
                     <div
-                      className={`input h-[24px]   px-1 ${
-                        formState.inputs.email.isValid
+                      className={`input h-[24px]   px-1 ${formState.inputs.email.isValid
                           ? "text-green-500"
                           : "text-[#a7a9ad] "
-                      }`}
+                        }`}
                     >
                       {" "}
                       <MailOutlined />
@@ -195,6 +196,7 @@ export default function Login() {
                       className={`input h-[24px] px-1 ${formState.inputs.password.isValid
                           ? "text-green-500"
                           : "text-[#a7a9ad]"
+
                         }`}
                     >
                       <LockOutlined />
@@ -229,16 +231,15 @@ export default function Login() {
                       !formState.inputs.email.isValid ||
                       !formState.inputs.password.isValid
                     }
-                    className={`w-full h-[52px] bg-[#4CC6CB] text-white rounded-lg transition-all duration-300 ${
-                      formState.inputs.email.isValid &&
-                      formState.inputs.password.isValid &&
-                      !loading
+                    className={`w-full h-[52px] bg-[#4CC6CB] text-white rounded-lg transition-all duration-300 ${formState.inputs.email.isValid &&
+                        formState.inputs.password.isValid &&
+                        !loading
                         ? ""
                         : "opacity-50 cursor-not-allowed"
-                    }`}
+                      }`}
                   >
                     {loading ? (
-                   <Spinner size="lg" />
+                      <Spinner size="lg" />
                     ) : (
                       <span>ورود</span>
                     )}
