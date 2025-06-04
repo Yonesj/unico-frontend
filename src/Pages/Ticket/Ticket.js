@@ -7,6 +7,7 @@ import { UpOutlined, DownOutlined } from "@ant-design/icons";
 import { ReactComponent as CheckTicket } from "../../Assets/images/check_ticket.svg";
 import { ReactComponent as CloseTicket } from "../../Assets/images/close_ticket.svg";
 import { ReactComponent as ProgressTicket } from "../../Assets/images/search_tcket.svg";
+import BreadCrumb from "../../Components/BreadCrumb/BreadCrumb";
 function Ticket() {
   const [tickets, setTickets] = useState([]);
   const [stats, setStats] = useState(null);
@@ -46,13 +47,13 @@ function Ticket() {
       setError(null);
     } catch (err) {
       console.error("Error fetching ticket stats:", err);
-      setError("Failed to load ticket statistics. Please try again.");
+      setError("خطا در دریافت اطلاعات. مجدد تلاش کنید");
     } finally {
       setLoading(false);
     }
   };
   
-  const fetchTickets = async (ordering = '-date') => {
+  const fetchTickets = async (ordering = '-created_at') => {
     try {
       setLoading(true);
   
@@ -73,7 +74,8 @@ function Ticket() {
       setError(null);
     } catch (err) {
       console.error("Error fetching tickets:", err);
-      setError("Failed to load tickets. Please try again.");
+      setError("خطا در دریافت اطلاعات. مجدد تلاش کنید");
+
     } finally {
       setLoading(false);
     }
@@ -82,11 +84,11 @@ function Ticket() {
   
   useEffect(() => {
     fetchTicketStats();
-    const ordering = selectedOption === "جدید ترین تیکت ها" ? "-date" : "date";
+    const ordering = selectedOption === "جدید ترین تیکت ها" ? "-created_at" : "created_at";
     fetchTickets(ordering);
   }, []);
   useEffect(() => {
-    const ordering = selectedOption === "جدید ترین تیکت ها" ? "-date" : "date";
+    const ordering = selectedOption === "جدید ترین تیکت ها" ? "-created_at" : "created_at";
     fetchTickets(ordering);
   }, [selectedOption]);
   const StatCard = ({ title, value, iconBgColor, iconColor }) => (
@@ -127,9 +129,10 @@ function Ticket() {
     }
     return (
       <div
-        className="flex px-[14px] py-3 flex-col items-end gap-[14px] self-stretch   border-[1px] rounded-[12px] border-[#E3E3E3] font-iransansfa"
+        className="flex px-[14px] py-3 flex-col items-end gap-[14px] self-stretch   border-[1px] rounded-[12px] border-[#E3E3E3] cursor-pointer font-iransansfa  hover:bg-slate-50"
         key={ticket.id}
       >
+       
         <div className="flex items-center self-stretch justify-between">
           <div className="flex items-center gap-6 text-xs  font-medium">
             <div>{ticket.title}</div>
@@ -172,7 +175,7 @@ function Ticket() {
     }
 
     return (
-      <div onClick={()=>{ nav(`/chat/${ticket.id}`)}} className="grid cursor-pointer grid-cols-ticket-table text-sm py-3 border-b border-gray-200 last:border-b-0 items-center min-w-[700px] ticket-row font-medium  ">
+      <div onClick={()=>{ nav(`/chat/${ticket.id}`)}} className="grid cursor-pointer grid-cols-ticket-table text-sm py-3 border-b border-gray-200 last:border-b-0 items-center hover:bg-slate-50 transition-all min-w-[700px] ticket-row font-medium  ">
         <div className="text-gray-700 mx-auto overflow-ellipsis">
           {ticket.uid}
         </div>
@@ -203,7 +206,18 @@ function Ticket() {
   };
 
   return (
-    <div className="min-h-screen bg-gray font-iransansfa bg-slate-100 p-4">
+    <div className="min-h-screen bg-gray font-iransansfa bg-slate-100 px-4">
+     <BreadCrumb
+        links={[
+          { id: 1, title: "پشتیبانی", to: "/" },
+          {
+            id: 2,
+            title: "تیکت ها",
+            to: "/ticket",
+          },
+        ]}
+      />
+    
       <div className="bg-[#FFFFFF]  rounded-[12px] pt-[28px] px-[14px]">
         <script src="https://cdn.tailwindcss.com"></script>
         <style>
@@ -320,7 +334,6 @@ function Ticket() {
               className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg relative mb-6"
               role="alert"
             >
-              <strong className="fz`ont-bold">خطا!</strong>
               <span className="block sm:inline"> {error}</span>
             </div>
           )}
