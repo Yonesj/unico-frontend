@@ -125,7 +125,7 @@ const routes = [
         { path: "/home", element: <Home/> },
         { path: "/about-us", element: <AboutUs/> },
         { path: "/rules", element: <Rules/> },
-
+        
 
 
 
